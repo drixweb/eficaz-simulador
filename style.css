@@ -1,0 +1,439 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --blue: #287BFF;
+    --white: #fff;
+    --grey: #F9F9F9;
+    --yellow: #fff7ae36;
+    --black1: #231F1F;
+    --black2: #7E868C; --shadow: rgba(0, 0, 0, 0.08)
+}
+
+body{
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.container{
+    position: relative;
+    width: 900px;
+    margin-top: 100px;
+}
+
+h1.title{
+    text-align: center;
+    padding-bottom: 50px;
+}
+
+.text{
+    text-align: center;
+    font-size: 20px;
+    padding-bottom: 50px;
+}
+
+#labelMunicipio{
+    margin: auto;
+    font-size: 20px;
+    font-weight: normal;
+}
+
+select, option{
+    font-size: 15px;
+    font-weight: normal;
+}
+
+table, tbody, tr, td{
+    border: 0px;
+}
+
+#nomeDoServidor{
+    width: 300px;
+}
+
+#CPF{
+    width: 135px;
+}
+
+.spanSexo, .spanMagisterio, .spanSaude{
+    font-size: 15px;
+    font-weight: 600;
+}
+
+#matricula{
+    width: 100px;
+}
+
+#cadastroLinha1 td, #cadastroLinha2 td{
+    padding-right: 1px;
+}
+
+/*===========*/
+
+.divCadTempo{
+    width: 900px;
+    padding: 20px;
+    grid-gap: 30px;
+    margin-top: 10px;
+}
+
+.divCadTempo .quadro{
+    position: relative;
+    display: block;
+    background: var(--white);
+    padding: 20px;
+    box-shadow: 0 7px 25px var(--shadow);
+    border-radius: 20px;
+    min-height: 320px;
+}
+
+.cabecalho{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.cabecalho h2{
+    font-weight: 600;
+    color: var(--blue);
+}
+
+.btn{
+    position: relative;
+    padding: 5px 10px;
+    background: var(--blue);
+    text-decoration: none;
+    color: var(--white);
+    border-radius: 6px;
+}
+
+.divCadTempo table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.divCadTempo table thead td{
+    font-weight: 600;
+}
+
+.divCadTempo .quadro table thead tr{
+    color: var(--black1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.divCadTempo .quadro table tr:last-child{
+    border-bottom: none;
+}
+
+.divCadTempo .quadro table tr td{
+    padding: 10px;
+}
+
+#organizacao{
+    width: 250px;
+}
+
+#dataInicio, #dataFim{
+    width: 170px;
+}
+
+#natureza{
+    width: 50px;
+}
+
+#radio{
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.buttons{
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+#containerBotoes02{
+    display: flex;
+    margin: 0;
+    padding: 0;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#painelDeBotoes02{
+    margin: 0px;
+}
+
+#painelDeBotoes02 button ion-icon, #painelDeBotoes01 button ion-icon{
+    padding-right: 5px;
+}
+
+#tdOrgao{
+    width: 250px;
+}
+
+#tdTempoTotal{
+    font-weight: bolder;
+    pointer-events: none;
+}
+
+.status.rpps{
+    padding: 2px 4px;
+    background: #287BFF;
+    color: var(--white);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.status.rgps{
+    padding: 2px 4px;
+    background: #d48a1b;
+    color: var(--white);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.status.militar{
+    padding: 2px 4px;
+    background: #0c752c;
+    color: var(--white);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+#iconeRemover:hover{
+    color: #287BFF;
+    cursor: pointer;
+}
+
+/*  IMPRESSÃO   */
+
+p{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 500;
+    font-size: 9pt;
+}
+
+p.topoImpressao{
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 700;
+}
+
+.secaoImpressao{
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 700;
+}
+
+.section{
+    margin: 0;
+    padding-top: 0;
+}
+
+.section p{
+    text-align: start;
+    font-size: 14px;
+}
+
+table.tbRelacaoTempo{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tbPaginaImpressao{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tbPaginaImpressao td{
+    font-size: 10px;
+}
+
+table.tbRelacaoTempo thead tr td{
+    font-size: 12px;
+}
+table.tbRelacaoTempo tbody tr td{
+    font-size: 11px;
+}
+table.tbRelacaoTempo tr td{
+    font-size: 11px;
+}
+
+.negrito td{
+    font-weight: 800;
+}
+
+.negrito .td7A, .negrito .td2A{
+    padding-left: 5px;
+}
+
+td.td1A{
+    width: 250px;
+}
+td.td1B{
+    width: 215px;
+}
+td.td1C{
+    width: 200px;
+}
+
+.td2A{
+    border-top: solid 1px;
+    border-left: solid 1px;
+    width: 250px;
+    text-align: left;
+}
+.td2B{
+    border-top: solid 1px;
+    padding-left: 3px;
+}
+.td2C{
+    border-top: solid 1px;
+    padding-left: 3px;
+}
+.td2D{
+    border-top: solid 1px;
+    padding-left: 3px;
+}
+.td2E{
+    border-top: solid 1px;
+    padding-left: 3px;
+}
+.td2F{
+    border-top: solid 1px;
+    padding-left: 3px;
+}
+.td2G{
+    border-top: solid 1px;
+    border-right: solid 1px;
+    padding-left: 3px;
+}
+.td2H{
+    border-top: solid 1px;
+    padding-left: 2px;
+}
+.td2I{
+    border-top: solid 1px;
+    padding-left: 2px;
+}
+.td2J{
+    border-top: solid 1px;
+    padding-left: 2px;
+}
+.td2K{
+    border-top: solid 1px;
+    border-right: solid 1px;
+    padding-left: 2px;
+}
+
+.td3A{
+    border-top: solid 1px;
+    border-left: solid 1px;
+    width: 400px;
+    text-align: right;
+    padding-left: 5px;
+}
+.td3B{
+    width: 50px;
+    border-top: solid 1px;
+    border-right: solid 1px;
+    border-left: solid 1px;
+    padding-left: 5px;
+}
+.td3C{
+    width: 180px;
+    border-top: solid 1px;
+    border-right: solid 1px;
+    padding-left: 5px;
+}
+
+.td4A{
+    border: solid 1px;
+    padding-left: 5px;
+}
+.td4B{
+    width: 50px;
+    border-top: solid 1px;
+    border-bottom: solid 1px;
+    padding-left: 5px;
+}
+.td4C{
+    width: 180px;
+    border: solid 1px;
+    padding-left: 5px;
+}
+
+.td5A{
+    width: 340px;
+    border-left: solid 1px;
+    border-right: solid 1px;
+}
+.td5B{
+    border-right: solid 1px;
+}
+
+.td6A{
+    border: solid 1px;
+}
+
+.td7A{
+    width: 350px;
+    border-top: solid 1px;
+    border-left: solid 1px;
+}
+.td7B{
+    border-top: solid 1px;
+}
+.td7C{
+    border-top: solid 1px;
+}
+.td7D{
+    border-top: solid 1px;
+}
+.td7E{
+    width: 100px;
+    border-top: solid 1px;
+    border-right: solid 1px;
+}
+
+.tbRelacaoTempo tbody tr td.td7A{
+    padding-left: 5px;
+    text-align: left;
+}
+
+#quadroCenarios{
+    background-color: var(--yellow)
+}
+
+#tabelaCenarios{
+    background-color: rgba(0,0,0,0.0);
+}
+
+.corpoCenarios tr td{
+    font-weight: bold;
+}
+
+.primeiralinha{
+    border-top: solid 1px;
+    border-left: solid 1px;
+    border-right: solid 1px;
+    padding-right: 5px;
+}
+
+.ultimalinha{
+    border-bottom: solid 1px;
+    border-left: solid 1px;
+    border-right: solid 1px;
+    padding-right: 5px;
+}

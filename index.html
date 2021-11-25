@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eficaz - Simulador de Aposentadoria</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>#xpagina1, #xpagina2, .desabilitado{display: none;}</style>
+
+    <script src="js/tempo_de_servico.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/main.js"></script>
+</head>
+
+<body>
+    <!---------------------------------------  PÁGINA 01  --------------------------------------->
+    <div class="container" id="pagina1" style="border-style: solid; width: 720px; margin-top: 0;">
+        <div class="idPaginaImpressao">
+            <table class="tbPaginaImpressao">
+                <td style="padding-left: 10px;">Emitido em <span id="dataEmitido"></span></td>
+                <td style="text-align: end; padding-right: 25px;">Página 01</td>
+            </table>
+        </div>
+        <div class="section">
+            <div class="cabecalhoImpressao">
+                <p class="topoImpressao" style="text-align: center;">ESTADO DE RONDÔNIA</p>
+                <p class="topoImpressao" style="text-align: center;">PREFEITURA MUNICIPAL DE SÃO MIGUEL DO GUAPORÉ</p>
+                <p class="topoImpressao" style="font-size: 13px; text-align: center;">INSTITUTO DE PREVIDENCIA MUNICIPAL DE SÃO MIGUEL DO GUAPORÉ</p>
+                <br>
+                <p class="topoImpressao" style="font-size: 26px; text-align: center;">SIMULAÇÃO DE APOSENTADORIA</p>
+                <br>
+                <p style="font-weight: 800;">DADOS DO SERVIDOR</p>
+                <div class="dadosImpressao" style="border-top: solid 1px; border-bottom: solid 1px">
+                    <table>
+                        <tr>
+                            <td class="td1A">
+                                <p>Nome: <span id="prtNome"></span></p>
+                            </td>
+                            <td class="td1B">
+                                <p>CPF: <span id="prtCPF"></span></p>
+                            </td>
+                            <td class="td1C">
+                                <p>Sexo: <span id="prtSexo"></span></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td1A">
+                                <p>Data de Nascimento: <span id="prtDataNasc"></span></p>
+                            </td>
+                            <td class="td1B">
+                                <p>Idade Atual: <span id="prtIdade"></span></p>
+                            </td>
+                            <td class="td1C">
+                                <p>Lotação: <span id="prtLotacao"></span></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td1A">
+                                <p>Matrícula: <span id="prtMatricula"></span></p>
+                            </td>
+                            <td class="td1B">
+                                <p>Data de Admissão: <span id="prtDataAdm"></span></p>
+                            </td>
+                            <td class="td1C">
+                                <p>Cargo: <span id="prtCargo"></span></p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="secaoImpressao" id="secao1">
+                <br><br>
+                <p style="font-size: 16px; font-weight: 700; text-align: center;">FREQUÊNCIA \ IPMSMG</p>
+                <br>
+                <div class="section">
+                    <p>Período de Contribuição no Cargo Atual: <span id="prtDataAdm2"></span> a <span id="prtDataAtual"></span></p>
+                    <p>Tempo no Cargo Atual (A): <span id="prtTempoCargoAtual"></span> dias</p>
+                    <p>Tempo Líquido (aproximado): <span id="prtAnoTempoLiq"></span> ano(s), <span id="prtMesTempoLiq"></span> mês(es) e <span id="prtDiaTempoLiq"></span> dia(s)</p>
+                </div>
+            </div>
+            <div class="secaoImpressao" id="secao2">
+                <p style="font-size: 16px; font-weight: 700; text-align: center;">RELAÇÃO DE TEMPO DE SERVIÇO PARA AVERBAÇÃO</p>
+                <br>
+                <table class="tbRelacaoTempo">
+                    <thead>
+                        <tr class="negrito">
+                            <td class="td2A">Organização</td>
+                            <td class="td2B">Início</td>
+                            <td class="td2C">Fim</td>
+                            <td class="td2D">Natureza</td>
+                            <td class="td2E">Regime</td>
+                            <td class="td2F">Magistério</td>
+                            <td class="td2G">Saúde</td>
+                            <td class="td2H">Anos</td>
+                            <td class="td2I">Mêses</td>
+                            <td class="td2J">Dias</td>
+                            <td class="td2K">Total</td>
+                        </tr>
+                    </thead>
+                    <tbody id="inserir">
+                        <!-- Recebe código das linhas da Relação de Tempo de Serviço para impressão -->
+                        
+                    </tbody>
+                </table>
+                <table class="tbRelacaoTempo">
+                    <tr>
+                        <td class="td3A">Soma do Tempo líquido total (B) =</td>
+                        <td class="td3B"><span id="prtTempoTotal"></span></td>
+                        <td class="td3C"><span id="prtTTAno"></span> ANO(S), <span id="prtTTMes"></span> MÊS(ES) E <span id="prtTTDia"></span> DIA(S)</td>
+                    </tr>
+                    <tr>
+                        <td class="td4A">Total geral de Tempo de serviço para aposentadoria (A + B) =</td>
+                        <td class="td4B"><span id="prtTGTempo"></span></td>
+                        <td class="td4C"><span id="prtTGAno"></span> ANO(S), <span id="prtTGMes"></span> MÊS(ES) E <span id="prtTGDia"></span> DIA(S)</td>
+                    </tr>
+                </table>
+                <!-- <table class="tbRelacaoTempo">
+                    <tr>
+                        <td class="td5A" style="text-align: start; padding-left: 5px;">
+                            Lavrei a Certidão que não contém emendas e nem rasuras.
+                            <br>
+                            29/09/2021
+                            <br><br><br><br><br>
+                        </td>
+                        <td class="td5B" style="text-align: start; padding-left: 5px;">
+                            Visto do dirigente do Órgão.
+                            <br>
+                            29/09/2021
+                            <br><br><br><br><br>
+                        </td>
+                    </tr>
+                </table>
+                <table class="tbRelacaoTempo">
+                    <tr>
+                        <td class="td6A" style="text-align: start; padding-left: 5px; font-weight: bolder;">
+                            Observações:
+                            <br><br><br>
+                        </td>
+                    </tr>
+                </table> -->
+            </div>
+            
+            <div class="secaoImpressao" id="secao3">
+                <br>
+                <p style="font-size: 16px; font-weight: 700; text-align: center;">TEMPO DE SERVIÇO DETALHADO</p>
+                <p style="font-weight: 800;">NATUREZA</p>
+                <table class="tbRelacaoTempo">
+                    <thead>
+                        <tr class="negrito">
+                            <td class="td7A">Descrição</td>
+                            <td class="td7B">Ano</td>
+                            <td class="td7C">Mêses</td>
+                            <td class="td7D">Dias</td>
+                            <td class="td7E">Total</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Serviço Público</td>
+                            <td class="td7B" id="anoPublico">0</td>
+                            <td class="td7C" id="mesPublico">0</td>
+                            <td class="td7D" id="diaPublico">0</td>
+                            <td class="td7E" id="somaPublico">0</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Serviço Privado</td>
+                            <td class="td7B" id="anoPrivado">0</td>
+                            <td class="td7C" id="mesPrivado">0</td>
+                            <td class="td7D" id="diaPrivado">0</td>
+                            <td class="td7E" id="somaPrivado">0</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A"  style="border-bottom: solid 1px;">Magistério</td>
+                            <td class="td7B" id="anoMagisterio">0</td>
+                            <td class="td7C" id="mesMagisterio">0</td>
+                            <td class="td7D" id="diaMagisterio">0</td>
+                            <td class="td7E" id="somaMagisterio">0</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A"  style="border-bottom: solid 1px;">Saúde (exposto à agentes químicos, físicos e biológicos)</td>
+                            <td class="td7B" id="anoSaude" style="border-bottom: solid 1px;">0</td>
+                            <td class="td7C" id="mesSaude" style="border-bottom: solid 1px;">0</td>
+                            <td class="td7D" id="diaSaude" style="border-bottom: solid 1px;">0</td>
+                            <td class="td7E" id="somaSaude" style="border-bottom: solid 1px;">0</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                <p style="font-weight: 800;">REGIME</p>
+                <table class="tbRelacaoTempo">
+                    <thead>
+                        <tr class="negrito">
+                            <td class="td7A">Descrição</td>
+                            <td class="td7B">Ano</td>
+                            <td class="td7C">Mêses</td>
+                            <td class="td7D">Dias</td>
+                            <td class="td7E">Total</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">RPPS</td>
+                            <td class="td7B" id="anoRPPS">0</td>
+                            <td class="td7C" id="mesRPPS">0</td>
+                            <td class="td7D" id="diaRPPS">0</td>
+                            <td class="td7E" id="somaRPPS">0</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">RGPS</td>
+                            <td class="td7B" id="anoRGPS">0</td>
+                            <td class="td7C" id="mesRGPS">0</td>
+                            <td class="td7D" id="diaRGPS">0</td>
+                            <td class="td7E" id="somaRGPS">0</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A" style="border-bottom: solid 1px;">Militar</td>
+                            <td class="td7B" id="anoMilitar" style="border-bottom: solid 1px;">0</td>
+                            <td class="td7C" id="mesMilitar" style="border-bottom: solid 1px;">0</td>
+                            <td class="td7D" id="diaMilitar" style="border-bottom: solid 1px;">0</td>
+                            <td class="td7E" id="somaMilitar" style="border-bottom: solid 1px;">0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!---------------------------------------  PÁGINA 02  --------------------------------------->
+    <div class="container" id="pagina2" style="border-style: solid; width: 720px; margin-top: 0;">
+        <div class="idPaginaImpressao">
+            <table class="tbPaginaImpressao">
+                <td style="padding-left: 10px;">Emitido em <span id="dataEmitido"></span></td>
+                <td style="text-align: end; padding-right: 25px;">Página 02</td>
+            </table>
+        </div>
+        <div class="section">
+            <div class="cabecalhoImpressao">
+                <p class="topoImpressao" style="text-align: center;">ESTADO DE RONDÔNIA</p>
+                <p class="topoImpressao" style="text-align: center;">PREFEITURA MUNICIPAL DE SÃO MIGUEL DO GUAPORÉ</p>
+                <p class="topoImpressao" style="font-size: 13px; text-align: center;">INSTITUTO DE PREVIDENCIA MUNICIPAL DE SÃO MIGUEL DO GUAPORÉ</p>
+                <br>
+                <p class="topoImpressao" style="font-size: 26px; text-align: center;">SIMULAÇÃO DE APOSENTADORIA</p>
+                <br>
+                <p style="font-weight: 800;">DADOS DO SERVIDOR</p>
+                <div class="dadosImpressao" style="border-top: solid 1px; border-bottom: solid 1px">
+                    <table>
+                        <tr>
+                            <td class="td1A">
+                                <p>Nome: <span id="prtNome2"></span></p>
+                            </td>
+                            <td class="td1B">
+                                <p>CPF: <span id="prtCPF2"></span></p>
+                            </td>
+                            <td class="td1C">
+                                <p>Sexo: <span id="prtSexo2"></span></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td1A">
+                                <p>Data de Nascimento: <span id="prtDataNasc2"></span></p>
+                            </td>
+                            <td class="td1B">
+                                <p>Idade Atual: <span id="prtIdade2"></span></p>
+                            </td>
+                            <td class="td1C">
+                                <p>Lotação: <span id="prtLotacao2"></span></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td1A">
+                                <p>Matrícula: <span id="prtMatricula2"></span></p>
+                            </td>
+                            <td class="td1B">
+                                <p>Data de Admissão: <span id="prtDataAdm3"></span></p>
+                            </td>
+                            <td class="td1C">
+                                <p>Cargo: <span id="prtCargo2"></span></p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="secaoImpressao" id="secao4">
+                <br><br>
+                <p style="font-size: 16px; font-weight: 700; text-align: center;">CENÁRIOS DE CONCESSÃO</p>
+                <br>
+            </div>
+
+            <div class="secaoImpressao" id="secao5">
+                <p style="font-weight: 600;">APOSENTADORIA VOLUNTÁRIA POR IDADE</p>
+                <table class="tbRelacaoTempo">
+                    <thead>
+                        <tr>
+                            <td class="primeiralinha" colspan="5"><p style="text-align: center;">Fundamentação:</p></td>
+                        </tr>
+                        <tr class="negrito">
+                            <td class="td7A">Requisito</td>
+                            <td class="td7B">Exigido</td>
+                            <td class="td7C">Atingido</td>
+                            <td class="td7D">Situação</td>
+                            <td class="td7E">Elegível em</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo de serviço público</td>
+                            <td class="td7B">3650 dias</td>
+                            <td class="td7C" id="apIdadeTPSAtingido"></td>
+                            <td class="td7D" id="apIdadeTPSSituacao">PENDENTE</td>
+                            <td class="td7E" id="apIdadeTPSElegivel">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo no último cargo</td>
+                            <td class="td7B">1825 dias</td>
+                            <td class="td7C" id="apIdadeTCAtingido"></td>
+                            <td class="td7D" id="apIdadeTCSituacao">PENDENTE</td>
+                            <td class="td7E" id="apIdadeTCElegivel">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A" style="border-bottom: solid 1px;">Idade exigida</td>
+                            <td class="td7B" id="apIdadeIExigido" style="border-bottom: solid 1px;">0</td>
+                            <td class="td7C" id="apIdadeAtingido" style="border-bottom: solid 1px;">-</td>
+                            <td class="td7D" id="apIdadeISituacao" style="border-bottom: solid 1px;">PENDENTE</td>
+                            <td class="td7E" id="apIdadeIElegivel" style="border-bottom: solid 1px;">-</td>
+                        </tr>
+                        <tr>
+                            <td class="ultimalinha" colspan="5"><p style="text-align: right;">Resultado: <span id="apIdadeResultado"></span></p></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div><br>
+            
+            <div class="secaoImpressao" id="secao6">
+                <p style="font-weight: 600;">APOSENTADORIA VOLUNTÁRIA POR IDADE E TEMPO DE CONTRIBUIÇÃO</p>
+                <table class="tbRelacaoTempo">
+                    <thead>
+                        <tr>
+                            <td class="primeiralinha" colspan="5"><p style="text-align: center;">Fundamentação:</p></td>
+                        </tr>
+                        <tr class="negrito">
+                            <td class="td7A">Requisito</td>
+                            <td class="td7B">Exigido</td>
+                            <td class="td7C">Atingido</td>
+                            <td class="td7D">Situação</td>
+                            <td class="td7E">Elegível em</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo de contribuição</td>
+                            <td class="td7B" id="apTempoTCExigido"></td>
+                            <td class="td7C" id="apTempoTCAtingido"></td>
+                            <td class="td7D" id="apTempoTCSituacao">PENDENTE</td>
+                            <td class="td7E" id="apTempoTCElegivel">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo de serviço público</td>
+                            <td class="td7B">3650 dias</td>
+                            <td class="td7C" id="apTempoTSPAtingido"></td>
+                            <td class="td7D" id="apTempoTSPSituacao">PENDENTE</td>
+                            <td class="td7E" id="apTempoTSPElegivel">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo no último cargo</td>
+                            <td class="td7B">1825 dias</td>
+                            <td class="td7C" id="apTempoTUCAtingido"></td>
+                            <td class="td7D" id="apTempoTUCSituacao">PENDENTE</td>
+                            <td class="td7E" id="apTempoTUCElegivel">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A" style="border-bottom: solid 1px;">Idade exigida</td>
+                            <td class="td7B" id="apTempoIExigido" style="border-bottom: solid 1px;">0</td>
+                            <td class="td7C" id="apTempoIAtingido" style="border-bottom: solid 1px;">-</td>
+                            <td class="td7D" id="apTempoISituacao" style="border-bottom: solid 1px;">PENDENTE</td>
+                            <td class="td7E" id="apTempoIElegivel" style="border-bottom: solid 1px;">-</td>
+                        </tr>
+                        <tr>
+                            <td class="ultimalinha" colspan="5"><p style="text-align: right;">Resultado: <span id="apTempoResultado"></span></p></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div><br>
+
+            <div class="secaoImpressao" id="secao7">
+                <p style="font-weight: 600;">APOSENTADORIA VOLUNTÁRIA POR IDADE E TEMPO DE CONTRIBUIÇÃO (PROFESSOR)</p>
+                <table class="tbRelacaoTempo">
+                    <thead>
+                        <tr>
+                            <td class="primeiralinha" colspan="5"><p style="text-align: center;">Fundamentação:</p></td>
+                        </tr>
+                        <tr class="negrito">
+                            <td class="td7A">Requisito</td>
+                            <td class="td7B">Exigido</td>
+                            <td class="td7C">Atingido</td>
+                            <td class="td7D">Situação</td>
+                            <td class="td7E">Elegível em</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo de contribuição</td>
+                            <td class="td7B" id="apProfessorTCExigido"></td>
+                            <td class="td7C" id="apProfessorTCAtingido"></td>
+                            <td class="td7D" id="apProfessorTCSituacao">PENDENTE</td>
+                            <td class="td7E" id="apProfessorTCElegivel">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo de serviço público</td>
+                            <td class="td7B">3650 dias</td>
+                            <td class="td7C" id="apProfessorTSPAtingido"></td>
+                            <td class="td7D" id="apProfessorTSPSituacao">PENDENTE</td>
+                            <td class="td7E" id="apProfessorTSPElegivel">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo no último cargo</td>
+                            <td class="td7B">1825 dias</td>
+                            <td class="td7C" id="apProfessorTUCAtingido"></td>
+                            <td class="td7D" id="apProfessorTUCSituacao">PENDENTE</td>
+                            <td class="td7E" id="apProfessorTUCElegivel">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo de efetivo exercício em função de magistério</td>
+                            <td class="td7B" id="apProfessorMagExigido"></td>
+                            <td class="td7C" id="apProfessorMagAtingido"></td>
+                            <td class="td7D" id="apProfessorMagSituacao">PENDENTE</td>
+                            <td class="td7E" id="apProfessorMagElegivel">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A" style="border-bottom: solid 1px;">Idade exigida</td>
+                            <td class="td7B" id="apProfessorIExigido" style="border-bottom: solid 1px;">0</td>
+                            <td class="td7C" id="apProfessorIAtingido" style="border-bottom: solid 1px;">-</td>
+                            <td class="td7D" id="apProfessorISituacao" style="border-bottom: solid 1px;">PENDENTE</td>
+                            <td class="td7E" id="apProfessorIElegivel" style="border-bottom: solid 1px;">-</td>
+                        </tr>
+                        <tr>
+                            <td class="ultimalinha" colspan="5"><p style="text-align: right;">Resultado: <span id="apProfessorResultado"></span></p></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div><br>
+
+            <div class="secaoImpressao" id="secao7">
+                <p style="font-weight: 600;">REGRA DE TRANSIÇÃO - EMENDA CONSTITUCIONAL Nº 41/2003</p>
+                <table class="tbRelacaoTempo">
+                    <thead>
+                        <tr>
+                            <td class="primeiralinha" colspan="5"><p style="text-align: center;">Fundamentação:</p></td>
+                        </tr>
+                        <tr class="negrito">
+                            <td class="td7A">Requisito</td>
+                            <td class="td7B">Exigido</td>
+                            <td class="td7C">Atingido</td>
+                            <td class="td7D">Situação</td>
+                            <td class="td7E">Elegível em</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo de contribuição</td>
+                            <td class="td7B" id="apEC40TCExigido"></td>
+                            <td class="td7C" id="apEC40TCAtingido"></td>
+                            <td class="td7D" id="apEC40TCSituacao">PENDENTE</td>
+                            <td class="td7E" id="apEC40TCElegivel">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo de serviço público</td>
+                            <td class="td7B">7300 dias</td>
+                            <td class="td7C" id="apEC40TSPAtingido"></td>
+                            <td class="td7D" id="apEC40TSPSituacao">PENDENTE</td>
+                            <td class="td7E" id="apEC40TSPElegivel">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo de carreira</td>
+                            <td class="td7B">3650 dias</td>
+                            <td class="td7C" id="apEC40CarrAtingido"></td>
+                            <td class="td7D" id="apEC40CarrSituacao">PENDENTE</td>
+                            <td class="td7E" id="apEC40CarrElegivel">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo no último cargo</td>
+                            <td class="td7B">1825 dias</td>
+                            <td class="td7C" id="apEC40TUCAtingido"></td>
+                            <td class="td7D" id="apEC40TUCSituacao">PENDENTE</td>
+                            <td class="td7E" id="apEC40TUCElegivel">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A" style="border-bottom: solid 1px;">Idade exigida</td>
+                            <td class="td7B" id="apEC40IExigido" style="border-bottom: solid 1px;">0</td>
+                            <td class="td7C" id="apEC40IAtingido" style="border-bottom: solid 1px;">-</td>
+                            <td class="td7D" id="apEC40ISituacao" style="border-bottom: solid 1px;">PENDENTE</td>
+                            <td class="td7E" id="apEC40IElegivel" style="border-bottom: solid 1px;">-</td>
+                        </tr>
+                        <tr>
+                            <td class="ultimalinha" colspan="5"><p style="text-align: right;">Resultado: <span id="apEC40Resultado"></span></p></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div><br>
+
+            <div class="secaoImpressao" id="secao8">
+                <p style="font-weight: 600;">REGRA DE TRANSIÇÃO - EMENDA CONSTITUCIONAL Nº 41/2003 (PROFESSOR)</p>
+                <table class="tbRelacaoTempo">
+                    <thead>
+                        <tr>
+                            <td class="primeiralinha" colspan="5"><p style="text-align: center;">Fundamentação:</p></td>
+                        </tr>
+                        <tr class="negrito">
+                            <td class="td7A">Requisito</td>
+                            <td class="td7B">Exigido</td>
+                            <td class="td7C">Atingido</td>
+                            <td class="td7D">Situação</td>
+                            <td class="td7E">Elegível em</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo de contribuição</td>
+                            <td class="td7B" id="apEC40ProfessorTCExigido"></td>
+                            <td class="td7C" id="apEC40ProfessorTCAtingido"></td>
+                            <td class="td7D" id="apEC40ProfessorTCSituacao">PENDENTE</td>
+                            <td class="td7E" id="apEC40ProfessorTCElegivel">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo de serviço público</td>
+                            <td class="td7B">7300 dias</td>
+                            <td class="td7C" id="apEC40ProfessorTSPAtingido"></td>
+                            <td class="td7D" id="apEC40ProfessorTSPSituacao">PENDENTE</td>
+                            <td class="td7E" id="apEC40ProfessorTSPElegivel">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo de carreira</td>
+                            <td class="td7B">3650 dias</td>
+                            <td class="td7C" id="apEC40ProfessorCarrAtingido"></td>
+                            <td class="td7D" id="apEC40ProfessorCarrSituacao">PENDENTE</td>
+                            <td class="td7E" id="apEC40ProfessorCarrElegivel">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo no último cargo</td>
+                            <td class="td7B">1825 dias</td>
+                            <td class="td7C" id="apEC40ProfessorTUCAtingido"></td>
+                            <td class="td7D" id="apEC40ProfessorTUCSituacao">PENDENTE</td>
+                            <td class="td7E" id="apEC40ProfessorTUCElegivel">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo de efetivo exercício em função de magistério</td>
+                            <td class="td7B" id="apEC40ProfessorMagExigido"></td>
+                            <td class="td7C" id="apEC40ProfessorMagAtingido"></td>
+                            <td class="td7D" id="apEC40ProfessorMagSituacao">PENDENTE</td>
+                            <td class="td7E" id="apEC40ProfessorMagElegivel">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A" style="border-bottom: solid 1px;">Idade exigida</td>
+                            <td class="td7B" id="apEC40ProfessorIExigido" style="border-bottom: solid 1px;">0</td>
+                            <td class="td7C" id="apEC40ProfessorIAtingido" style="border-bottom: solid 1px;">-</td>
+                            <td class="td7D" id="apEC40ProfessorISituacao" style="border-bottom: solid 1px;">PENDENTE</td>
+                            <td class="td7E" id="apEC40ProfessorIElegivel" style="border-bottom: solid 1px;">-</td>
+                        </tr>
+                        <tr>
+                            <td class="ultimalinha" colspan="5"><p style="text-align: right;">Resultado: <span id="apEC40ProfessorResultado">TESTE</span></p></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="secaoImpressao" id="secao9">
+                <p style="font-weight: 600;">APOSENTADORIA DOS SERVIDORES EXPOSTOS À AGENTES QUÍMICOS, FÍSICOS E BIOLÓGICOS</p>
+                <table class="tbRelacaoTempo">
+                    <thead>
+                        <tr>
+                            <td class="primeiralinha" colspan="5"><p style="text-align: center;">Fundamentação:</p></td>
+                        </tr>
+                        <tr class="negrito">
+                            <td class="td7A">Requisito</td>
+                            <td class="td7B">Exigido</td>
+                            <td class="td7C">Atingido</td>
+                            <td class="td7D">Situação</td>
+                            <td class="td7E">Elegível em</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo de contribuição (efetiva exposição)</td>
+                            <td class="td7B" id="apSaudeTCExigido"></td>
+                            <td class="td7C" id="apSaudeTCAtingido"></td>
+                            <td class="td7D" id="apSaudeTCSituacao">PENDENTE</td>
+                            <td class="td7E" id="apSaudeTCElegivel">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo de serviço público</td>
+                            <td class="td7B">3650 dias</td>
+                            <td class="td7C" id="apSaudeTSPAtingido"></td>
+                            <td class="td7D" id="apSaudeTSPSituacao">PENDENTE</td>
+                            <td class="td7E" id="apSaudeTSPElegivel">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo no último cargo</td>
+                            <td class="td7B">1825 dias</td>
+                            <td class="td7C" id="apSaudeTUCAtingido"></td>
+                            <td class="td7D" id="apSaudeTUCSituacao">PENDENTE</td>
+                            <td class="td7E" id="apSaudeTUCElegivel">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A" style="border-bottom: solid 1px;">Idade exigida</td>
+                            <td class="td7B" id="apSaudeIExigido" style="border-bottom: solid 1px;">0</td>
+                            <td class="td7C" id="apSaudeIAtingido" style="border-bottom: solid 1px;">-</td>
+                            <td class="td7D" id="apSaudeISituacao" style="border-bottom: solid 1px;">PENDENTE</td>
+                            <td class="td7E" id="apSaudeIElegivel" style="border-bottom: solid 1px;">-</td>
+                        </tr>
+                        <tr>
+                            <td class="ultimalinha" colspan="5"><p style="text-align: right;">Resultado: <span id="apSaudeResultado">TESTE</span></p></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+<!---------------------------------------  INTERFACE DO SISTEMA  --------------------------------------->
+    <div class="container">
+        <div class="section">
+            <p class="text" style="text-align: center;">(Cabeçalho do Site)</p><hr>
+            <h1 class="title is-2">Simulação de Aposentadoria</h1>
+
+            <table class="table" style="width: 500px; margin: auto;">
+                <div class="fields">
+                    <td style="text-align: right;"><label class="label" id="labelMunicipio" for="municipio">Município: </label></td>
+                    <td><select class="select" name="municipio" id="municipio">
+                        <option class="option" value="SMG">São Miguel do Guaporé</option>
+                    </select></td>
+                </div>
+            </table>
+        </div>
+
+        <table class="table" id="dadosServidor01">
+            <tbody>
+                <tr id="cadstroLinha1">
+                    <td>
+                        <div class="field">
+                            <label for="nomeDoServidor" class="label">Nome do Servidor(a)</label>
+                            <div class="control">
+                                <input type="text" name="nomeDoServidor" id="nomeDoServidor" class="input" placeholder="Digite o mome completo">
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <label for="dataNasc" class="label">Data de Nascimento</label>
+                        <div class="control">
+                            <input type="date" name="dataNasc" id="dataNasc" class="input" style="width: 160px;">
+                        </div>
+                    </td>
+                    <td>
+                        <label for="CPF" class="label">CPF</label>
+                        <div class="control">
+                            <input type="text" class="input" name="cargo" placeholder="Digite o CPF" id="CPF">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="control">
+                            <label for="sexo" class="label">Sexo</label>
+                            <label class="radio">
+                                <span class="spanSexo">
+                                    <input type="radio" name="sexo" value="Masculino" checked>
+                                    Masculino
+                                </span>
+                            </label><br>
+                            <label class="radio">
+                                <span class="spanSexo">
+                                    <input type="radio" name="sexo" value="Feminino">
+                                    Feminino
+                                </span>
+                            </label>
+                        </div>
+                    </td>
+                    <td>
+                        <label class="label" id="labelDeficiencia" for="deficiencia"><abbr title="Servidor(a) com deficiência">Deficiência</abbr></label>
+                        <select class="select" name="deficiencia" id="deficiencia">
+                            <option class="option" value="Não">Não Possui</option>
+                            <option class="option" value="Leve">Leve</option>
+                            <option class="option" value="Moderada">Moderada</option>
+                            <option class="option" value="Grave">Grave</option>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="table" id="dadosServidor02">
+            <tbody>
+                <tr id="cadastroLinha2">
+                    <td>
+                        <div class="field">
+                            <label for="matricula" class="label">Matrícula</label>
+                            <div class="control">
+                                <input type="number" class="input" name="matricula" id="matricula">
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <label for="dataAdmissao" class="label">Data de Admissão</label>
+                        <div class="control">
+                            <input type="date" name="dataAdm" id="dataAdm" class="input" style="width: 160px;">
+                        </div>
+                    </td>
+                    <td>
+                        <label for="cargo" class="label">Cargo</label>
+                        <div class="control">
+                            <input type="text" name="cargo" placeholder="Digite o cargo" id="cargo" class="input" style="width: 200px;">
+                        </div>
+                    </td>
+                    <td>
+                        <label for="lotacao" class="label">Lotação</label>
+                        <div class="control">
+                            <input type="text" name="lotacao" placeholder="Digite a Lotação" id="lotacao" class="input" style="width: 200px;">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="control">
+                            <label for="cadMagisterio" class="label">Magistério</label>
+                            <label class="radio">
+                                <span class="spanMagisterio">
+                                    <input type="radio" name="cadMagisterio" value="Não" checked>
+                                    Não
+                                </span>
+                            </label><br>
+                            <label class="radio">
+                                <span class="spanMagisterio">
+                                    <input type="radio" name="cadMagisterio" value="Sim">
+                                    Sim
+                                </span>
+                            </label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="control">
+                            <label for="cadSaude" class="label"><abbr title="Servidor(a) expostos à agantes químicos, físicos e biológicos">Saúde</abbr></label>
+                            <label class="radio">
+                                <span class="spanSaude">
+                                    <input type="radio" name="cadSaude" value="Não" checked>
+                                    Não
+                                </span>
+                            </label><br>
+                            <label class="radio">
+                                <span class="spanSaude">
+                                    <input type="radio" name="cadSaude" value="Sim">
+                                    Sim
+                                </span>
+                            </label>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="divCadTempo" id="secaoCadTempoAverbacao">
+            <div class="quadro">
+                <div class="cabecalho">
+                    <h2>Cadastrar Tempo de Serviço</h2>
+                </div>
+
+                <div class="field">
+                    <label for="organizacao" class="label">Organização</label>
+                    <div class="control">
+                        <input class="input" id="organizacao" type="text" placeholder="Digite o nome do Órgão ou Empresa" style="width: 800px;">
+                    </div>
+                </div>
+                <div class="fields">
+                    <table>
+                        <tr>
+                            <td>
+                                <label for="dataInicio" class="label">Data Início</label>
+                                <input type="date" class="input" id="dataInicio" name="dataInicio" style="width: 200px;">
+                            </td>
+                            <td>
+                                <label for="dataFim" class="label">Data Fim</label>
+                                <input type="date" class="input" id="dataFim" name="dataFim" style="width: 200px;">
+                            </td>
+                            <td class="tdRegime">
+                                <label for="regime" class="label">Regime</label>
+                                <div class="control">
+                                    <label class="radio" id="radio">
+                                      <input type="radio" name="regime" value="RPPS" checked>
+                                      <span class="status rpps">RPPS</span>
+                                    </label><br>
+                                    <label class="radio" id="radio">
+                                      <input type="radio" name="regime" value="RGPS">
+                                      <span class="status rgps">RGPS</span>
+                                    </label><br>
+                                    <label class="radio" id="radio">
+                                        <input type="radio" name="regime" value="Militar">
+                                        <span class="status militar">Militar</span>
+                                      </label>
+                                </div>
+                            </td>
+                            <td class="tdNatureza">
+                                <label for="natureza" class="label">Natureza</label>
+                                <div class="control">
+                                    <label class="radio" id="radio">
+                                      <input type="radio" name="natureza" value="Público" checked>
+                                      Público
+                                    </label><br>
+                                    <label class="radio" id="radio">
+                                      <input type="radio" name="natureza" value="Privado">
+                                      Privado
+                                    </label>
+                                </div>
+                            </td>
+                            <td class="tdMagisterio">
+                                <label for="magisterio" class="label">Magistério</label>
+                                <div class="control">
+                                    <label class="radio" id="radio">
+                                        <input type="radio" name="magisterio" value="Não" checked>
+                                        Não
+                                      </label><br>
+                                      <label class="radio" id="radio">
+                                      <input type="radio" name="magisterio" value="Sim">
+                                      Sim
+                                    </label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="control">
+                                    <label for="saude" class="label"><abbr title="Servidor(a) expostos à agantes químicos, físicos e biológicos">Saúde</abbr></label>
+                                    <label class="radio">
+                                        <input type="radio" name="saude" value="Não" checked>
+                                            Não
+                                    </label><br>
+                                    <label class="radio">
+                                        <input type="radio" name="saude" value="Sim">
+                                            Sim
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="buttons" id="painelDeBotoes01">
+                    <button class="button is-primary" id="adicionar" type="button" onclick="app.adicionarTempo()"><ion-icon name="add-outline"></ion-icon>Adicionar</button>
+                    <button class="button is-link" id="limpar" type="button" onclick="app.limparItem()"><ion-icon name="trash-outline"></ion-icon></ion-icon>Limpar</button>
+                    <button class="button is-info" id="semAverbar" type="button" onclick="app.semAverbar()"><ion-icon name="play-forward-outline"></ion-icon>Sem Averbação</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="divCadTempo" id="secaoRegTempoAverbacao">
+            <div class="quadro">
+                <div class="cabecalho">
+                    <h2>Registros de Tempo de Serviço Anterior (Averbação)</h2>
+                </div>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <td id="tdOrgao">Órgão/Empresa</td>
+                            <td>Início</td>
+                            <td>Fim</td>
+                            <td>Tempo</td>
+                            <td>Natureza</td>
+                            <td>Regime</td>
+                            <td>Magistério</td>
+                            <td>Saúde</td>
+                            <td width="40px"></td>
+                        </tr>
+                    </thead>
+                    <tbody id="adicionarLinhas">
+                        <!-- ESPAÇO PARA CRIAR TR -->
+                            <!-- ESPAÇO PARA CRIAR TD -->
+                        </tr>
+                    </tbody>
+                    <tfoot class="tfoot">
+                        <td id="tdOrgao"></td>
+                        <td></td>
+                        <td style="text-align: end;">Total:</td>
+                        <td><span id="tdTempoTotal">0</span></td>
+                        <td>dias</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td width="40px"></td>
+                    </tfoot>
+                </table>
+                <hr>
+                <p class="label">Tempo de serviço no cargo atual (A): <span id="tempoCargoAtual"></span></p>
+                <p class="label">Tempo de serviço para Averbação (B): <span id="tempoAverbacao"></span></p>
+                <p class="label">TEMPO LÍQUIDO TOTAL (A + B): <span id="tempoLiquidoTotal"></span></p>
+            </div>
+        </div>
+        
+        <div class="container" id="containerBotoes02">
+            <div class="botoes" id="painelDeBotoes02">
+                <button class="button is-primary" id="finalizar" type="button" onclick="app.finalizar()"><ion-icon name="checkmark-outline"></ion-icon>Finalizar</button>
+                <button class="button is-danger" id="cancelar" type="button" onclick="app.cancelar()"><ion-icon name="close-outline"></ion-icon>Cancelar</button>
+            </div>
+        </div>
+
+        <section id="resumoCenarios" style="display: none;">
+            <hr id="hrResumoCenarios" style="display: block;">
+            <div class="container" style="display: block; margin-top: 20px">
+                <div class="divCadTempo">
+                    <div class="quadro" id="quadroCenarios">
+                        <p class="text">Cenários de Concessão</p>
+                        <table class="table" id="tabelaCenarios">
+                            <thead>
+                                <tr>
+                                    <td style="width: 575px">Regra</td>
+                                    <td>Disponibilidade</td>
+                                </tr>
+                            </thead>
+                            <tbody class="corpoCenarios">
+                                <tr>
+                                    <td>Aposentadoria Voluntária por Idade</td>
+                                    <td id="cenarioAPIdade"></td>
+                                </tr>
+                                <tr>
+                                    <td>Aposentadoria Voluntária por Idade e Tempo de Serviço</td>
+                                    <td id="cenarioAPTempo"></td>
+                                </tr>
+                                <tr>
+                                    <td>Aposentadoria Voluntária por Idade e Tempo de Contribuição (Professor)</td>
+                                    <td id="cenarioAPProfessor"></td>
+                                </tr>
+                                <tr>
+                                    <td>Regra de Transição - EC nº 41/2003</td>
+                                    <td id="cenarioEC40"></td>
+                                </tr>
+                                <tr>
+                                    <td>Regra de Transição - EC nº 41/2003 (Professor)</td>
+                                    <td id="cenarioEC40Professor"></td>
+                                </tr>
+                                <tr id="trCenarioSaude">
+                                    <td>Aposentadoria dos Servidores Expostos à Agentes Químicos, Físicos e Biológicos</td>
+                                    <td id="cenarioSaude"></td>
+                                </tr>
+                                <tr id="trCenarioDeficiencia">
+                                    <td>Aposentadoria dos Servidores com Deficiência</td>
+                                    <td id="cenarioDeficiencia"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="container" id="containerBotoes02">
+                <div class="botoes" id="painelDeBotoes02">
+                    <button class="button is-link" id="visualizar" type="button" onclick="app.visualizarImprimir()"><ion-icon name="document-text-outline"></ion-icon>Visualizar e Imprimir</button>
+                </div>
+            </div>
+        </section>
+        <br><br><hr>
+        <p class="text" style="text-align: center;">(Rodapé do Site)</p>
+    </div>
+    
+    
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+</html>
