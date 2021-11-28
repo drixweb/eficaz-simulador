@@ -27,6 +27,7 @@ class App {
         let registro = new Registro(organizacao, dataInicio, dataFim, tempo, natureza, regime, magisterio, saude)
 
         //Verifica se todos os campos estão preenchidos corretamente
+        this.verificaCadTempoVazio()
         if (organizacao == "" || dataInicio == "" || dataFim == "") {
             alert("ATENÇÃO!\nPreencha todos os campos antes de prosseguir.")
         } else if (dataFim < dataInicio) {
@@ -75,6 +76,29 @@ class App {
             document.getElementById("tempoAverbacao").innerHTML = `${soma} dias`
             document.getElementById("tempoLiquidoTotal").innerHTML = `${totalGeral} dias`
         }
+    }
+
+    verificaCadTempoVazio(){
+        if (document.getElementById("organizacao").value == "") {
+            document.getElementById("organizacao").classList.add("is-danger")   
+        }    
+        if (document.getElementById("dataInicio").value == "") {
+            document.getElementById("dataInicio").classList.add("is-danger")   
+        }
+        if (document.getElementById("dataFim").value == "") {
+            document.getElementById("dataFim").classList.add("is-danger")   
+        }
+        document.getElementById("organizacao").focus()
+    }
+
+    desmarcarOrganizacao(){
+        document.getElementById("organizacao").classList.remove("is-danger")
+    }
+    desmarcarDataInicio(){
+        document.getElementById("dataInicio").classList.remove("is-danger")
+    }
+    desmarcarDataFim(){
+        document.getElementById("dataFim").classList.remove("is-danger")
     }
 
     inserirNaLista(registro){
@@ -340,145 +364,203 @@ class App {
     }
 
     finalizar(){
-        // Mudar o botão "finalizar" para "atualizar"
-        var botao = document.getElementById("finalizar")
-        botao.innerHTML = '<ion-icon name="reload-outline"></ion-icon>Atualizar'
+        //Verifica se todos os campos estão preenchidos corretamente
+        this.verificaDadosCadastrais()
+        if (document.getElementById("nomeDoServidor").value == "" ||
+            document.getElementById("dataNasc").value == "" ||
+            document.getElementById("CPF").value == "" ||
+            document.getElementById("matricula").value == "" ||
+            document.getElementById("dataAdm").value == "" ||
+            document.getElementById("cargo").value == "" ||
+            document.getElementById("lotacao").value == "") {
+            alert("ATENÇÃO!\nPreencha todos os campos antes de prosseguir.")
+        } else {
+            // Mudar o botão "finalizar" para "atualizar"
+            var botao = document.getElementById("finalizar")
+            botao.innerHTML = '<ion-icon name="reload-outline"></ion-icon>Atualizar'
 
-        //DATA DE EMISSÃO
-        var hoje = new Date()
-        var diaHoje = String(hoje.getDate()).padStart(2, '0')
-        var mesHoje = String(hoje.getMonth() + 1).padStart(2,'0')
-        var anoHoje = hoje.getFullYear()
-        var dataAtual = `${diaHoje}/${mesHoje}/${anoHoje}`
-        document.getElementById("dataEmitido").innerHTML = dataAtual
+            //DATA DE EMISSÃO
+            var hoje = new Date()
+            var diaHoje = String(hoje.getDate()).padStart(2, '0')
+            var mesHoje = String(hoje.getMonth() + 1).padStart(2,'0')
+            var anoHoje = hoje.getFullYear()
+            var dataAtual = `${diaHoje}/${mesHoje}/${anoHoje}`
+            document.getElementById("dataEmitido").innerHTML = dataAtual
 
-        //DADOS DO SERVIDOR
-        let nome = document.getElementById("nomeDoServidor").value
-            document.getElementById("prtNome").innerHTML = nome
-            document.getElementById("prtNome2").innerHTML = nome
-        let CPF = document.getElementById("CPF").value
-            document.getElementById("prtCPF").innerHTML = CPF
-            document.getElementById("prtCPF2").innerHTML = CPF
-        let sexo = document.querySelector("input[name='sexo']:checked").value
-            document.getElementById("prtSexo").innerHTML = sexo
-            document.getElementById("prtSexo2").innerHTML = sexo
-        let dataNasc = document.getElementById("dataNasc").value
-            var prtDataNasc = new Date(dataNasc)
-            var diaDataNasc = String(prtDataNasc.getDate() + 1).padStart(2, '0')
-            var mesDataNasc = String(prtDataNasc.getMonth() + 1).padStart(2,'0')
-            var anoDataNasc = prtDataNasc.getFullYear()
-            document.getElementById("prtDataNasc").innerHTML = `${diaDataNasc}/${mesDataNasc}/${anoDataNasc}`
-            document.getElementById("prtDataNasc2").innerHTML = `${diaDataNasc}/${mesDataNasc}/${anoDataNasc}`
-        let idade = String(anoHoje - anoDataNasc)
-            document.getElementById("prtIdade").innerHTML = idade
-            document.getElementById("prtIdade2").innerHTML = idade
-        let lotacao = document.getElementById("lotacao").value
-            document.getElementById("prtLotacao").innerHTML = lotacao
-            document.getElementById("prtLotacao2").innerHTML = lotacao
-        let matricula = document.getElementById("matricula").value
-            document.getElementById("prtMatricula").innerHTML = matricula
-            document.getElementById("prtMatricula2").innerHTML = matricula
-        let dataAdm = document.getElementById("dataAdm").value
-            var prtDataAdm_aux = new Date(dataAdm) //VERIFICAR: Convertando para 1 dia a mais - OK
-            var prtDataAdm = new Date(prtDataAdm_aux.getTime())
-            prtDataAdm.setDate(prtDataAdm_aux.getDate() + 1)
-            var diaDataAdm = String(prtDataAdm.getDate()).padStart(2, '0')
-            var mesDataAdm = String(prtDataAdm.getMonth() + 1).padStart(2, '0')
-            var anoDataAdm = prtDataAdm.getFullYear()
-            var infoDataAdm = `${diaDataAdm}/${mesDataAdm}/${anoDataAdm}`
-            document.getElementById("prtDataAdm").innerHTML = infoDataAdm
-            document.getElementById("prtDataAdm3").innerHTML = infoDataAdm
-        let cargo = document.getElementById("cargo").value
-            document.getElementById("prtCargo").innerHTML = cargo
-            document.getElementById("prtCargo2").innerHTML = cargo
+            //DADOS DO SERVIDOR
+            let nome = document.getElementById("nomeDoServidor").value
+                document.getElementById("prtNome").innerHTML = nome
+                document.getElementById("prtNome2").innerHTML = nome
+            let CPF = document.getElementById("CPF").value
+                document.getElementById("prtCPF").innerHTML = CPF
+                document.getElementById("prtCPF2").innerHTML = CPF
+            let sexo = document.querySelector("input[name='sexo']:checked").value
+                document.getElementById("prtSexo").innerHTML = sexo
+                document.getElementById("prtSexo2").innerHTML = sexo
+            let dataNasc = document.getElementById("dataNasc").value
+                var prtDataNasc = new Date(dataNasc)
+                var diaDataNasc = String(prtDataNasc.getDate() + 1).padStart(2, '0')
+                var mesDataNasc = String(prtDataNasc.getMonth() + 1).padStart(2,'0')
+                var anoDataNasc = prtDataNasc.getFullYear()
+                document.getElementById("prtDataNasc").innerHTML = `${diaDataNasc}/${mesDataNasc}/${anoDataNasc}`
+                document.getElementById("prtDataNasc2").innerHTML = `${diaDataNasc}/${mesDataNasc}/${anoDataNasc}`
+            let idade = String(anoHoje - anoDataNasc)
+                document.getElementById("prtIdade").innerHTML = idade
+                document.getElementById("prtIdade2").innerHTML = idade
+            let lotacao = document.getElementById("lotacao").value
+                document.getElementById("prtLotacao").innerHTML = lotacao
+                document.getElementById("prtLotacao2").innerHTML = lotacao
+            let matricula = document.getElementById("matricula").value
+                document.getElementById("prtMatricula").innerHTML = matricula
+                document.getElementById("prtMatricula2").innerHTML = matricula
+            let dataAdm = document.getElementById("dataAdm").value
+                var prtDataAdm_aux = new Date(dataAdm) //VERIFICAR: Convertando para 1 dia a mais - OK
+                var prtDataAdm = new Date(prtDataAdm_aux.getTime())
+                prtDataAdm.setDate(prtDataAdm_aux.getDate() + 1)
+                var diaDataAdm = String(prtDataAdm.getDate()).padStart(2, '0')
+                var mesDataAdm = String(prtDataAdm.getMonth() + 1).padStart(2, '0')
+                var anoDataAdm = prtDataAdm.getFullYear()
+                var infoDataAdm = `${diaDataAdm}/${mesDataAdm}/${anoDataAdm}`
+                document.getElementById("prtDataAdm").innerHTML = infoDataAdm
+                document.getElementById("prtDataAdm3").innerHTML = infoDataAdm
+            let cargo = document.getElementById("cargo").value
+                document.getElementById("prtCargo").innerHTML = cargo
+                document.getElementById("prtCargo2").innerHTML = cargo
 
-        //FREQUÊNCIA
-        document.getElementById("prtDataAdm2").innerHTML = infoDataAdm
-        document.getElementById("prtDataAtual").innerHTML = dataAtual
+            //FREQUÊNCIA
+            document.getElementById("prtDataAdm2").innerHTML = infoDataAdm
+            document.getElementById("prtDataAtual").innerHTML = dataAtual
 
-        let dataAdm1 = new Date(dataAdm)
-        let dataAtual1 = new Date()
-        let calc = Math.abs(dataAtual1 - dataAdm1)
-        let totalCargoAtual = (Math.ceil(calc / (1000 * 60 * 60 * 24)))
-        document.getElementById("prtTempoCargoAtual").innerHTML = totalCargoAtual
-        
-        let prtAnoTempoLiq = Math.trunc(totalCargoAtual/365)
-        let sobra = totalCargoAtual % 365
-        let prtMesTempoLiq = Math.trunc(sobra/30)
-        let prtDiaTempoLiq = sobra % 30
-        document.getElementById("prtAnoTempoLiq").innerHTML = prtAnoTempoLiq
-        document.getElementById("prtMesTempoLiq").innerHTML = prtMesTempoLiq
-        document.getElementById("prtDiaTempoLiq").innerHTML = prtDiaTempoLiq
+            let dataAdm1 = new Date(dataAdm)
+            let dataAtual1 = new Date()
+            let calc = Math.abs(dataAtual1 - dataAdm1)
+            let totalCargoAtual = (Math.ceil(calc / (1000 * 60 * 60 * 24)))
+            document.getElementById("prtTempoCargoAtual").innerHTML = totalCargoAtual
+            
+            let prtAnoTempoLiq = Math.trunc(totalCargoAtual/365)
+            let sobra = totalCargoAtual % 365
+            let prtMesTempoLiq = Math.trunc(sobra/30)
+            let prtDiaTempoLiq = sobra % 30
+            document.getElementById("prtAnoTempoLiq").innerHTML = prtAnoTempoLiq
+            document.getElementById("prtMesTempoLiq").innerHTML = prtMesTempoLiq
+            document.getElementById("prtDiaTempoLiq").innerHTML = prtDiaTempoLiq
 
-        //Adicionar tempo atual no "Tempo de Serviço Detalhado"
-        lista.push(totalCargoAtual) //Tempo Atual
-            let soma = lista.reduce(function(soma, i){
-                return soma+i
-            })
+            //Adicionar tempo atual no "Tempo de Serviço Detalhado"
+            lista.push(totalCargoAtual) //Tempo Atual
+                let soma = lista.reduce(function(soma, i){
+                    return soma+i
+                })
 
-        listaPublico.push(totalCargoAtual)  //Tempo de Serviço Público
-            let somaPublico = listaPublico.reduce(function(somaPublico, i){
-                return somaPublico+i
-            })
-            let anoPublico = Math.trunc(somaPublico/365)
-            let sobraPublico = somaPublico % 365
-            let mesPublico = Math.trunc(sobraPublico/30)
-            let diaPublico = sobraPublico % 30
-            document.getElementById("anoPublico").innerHTML = anoPublico
-            document.getElementById("mesPublico").innerHTML = mesPublico
-            document.getElementById("diaPublico").innerHTML = diaPublico
-            document.getElementById("somaPublico").innerHTML = somaPublico
-        
-        let cadMagisterio = document.querySelector("input[name='cadMagisterio']:checked").value
-        if (cadMagisterio == "Sim") {
-            listaMagisterio.push(totalCargoAtual) //Tempo Atual de Magistério
-            let somaMagisterio = listaMagisterio.reduce(function(somaMagisterio, i){
-                return somaMagisterio+i
-            })
-            let anoMagisterio = Math.trunc(somaMagisterio/365)
-            let sobraMagisterio = somaMagisterio % 365
-            let mesMagisterio = Math.trunc(sobraMagisterio/30)
-            let diaMagisterio = sobraMagisterio % 30
-            document.getElementById("anoMagisterio").innerHTML = anoMagisterio
-            document.getElementById("mesMagisterio").innerHTML = mesMagisterio
-            document.getElementById("diaMagisterio").innerHTML = diaMagisterio
-            document.getElementById("somaMagisterio").innerHTML = somaMagisterio
+            listaPublico.push(totalCargoAtual)  //Tempo de Serviço Público
+                let somaPublico = listaPublico.reduce(function(somaPublico, i){
+                    return somaPublico+i
+                })
+                let anoPublico = Math.trunc(somaPublico/365)
+                let sobraPublico = somaPublico % 365
+                let mesPublico = Math.trunc(sobraPublico/30)
+                let diaPublico = sobraPublico % 30
+                document.getElementById("anoPublico").innerHTML = anoPublico
+                document.getElementById("mesPublico").innerHTML = mesPublico
+                document.getElementById("diaPublico").innerHTML = diaPublico
+                document.getElementById("somaPublico").innerHTML = somaPublico
+            
+            let cadMagisterio = document.querySelector("input[name='cadMagisterio']:checked").value
+            if (cadMagisterio == "Sim") {
+                listaMagisterio.push(totalCargoAtual) //Tempo Atual de Magistério
+                let somaMagisterio = listaMagisterio.reduce(function(somaMagisterio, i){
+                    return somaMagisterio+i
+                })
+                let anoMagisterio = Math.trunc(somaMagisterio/365)
+                let sobraMagisterio = somaMagisterio % 365
+                let mesMagisterio = Math.trunc(sobraMagisterio/30)
+                let diaMagisterio = sobraMagisterio % 30
+                document.getElementById("anoMagisterio").innerHTML = anoMagisterio
+                document.getElementById("mesMagisterio").innerHTML = mesMagisterio
+                document.getElementById("diaMagisterio").innerHTML = diaMagisterio
+                document.getElementById("somaMagisterio").innerHTML = somaMagisterio
+            }
+
+            let cadSaude = document.querySelector("input[name='cadSaude']:checked").value
+            if (cadSaude == "Sim") {
+                listaSaude.push(totalCargoAtual) //Tempo atual na saúde
+                let somaSaude = listaSaude.reduce(function(somaSaude, i){
+                    return somaSaude+i
+                })
+                let anoSaude = Math.trunc(somaSaude/365)
+                let sobraSaude = somaSaude % 365
+                let mesSaude = Math.trunc(sobraSaude/30)
+                let diaSaude = sobraSaude % 30
+                document.getElementById("anoSaude").innerHTML = anoSaude
+                document.getElementById("mesSaude").innerHTML = mesSaude
+                document.getElementById("diaSaude").innerHTML = diaSaude
+                document.getElementById("somaSaude").innerHTML = somaSaude
+            }
+
+            listaRPPS.push(totalCargoAtual)  //Tempo atual de RPPS
+                let somaRPPS = listaRPPS.reduce(function(somaRPPS, i){
+                    return somaRPPS+i
+                })
+                let anoRPPS = Math.trunc(somaRPPS/365)
+                let sobraRPPS = somaRPPS % 365
+                let mesRPPS = Math.trunc(sobraRPPS/30)
+                let diaRPPS = sobraRPPS % 30
+                document.getElementById("anoRPPS").innerHTML = anoRPPS
+                document.getElementById("mesRPPS").innerHTML = mesRPPS
+                document.getElementById("diaRPPS").innerHTML = diaRPPS
+                document.getElementById("somaRPPS").innerHTML = somaRPPS
+
+            //Montar Cenários de Aposentadoria
+            this.montarCenarios()
+            
+            //Exibir Resumo de Cenários
+            this.exibirResumoCenarios()
         }
+    }
 
-        let cadSaude = document.querySelector("input[name='cadSaude']:checked").value
-        if (cadSaude == "Sim") {
-            listaSaude.push(totalCargoAtual) //Tempo atual na saúde
-            let somaSaude = listaSaude.reduce(function(somaSaude, i){
-                return somaSaude+i
-            })
-            let anoSaude = Math.trunc(somaSaude/365)
-            let sobraSaude = somaSaude % 365
-            let mesSaude = Math.trunc(sobraSaude/30)
-            let diaSaude = sobraSaude % 30
-            document.getElementById("anoSaude").innerHTML = anoSaude
-            document.getElementById("mesSaude").innerHTML = mesSaude
-            document.getElementById("diaSaude").innerHTML = diaSaude
-            document.getElementById("somaSaude").innerHTML = somaSaude
+    verificaDadosCadastrais(){
+        if (document.getElementById("nomeDoServidor").value == "") {
+            document.getElementById("nomeDoServidor").classList.add("is-danger")
         }
-
-        listaRPPS.push(totalCargoAtual)  //Tempo atual de RPPS
-            let somaRPPS = listaRPPS.reduce(function(somaRPPS, i){
-                return somaRPPS+i
-            })
-            let anoRPPS = Math.trunc(somaRPPS/365)
-            let sobraRPPS = somaRPPS % 365
-            let mesRPPS = Math.trunc(sobraRPPS/30)
-            let diaRPPS = sobraRPPS % 30
-            document.getElementById("anoRPPS").innerHTML = anoRPPS
-            document.getElementById("mesRPPS").innerHTML = mesRPPS
-            document.getElementById("diaRPPS").innerHTML = diaRPPS
-            document.getElementById("somaRPPS").innerHTML = somaRPPS
-
-        //Montar Cenários de Aposentadoria
-        this.montarCenarios()
-        
-        //Exibir Resumo de Cenários
-        this.exibirResumoCenarios()
+        if (document.getElementById("dataNasc").value == "") {
+            document.getElementById("dataNasc").classList.add("is-danger")
+        }
+        if (document.getElementById("CPF").value == "") {
+            document.getElementById("CPF").classList.add("is-danger")
+        }
+        if (document.getElementById("matricula").value == "") {
+            document.getElementById("matricula").classList.add("is-danger")
+        }
+        if (document.getElementById("dataAdm").value == "") {
+            document.getElementById("dataAdm").classList.add("is-danger")
+        }
+        if (document.getElementById("cargo").value == "") {
+            document.getElementById("cargo").classList.add("is-danger")
+        }
+        if (document.getElementById("lotacao").value == "") {
+            document.getElementById("lotacao").classList.add("is-danger")
+        }
+    }
+    
+    desmarcarNomeDoServidor(){
+        document.getElementById("nomeDoServidor").classList.remove("is-danger")
+    }
+    desmarcarDataNasc(){
+        document.getElementById("dataNasc").classList.remove("is-danger")
+    }
+    desmarcarCPF(){
+        document.getElementById("CPF").classList.remove("is-danger")
+    }
+    desmarcarMatricula(){
+        document.getElementById("matricula").classList.remove("is-danger")
+    }
+    desmarcarDataAdm(){
+        document.getElementById("dataAdm").classList.remove("is-danger")
+    }
+    desmarcarCargo(){
+        document.getElementById("cargo").classList.remove("is-danger")
+    }
+    desmarcarLocacao(){
+        document.getElementById("lotacao").classList.remove("is-danger")
     }
 
     montarCenarios(){

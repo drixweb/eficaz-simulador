@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="style.css">
-    <style>#pagina1, #pagina2, .desabilitado{display: none;}</style>
+    <style>pagina1, pagina2, .desabilitado{display: none;}</style>
 
     <script src="js/tempo_de_servico.js"></script>
     <script src="js/app.js"></script>
@@ -642,20 +642,20 @@
                         <div class="field">
                             <label for="nomeDoServidor" class="label">Nome do Servidor(a)</label>
                             <div class="control">
-                                <input type="text" name="nomeDoServidor" id="nomeDoServidor" class="input" placeholder="Digite o mome completo">
+                                <input type="text" name="nomeDoServidor" id="nomeDoServidor" class="input" placeholder="Digite o mome completo" onchange="app.desmarcarNomeDoServidor()">
                             </div>
                         </div>
                     </td>
                     <td>
                         <label for="dataNasc" class="label">Data de Nascimento</label>
                         <div class="control">
-                            <input type="date" name="dataNasc" id="dataNasc" class="input" style="width: 160px;">
+                            <input type="date" name="dataNasc" id="dataNasc" class="input" style="width: 160px;" onchange="app.desmarcarDataNasc()">
                         </div>
                     </td>
                     <td>
                         <label for="CPF" class="label">CPF</label>
                         <div class="control">
-                            <input type="text" class="input" name="cargo" placeholder="Digite o CPF" id="CPF">
+                            <input type="text" class="input" name="CPF" placeholder="Digite o CPF" id="CPF" onchange="app.desmarcarCPF()">
                         </div>
                     </td>
                     <td>
@@ -695,26 +695,26 @@
                         <div class="field">
                             <label for="matricula" class="label">Matrícula</label>
                             <div class="control">
-                                <input type="number" class="input" name="matricula" id="matricula">
+                                <input type="number" class="input" name="matricula" id="matricula" onchange="app.desmarcarMatricula()">
                             </div>
                         </div>
                     </td>
                     <td>
                         <label for="dataAdmissao" class="label">Data de Admissão</label>
                         <div class="control">
-                            <input type="date" name="dataAdm" id="dataAdm" class="input" style="width: 160px;">
+                            <input type="date" name="dataAdm" id="dataAdm" class="input" style="width: 160px;" onchange="app.desmarcarDataAdm()">
                         </div>
                     </td>
                     <td>
                         <label for="cargo" class="label">Cargo</label>
                         <div class="control">
-                            <input type="text" name="cargo" placeholder="Digite o cargo" id="cargo" class="input" style="width: 200px;">
+                            <input type="text" name="cargo" placeholder="Digite o cargo" id="cargo" class="input" style="width: 200px;" onchange="app.desmarcarCargo()">
                         </div>
                     </td>
                     <td>
                         <label for="lotacao" class="label">Lotação</label>
                         <div class="control">
-                            <input type="text" name="lotacao" placeholder="Digite a Lotação" id="lotacao" class="input" style="width: 200px;">
+                            <input type="text" name="lotacao" placeholder="Digite a Lotação" id="lotacao" class="input" style="width: 200px;" onchange="app.desmarcarLocacao()">
                         </div>
                     </td>
                     <td>
@@ -764,7 +764,7 @@
                 <div class="field">
                     <label for="organizacao" class="label">Organização</label>
                     <div class="control">
-                        <input class="input" id="organizacao" type="text" placeholder="Digite o nome do Órgão ou Empresa" style="width: 800px;">
+                        <input class="input" id="organizacao" type="text" placeholder="Digite o nome do Órgão ou Empresa" style="width: 800px;" onchange="app.desmarcarOrganizacao()">
                     </div>
                 </div>
                 <div class="fields">
@@ -772,11 +772,11 @@
                         <tr>
                             <td>
                                 <label for="dataInicio" class="label">Data Início</label>
-                                <input type="date" class="input" id="dataInicio" name="dataInicio" style="width: 200px;">
+                                <input type="date" class="input" id="dataInicio" name="dataInicio" style="width: 200px;" onchange="app.desmarcarDataInicio()">
                             </td>
                             <td>
                                 <label for="dataFim" class="label">Data Fim</label>
-                                <input type="date" class="input" id="dataFim" name="dataFim" style="width: 200px;">
+                                <input type="date" class="input" id="dataFim" name="dataFim" style="width: 200px;" onchange="app.desmarcarDataFim()">
                             </td>
                             <td class="tdRegime">
                                 <label for="regime" class="label">Regime</label>

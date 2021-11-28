@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eficaz - Simulador de Aposentadoria</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Chrome e outros */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+        -moz-appearance: textfield;
+        }
+    </style>
+
+    <script src="js/tempo_de_servico.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/main.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="section">
+            <p class="text" style="text-align: center;">(Cabeçalho do Site)</p><hr>
+            <h1 class="title is-2">Simulação de Aposentadoria</h1>
+        </div>
+        <hr><br><br>
+
+        <input type="number" id="CPF" placeholder="Digite o CPF" class="input" autocomplete="off" maxlength="14" style="width: 250px;" onkeyup="mascaraCPF()">
+
+        <br><br><hr>
+        <p class="text" style="text-align: center;">(Rodapé do Site)</p>
+    </div>
+    
+    <script>
+        function mascaraCPF(){
+            var cpf = document.getElementById("CPF")
+            if (cpf.value.length == 3 || cpf.value.length == 7){
+                cpf.value += "."
+            } else if (cpf.value.length == 11) {
+                cpf.value += "-"
+            }
+        }
+    </script>
+
+</body>
+</html>
