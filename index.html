@@ -290,8 +290,8 @@
                 <br>
             </div>
 
-            <div class="secaoImpressao" id="secao5">
-                <p style="font-weight: 600;">APOSENTADORIA VOLUNTÁRIA POR IDADE</p>
+            <div class="secaoImpressao" id="secao0">
+                <p style="font-weight: 600; color: red;">APOSENTADORIA VOLUNTÁRIA POR IDADE [DEFASADO]</p>
                 <table class="tbRelacaoTempo">
                     <thead>
                         <tr>
@@ -334,8 +334,8 @@
                 </table>
             </div><br>
             
-            <div class="secaoImpressao" id="secao6">
-                <p style="font-weight: 600;">APOSENTADORIA VOLUNTÁRIA POR IDADE E TEMPO DE CONTRIBUIÇÃO</p>
+            <div class="secaoImpressao" id="secao0">
+                <p style="font-weight: 600; color: red;">APOSENTADORIA POR TEMPO DE CONTRIBUIÇÃO [DEFASADO]</p>
                 <table class="tbRelacaoTempo">
                     <thead>
                         <tr>
@@ -385,8 +385,59 @@
                 </table>
             </div><br>
 
-            <div class="secaoImpressao" id="secao7">
-                <p style="font-weight: 600;">APOSENTADORIA VOLUNTÁRIA POR IDADE E TEMPO DE CONTRIBUIÇÃO (PROFESSOR)</p>
+            <div class="secaoImpressao" id="secao5">
+                <p style="font-weight: 600;">APOSENTADORIA DOS SERVIDORES EM GERAL</p>
+                <table class="tbRelacaoTempo">
+                    <thead>
+                        <tr>
+                            <td class="primeiralinha" colspan="5"><p style="text-align: center;">Fundamentação:</p></td>
+                        </tr>
+                        <tr class="negrito">
+                            <td class="td7A">Requisito</td>
+                            <td class="td7B">Exigido</td>
+                            <td class="td7C">Atingido</td>
+                            <td class="td7D">Situação</td>
+                            <td class="td7E">Elegível em</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo de contribuição</td>
+                            <td class="td7B">9125 dias</td>
+                            <td class="td7C" id="apGeralTCAtingido"></td>
+                            <td class="td7D" id="apGeralTCSituacao">PENDENTE</td>
+                            <td class="td7E" id="apGeralTCElegivel">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo de serviço público</td>
+                            <td class="td7B">3650 dias</td>
+                            <td class="td7C" id="apGeralTSPAtingido"></td>
+                            <td class="td7D" id="apGeralTSPSituacao">PENDENTE</td>
+                            <td class="td7E" id="apGeralTSPElegivel">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo no cargo efetivo</td>
+                            <td class="td7B">1825 dias</td>
+                            <td class="td7C" id="apGeralTUCAtingido"></td>
+                            <td class="td7D" id="apGeralTUCSituacao">PENDENTE</td>
+                            <td class="td7E" id="apGeralTUCElegivel">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A" style="border-bottom: solid 1px;">Idade exigida</td>
+                            <td class="td7B" id="apGeralIExigido" style="border-bottom: solid 1px;">0</td>
+                            <td class="td7C" id="apGeralIAtingido" style="border-bottom: solid 1px;">-</td>
+                            <td class="td7D" id="apGeralISituacao" style="border-bottom: solid 1px;">PENDENTE</td>
+                            <td class="td7E" id="apGeralIElegivel" style="border-bottom: solid 1px;">-</td>
+                        </tr>
+                        <tr>
+                            <td class="ultimalinha" colspan="5"><p style="text-align: right;">Resultado: <span id="apGeralResultado">VERIFICAR</span></p></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div><br>
+
+            <div class="secaoImpressao" id="secao6">
+                <p style="font-weight: 600;">APOSENTADORIA DOS PROFESSORES</p>
                 <table class="tbRelacaoTempo">
                     <thead>
                         <tr>
@@ -423,7 +474,7 @@
                             <td class="td7E" id="apProfessorTUCElegivel">-</td>
                         </tr>
                         <tr class="trTemposDetalhados">
-                            <td class="td7A">Tempo de efetivo exercício em função de magistério</td>
+                            <td class="td7A">Tempo de Contribuição exclusivo como Professor (educação infantil, ensino fundamental e médio)</td>
                             <td class="td7B" id="apProfessorMagExigido"></td>
                             <td class="td7C" id="apProfessorMagAtingido"></td>
                             <td class="td7D" id="apProfessorMagSituacao">PENDENTE</td>
@@ -437,14 +488,14 @@
                             <td class="td7E" id="apProfessorIElegivel" style="border-bottom: solid 1px;">-</td>
                         </tr>
                         <tr>
-                            <td class="ultimalinha" colspan="5"><p style="text-align: right;">Resultado: <span id="apProfessorResultado"></span></p></td>
+                            <td class="ultimalinha" colspan="5"><p style="text-align: right;">Resultado: <span id="apProfessorResultado">VERIFICAR</span></p></td>
                         </tr>
                     </tbody>
                 </table>
             </div><br>
 
             <div class="secaoImpressao" id="secao7">
-                <p style="font-weight: 600;">REGRA DE TRANSIÇÃO - EMENDA CONSTITUCIONAL Nº 41/2003</p>
+                <p style="font-weight: 600; color: red;">REGRA DE TRANSIÇÃO - EC Nº 41/2003 [DEFASADO]</p>
                 <table class="tbRelacaoTempo">
                     <thead>
                         <tr>
@@ -502,7 +553,7 @@
             </div><br>
 
             <div class="secaoImpressao" id="secao8">
-                <p style="font-weight: 600;">REGRA DE TRANSIÇÃO - EMENDA CONSTITUCIONAL Nº 41/2003 (PROFESSOR)</p>
+                <p style="font-weight: 600; color: red;">EC Nº 41/2003 (PROFESSOR) [DEFASADO]</p>
                 <table class="tbRelacaoTempo">
                     <thead>
                         <tr>
@@ -566,7 +617,7 @@
                 </table>
             </div>
 
-            <div class="secaoImpressao" id="secao9">
+            <div class="secaoImpressao" id="secao6">
                 <p style="font-weight: 600;">APOSENTADORIA DOS SERVIDORES EXPOSTOS À AGENTES QUÍMICOS, FÍSICOS E BIOLÓGICOS</p>
                 <table class="tbRelacaoTempo">
                     <thead>
@@ -611,11 +662,325 @@
                             <td class="td7E" id="apSaudeIElegivel" style="border-bottom: solid 1px;">-</td>
                         </tr>
                         <tr>
-                            <td class="ultimalinha" colspan="5"><p style="text-align: right;">Resultado: <span id="apSaudeResultado">TESTE</span></p></td>
+                            <td class="ultimalinha" colspan="5"><p style="text-align: right;">Resultado: <span id="apSaudeResultado">VERIFICAR</span></p></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+
+            <div class="secaoImpressao" id="secao7">
+                <p style="font-weight: 600;">APOSENTADORIA PARA SERVIDORES COM DEFICIÊNCIA</p>
+                <table class="tbRelacaoTempo">
+                    <thead>
+                        <tr>
+                            <td class="primeiralinha" colspan="5"><p style="text-align: center;">Fundamentação:</p></td>
+                        </tr>
+                        <tr class="negrito">
+                            <td class="td7A">Requisito</td>
+                            <td class="td7B">Exigido</td>
+                            <td class="td7C">Atingido</td>
+                            <td class="td7D">Situação</td>
+                            <td class="td7E">Elegível em</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo de contribuição</td>
+                            <td class="td7B" id="apDeficienciaTCExigido"></td>
+                            <td class="td7C" id="apDeficienciaTCAtingido"></td>
+                            <td class="td7D" id="apDeficienciaTCSituacao">PENDENTE</td>
+                            <td class="td7E" id="apDeficienciaTCElegivel">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo de serviço público</td>
+                            <td class="td7B">3650 dias</td>
+                            <td class="td7C" id="apDeficienciaTSPAtingido"></td>
+                            <td class="td7D" id="apDeficienciaTSPSituacao">PENDENTE</td>
+                            <td class="td7E" id="apDeficienciaTSPElegivel">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo no Cargo Efetivo</td>
+                            <td class="td7B">1825 dias</td>
+                            <td class="td7C" id="apDeficienciaTUCAtingido"></td>
+                            <td class="td7D" id="apDeficienciaTUCSituacao">PENDENTE</td>
+                            <td class="td7E" id="apDeficienciaTUCElegivel">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A" style="border-bottom: solid 1px;">Idade exigida</td>
+                            <td class="td7B" id="apDeficienciaIExigido" style="border-bottom: solid 1px; font-size: 9px;">(não exigido)</td>
+                            <td class="td7C" id="apDeficienciaIAtingido" style="border-bottom: solid 1px;">-</td>
+                            <td class="td7D" id="apDeficienciaISituacao" style="border-bottom: solid 1px;">-</td>
+                            <td class="td7E" id="apDeficienciaIElegivel" style="border-bottom: solid 1px;">-</td>
+                        </tr>
+                        <tr>
+                            <td class="ultimalinha" colspan="5"><p style="text-align: right;">Resultado: <span id="apDeficienciaResultado">VERIFICAR</span></p></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div><br>
+
+            <div class="secaoImpressao" id="secao8">
+                <p style="font-weight: 600;">REGRA DE TRANSIÇÃO (PONTOS)</p>
+                <table class="tbRelacaoTempo">
+                    <thead>
+                        <tr>
+                            <td class="primeiralinha" colspan="5"><p style="text-align: center;">Fundamentação:</p></td>
+                        </tr>
+                        <tr class="negrito">
+                            <td class="td7A">Requisito</td>
+                            <td class="td7B">Exigido</td>
+                            <td class="td7C">Atingido</td>
+                            <td class="td7D">Situação</td>
+                            <td class="td7E">Elegível em</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo de contribuição</td>
+                            <td class="td7B" id="apPontosTCExigido"></td>
+                            <td class="td7C" id="apPontosTCAtingido"></td>
+                            <td class="td7D" id="apPontosTCSituacao">PENDENTE</td>
+                            <td class="td7E" id="apPontosTCElegivel">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo de serviço público</td>
+                            <td class="td7B">7300 dias</td>
+                            <td class="td7C" id="apPontosTSPAtingido"></td>
+                            <td class="td7D" id="apPontosTSPSituacao">PENDENTE</td>
+                            <td class="td7E" id="apPontosTSPElegivel">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo no cargo Efetivo</td>
+                            <td class="td7B">1825 dias</td>
+                            <td class="td7C" id="apPontosTUCAtingido"></td>
+                            <td class="td7D" id="apPontosTUCSituacao">PENDENTE</td>
+                            <td class="td7E" id="apPontosTUCElegivel">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Pontos</td>
+                            <td class="td7B" id="apPontosPExigido"></td>
+                            <td class="td7C" id="apPontosPAtingido"></td>
+                            <td class="td7D" id="apPontosPSituacao">PENDENTE</td>
+                            <td class="td7E" id="apPontosPElegivel">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A" style="border-bottom: solid 1px;">Idade exigida</td>
+                            <td class="td7B" id="apPontosIExigido" style="border-bottom: solid 1px;">0</td>
+                            <td class="td7C" id="apPontosIAtingido" style="border-bottom: solid 1px;">-</td>
+                            <td class="td7D" id="apPontosISituacao" style="border-bottom: solid 1px;">PENDENTE</td>
+                            <td class="td7E" id="apPontosIElegivel" style="border-bottom: solid 1px;">-</td>
+                        </tr>
+                        <tr>
+                            <td class="ultimalinha" colspan="5"><p style="text-align: right;">Resultado: <span id="apPontosResultado">VERIFICAR</span></p></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div><br>
+
+            <div class="secaoImpressao" id="secao9">
+                <p style="font-weight: 600;">REGRA DE TRANSIÇÃO PARA PROFESSORES (PONTOS)</p>
+                <table class="tbRelacaoTempo">
+                    <thead>
+                        <tr>
+                            <td class="primeiralinha" colspan="5"><p style="text-align: center;">Fundamentação:</p></td>
+                        </tr>
+                        <tr class="negrito">
+                            <td class="td7A">Requisito</td>
+                            <td class="td7B">Exigido</td>
+                            <td class="td7C">Atingido</td>
+                            <td class="td7D">Situação</td>
+                            <td class="td7E">Elegível em</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo de contribuição</td>
+                            <td class="td7B" id="apPontosProfTCExigido"></td>
+                            <td class="td7C" id="apPontosProfTCAtingido"></td>
+                            <td class="td7D" id="apPontosProfTCSituacao">PENDENTE</td>
+                            <td class="td7E" id="apPontosProfTCElegivel">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo de serviço público</td>
+                            <td class="td7B">7300 dias</td>
+                            <td class="td7C" id="apPontosProfTSPAtingido"></td>
+                            <td class="td7D" id="apPontosProfTSPSituacao">PENDENTE</td>
+                            <td class="td7E" id="apPontosProfTSPElegivel">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo no último cargo</td>
+                            <td class="td7B">1825 dias</td>
+                            <td class="td7C" id="apPontosProfTUCAtingido"></td>
+                            <td class="td7D" id="apPontosProfTUCSituacao">PENDENTE</td>
+                            <td class="td7E" id="apPontosProfTUCElegivel">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo de efetivo exercício em função de magistério</td>
+                            <td class="td7B" id="apPontosProfMagExigido"></td>
+                            <td class="td7C" id="apPontosProfMagAtingido"></td>
+                            <td class="td7D" id="apPontosProfMagSituacao">PENDENTE</td>
+                            <td class="td7E" id="apPontosProfMagElegivel">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A" style="border-bottom: solid 1px;">Idade exigida</td>
+                            <td class="td7B" id="apPontosProfIExigido" style="border-bottom: solid 1px;">0</td>
+                            <td class="td7C" id="apPontosProfIAtingido" style="border-bottom: solid 1px;">-</td>
+                            <td class="td7D" id="apPontosProfISituacao" style="border-bottom: solid 1px;">PENDENTE</td>
+                            <td class="td7E" id="apPontosProfIElegivel" style="border-bottom: solid 1px;">-</td>
+                        </tr>
+                        <tr>
+                            <td class="ultimalinha" colspan="5"><p style="text-align: right;">Resultado: <span id="apPontosProfResultado"></span></p></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div><br>
+
+            <div class="secaoImpressao" id="secao10">
+                <p style="font-weight: 600;">REGRA DE TRANSIÇÃO (PEDÁGIO)</p>
+                <table class="tbRelacaoTempo">
+                    <thead>
+                        <tr>
+                            <td class="primeiralinha" colspan="5"><p style="text-align: center;">Fundamentação:</p></td>
+                        </tr>
+                        <tr class="negrito">
+                            <td class="td7A">Requisito</td>
+                            <td class="td7B">Exigido</td>
+                            <td class="td7C">Atingido</td>
+                            <td class="td7D">Situação</td>
+                            <td class="td7E">Elegível em</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo de contribuição</td>
+                            <td class="td7B" id="apPedagioTCExigido"></td>
+                            <td class="td7C" id="apPedagioTCAtingido"></td>
+                            <td class="td7D" id="apPedagioTCSituacao">PENDENTE</td>
+                            <td class="td7E" id="apPedagioTCElegivel">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo de serviço público</td>
+                            <td class="td7B">7300 dias</td>
+                            <td class="td7C" id="apPedagioTSPAtingido"></td>
+                            <td class="td7D" id="apPedagioTSPSituacao">PENDENTE</td>
+                            <td class="td7E" id="apPedagioTSPElegivel">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo no último cargo</td>
+                            <td class="td7B">1825 dias</td>
+                            <td class="td7C" id="apPedagioTUCAtingido"></td>
+                            <td class="td7D" id="apPedagioTUCSituacao">PENDENTE</td>
+                            <td class="td7E" id="apPedagioTUCElegivel">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo de Pedágio</td>
+                            <td class="td7B" id="apPedagioPExigido"></td>
+                            <td class="td7C" id="apPedagioPAtingido"></td>
+                            <td class="td7D" id="apPedagioPSituacao">PENDENTE</td>
+                            <td class="td7E" id="apPedagioPElegivel">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A" style="border-bottom: solid 1px;">Idade exigida</td>
+                            <td class="td7B" id="apPedagioIExigido" style="border-bottom: solid 1px;">0</td>
+                            <td class="td7C" id="apPedagioIAtingido" style="border-bottom: solid 1px;">-</td>
+                            <td class="td7D" id="apPedagioISituacao" style="border-bottom: solid 1px;">PENDENTE</td>
+                            <td class="td7E" id="apPedagioIElegivel" style="border-bottom: solid 1px;">-</td>
+                        </tr>
+                        <tr>
+                            <td class="ultimalinha" colspan="5"><p style="text-align: right;">Resultado: <span id="apPedagioResultado"></span></p></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div><br>
+
+            <div class="secaoImpressao" id="secao11">
+                <p style="font-weight: 600;">REGRA DE TRANSIÇÃO PARA PROFESSORES (PEDÁGIO)</p>
+                <table class="tbRelacaoTempo">
+                    <thead>
+                        <tr>
+                            <td class="primeiralinha" colspan="5"><p style="text-align: center;">Fundamentação:</p></td>
+                        </tr>
+                        <tr class="negrito">
+                            <td class="td7A">Requisito</td>
+                            <td class="td7B">Exigido</td>
+                            <td class="td7C">Atingido</td>
+                            <td class="td7D">Situação</td>
+                            <td class="td7E">Elegível em</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo de contribuição</td>
+                            <td class="td7B" id="apPedagioProfTCExigido"></td>
+                            <td class="td7C" id="apPedagioProfTCAtingido"></td>
+                            <td class="td7D" id="apPedagioProfTCSituacao">PENDENTE</td>
+                            <td class="td7E" id="apPedagioProfTCElegivel">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo de serviço público</td>
+                            <td class="td7B">7300 dias</td>
+                            <td class="td7C" id="apPedagioProfTSPAtingido"></td>
+                            <td class="td7D" id="apPedagioProfTSPSituacao">PENDENTE</td>
+                            <td class="td7E" id="apPedagioProfTSPElegivel">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo no último cargo</td>
+                            <td class="td7B">1825 dias</td>
+                            <td class="td7C" id="apPedagioProfTUCAtingido"></td>
+                            <td class="td7D" id="apPedagioProfTUCSituacao">PENDENTE</td>
+                            <td class="td7E" id="apPedagioProfTUCElegivel">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo de Pedágio</td>
+                            <td class="td7B" id="apPedagioProfPExigido"></td>
+                            <td class="td7C" id="apPedagioProfPAtingido"></td>
+                            <td class="td7D" id="apPedagioProfPSituacao">PENDENTE</td>
+                            <td class="td7E" id="apPedagioProfPElegivel">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A" style="border-bottom: solid 1px;">Idade exigida</td>
+                            <td class="td7B" id="apPedagioProfIExigido" style="border-bottom: solid 1px;">0</td>
+                            <td class="td7C" id="apPedagioProfIAtingido" style="border-bottom: solid 1px;">-</td>
+                            <td class="td7D" id="apPedagioProfISituacao" style="border-bottom: solid 1px;">PENDENTE</td>
+                            <td class="td7E" id="apPedagioProfIElegivel" style="border-bottom: solid 1px;">-</td>
+                        </tr>
+                        <tr>
+                            <td class="ultimalinha" colspan="5"><p style="text-align: right;">Resultado: <span id="apPedagioProfResultado"></span></p></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div><br>
+
+            <div class="secaoImpressao" id="secao12">
+                <p style="font-weight: 600;">APOSENTADORIA COMPULSÓRIA</p>
+                <table class="tbRelacaoTempo">
+                    <thead>
+                        <tr>
+                            <td class="primeiralinha" colspan="5"><p style="text-align: center;">Fundamentação:</p></td>
+                        </tr>
+                        <tr class="negrito">
+                            <td class="td7A">Requisito</td>
+                            <td class="td7B">Exigido</td>
+                            <td class="td7C">Atingido</td>
+                            <td class="td7D">Situação</td>
+                            <td class="td7E">Elegível em</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A" style="border-bottom: solid 1px;">Idade exigida</td>
+                            <td class="td7B" id="apCompulsoriaIExigido" style="border-bottom: solid 1px;">0</td>
+                            <td class="td7C" id="apCompulsoriaIAtingido" style="border-bottom: solid 1px;">-</td>
+                            <td class="td7D" id="apCompulsoriaISituacao" style="border-bottom: solid 1px;">PENDENTE</td>
+                            <td class="td7E" id="apCompulsoriaIElegivel" style="border-bottom: solid 1px;">-</td>
+                        </tr>
+                        <tr>
+                            <td class="ultimalinha" colspan="5"><p style="text-align: right;">Resultado: <span id="apCompulsoriaResultado"></span></p></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div><br>
+
         </div>
     </div>
 
@@ -914,23 +1279,27 @@
                             </thead>
                             <tbody class="corpoCenarios">
                                 <tr>
-                                    <td>Aposentadoria Voluntária por Idade</td>
+                                    <td>[DEFASADO]</td>
                                     <td id="cenarioAPIdade"></td>
                                 </tr>
                                 <tr>
-                                    <td>Aposentadoria Voluntária por Idade e Tempo de Serviço</td>
+                                    <td>[DEFASADO]</td>
                                     <td id="cenarioAPTempo"></td>
                                 </tr>
                                 <tr>
-                                    <td>Aposentadoria Voluntária por Idade e Tempo de Contribuição (Professor)</td>
+                                    <td>Aposentadoria dos Servidores em Geral</td>
+                                    <td id="cenarioAPGeral"></td>
+                                </tr>
+                                <tr>
+                                    <td>Aposentadoria dos Professores</td>
                                     <td id="cenarioAPProfessor"></td>
                                 </tr>
                                 <tr>
-                                    <td>Regra de Transição - EC nº 41/2003</td>
+                                    <td>[DEFASADO]</td>
                                     <td id="cenarioEC40"></td>
                                 </tr>
                                 <tr>
-                                    <td>Regra de Transição - EC nº 41/2003 (Professor)</td>
+                                    <td>[DEFASADO]</td>
                                     <td id="cenarioEC40Professor"></td>
                                 </tr>
                                 <tr id="trCenarioSaude">
@@ -940,6 +1309,22 @@
                                 <tr id="trCenarioDeficiencia">
                                     <td>Aposentadoria dos Servidores com Deficiência</td>
                                     <td id="cenarioDeficiencia"></td>
+                                </tr>
+                                <tr>
+                                    <td>Regra de Transição (Pontos)</td>
+                                    <td id="cenarioAPPts"></td>
+                                </tr>
+                                <tr>
+                                    <td>Regra de Transição para Professores (Pontos)</td>
+                                    <td id="cenarioAPPtsProfessores"></td>
+                                </tr>
+                                <tr>
+                                    <td>Regra de Transição (Pedágio)</td>
+                                    <td id="cenarioAPPed"></td>
+                                </tr>
+                                <tr>
+                                    <td>Regra de Transição para Professores (Pedágio)</td>
+                                    <td id="cenarioAPPedProfessores"></td>
                                 </tr>
                             </tbody>
                         </table>
