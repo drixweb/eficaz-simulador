@@ -37,6 +37,7 @@ class App {
             this.inserirNaImpressao(registro)
             this.listaDetalhada(registro)
             this.limparItem()
+            this.exibirBotoes()
             
             lista.push(tempo)
             //Inserir soma de tempo de serviço (na lista e na impressão)
@@ -359,6 +360,7 @@ class App {
             elemento2.parentNode.removeChild(elemento2)
             let elemento3 = document.getElementById("secaoRegTempoAverbacao")
             elemento3.parentNode.removeChild(elemento3)
+            this.exibirBotoes()
         }
         
     }
@@ -561,6 +563,15 @@ class App {
     }
     desmarcarLocacao(){
         document.getElementById("lotacao").classList.remove("is-danger")
+    }
+
+    mascaraCPF(){
+        var numCPF = document.getElementById("CPF")
+        if (numCPF.value.length == 3 || numCPF.value.length == 7) {
+            numCPF.value += "."
+        } else if (numCPF.value.length == 11) {
+            numCPF.value += "-"
+        }
     }
 
     montarCenarios(){
@@ -963,6 +974,10 @@ class App {
         document.getElementById("tempoCargoAtual").innerHTML = `${totalCargoAtual} dias`
     }
     
+    exibirBotoes(){
+        document.getElementById("FinalizarCancelar").style.display = "block"
+    }
+
     exibirResumoCenarios(){
         document.getElementById("resumoCenarios").style.display = "block"
         document.getElementById("hrResumoCenarios").focus()

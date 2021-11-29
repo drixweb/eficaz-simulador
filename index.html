@@ -649,13 +649,13 @@
                     <td>
                         <label for="dataNasc" class="label">Data de Nascimento</label>
                         <div class="control">
-                            <input type="date" name="dataNasc" id="dataNasc" class="input" style="width: 160px;" onchange="app.desmarcarDataNasc()">
+                            <input type="date" name="dataNasc" id="dataNasc" class="input" style="width: 160px;" onfocus="app.desmarcarDataNasc()">
                         </div>
                     </td>
                     <td>
                         <label for="CPF" class="label">CPF</label>
                         <div class="control">
-                            <input type="text" class="input" name="CPF" placeholder="Digite o CPF" id="CPF" onchange="app.desmarcarCPF()">
+                            <input type="text" class="input" name="CPF" placeholder="Digite o CPF" id="CPF" autocomplete="off" maxlength="14" onkeyup="app.mascaraCPF()" onfocus="app.desmarcarCPF()">
                         </div>
                     </td>
                     <td>
@@ -695,26 +695,26 @@
                         <div class="field">
                             <label for="matricula" class="label">Matrícula</label>
                             <div class="control">
-                                <input type="number" class="input" name="matricula" id="matricula" onchange="app.desmarcarMatricula()">
+                                <input type="number" class="input" name="matricula" id="matricula" onfocus="app.desmarcarMatricula()">
                             </div>
                         </div>
                     </td>
                     <td>
                         <label for="dataAdmissao" class="label">Data de Admissão</label>
                         <div class="control">
-                            <input type="date" name="dataAdm" id="dataAdm" class="input" style="width: 160px;" onchange="app.desmarcarDataAdm()">
+                            <input type="date" name="dataAdm" id="dataAdm" class="input" style="width: 160px;" onfocus="app.desmarcarDataAdm()">
                         </div>
                     </td>
                     <td>
                         <label for="cargo" class="label">Cargo</label>
                         <div class="control">
-                            <input type="text" name="cargo" placeholder="Digite o cargo" id="cargo" class="input" style="width: 200px;" onchange="app.desmarcarCargo()">
+                            <input type="text" name="cargo" placeholder="Digite o cargo" id="cargo" class="input" style="width: 200px;" onfocus="app.desmarcarCargo()">
                         </div>
                     </td>
                     <td>
                         <label for="lotacao" class="label">Lotação</label>
                         <div class="control">
-                            <input type="text" name="lotacao" placeholder="Digite a Lotação" id="lotacao" class="input" style="width: 200px;" onchange="app.desmarcarLocacao()">
+                            <input type="text" name="lotacao" placeholder="Digite a Lotação" id="lotacao" class="input" style="width: 200px;" onfocus="app.desmarcarLocacao()">
                         </div>
                     </td>
                     <td>
@@ -890,12 +890,14 @@
             </div>
         </div>
         
-        <div class="container" id="containerBotoes02">
-            <div class="botoes" id="painelDeBotoes02">
-                <button class="button is-primary" id="finalizar" type="button" onclick="app.finalizar()"><ion-icon name="checkmark-outline"></ion-icon>Finalizar</button>
-                <button class="button is-danger" id="cancelar" type="button" onclick="app.cancelar()"><ion-icon name="close-outline"></ion-icon>Cancelar</button>
+        <section id="FinalizarCancelar" style="display: none;">
+            <div class="container" id="containerBotoes02">
+                <div class="botoes" id="painelDeBotoes02">
+                    <button class="button is-primary" id="finalizar" type="button" onclick="app.finalizar()"><ion-icon name="checkmark-outline"></ion-icon>Finalizar</button>
+                    <button class="button is-danger" id="cancelar" type="button" onclick="app.cancelar()"><ion-icon name="close-outline"></ion-icon>Cancelar</button>
+                </div>
             </div>
-        </div>
+        </section>
 
         <section id="resumoCenarios" style="display: none;">
             <hr id="hrResumoCenarios" style="display: block;">
