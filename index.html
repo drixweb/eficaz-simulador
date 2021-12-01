@@ -454,7 +454,7 @@
                     <tbody>
                         <tr class="trTemposDetalhados">
                             <td class="td7A">Tempo de contribuição</td>
-                            <td class="td7B" id="apProfessorTCExigido"></td>
+                            <td class="td7B" id="apProfessorTCExigido">9125 dias</td>
                             <td class="td7C" id="apProfessorTCAtingido"></td>
                             <td class="td7D" id="apProfessorTCSituacao">PENDENTE</td>
                             <td class="td7E" id="apProfessorTCElegivel">-</td>
@@ -475,7 +475,7 @@
                         </tr>
                         <tr class="trTemposDetalhados">
                             <td class="td7A">Tempo de Contribuição exclusivo como Professor (educação infantil, ensino fundamental e médio)</td>
-                            <td class="td7B" id="apProfessorMagExigido"></td>
+                            <td class="td7B" id="apProfessorMagExigido">9125 dias</td>
                             <td class="td7C" id="apProfessorMagAtingido"></td>
                             <td class="td7D" id="apProfessorMagSituacao">PENDENTE</td>
                             <td class="td7E" id="apProfessorMagElegivel">-</td>
@@ -1137,11 +1137,11 @@
                         <tr>
                             <td>
                                 <label for="dataInicio" class="label">Data Início</label>
-                                <input type="date" class="input" id="dataInicio" name="dataInicio" style="width: 200px;" onchange="app.desmarcarDataInicio()">
+                                <input type="date" class="input" id="dataInicio" name="dataInicio" style="width: 200px;" onfocus="app.desmarcarDataInicio()">
                             </td>
                             <td>
                                 <label for="dataFim" class="label">Data Fim</label>
-                                <input type="date" class="input" id="dataFim" name="dataFim" style="width: 200px;" onchange="app.desmarcarDataFim()">
+                                <input type="date" class="input" id="dataFim" name="dataFim" style="width: 200px;" onfocus="app.desmarcarDataFim()">
                             </td>
                             <td class="tdRegime">
                                 <label for="regime" class="label">Regime</label>

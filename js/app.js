@@ -22,7 +22,7 @@ class App {
         let d1 = new Date(dataInicio)
         let d2 = new Date(dataFim)
         let calc = Math.abs(d2 - d1)
-        let tempo = (Math.ceil(calc / (1000 * 60 * 60 * 24))+1)
+        let tempo = (Math.ceil(calc / (1000 * 60 * 60 * 24)) +1)
         
         let registro = new Registro(organizacao, dataInicio, dataFim, tempo, natureza, regime, magisterio, saude)
 
@@ -31,13 +31,13 @@ class App {
         if (organizacao == "" || dataInicio == "" || dataFim == "") {
             alert("ATENÇÃO!\nPreencha todos os campos antes de prosseguir.")
         } else if (dataFim < dataInicio) {
-            alert("ATENÇÃO!\nVerifique as datas inicial e final do tempo de serviço")
+            alert("ATENÇÃO!\nVerifique a data inicial e a data final do tempo de serviço")
         } else {
-            this.inserirNaLista(registro)
-            this.inserirNaImpressao(registro)
-            this.listaDetalhada(registro)
-            this.limparItem()
-            this.exibirBotoes()
+            this.inserirNaLista(registro)       //Lista de registros
+            this.inserirNaImpressao(registro)   //Relatório
+            this.listaDetalhada(registro)       //Relatório e cenários
+            this.limparItem()                   //Limpa os campos
+            this.exibirBotoes()                 //Mostra painel de botões para finalizar
             
             lista.push(tempo)
             //Inserir soma de tempo de serviço (na lista e na impressão)
@@ -344,14 +344,14 @@ class App {
         }
     }
 
-    limparItem(){
+    limparItem(){   //Botão "Limpar"
         document.getElementById("organizacao").value = ""
         document.getElementById("organizacao").focus()
         document.getElementById("dataInicio").value = ""
         document.getElementById("dataFim").value = ""
     }
 
-    semAverbar(){
+    semAverbar(){   // Botão "Sem Averbação"
         let verifica = confirm("Tem certeza que deseja continuar sem averbar períodos anteriores?")
         if (verifica) {
             let elemento1 = document.getElementById("secao2")
@@ -361,8 +361,9 @@ class App {
             let elemento3 = document.getElementById("secaoRegTempoAverbacao")
             elemento3.parentNode.removeChild(elemento3)
             this.exibirBotoes()
+            this.finalizar()
         }
-        
+
     }
 
     finalizar(){
@@ -377,9 +378,9 @@ class App {
             document.getElementById("lotacao").value == "") {
             alert("ATENÇÃO!\nPreencha todos os campos antes de prosseguir.")
         } else {
-            // Mudar o botão "finalizar" para "atualizar"
-            var botao = document.getElementById("finalizar")
-            botao.innerHTML = '<ion-icon name="reload-outline"></ion-icon>Atualizar'
+            // Desabilita o botão finalizar
+            document.getElementById("finalizar").disabled = true
+            //botao.innerHTML = '<ion-icon name="reload-outline"></ion-icon>Atualizar'
 
             //DATA DE EMISSÃO
             var hoje = new Date()
@@ -416,7 +417,7 @@ class App {
                 document.getElementById("prtMatricula").innerHTML = matricula
                 document.getElementById("prtMatricula2").innerHTML = matricula
             let dataAdm = document.getElementById("dataAdm").value
-                var prtDataAdm_aux = new Date(dataAdm) //VERIFICAR: Convertando para 1 dia a mais - OK
+                var prtDataAdm_aux = new Date(dataAdm) //VERIFICAR: Verificar dia 01 de cada mês
                 var prtDataAdm = new Date(prtDataAdm_aux.getTime())
                 prtDataAdm.setDate(prtDataAdm_aux.getDate() + 1)
                 var diaDataAdm = String(prtDataAdm.getDate()).padStart(2, '0')
@@ -575,16 +576,21 @@ class App {
     }
 
     montarCenarios(){
-        let sexo = document.querySelector("input[name='sexo']:checked").value //Captando o sexo
+        let sexo = document.querySelector("input[name='sexo']:checked").value
         let feminino = false
         let masculino = false
         let apIdade = false
         let apTempo = false
+        let apGeral = false
         let apProfessor = false
         let apEC40 = false
         let apEC40Professor = false
         let apSaude = false
         let apDeficiencia = false
+        let apEC103Pontos = false
+        let apEC103PontosProf = false
+        let apEC103Pedagio = false
+        let apEC103PedagioProf = false
         
         // Captando o tempo de contribuição
         let tc_aux1 = lista.reduce(function(soma, i){
@@ -721,6 +727,56 @@ class App {
             }
         }
 
+        // Verificando Aposentadoria Geral
+        document.getElementById("apGeralTSPAtingido").innerHTML = `${tempoServicoPublico} dias`
+        document.getElementById("apGeralTSPElegivel").innerHTML = `${3650 - tempoServicoPublico} dias`
+        if (tempoServicoPublico >= 3650) {
+            document.getElementById("apGeralTSPSituacao").innerHTML = "OK"
+            document.getElementById("apGeralTSPElegivel").innerHTML = "Atingido"
+        }
+        document.getElementById("apGeralTUCAtingido").innerHTML = `${tempoUltimoCargo} dias`
+        document.getElementById("apGeralTUCElegivel").innerHTML = `${1825 - tempoUltimoCargo} dias`
+        if (tempoUltimoCargo >= 1825) {
+            document.getElementById("apGeralTUCSituacao").innerHTML = "OK"
+            document.getElementById("apGeralTUCElegivel").innerHTML = "Atingido"
+        }
+        document.getElementById("apGeralTCAtingido").innerHTML = `${tempoContribuicao} dias`
+        document.getElementById("apGeralIAtingido").innerHTML = `${idade} anos`
+        document.getElementById("apGeralTCElegivel").innerHTML = `${9125 - tempoContribuicao} dias`
+        if (tempoContribuicao >= 9125){
+            document.getElementById("apGeralTCSituacao").innerHTML = "OK"
+            document.getElementById("apGeralTCElegivel").innerHTML = "Atingido"
+        }
+
+        if (masculino) {
+            document.getElementById("apGeralIExigido").innerHTML = "65 anos"
+            document.getElementById("apGeralIElegivel").innerHTML = `${65 - idade} anos`
+            if (idade >= 65){
+                document.getElementById("apGeralISituacao").innerHTML = "OK"
+                document.getElementById("apGeralIElegivel").innerHTML = "Atingido"
+            }
+            if (tempoContribuicao >= 9125 && tempoServicoPublico >= 3650 && tempoUltimoCargo >= 1825 && idade >= 65){
+                document.getElementById("apGeralResultado").innerHTML = "DISPONÍVEL"
+                apGeral = true
+            } else {
+                document.getElementById("apGeralResultado").innerHTML = "INDISPONÍVEL"
+            }
+        }
+        if (feminino) {
+            document.getElementById("apGeralIExigido").innerHTML = "62 anos"
+            document.getElementById("apGeralIElegivel").innerHTML = `${62 - idade} anos`
+            if (idade >= 62){
+                document.getElementById("apGeralISituacao").innerHTML = "OK"
+                document.getElementById("apGeralIElegivel").innerHTML = "Atingido"
+            }
+            if (tempoContribuicao >= 9125 && tempoServicoPublico >= 3650 && tempoUltimoCargo >= 1825 && idade >= 62){
+                document.getElementById("apGeralResultado").innerHTML = "DISPONÍVEL"
+                apTempo = true
+            } else {
+                document.getElementById("apGeralResultado").innerHTML = "INDISPONÍVEL"
+            }
+        }
+
         // Verificando Aposentadoria de Professor
         document.getElementById("apProfessorTSPAtingido").innerHTML = `${tempoServicoPublico} dias`
         document.getElementById("apProfessorTSPElegivel").innerHTML = `${3650 - tempoServicoPublico} dias`
@@ -737,26 +793,26 @@ class App {
         document.getElementById("apProfessorTCAtingido").innerHTML = `${tempoContribuicao} dias`
         document.getElementById("apProfessorMagAtingido").innerHTML = `${tempoMagisterio} dias`
         document.getElementById("apProfessorIAtingido").innerHTML = `${idade} anos`
+        document.getElementById("apProfessorTCElegivel").innerHTML = `${9125 - tempoContribuicao} dias`
+        document.getElementById("apProfessorMagElegivel").innerHTML = `${9125 - tempoMagisterio} dias`
+        if (tempoContribuicao >= 9125){
+            document.getElementById("apProfessorTCSituacao").innerHTML = "OK"
+            document.getElementById("apProfessorTCElegivel").innerHTML = "Atingido"
+        }
+        if (tempoMagisterio >= 9125){
+            document.getElementById("apProfessorMagSituacao").innerHTML = "OK"
+            document.getElementById("apProfessorMagElegivel").innerHTML = "Atingido"
+        }
+
         if (masculino) {
-            document.getElementById("apProfessorTCExigido").innerHTML = "10950 dias"
-            document.getElementById("apProfessorTCElegivel").innerHTML = `${10950 - tempoContribuicao} dias`
-            document.getElementById("apProfessorMagExigido").innerHTML = "10950 dias"
-            document.getElementById("apProfessorMagElegivel").innerHTML = `${10950 - tempoMagisterio} dias`
-            document.getElementById("apProfessorIExigido").innerHTML = "55 anos"
-            document.getElementById("apProfessorIElegivel").innerHTML = `${55 - idade}`
-            if (tempoContribuicao >= 10950){
-                document.getElementById("apProfessorTCSituacao").innerHTML = "OK"
-                document.getElementById("apProfessorTCElegivel").innerHTML = "Atingido"
-            }
-            if (tempoMagisterio >= 10950){
-                document.getElementById("apProfessorSituacao").innerHTML = "OK"
-                document.getElementById("apProfessorMagElegivel").innerHTML = "Atingido"
-            }
-            if (idade >= 55){
+            document.getElementById("apProfessorIExigido").innerHTML = "60 anos"
+            document.getElementById("apProfessorIElegivel").innerHTML = `${60 - idade}`
+            alert("Homem OK")
+            if (idade >= 60){
                 document.getElementById("apProfessorISituacao").innerHTML = "OK"
                 document.getElementById("apProfessorIElegivel").innerHTML = "Atingido"
             }
-            if (tempoContribuicao >= 10950 && tempoServicoPublico >= 3650 && tempoUltimoCargo >= 1825 && tempoMagisterio >= 10950 && idade >= 55){
+            if (tempoContribuicao >= 9125 && tempoServicoPublico >= 3650 && tempoUltimoCargo >= 1825 && tempoMagisterio >= 9125 && idade >= 60){
                 document.getElementById("apProfessorResultado").innerHTML = "DISPONÍVEL"
                 apProfessor = true
             } else {
@@ -764,25 +820,13 @@ class App {
             }
         }
         if (feminino) {
-            document.getElementById("apProfessorTCExigido").innerHTML = "9125 dias"
-            document.getElementById("apProfessorTCElegivel").innerHTML = `${9125 - tempoContribuicao} dias`
-            document.getElementById("apProfessorMagExigido").innerHTML = "9125 dias"
-            document.getElementById("apProfessorMagElegivel").innerHTML = `${9125 - tempoMagisterio} dias`
-            document.getElementById("apProfessorIExigido").innerHTML = "50 anos"
-            document.getElementById("apProfessorIElegivel").innerHTML = `${50 - idade}`
-            if (tempoContribuicao >= 9125){
-                document.getElementById("apProfessorTCSituacao").innerHTML = "OK"
-                document.getElementById("apProfessorTCElegivel").innerHTML = "Atingido"
-            }
-            if (tempoMagisterio >= 9125){
-                document.getElementById("apProfessorSituacao").innerHTML = "OK"
-                document.getElementById("apProfessorMagElegivel").innerHTML = "Atingido"
-            }
-            if (idade >= 50){
+            document.getElementById("apProfessorIExigido").innerHTML = "57 anos"
+            document.getElementById("apProfessorIElegivel").innerHTML = `${57 - idade}`
+            if (idade >= 57){
                 document.getElementById("apProfessorISituacao").innerHTML = "OK"
                 document.getElementById("apProfessorIElegivel").innerHTML = "Atingido"
             }
-            if (tempoContribuicao >= 9125 && tempoServicoPublico >= 3650 && tempoUltimoCargo >= 1825 && tempoMagisterio >= 9125 && idade >= 50){
+            if (tempoContribuicao >= 9125 && tempoServicoPublico >= 3650 && tempoUltimoCargo >= 1825 && tempoMagisterio >= 9125 && idade >= 57){
                 document.getElementById("apProfessorResultado").innerHTML = "DISPONÍVEL"
                 apProfessor = true
             } else {
@@ -886,7 +930,7 @@ class App {
                 document.getElementById("apEC40ProfessorTCElegivel").innerHTML = "Atingido"
             }
             if (tempoMagisterio >= 10950){
-                document.getElementById("apEC40ProfessorSituacao").innerHTML = "OK"
+                document.getElementById("apEC40ProfessorMagSituacao").innerHTML = "OK"
                 document.getElementById("apEC40ProfessorMagElegivel").innerHTML = "Atingido"
             }
             if (idade >= 55){
