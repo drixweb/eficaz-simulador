@@ -619,6 +619,11 @@ class App {
             return soma+i
         })
 
+        // Captando o tempo de exposição na saúde
+        let tempoSaude = listaSaude.reduce(function(soma, i){
+            return soma+i
+        })
+
         // Captando a idade
         let idade = Number(document.getElementById("prtIdade").innerHTML)
 
@@ -628,106 +633,13 @@ class App {
             feminino = true
         }
 
-        // Verificando Aposentadoria por Idade
-        document.getElementById("apIdadeTPSAtingido").innerHTML = `${tempoServicoPublico} dias`
-        document.getElementById("apIdadeTPSElegivel").innerHTML = `${3650 - tempoServicoPublico} dias`
-        if (tempoServicoPublico >= 3650) {
-            document.getElementById("apIdadeTPSSituacao").innerHTML = "OK"
-            document.getElementById("apIdadeTPSElegivel").innerHTML = "Atingido"
-        }
-        document.getElementById("apIdadeTCAtingido").innerHTML = `${tempoUltimoCargo} dias`
-        document.getElementById("apIdadeTCElegivel").innerHTML = `${1825 - tempoUltimoCargo} dias`
-        if (tempoUltimoCargo >= 1825){
-            document.getElementById("apIdadeTCSituacao").innerHTML = "OK"
-            document.getElementById("apIdadeTCElegivel").innerHTML = "Atingido"
-        }
-        document.getElementById("apIdadeAtingido").innerHTML = `${idade} anos`
-        if (masculino) {
-            document.getElementById("apIdadeIExigido").innerHTML = "65 anos"
-            document.getElementById("apIdadeIElegivel").innerHTML = `${65 - idade} anos`
-            if (idade >= 65) {
-                document.getElementById("apIdadeISituacao").innerHTML = "OK"
-                document.getElementById("apIdadeIElegivel").innerHTML = "Atingido"
-            }
-            if (tempoServicoPublico >= 3650 && tempoUltimoCargo >= 1825 && idade >=65){
-                document.getElementById("apIdadeResultado").innerHTML = "DISPONÍVEL"
-                apIdade = true
-            } else{
-                document.getElementById("apIdadeResultado").innerHTML = "INDISPONIVEL"
-            }
-        }
-        if (feminino) {
-            document.getElementById("apIdadeIExigido").innerHTML = "60 anos"
-            document.getElementById("apIdadeIElegivel").innerHTML = `${60 - idade} anos`
-            if (idade >= 60) {
-                document.getElementById("apIdadeISituacao").innerHTML = "OK"
-                document.getElementById("apIdadeIElegivel").innerHTML = "Atingido"
-            }
-            if (tempoServicoPublico >= 3650 && tempoUltimoCargo >= 1825 && idade >=60){
-                document.getElementById("apIdadeResultado").innerHTML = "DISPONÍVEL"
-                apIdade = true
-            } else{
-                document.getElementById("apIdadeResultado").innerHTML = "INDISPONIVEL"
-            }
-        }
-        
-        // Verificando Aposentadoria por Idade e Tempo de Contribuição
-        document.getElementById("apTempoTSPAtingido").innerHTML = `${tempoServicoPublico} dias`
-        document.getElementById("apTempoTSPElegivel").innerHTML = `${3650 - tempoServicoPublico} dias`
-        if (tempoServicoPublico >= 3650) {
-            document.getElementById("apTempoTSPSituacao").innerHTML = "OK"
-            document.getElementById("apTempoTSPElegivel").innerHTML = "Atingido"
-        }
-        document.getElementById("apTempoTUCAtingido").innerHTML = `${tempoUltimoCargo} dias`
-        document.getElementById("apTempoTUCElegivel").innerHTML = `${1825 - tempoUltimoCargo} dias`
-        if (tempoUltimoCargo >= 1825) {
-            document.getElementById("apTempoTUCSituacao").innerHTML = "OK"
-            document.getElementById("apTempoTUCElegivel").innerHTML = "Atingido"
-        }
-        document.getElementById("apTempoTCAtingido").innerHTML = `${tempoContribuicao} dias`
-        document.getElementById("apTempoIAtingido").innerHTML = `${idade} anos`
-        if (masculino) {
-            document.getElementById("apTempoTCExigido").innerHTML = "12775 dias"
-            document.getElementById("apTempoTCElegivel").innerHTML = `${12775 - tempoContribuicao} dias`
-            document.getElementById("apTempoIExigido").innerHTML = "60 anos"
-            document.getElementById("apTempoIElegivel").innerHTML = `${60 - idade} anos`
-            if (tempoContribuicao >= 12775){
-                document.getElementById("apTempoTCSituacao").innerHTML = "OK"
-                document.getElementById("apTempoTCElegivel").innerHTML = "Atingido"
-            }
-            if (idade >= 60){
-                document.getElementById("apTempoISituacao").innerHTML = "OK"
-                document.getElementById("apTempoIElegivel").innerHTML = "Atingido"
-            }
-            if (tempoContribuicao >= 12775 && tempoServicoPublico >= 3650 && tempoUltimoCargo >= 1825 && idade >= 60){
-                document.getElementById("apTempoResultado").innerHTML = "DISPONÍVEL"
-                apTempo = true
-            } else {
-                document.getElementById("apTempoResultado").innerHTML = "INDISPONÍVEL"
-            }
-        }
-        if (feminino) {
-            document.getElementById("apTempoTCExigido").innerHTML = "10950 dias"
-            document.getElementById("apTempoTCElegivel").innerHTML = `${10950 - tempoContribuicao} dias`
-            document.getElementById("apTempoIExigido").innerHTML = "55 anos"
-            document.getElementById("apTempoIElegivel").innerHTML = `${55 - idade} anos`
-            if (tempoContribuicao >= 10950){
-                document.getElementById("apTempoTCSituacao").innerHTML = "OK"
-                document.getElementById("apTempoTCElegivel").innerHTML = "Atingido"
-            }
-            if (idade >= 55){
-                document.getElementById("apTempoISituacao").innerHTML = "OK"
-                document.getElementById("apTempoIElegivel").innerHTML = "Atingido"
-            }
-            if (tempoContribuicao >= 10950 && tempoServicoPublico >= 3650 && tempoUltimoCargo >= 1825 && idade >= 55){
-                document.getElementById("apTempoResultado").innerHTML = "DISPONÍVEL"
-                apTempo = true
-            } else {
-                document.getElementById("apTempoResultado").innerHTML = "INDISPONÍVEL"
-            }
-        }
-
         // Verificando Aposentadoria Geral
+        document.getElementById("apGeralTCAtingido").innerHTML = `${tempoContribuicao} dias`
+        document.getElementById("apGeralTCElegivel").innerHTML = `${9125 - tempoContribuicao} dias`
+        if (tempoContribuicao >= 9125){
+            document.getElementById("apGeralTCSituacao").innerHTML = "OK"
+            document.getElementById("apGeralTCElegivel").innerHTML = "Atingido"
+        }
         document.getElementById("apGeralTSPAtingido").innerHTML = `${tempoServicoPublico} dias`
         document.getElementById("apGeralTSPElegivel").innerHTML = `${3650 - tempoServicoPublico} dias`
         if (tempoServicoPublico >= 3650) {
@@ -740,14 +652,7 @@ class App {
             document.getElementById("apGeralTUCSituacao").innerHTML = "OK"
             document.getElementById("apGeralTUCElegivel").innerHTML = "Atingido"
         }
-        document.getElementById("apGeralTCAtingido").innerHTML = `${tempoContribuicao} dias`
         document.getElementById("apGeralIAtingido").innerHTML = `${idade} anos`
-        document.getElementById("apGeralTCElegivel").innerHTML = `${9125 - tempoContribuicao} dias`
-        if (tempoContribuicao >= 9125){
-            document.getElementById("apGeralTCSituacao").innerHTML = "OK"
-            document.getElementById("apGeralTCElegivel").innerHTML = "Atingido"
-        }
-
         if (masculino) {
             document.getElementById("apGeralIExigido").innerHTML = "65 anos"
             document.getElementById("apGeralIElegivel").innerHTML = `${65 - idade} anos`
@@ -771,13 +676,19 @@ class App {
             }
             if (tempoContribuicao >= 9125 && tempoServicoPublico >= 3650 && tempoUltimoCargo >= 1825 && idade >= 62){
                 document.getElementById("apGeralResultado").innerHTML = "DISPONÍVEL"
-                apTempo = true
+                apGeral = true
             } else {
                 document.getElementById("apGeralResultado").innerHTML = "INDISPONÍVEL"
             }
         }
 
         // Verificando Aposentadoria de Professor
+        document.getElementById("apProfessorTCAtingido").innerHTML = `${tempoContribuicao} dias`
+        document.getElementById("apProfessorTCElegivel").innerHTML = `${9125 - tempoContribuicao} dias`
+        if (tempoContribuicao >= 9125){
+            document.getElementById("apProfessorTCSituacao").innerHTML = "OK"
+            document.getElementById("apProfessorTCElegivel").innerHTML = "Atingido"
+        }
         document.getElementById("apProfessorTSPAtingido").innerHTML = `${tempoServicoPublico} dias`
         document.getElementById("apProfessorTSPElegivel").innerHTML = `${3650 - tempoServicoPublico} dias`
         if (tempoServicoPublico >= 3650) {
@@ -790,24 +701,16 @@ class App {
             document.getElementById("apProfessorTUCSituacao").innerHTML = "OK"
             document.getElementById("apProfessorTUCElegivel").innerHTML = "Atingido"
         }
-        document.getElementById("apProfessorTCAtingido").innerHTML = `${tempoContribuicao} dias`
         document.getElementById("apProfessorMagAtingido").innerHTML = `${tempoMagisterio} dias`
-        document.getElementById("apProfessorIAtingido").innerHTML = `${idade} anos`
-        document.getElementById("apProfessorTCElegivel").innerHTML = `${9125 - tempoContribuicao} dias`
         document.getElementById("apProfessorMagElegivel").innerHTML = `${9125 - tempoMagisterio} dias`
-        if (tempoContribuicao >= 9125){
-            document.getElementById("apProfessorTCSituacao").innerHTML = "OK"
-            document.getElementById("apProfessorTCElegivel").innerHTML = "Atingido"
-        }
         if (tempoMagisterio >= 9125){
             document.getElementById("apProfessorMagSituacao").innerHTML = "OK"
             document.getElementById("apProfessorMagElegivel").innerHTML = "Atingido"
         }
-
+        document.getElementById("apProfessorIAtingido").innerHTML = `${idade} anos`
         if (masculino) {
             document.getElementById("apProfessorIExigido").innerHTML = "60 anos"
             document.getElementById("apProfessorIElegivel").innerHTML = `${60 - idade}`
-            alert("Homem OK")
             if (idade >= 60){
                 document.getElementById("apProfessorISituacao").innerHTML = "OK"
                 document.getElementById("apProfessorIElegivel").innerHTML = "Atingido"
@@ -834,150 +737,44 @@ class App {
             }
         }
 
-        // Verificando Aposentadoria Transição EC nº 41/2003
-        document.getElementById("apEC40TSPAtingido").innerHTML = `${tempoServicoPublico} dias`
-        document.getElementById("apEC40TSPElegivel").innerHTML = `${7300 - tempoServicoPublico} dias`
-        if (tempoServicoPublico >= 7300) {
-            document.getElementById("apEC40TSPSituacao").innerHTML = "OK"
-            document.getElementById("apEC40TSPElegivel").innerHTML = "Atingido"
-        }
-        document.getElementById("apEC40CarrAtingido").innerHTML = `${tempoCarreira} dias`
-        document.getElementById("apEC40CarrElegivel").innerHTML = `${3650 - tempoCarreira} dias`
-        if (tempoCarreira >= 3650) {
-            document.getElementById("apEC40CarrSituacao").innerHTML = "OK"
-            document.getElementById("apEC40CarrElegivel").innerHTML = "Atingido"
-        }
-        document.getElementById("apEC40TUCAtingido").innerHTML = `${tempoUltimoCargo} dias`
-        document.getElementById("apEC40TUCElegivel").innerHTML = `${1825 - tempoUltimoCargo} dias`
-        if (tempoUltimoCargo >= 1825) {
-            document.getElementById("apEC40TUCSituacao").innerHTML = "OK"
-            document.getElementById("apEC40TUCElegivel").innerHTML = "Atingido"
-        }
-        document.getElementById("apEC40TCAtingido").innerHTML = `${tempoContribuicao} dias`
-        document.getElementById("apEC40IAtingido").innerHTML = `${idade} anos`
-        if (masculino) {
-            document.getElementById("apEC40TCExigido").innerHTML = "12775 dias"
-            document.getElementById("apEC40TCElegivel").innerHTML = `${12775 - tempoContribuicao} dias`
-            document.getElementById("apEC40IExigido").innerHTML = "60 anos"
-            document.getElementById("apEC40IElegivel").innerHTML = `${60 - idade} anos`
-            if (tempoContribuicao >= 12775){
-                document.getElementById("apEC40TCSituacao").innerHTML = "OK"
-                document.getElementById("apEC40TCElegivel").innerHTML = "Atingido"
-            }
-            if (idade >= 55){
-                document.getElementById("apEC40ISituacao").innerHTML = "OK"
-                document.getElementById("apEC40IElegivel").innerHTML = "Atingido"
-            }
-            if (tempoContribuicao >= 12775 && tempoServicoPublico >= 7300 && tempoCarreira >= 3650 && tempoUltimoCargo >= 1825 && idade >= 60){
-                document.getElementById("apEC40Resultado").innerHTML = "DISPONÍVEL"
-                apEC40 = true
-            } else {
-                document.getElementById("apEC40Resultado").innerHTML = "INDISPONÍVEL"
-            }
-        }
-        if (feminino) {
-            document.getElementById("apEC40TCExigido").innerHTML = "10950 dias"
-            document.getElementById("apEC40TCElegivel").innerHTML = `${10950 - tempoContribuicao} dias`
-            document.getElementById("apEC40IExigido").innerHTML = "55 anos"
-            document.getElementById("apEC40IElegivel").innerHTML = `${55 - idade} anos`
-            if (tempoContribuicao >= 10950){
-                document.getElementById("apEC40TCSituacao").innerHTML = "OK"
-                document.getElementById("apEC40TCElegivel").innerHTML = "Atingido"
-            }
-            if (idade >= 55){
-                document.getElementById("apEC40ISituacao").innerHTML = "OK"
-                document.getElementById("apEC40IElegivel").innerHTML = "Atingido"
-            }
-            if (tempoContribuicao >= 10950 && tempoServicoPublico >= 7300 && tempoCarreira >= 3650 && tempoUltimoCargo >= 1825 && idade >= 55){
-                document.getElementById("apEC40Resultado").innerHTML = "DISPONÍVEL"
-                apEC40 = true
-            } else {
-                document.getElementById("apEC40Resultado").innerHTML = "INDISPONÍVEL"
-            }
-        }
-
-        // Verificando Aposentadoria Transição EC nº 41/2003 (Professor)
-        document.getElementById("apEC40ProfessorTSPAtingido").innerHTML = `${tempoServicoPublico} dias`
-        document.getElementById("apEC40ProfessorTSPElegivel").innerHTML = `${7300 - tempoServicoPublico}`
-        if (tempoServicoPublico >= 7300) {
-            document.getElementById("apEC40ProfessorTSPSituacao").innerHTML = "OK"
-            document.getElementById("apEC40ProfessorTSPElegivel").innerHTML = "Atingido"
-        }
-        document.getElementById("apEC40ProfessorCarrAtingido").innerHTML = `${tempoCarreira} dias`
-        document.getElementById("apEC40ProfessorCarrElegivel").innerHTML = `${3650 - tempoCarreira}`
-        if (tempoCarreira >= 3650) {
-            document.getElementById("apEC40ProfessorCarrSituacao").innerHTML = "OK"
-            document.getElementById("apEC40ProfessorCarrElegivel").innerHTML = "Atingido"
-        }
-        document.getElementById("apEC40ProfessorTUCAtingido").innerHTML = `${tempoUltimoCargo} dias`
-        document.getElementById("apEC40ProfessorTUCElegivel").innerHTML = `${1825 + tempoUltimoCargo}`
-        if (tempoUltimoCargo >= 1825) {
-            document.getElementById("apEC40ProfessorTUCSituacao").innerHTML = "OK"
-            document.getElementById("apEC40ProfessorTUCElegivel").innerHTML = "Atingido"
-        }
-        document.getElementById("apEC40ProfessorTCAtingido").innerHTML = `${tempoContribuicao} dias`
-        document.getElementById("apEC40ProfessorMagAtingido").innerHTML = `${tempoMagisterio} dias`
-        document.getElementById("apEC40ProfessorIAtingido").innerHTML = `${idade} anos`
-        if (masculino) {
-            document.getElementById("apEC40ProfessorTCExigido").innerHTML = "10950 dias"
-            document.getElementById("apEC40ProfessorTCElegivel").innerHTML = `${10950 - tempoContribuicao} dias`
-            document.getElementById("apEC40ProfessorMagExigido").innerHTML = "10950 dias"
-            document.getElementById("apEC40ProfessorMagElegivel").innerHTML = `${10950 - tempoMagisterio} dias`
-            document.getElementById("apEC40ProfessorIExigido").innerHTML = "55 anos"
-            document.getElementById("apEC40ProfessorIElegivel").innerHTML = `${55 - idade} anos`
-            if (tempoContribuicao >= 10950){
-                document.getElementById("apEC40ProfessorTCSituacao").innerHTML = "OK"
-                document.getElementById("apEC40ProfessorTCElegivel").innerHTML = "Atingido"
-            }
-            if (tempoMagisterio >= 10950){
-                document.getElementById("apEC40ProfessorMagSituacao").innerHTML = "OK"
-                document.getElementById("apEC40ProfessorMagElegivel").innerHTML = "Atingido"
-            }
-            if (idade >= 55){
-                document.getElementById("apEC40ProfessorISituacao").innerHTML = "OK"
-                document.getElementById("apEC40ProfessorIElegivel").innerHTML = "Atingido"
-            }
-            if (tempoContribuicao >= 10950 && tempoServicoPublico >= 7300 && tempoCarreira >= 3650 && tempoUltimoCargo >= 1825 && tempoMagisterio >= 10950 && idade >= 55){
-                document.getElementById("apEC40ProfessorResultado").innerHTML = "DISPONÍVEL"
-                apEC40Professor = true
-            } else {
-                document.getElementById("apEC40ProfessorResultado").innerHTML = "INDISPONÍVEL"
-            }
-        }
-        if (feminino) {
-            document.getElementById("apEC40ProfessorTCExigido").innerHTML = "9125 dias"
-            document.getElementById("apEC40ProfessorTCElegivel").innerHTML = `${9125 - tempoContribuicao} dias`
-            document.getElementById("apEC40ProfessorMagExigido").innerHTML = "9125 dias"
-            document.getElementById("apEC40ProfessorMagElegivel").innerHTML = `${9125 - tempoMagisterio} dias`
-            document.getElementById("apEC40ProfessorIExigido").innerHTML = "50 anos"
-            document.getElementById("apEC40ProfessorIElegivel").innerHTML = `${50 - idade} anos`
-            if (tempoContribuicao >= 9125){
-                document.getElementById("apEC40ProfessorTCSituacao").innerHTML = "OK"
-                document.getElementById("apEC40ProfessorTCElegivel").innerHTML = "Atingido"
-            }
-            if (tempoMagisterio >= 9125){
-                document.getElementById("apEC40ProfessorSituacao").innerHTML = "OK"
-                document.getElementById("apEC40ProfessorMagElegivel").innerHTML = "Atingido"
-            }
-            if (idade >= 50){
-                document.getElementById("apEC40ProfessorISituacao").innerHTML = "OK"
-                document.getElementById("apEC40ProfessorIElegivel").innerHTML = "Atingido"
-            }
-            if (tempoContribuicao >= 9125 && tempoServicoPublico >= 7300 && tempoCarreira >= 3650 && tempoUltimoCargo >= 1825 && tempoMagisterio >= 9125 && idade >= 50){
-                document.getElementById("apEC40ProfessorResultado").innerHTML = "DISPONÍVEL"
-                document.getElementById("apEC40ProfessorResultado").classList.add("disponivel")
-                apEC40Professor = true
-            } else {
-                document.getElementById("apEC40ProfessorResultado").innerHTML = "INDISPONÍVEL"
-                document.getElementById("apEC40ProfessorResultado").classList.add("indisponivel")
-            }
-        }
-
         // Verificando Aposentadoria de servidor da Saúde
-
-
-
-
+        document.getElementById("apSaudeTCAtingido").innerHTML = `${tempoContribuicao} dias`
+        document.getElementById("apSaudeTCElegivel").innerHTML = `${9125 - tempoContribuicao} dias`
+        if (tempoContribuicao >= 9125){
+            document.getElementById("apSaudeTCSituacao").innerHTML = "OK"
+            document.getElementById("apSaudeTCElegivel").innerHTML = "Atingido"
+        }
+        document.getElementById("apSaudeTSPAtingido").innerHTML = `${tempoServicoPublico} dias`
+        document.getElementById("apSaudeTSPElegivel").innerHTML = `${3650 - tempoServicoPublico} dias`
+        if (tempoServicoPublico >= 3650) {
+            document.getElementById("apSaudeTSPSituacao").innerHTML = "OK"
+            document.getElementById("apSaudeTSPElegivel").innerHTML = "Atingido"
+        }
+        document.getElementById("apSaudeTUCAtingido").innerHTML = `${tempoUltimoCargo} dias`
+        document.getElementById("apSaudeTUCElegivel").innerHTML = `${1825 - tempoUltimoCargo} dias`
+        if (tempoUltimoCargo >= 1825) {
+            document.getElementById("apSaudeTUCSituacao").innerHTML = "OK"
+            document.getElementById("apSaudeTUCElegivel").innerHTML = "Atingido"
+        }
+        document.getElementById("apSaudeTEAtingido").innerHTML = `${tempoSaude} dias`
+        document.getElementById("apSaudeTEElegivel").innerHTML = `${9125 - tempoSaude} dias`
+        if (tempoSaude >= 9125) {
+            document.getElementById("apSaudeTESituacao").innerHTML = "OK"
+            document.getElementById("apSaudeTEElegivel").innerHTML = "Atingido"
+        }
+        document.getElementById("apSaudeIAtingido").innerHTML = `${idade} anos`
+        document.getElementById("apSaudeElegivel").innerHTML = `${60 - idade} anos`
+        if (idade >= 60){
+            document.getElementById("apSaudeISituacao").innerHTML = "OK"
+            document.getElementById("apSaudeIElegivel").innerHTML = "Atingido"
+        }
+        if (tempoContribuicao >= 9125 && tempoServicoPublico >= 3650 && tempoUltimoCargo >= 1825 && tempoSaude >= 9125 && idade >= 60){
+            document.getElementById("apSaudeResultado").innerHTML = "DISPONÍVEL"
+            apSaude = true
+        } else {
+            document.getElementById("apSaudeResultado").innerHTML = "INDISPONÍVEL"
+        }
+        
 
 
         // Preenchendo o resumo de cenários + Exibindo tabelas de cenário
