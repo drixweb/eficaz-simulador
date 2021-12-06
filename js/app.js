@@ -587,26 +587,28 @@ class App {
         let apEC40Professor = false
         let apSaude = false
         let apDeficiencia = false
-        let apEC103Pontos = false
-        let apEC103PontosProf = false
-        let apEC103Pedagio = false
-        let apEC103PedagioProf = false
+        let apPontos = false
+        let apPontosProf = false
+        let apPedagio = false
+        let apPedagioProf = false
+        let compulsoria = false
         
         // Captando o tempo de contribuição
-        let tc_aux1 = lista.reduce(function(soma, i){
+        let tempoContribuicao = lista.reduce(function(soma, i){
             return soma+i
         })
+        
         let dataAdm = document.getElementById("dataAdm").value
         let calcAdm = new Date(dataAdm)
         let calcHoje = new Date()
         let calcSoma = Math.abs(calcHoje - calcAdm)
-        let tx_aux2 = Math.ceil(calcSoma / (1000 * 60 * 60 * 24))
-        let tempoContribuicao = tc_aux1 + tx_aux2
+        /*let tc_aux2 = Math.ceil(calcSoma / (1000 * 60 * 60 * 24))
+        let  = tc_aux1 + tc_aux2*/
         
         // Captando o tempo de serviço público
         let tempoServicoPublico = listaPublico.reduce(function(soma, i){
             return soma+i
-        }) + tx_aux2
+        })
 
         // Captando o tempo de carreira
         let tempoCarreira = Math.ceil(calcSoma / (1000 * 60 * 60 * 24))
@@ -724,7 +726,7 @@ class App {
         }
         if (feminino) {
             document.getElementById("apProfessorIExigido").innerHTML = "57 anos"
-            document.getElementById("apProfessorIElegivel").innerHTML = `${57 - idade}`
+            document.getElementById("apProfessorIElegivel").innerHTML = `${57 - idade} anos`
             if (idade >= 57){
                 document.getElementById("apProfessorISituacao").innerHTML = "OK"
                 document.getElementById("apProfessorIElegivel").innerHTML = "Atingido"
@@ -763,7 +765,7 @@ class App {
             document.getElementById("apSaudeTEElegivel").innerHTML = "Atingido"
         }
         document.getElementById("apSaudeIAtingido").innerHTML = `${idade} anos`
-        document.getElementById("apSaudeElegivel").innerHTML = `${60 - idade} anos`
+        document.getElementById("apSaudeIElegivel").innerHTML = `${60 - idade} anos`
         if (idade >= 60){
             document.getElementById("apSaudeISituacao").innerHTML = "OK"
             document.getElementById("apSaudeIElegivel").innerHTML = "Atingido"
@@ -775,6 +777,486 @@ class App {
             document.getElementById("apSaudeResultado").innerHTML = "INDISPONÍVEL"
         }
         
+        // Verificando Aposentadoria de servidor com deficiência
+        var select = document.getElementById('deficiencia')
+        var deficiencia = select.options[select.selectedIndex].value
+        let tcDeficiencia = false
+        alert(deficiencia);
+        document.getElementById("apDeficienciaTCAtingido").innerHTML = `${tempoContribuicao} dias`
+        if (deficiencia == "Leve") {
+            if (masculino){
+                document.getElementById("apDeficienciaTCExigido").innerHTML = "12045 dias"
+                document.getElementById("apDeficienciaTCElegivel").innerHTML = `${12045 - tempoContribuicao} dias`
+                if (tempoContribuicao >= 12045) {
+                    document.getElementById("apDeficienciaTCSituacao").innerHTML = "OK"
+                    document.getElementById("apDeficienciaTCElegivel").innerHTML = "Atingido"
+                    tcDeficiencia = true
+                }
+            } else if (feminino) {
+                document.getElementById("apDeficienciaTCExigido").innerHTML = "10220 dias"
+                document.getElementById("apDeficienciaTCElegivel").innerHTML = `${10220 - tempoContribuicao} dias`
+                if (tempoContribuicao >= 10220) {
+                    document.getElementById("apDeficienciaTCSituacao").innerHTML = "OK"
+                    document.getElementById("apDeficienciaTCElegivel").innerHTML = "Atingido"
+                    tcDeficiencia = true
+                }
+            }
+        } else if (deficiencia == "Moderada") {
+            if (masculino){
+                document.getElementById("apDeficienciaTCExigido").innerHTML = "10585 dias"
+                document.getElementById("apDeficienciaTCElegivel").innerHTML = `${10585 - tempoContribuicao} dias`
+                if (tempoContribuicao >= 10585) {
+                    document.getElementById("apDeficienciaTCSituacao").innerHTML = "OK"
+                    document.getElementById("apDeficienciaTCElegivel").innerHTML = "Atingido"
+                    tcDeficiencia = true
+                }
+            } else if (feminino) {
+                document.getElementById("apDeficienciaTCExigido").innerHTML = "8760 dias"
+                document.getElementById("apDeficienciaTCElegivel").innerHTML = `${8760 - tempoContribuicao} dias`
+                if (tempoContribuicao >= 8760) {
+                    document.getElementById("apDeficienciaTCSituacao").innerHTML = "OK"
+                    document.getElementById("apDeficienciaTCElegivel").innerHTML = "Atingido"
+                    tcDeficiencia = true
+                }
+            }
+        } else if (deficiencia == "Grave") {
+            if (masculino){
+                document.getElementById("apDeficienciaTCExigido").innerHTML = "9125 dias"
+                document.getElementById("apDeficienciaTCElegivel").innerHTML = `${9125 - tempoContribuicao} dias`
+                if (tempoContribuicao >= 9125) {
+                    document.getElementById("apDeficienciaTCSituacao").innerHTML = "OK"
+                    document.getElementById("apDeficienciaTCElegivel").innerHTML = "Atingido"
+                    tcDeficiencia = true
+                }
+            } else if (feminino) {
+                document.getElementById("apDeficienciaTCExigido").innerHTML = "7300 dias"
+                document.getElementById("apDeficienciaTCElegivel").innerHTML = `${7300 - tempoContribuicao} dias`
+                if (tempoContribuicao >= 7300) {
+                    document.getElementById("apDeficienciaTCSituacao").innerHTML = "OK"
+                    document.getElementById("apDeficienciaTCElegivel").innerHTML = "Atingido"
+                    tcDeficiencia = true
+                }
+            }
+        }
+        document.getElementById("apDeficienciaTSPAtingido").innerHTML = `${tempoServicoPublico} dias`
+        document.getElementById("apDeficienciaTSPElegivel").innerHTML = `${3650 - tempoServicoPublico} dias`
+        if (tempoServicoPublico >= 3650) {
+            document.getElementById("apDeficienciaTSPSituacao").innerHTML = "OK"
+            document.getElementById("apDeficienciaTSPElegivel").innerHTML = "Atingido"
+        }
+        document.getElementById("apDeficienciaTUCAtingido").innerHTML = `${tempoUltimoCargo} dias`
+        document.getElementById("apDeficienciaTUCElegivel").innerHTML = `${1825 - tempoUltimoCargo} dias`
+        if (tempoUltimoCargo >= 1825) {
+            document.getElementById("apDeficienciaTUCSituacao").innerHTML = "OK"
+            document.getElementById("apDeficienciaTUCElegivel").innerHTML = "Atingido"
+        }
+        if (tcDeficiencia && tempoServicoPublico >= 3650 && tempoUltimoCargo >= 1825) {
+            document.getElementById("apDeficienciaResultado").innerHTML = "DISPONÍVEL"
+            apDeficiencia = true
+        } else {
+            document.getElementById("apDeficienciaResultado").innerHTML = "INDISPONÍVEL"
+        }
+
+        // Verificando Aposentadoria Regra de Transição (Pontos)
+        document.getElementById("apPontosTCAtingido").innerHTML = `${tempoContribuicao} dias`
+        if (masculino) {
+            document.getElementById("apPontosTCExigido").innerHTML = "12775 dias"
+            document.getElementById("apPontosTCElegivel").innerHTML = `${12775 - tempoContribuicao} dias`
+            if (tempoContribuicao >= 12775){
+                document.getElementById("apPontosTCSituacao").innerHTML = "OK"
+                document.getElementById("apPontosTCElegivel").innerHTML = "Atingido"
+            }
+        }
+        if (feminino) {
+            document.getElementById("apPontosTCExigido").innerHTML = "10950 dias"
+            document.getElementById("apPontosTCElegivel").innerHTML = `${10950 - tempoContribuicao} dias`
+            if (tempoContribuicao >= 10950){
+                document.getElementById("apPontosTCSituacao").innerHTML = "OK"
+                document.getElementById("apPontosTCElegivel").innerHTML = "Atingido"
+            }
+        }
+        document.getElementById("apPontosTSPAtingido").innerHTML = `${tempoServicoPublico} dias`
+        document.getElementById("apPontosTSPElegivel").innerHTML = `${7300 - tempoServicoPublico} dias`
+        if (tempoServicoPublico >= 7300) {
+            document.getElementById("apPontosTSPSituacao").innerHTML = "OK"
+            document.getElementById("apPontosTSPElegivel").innerHTML = "Atingido"
+        }
+        document.getElementById("apPontosTUCAtingido").innerHTML = `${tempoUltimoCargo} dias`
+        document.getElementById("apPontosTUCElegivel").innerHTML = `${1825 - tempoUltimoCargo} dias`
+        if (tempoUltimoCargo >= 1825) {
+            document.getElementById("apPontosTUCSituacao").innerHTML = "OK"
+            document.getElementById("apPontosTUCElegivel").innerHTML = "Atingido"
+        }
+        let pontos = idade + Math.trunc(tempoContribuicao/365)
+        document.getElementById("apPontosPAtingido").innerHTML = `${pontos} pontos`
+        if (masculino) {
+            document.getElementById("apPontosPExigido").innerHTML = "98 pontos"
+            document.getElementById("apPontosPElegivel").innerHTML = `${(105 - pontos)/2} anos`
+            if (pontos >= 98) {
+                document.getElementById("apPontosPSituacao").innerHTML = "OK"
+                document.getElementById("apPontosPElegivel").innerHTML = "Atingido"
+            }
+        }
+        if (feminino) {
+            document.getElementById("apPontosPExigido").innerHTML = "88 pontos"
+            document.getElementById("apPontosPElegivel").innerHTML = `${(100 - pontos)/2} anos`
+            if (pontos >= 88) {
+                document.getElementById("apPontosPSituacao").innerHTML = "OK"
+                document.getElementById("apPontosPElegivel").innerHTML = "Atingido"
+            }
+        }
+        document.getElementById("apPontosIAtingido").innerHTML = `${idade} anos`
+        if (masculino) {
+            document.getElementById("apPontosIExigido").innerHTML = "62 anos"
+            document.getElementById("apPontosIElegivel").innerHTML = `${62 - idade} anos`
+            if (idade >= 62){
+                document.getElementById("apPontosISituacao").innerHTML = "OK"
+                document.getElementById("apPontosIElegivel").innerHTML = "Atingido"
+            }
+            if (tempoContribuicao >= 12775 && tempoServicoPublico >= 7300 && tempoUltimoCargo >= 1825 && pontos >= 98 && idade >= 62){
+                document.getElementById("apPontosResultado").innerHTML = "DISPONÍVEL"
+                apPontos = true
+            } else {
+                document.getElementById("apPontosResultado").innerHTML = "INDISPONÍVEL"
+            }
+        }
+        if (feminino) {
+            document.getElementById("apPontosIExigido").innerHTML = "57 anos"
+            document.getElementById("apPontosIElegivel").innerHTML = `${57 - idade} anos`
+            if (idade >= 57){
+                document.getElementById("apPontosISituacao").innerHTML = "OK"
+                document.getElementById("apPontosIElegivel").innerHTML = "Atingido"
+            }
+            if (tempoContribuicao >= 10950 && tempoServicoPublico >= 7300 && tempoUltimoCargo >= 1825 && pontos >= 88 && idade >= 57){
+                document.getElementById("apPontosResultado").innerHTML = "DISPONÍVEL"
+                apPontos = true
+            } else {
+                document.getElementById("apPontosResultado").innerHTML = "INDISPONÍVEL"
+            }
+        }
+        
+        // Verificando Aposentadoria Regra de Transição para Professores (Pontos)
+        document.getElementById("apPontosProfTCAtingido").innerHTML = `${tempoContribuicao} dias`
+        if (masculino) {
+            document.getElementById("apPontosProfTCExigido").innerHTML = "10950 dias"
+            document.getElementById("apPontosProfTCElegivel").innerHTML = `${10950 - tempoContribuicao} dias`
+            if (tempoContribuicao >= 10950){
+                document.getElementById("apPontosProfTCSituacao").innerHTML = "OK"
+                document.getElementById("apPontosProfTCElegivel").innerHTML = "Atingido"
+            }
+        }
+        if (feminino) {
+            document.getElementById("apPontosProfTCExigido").innerHTML = "9125 dias"
+            document.getElementById("apPontosProfTCElegivel").innerHTML = `${9125 - tempoContribuicao} dias`
+            if (tempoContribuicao >= 9125){
+                document.getElementById("apPontosProfTCSituacao").innerHTML = "OK"
+                document.getElementById("apPontosProfTCElegivel").innerHTML = "Atingido"
+            }
+        }
+        document.getElementById("apPontosProfTSPAtingido").innerHTML = `${tempoServicoPublico} dias`
+        document.getElementById("apPontosProfTSPElegivel").innerHTML = `${7300 - tempoServicoPublico} dias`
+        if (tempoServicoPublico >= 7300) {
+            document.getElementById("apPontosProfTSPSituacao").innerHTML = "OK"
+            document.getElementById("apPontosProfTSPElegivel").innerHTML = "Atingido"
+        }
+        document.getElementById("apPontosProfTUCAtingido").innerHTML = `${tempoUltimoCargo} dias`
+        document.getElementById("apPontosProfTUCElegivel").innerHTML = `${1825 - tempoUltimoCargo} dias`
+        if (tempoUltimoCargo >= 1825) {
+            document.getElementById("apPontosProfTUCSituacao").innerHTML = "OK"
+            document.getElementById("apPontosProfTUCElegivel").innerHTML = "Atingido"
+        }
+        let pontos = idade + Math.trunc(tempoContribuicao/365)
+        document.getElementById("apPontosProfPAtingido").innerHTML = `${pontos} pontos`
+        if (masculino) {
+            document.getElementById("apPontosProfPExigido").innerHTML = "93 pontos"
+            document.getElementById("apPontosProfPElegivel").innerHTML = `${(100 - pontos)/2} anos`
+            if (pontos >= 93) {
+                document.getElementById("apPontosProfPSituacao").innerHTML = "OK"
+                document.getElementById("apPontosProfPElegivel").innerHTML = "Atingido"
+            }
+        }
+        if (feminino) {
+            document.getElementById("apPontosPExigido").innerHTML = "83 pontos"
+            document.getElementById("apPontosPElegivel").innerHTML = `${(92 - pontos)/2} anos`
+            if (pontos >= 83) {
+                document.getElementById("apPontosProfPSituacao").innerHTML = "OK"
+                document.getElementById("apPontosProfPElegivel").innerHTML = "Atingido"
+            }
+        }
+        document.getElementById("apPontosProfMagAtingido").innerHTML = `${tempoMagisterio} dias`
+        if (masculino) {
+            document.getElementById("apPontosProfMagExigido").innerHTML = "10950 dias"
+            document.getElementById("apPontosProfMagElegivel").innerHTML = `${10950 - tempoMagisterio} dias`
+            if (tempoMagisterio >= 10950) {
+                document.getElementById("apPontosProfMagSituacao").innerHTML = "OK"
+                document.getElementById("apPontosProfMagElegivel").innerHTML = "Atingido"
+            }
+        }
+        if (feminino) {
+            document.getElementById("apPontosProfMagExigido").innerHTML = "9125 dias"
+            document.getElementById("apPontosProfMagElegivel").innerHTML = `${9125 - tempoMagisterio} dias`
+            if (tempoMagisterio >= 9125) {
+                document.getElementById("apPontosProfMagSituacao").innerHTML = "OK"
+                document.getElementById("apPontosProfMagElegivel").innerHTML = "Atingido"
+            }
+        }
+        document.getElementById("apPontosProfIAtingido").innerHTML = `${idade} anos`
+        if (masculino) {
+            document.getElementById("apPontosProfIExigido").innerHTML = "57 anos"
+            document.getElementById("apPontosProfIElegivel").innerHTML = `${57 - idade} anos`
+            if (idade >= 57){
+                document.getElementById("apPontosProfISituacao").innerHTML = "OK"
+                document.getElementById("apPontosProfIElegivel").innerHTML = "Atingido"
+            }
+            if (tempoContribuicao >= 10950 && tempoServicoPublico >= 7300 && tempoUltimoCargo >= 1825 && pontos >= 93 && tempoMagisterio >= 10950 && idade >= 57){
+                document.getElementById("apPontosProfResultado").innerHTML = "DISPONÍVEL"
+                apPontosProf = true
+            } else {
+                document.getElementById("apPontosProfResultado").innerHTML = "INDISPONÍVEL"
+            }
+        }
+        if (feminino) {
+            document.getElementById("apPontosProfIExigido").innerHTML = "52 anos"
+            document.getElementById("apPontosProfIElegivel").innerHTML = `${52 - idade} anos`
+            if (idade >= 52){
+                document.getElementById("apPontosProfISituacao").innerHTML = "OK"
+                document.getElementById("apPontosProfIElegivel").innerHTML = "Atingido"
+            }
+            if (tempoContribuicao >= 9125 && tempoServicoPublico >= 7300 && tempoUltimoCargo >= 1825 && pontos >= 83 && tempoMagisterio >= 9125 && idade >= 52){
+                document.getElementById("apPontosProfResultado").innerHTML = "DISPONÍVEL"
+                apPontosProf = true
+            } else {
+                document.getElementById("apPontosProfResultado").innerHTML = "INDISPONÍVEL"
+            }
+        }
+        
+        // Verificando Aposentadoria Regra de Transição (Pedágio)
+        document.getElementById("apPedagioTCAtingido").innerHTML = `${tempoContribuicao} dias`
+        if (masculino) {
+            document.getElementById("apPedagioTCExigido").innerHTML = "12775 dias"
+            document.getElementById("apPedagioTCElegivel").innerHTML = `${12775 - tempoContribuicao} dias`
+            if (tempoContribuicao >= 12775){
+                document.getElementById("apPedagioTCSituacao").innerHTML = "OK"
+                document.getElementById("apPedagioTCElegivel").innerHTML = "Atingido"
+            }
+        }
+        if (feminino) {
+            document.getElementById("apPedagioTCExigido").innerHTML = "10950 dias"
+            document.getElementById("apPedagioTCElegivel").innerHTML = `${10950 - tempoContribuicao} dias`
+            if (tempoContribuicao >= 10950){
+                document.getElementById("apPedagioTCSituacao").innerHTML = "OK"
+                document.getElementById("apPedagioTCElegivel").innerHTML = "Atingido"
+            }
+        }
+        document.getElementById("apPedagioTSPAtingido").innerHTML = `${tempoServicoPublico} dias`
+        document.getElementById("apPedagioTSPElegivel").innerHTML = `${7300 - tempoServicoPublico} dias`
+        if (tempoServicoPublico >= 7300) {
+            document.getElementById("apPedagioTSPSituacao").innerHTML = "OK"
+            document.getElementById("apPedagioTSPElegivel").innerHTML = "Atingido"
+        }
+        document.getElementById("apPedagioTUCAtingido").innerHTML = `${tempoUltimoCargo} dias`
+        document.getElementById("apPedagioTUCElegivel").innerHTML = `${1825 - tempoUltimoCargo} dias`
+        if (tempoUltimoCargo >= 1825) {
+            document.getElementById("apPedagioTUCSituacao").innerHTML = "OK"
+            document.getElementById("apPedagioTUCElegivel").innerHTML = "Atingido"
+        }
+        let diaEC103 = new Date("2019-11-13 00:00:01")
+        let diaHoje = new Date()
+        let calc = Math.abs(diaHoje - diaEC103)
+        let tempoEC_Hoje = (Math.ceil(calc / (1000 * 60 * 60 * 24)))
+        let pedagio = 0
+        if (masculino) {
+            pedagio = 12775 - (tempoContribuicao - tempoEC_Hoje)
+            if (pedagio > 0) {
+                document.getElementById("apPedagioPExigido").innerHTML = `${pedagio} dias`
+                if (tempoContribuicao >= 12775) {
+                    document.getElementById("apPedagioPAtingido").innerHTML = `${tempoContribuicao - 12775} dias`
+                }
+                document.getElementById("apPedagioPElegivel").innerHTML = `${pedagio - (tempoContribuicao - 12775)} dias`
+                if ((tempoContribuicao - 12775) >= pedagio) {
+                    document.getElementById("apPedagioPSituacao").innerHTML = "OK"
+                    document.getElementById("apPedagioPElegivel").innerHTML = "Atingido"
+                }
+            } else {
+                document.getElementById("apPedagioPExigido").innerHTML = "-"
+                document.getElementById("apPedagioPAtingido").innerHTML = "-"
+                document.getElementById("apPedagioPSituacao").innerHTML = "OK"
+                document.getElementById("apPedagioPElegivel").innerHTML = "Atingido"
+            }
+        }
+        if (feminino) {
+            pedagio = 10950 - (tempoContribuicao - tempoEC_Hoje)
+            if (pedagio > 0) {
+                document.getElementById("apPedagioPExigido").innerHTML = `${pedagio} dias`
+                if (tempoContribuicao >= 10950) {
+                    document.getElementById("apPedagioPAtingido").innerHTML = `${tempoContribuicao - 10950} dias`
+                }
+                document.getElementById("apPedagioPElegivel").innerHTML = `${pedagio - (tempoContribuicao - 10950)} dias`
+                if ((tempoContribuicao - 10950) >= pedagio) {
+                    document.getElementById("apPedagioPSituacao").innerHTML = "OK"
+                    document.getElementById("apPedagioPElegivel").innerHTML = "Atingido"
+                }
+            } else {
+                document.getElementById("apPedagioPExigido").innerHTML = "-"
+                document.getElementById("apPedagioPAtingido").innerHTML = "-"
+                document.getElementById("apPedagioPSituacao").innerHTML = "OK"
+                document.getElementById("apPedagioPElegivel").innerHTML = "Atingido"
+            }
+        }
+        document.getElementById("apPedagioIAtingido").innerHTML = `${idade} anos`
+        if (masculino) {
+            document.getElementById("apPedagioIExigido").innerHTML = "60 anos"
+            document.getElementById("apPedagioIElegivel").innerHTML = `${60 - idade} anos`
+            if (idade >= 60){
+                document.getElementById("apPedagioISituacao").innerHTML = "OK"
+                document.getElementById("apPedagioIElegivel").innerHTML = "Atingido"
+            }
+            if (tempoContribuicao >= 12775 && tempoServicoPublico >= 7300 && tempoUltimoCargo >= 1825 && pedagio <= 0 && idade >= 60){
+                document.getElementById("apPedagioResultado").innerHTML = "DISPONÍVEL"
+                apPedagio = true
+            } else {
+                document.getElementById("apPedagioResultado").innerHTML = "INDISPONÍVEL"
+            }
+        }
+        if (feminino) {
+            document.getElementById("apPedagioIExigido").innerHTML = "57 anos"
+            document.getElementById("apPedagioIElegivel").innerHTML = `${57 - idade} anos`
+            if (idade >= 57){
+                document.getElementById("apPedagioISituacao").innerHTML = "OK"
+                document.getElementById("apPedagioIElegivel").innerHTML = "Atingido"
+            }
+            if (tempoContribuicao >= 10950 && tempoServicoPublico >= 7300 && tempoUltimoCargo >= 1825 && pedagio <= 0 && idade >= 57){
+                document.getElementById("apPedagioResultado").innerHTML = "DISPONÍVEL"
+                apPedagio = true
+            } else {
+                document.getElementById("apPedagioResultado").innerHTML = "INDISPONÍVEL"
+            }
+        }
+        
+        // Verificando Aposentadoria Regra de Transição para Professor (Pedágio)
+        document.getElementById("apPedagioProfTCAtingido").innerHTML = `${tempoContribuicao} dias`
+        if (masculino) {
+            document.getElementById("apPedagioProfTCExigido").innerHTML = "10950 dias"
+            document.getElementById("apPedagioProfTCElegivel").innerHTML = `${10950 - tempoContribuicao} dias`
+            if (tempoContribuicao >= 10950){
+                document.getElementById("apPedagioProfTCSituacao").innerHTML = "OK"
+                document.getElementById("apPedagioProfTCElegivel").innerHTML = "Atingido"
+            }
+        }
+        if (feminino) {
+            document.getElementById("apPedagioProfTCExigido").innerHTML = "9125 dias"
+            document.getElementById("apPedagioProfTCElegivel").innerHTML = `${9125 - tempoContribuicao} dias`
+            if (tempoContribuicao >= 9125){
+                document.getElementById("apPedagioProfTCSituacao").innerHTML = "OK"
+                document.getElementById("apPedagioProfTCElegivel").innerHTML = "Atingido"
+            }
+        }
+        document.getElementById("apPedagioProfTSPAtingido").innerHTML = `${tempoServicoPublico} dias`
+        document.getElementById("apPedagioProfTSPElegivel").innerHTML = `${7300 - tempoServicoPublico} dias`
+        if (tempoServicoPublico >= 7300) {
+            document.getElementById("apPedagioProfTSPSituacao").innerHTML = "OK"
+            document.getElementById("apPedagioProfTSPElegivel").innerHTML = "Atingido"
+        }
+        document.getElementById("apPedagioProfTUCAtingido").innerHTML = `${tempoUltimoCargo} dias`
+        document.getElementById("apPedagioProfTUCElegivel").innerHTML = `${1825 - tempoUltimoCargo} dias`
+        if (tempoUltimoCargo >= 1825) {
+            document.getElementById("apPedagioProfTUCSituacao").innerHTML = "OK"
+            document.getElementById("apPedagioProfTUCElegivel").innerHTML = "Atingido"
+        }
+        let pedagioProf = 0
+        if (masculino) {
+            pedagioProf = 10950 - (tempoContribuicao - tempoEC_Hoje)
+            if (pedagioProf > 0) {
+                document.getElementById("apPedagioProfPExigido").innerHTML = `${pedagio} dias`
+                if (tempoContribuicao >= 10950) {
+                    document.getElementById("apPedagioProfPAtingido").innerHTML = `${tempoContribuicao - 10950} dias`
+                }
+                document.getElementById("apPedagioProfPElegivel").innerHTML = `${pedagio - (tempoContribuicao - 10950)} dias`
+                if ((tempoContribuicao - 10950) >= pedagio) {
+                    document.getElementById("apPedagioProfPSituacao").innerHTML = "OK"
+                    document.getElementById("apPedagioProfPElegivel").innerHTML = "Atingido"
+                }
+            } else {
+                document.getElementById("apPedagioProfPExigido").innerHTML = "-"
+                document.getElementById("apPedagioProfPAtingido").innerHTML = "-"
+                document.getElementById("apPedagioProfPSituacao").innerHTML = "OK"
+                document.getElementById("apPedagioProfPElegivel").innerHTML = "Atingido"
+            }
+        }
+        if (feminino) {
+            pedagioProf = 9125 - (tempoContribuicao - tempoEC_Hoje)
+            if (pedagioProf > 0) {
+                document.getElementById("apPedagioPExigido").innerHTML = `${pedagio} dias`
+                if (tempoContribuicao >= 9125) {
+                    document.getElementById("apPedagioPAtingido").innerHTML = `${tempoContribuicao - 9125} dias`
+                }
+                document.getElementById("apPedagioPElegivel").innerHTML = `${pedagio - (tempoContribuicao - 9125)} dias`
+                if ((tempoContribuicao - 9125) >= pedagio) {
+                    document.getElementById("apPedagioPSituacao").innerHTML = "OK"
+                    document.getElementById("apPedagioPElegivel").innerHTML = "Atingido"
+                }
+            } else {
+                document.getElementById("apPedagioPExigido").innerHTML = "-"
+                document.getElementById("apPedagioPAtingido").innerHTML = "-"
+                document.getElementById("apPedagioPSituacao").innerHTML = "OK"
+                document.getElementById("apPedagioPElegivel").innerHTML = "Atingido"
+            }
+        }
+        document.getElementById("apPedagioProfMagAtingido").innerHTML = `${tempoMagisterio} dias`
+        if (masculino) {
+            document.getElementById("apPedagioProfMagExigido").innerHTML = "10950 dias"
+            document.getElementById("apPedagioProfMagElegivel").innerHTML = `${10950 - tempoMagisterio} dias`
+            if (tempoMagisterio >= 10950) {
+                document.getElementById("apPedagioProfMagSituacao").innerHTML = "OK"
+                document.getElementById("apPedagioProfMagElegivel").innerHTML = "Atingido"
+            }
+        }
+        if (feminino) {
+            document.getElementById("apPedagioProfMagExigido").innerHTML = "9125 dias"
+            document.getElementById("apPedagioProfMagElegivel").innerHTML = `${9125 - tempoMagisterio} dias`
+            if (tempoMagisterio >= 9125) {
+                document.getElementById("apPedagioProfMagSituacao").innerHTML = "OK"
+                document.getElementById("apPedagioProfMagElegivel").innerHTML = "Atingido"
+            }
+        }
+        document.getElementById("apPedagioIAtingido").innerHTML = `${idade} anos`
+        if (masculino) {
+            document.getElementById("apPedagioIExigido").innerHTML = "55 anos"
+            document.getElementById("apPedagioIElegivel").innerHTML = `${55 - idade} anos`
+            if (idade >= 55){
+                document.getElementById("apPedagioISituacao").innerHTML = "OK"
+                document.getElementById("apPedagioIElegivel").innerHTML = "Atingido"
+            }
+            if (tempoContribuicao >= 10950 && tempoServicoPublico >= 7300 && tempoUltimoCargo >= 1825 && tempoMagisterio <= 10950 && pedagio <= 0 && idade >= 55){
+                document.getElementById("apPedagioResultado").innerHTML = "DISPONÍVEL"
+                apPedagioProf = true
+            } else {
+                document.getElementById("apPedagioResultado").innerHTML = "INDISPONÍVEL"
+            }
+        }
+        if (feminino) {
+            document.getElementById("apPedagioIExigido").innerHTML = "52 anos"
+            document.getElementById("apPedagioIElegivel").innerHTML = `${52 - idade} anos`
+            if (idade >= 52){
+                document.getElementById("apPedagioISituacao").innerHTML = "OK"
+                document.getElementById("apPedagioIElegivel").innerHTML = "Atingido"
+            }
+            if (tempoContribuicao >= 9125 && tempoServicoPublico >= 7300 && tempoUltimoCargo >= 1825 && tempoMagisterio >= 9125 && pedagio <= 0 && idade >= 52){
+                document.getElementById("apPedagioResultado").innerHTML = "DISPONÍVEL"
+                apPedagioProf = true
+            } else {
+                document.getElementById("apPedagioResultado").innerHTML = "INDISPONÍVEL"
+            }
+        }
+        
+        
+        
+        
+        
+        
+
+
+        /** rascunho */
 
 
         // Preenchendo o resumo de cenários + Exibindo tabelas de cenário
