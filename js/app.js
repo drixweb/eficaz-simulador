@@ -965,7 +965,7 @@ class App {
             document.getElementById("apPontosProfTUCSituacao").innerHTML = "OK"
             document.getElementById("apPontosProfTUCElegivel").innerHTML = "Atingido"
         }
-        let pontos = idade + Math.trunc(tempoContribuicao/365)
+        pontos = (idade + Math.trunc(tempoContribuicao/365))
         document.getElementById("apPontosProfPAtingido").innerHTML = `${pontos} pontos`
         if (masculino) {
             document.getElementById("apPontosProfPExigido").innerHTML = "93 pontos"
