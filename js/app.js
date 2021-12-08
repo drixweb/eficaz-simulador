@@ -591,7 +591,7 @@ class App {
         let apPontosProf = false
         let apPedagio = false
         let apPedagioProf = false
-        let compulsoria = false
+        let apCompulsoria = false
         
         // Captando o tempo de contribuição
         let tempoContribuicao = lista.reduce(function(soma, i){
@@ -1219,37 +1219,47 @@ class App {
                 document.getElementById("apPedagioProfMagElegivel").innerHTML = "Atingido"
             }
         }
-        document.getElementById("apPedagioIAtingido").innerHTML = `${idade} anos`
+        document.getElementById("apPedagioProfIAtingido").innerHTML = `${idade} anos`
         if (masculino) {
-            document.getElementById("apPedagioIExigido").innerHTML = "55 anos"
-            document.getElementById("apPedagioIElegivel").innerHTML = `${55 - idade} anos`
+            document.getElementById("apPedagioProfIExigido").innerHTML = "55 anos"
+            document.getElementById("apPedagioProfIElegivel").innerHTML = `${55 - idade} anos`
             if (idade >= 55){
-                document.getElementById("apPedagioISituacao").innerHTML = "OK"
-                document.getElementById("apPedagioIElegivel").innerHTML = "Atingido"
+                document.getElementById("apPedagioProfISituacao").innerHTML = "OK"
+                document.getElementById("apPedagioProfIElegivel").innerHTML = "Atingido"
             }
             if (tempoContribuicao >= 10950 && tempoServicoPublico >= 7300 && tempoUltimoCargo >= 1825 && tempoMagisterio <= 10950 && pedagio <= 0 && idade >= 55){
-                document.getElementById("apPedagioResultado").innerHTML = "DISPONÍVEL"
+                document.getElementById("apPedagioProfResultado").innerHTML = "DISPONÍVEL"
                 apPedagioProf = true
             } else {
-                document.getElementById("apPedagioResultado").innerHTML = "INDISPONÍVEL"
+                document.getElementById("apPedagioProfResultado").innerHTML = "INDISPONÍVEL"
             }
         }
         if (feminino) {
-            document.getElementById("apPedagioIExigido").innerHTML = "52 anos"
-            document.getElementById("apPedagioIElegivel").innerHTML = `${52 - idade} anos`
+            document.getElementById("apPedagioProfIExigido").innerHTML = "52 anos"
+            document.getElementById("apPedagioProfIElegivel").innerHTML = `${52 - idade} anos`
             if (idade >= 52){
-                document.getElementById("apPedagioISituacao").innerHTML = "OK"
-                document.getElementById("apPedagioIElegivel").innerHTML = "Atingido"
+                document.getElementById("apPedagioProfISituacao").innerHTML = "OK"
+                document.getElementById("apPedagioProfIElegivel").innerHTML = "Atingido"
             }
             if (tempoContribuicao >= 9125 && tempoServicoPublico >= 7300 && tempoUltimoCargo >= 1825 && tempoMagisterio >= 9125 && pedagio <= 0 && idade >= 52){
-                document.getElementById("apPedagioResultado").innerHTML = "DISPONÍVEL"
+                document.getElementById("apPedagioProfResultado").innerHTML = "DISPONÍVEL"
                 apPedagioProf = true
             } else {
-                document.getElementById("apPedagioResultado").innerHTML = "INDISPONÍVEL"
+                document.getElementById("apPedagioProfResultado").innerHTML = "INDISPONÍVEL"
             }
         }
         
-        
+        // Verificando Aposentadoria Compulsória
+        document.getElementById("apCompulsoriaIAtingido").innerHTML = `${idade} anos`
+        document.getElementById("apCompulsoriaIElegivel").innerHTML = `${75 - idade} anos`
+        if (idade >= 75){
+            document.getElementById("apCompulsoriaISituacao").innerHTML = "OK"
+            document.getElementById("apCompulsoriaIElegivel").innerHTML = "Atingido"
+            document.getElementById("apCompulsoriaResultado").innerHTML = "DISPONÍVEL"
+            apCompulsoria = true
+        } else {
+            document.getElementById("apCompulsoriaResultado").innerHTML = "INDISPONÍVEL"
+        }
         
         
         
@@ -1260,31 +1270,75 @@ class App {
 
 
         // Preenchendo o resumo de cenários + Exibindo tabelas de cenário
-        if (apIdade){
-            document.getElementById("cenarioAPIdade").innerHTML = "DISPONÍVEL"
+        if (apGeral){
+            document.getElementById("cenarioGeral").innerHTML = "DISPONÍVEL"
         } else {
-            document.getElementById("cenarioAPIdade").innerHTML = "INDISPONÍVEL"
+            document.getElementById("cenarioGeral").innerHTML = "INDISPONÍVEL"
         }
-        if (apTempo){
-            document.getElementById("cenarioAPTempo").innerHTML = "DISPONÍVEL"
+        let servProfessor = document.querySelector("input[name='cadMagisterio']:checked").value
+        if (servProfessor == "Sim") {
+            if (apProfessor){
+                document.getElementById("cenarioProfessor").innerHTML = "DISPONÍVEL"
+            } else {
+                document.getElementById("cenarioProfessor").innerHTML = "INDISPONÍVEL"
+            }
+            if (apPontosProf) {
+                document.getElementById("cenarioPontosProf").innerHTML = "DISPONÍVEL"
+            } else {
+                document.getElementById("cenarioPontosProf").innerHTML = "INDISPONÍVEL"
+            }
+            if (apPedagioProf) {
+                document.getElementById("cenarioPedagioProf").innerHTML = "DISPONÍVEL"
+            } else {
+                document.getElementById("cenarioPedagioProf").innerHTML = "INDISPONÍVEL"
+            }
         } else {
-            document.getElementById("cenarioAPTempo").innerHTML = "INDISPONÍVEL"
+            document.getElementById("cenarioProfessor").innerHTML = "NÃO APLICÁVEL"
+            document.getElementById("cenarioPontosProf").innerHTML = "NÃO APLICÁVEL"
+            document.getElementById("cenarioPedagioProf").innerHTML = "NÃO APLICÁVEL"
         }
-        if (apProfessor){
-            document.getElementById("cenarioAPProfessor").innerHTML = "DISPONÍVEL"
+        let servSaude = document.querySelector("input[name='cadSaude']:checked").value
+        if (servSaude == "Sim") {
+            if (apSaude){
+                document.getElementById("cenarioSaude").innerHTML = "DISPONÍVEL"
+            } else {
+                document.getElementById("cenarioSaude").innerHTML = "INDISPONÍVEL"
+            }
+        } else { document.getElementById("cenarioSaude").innerHTML = "NÃO APLICÁVEL"}
+        var select = document.getElementById('deficiencia')
+        var deficiencia = select.options[select.selectedIndex].value
+        if (deficiencia != "Não") {
+            if (apDeficiencia){
+                document.getElementById("cenarioDeficiencia").innerHTML = "DISPONÍVEL"
+            } else {
+                document.getElementById("cenarioDeficiencia").innerHTML = "INDISPONÍVEL"
+            }
+        } else { document.getElementById("cenarioDeficiencia").innerHTML = "NÃO APLICÁVEL"}
+        if (apPontos) {
+            document.getElementById("cenarioPontos").innerHTML = "DISPONÍVEL"
         } else {
-            document.getElementById("cenarioAPProfessor").innerHTML = "INDISPONÍVEL"
+            document.getElementById("cenarioPontos").innerHTML = "INDISPONÍVEL"
         }
-        if (apEC40){
-            document.getElementById("cenarioEC40").innerHTML = "DISPONÍVEL"
+        if (apPedagio) {
+            document.getElementById("cenarioPedagio").innerHTML = "DISPONÍVEL"
         } else {
-            document.getElementById("cenarioEC40").innerHTML = "INDISPONÍVEL"
+            document.getElementById("cenarioPedagio").innerHTML = "INDISPONÍVEL"
         }
-        if (apEC40Professor){
-            document.getElementById("cenarioEC40Professor").innerHTML = "DISPONÍVEL"
-        } else {
-            document.getElementById("cenarioEC40Professor").innerHTML = "INDISPONÍVEL"
+        if (apCompulsoria) {
+            document.getElementById("cenarioCompulsoria").innerHTML = "DISPONÍVEL"
         }
+        else {
+            document.getElementById("cenarioCompulsoria").innerHTML = "INDISPONÍVEL"
+        }
+
+
+
+
+
+
+
+
+
     }
     
     calcularTempoLiqCargoAtual(){

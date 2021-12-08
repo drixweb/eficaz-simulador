@@ -386,6 +386,13 @@
                             <td class="td7E" id="apProfessorMagElegivel">-</td>
                         </tr>
                         <tr class="trTemposDetalhados">
+                            <td class="td7A">Pontos</td>
+                            <td class="td7B" id="apProfessorPExigido">9125 dias</td>
+                            <td class="td7C" id="apProfessorPAtingido"></td>
+                            <td class="td7D" id="apProfessorPSituacao">PENDENTE</td>
+                            <td class="td7E" id="apProfessorPElegivel">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
                             <td class="td7A" style="border-bottom: solid 1px;">Idade exigida</td>
                             <td class="td7B" id="apProfessorIExigido" style="border-bottom: solid 1px;">0</td>
                             <td class="td7C" id="apProfessorIAtingido" style="border-bottom: solid 1px;">-</td>
@@ -604,6 +611,13 @@
                             <td class="td7E" id="apPontosProfMagElegivel">-</td>
                         </tr>
                         <tr class="trTemposDetalhados">
+                            <td class="td7A">Pontos</td>
+                            <td class="td7B" id="apPontosProfPExigido"></td>
+                            <td class="td7C" id="apPontosProfPAtingido"></td>
+                            <td class="td7D" id="apPontosProfPSituacao">PENDENTE</td>
+                            <td class="td7E" id="apPontosProfPElegivel">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
                             <td class="td7A" style="border-bottom: solid 1px;">Idade exigida</td>
                             <td class="td7B" id="apPontosProfIExigido" style="border-bottom: solid 1px;">0</td>
                             <td class="td7C" id="apPontosProfIAtingido" style="border-bottom: solid 1px;">-</td>
@@ -758,7 +772,7 @@
                     <tbody>
                         <tr class="trTemposDetalhados">
                             <td class="td7A" style="border-bottom: solid 1px;">Idade exigida</td>
-                            <td class="td7B" id="apCompulsoriaIExigido" style="border-bottom: solid 1px;">0</td>
+                            <td class="td7B" id="apCompulsoriaIExigido" style="border-bottom: solid 1px;">75</td>
                             <td class="td7C" id="apCompulsoriaIAtingido" style="border-bottom: solid 1px;">-</td>
                             <td class="td7D" id="apCompulsoriaISituacao" style="border-bottom: solid 1px;">PENDENTE</td>
                             <td class="td7E" id="apCompulsoriaIElegivel" style="border-bottom: solid 1px;">-</td>
@@ -1068,28 +1082,12 @@
                             </thead>
                             <tbody class="corpoCenarios">
                                 <tr>
-                                    <td>[DEFASADO]</td>
-                                    <td id="cenarioAPIdade"></td>
-                                </tr>
-                                <tr>
-                                    <td>[DEFASADO]</td>
-                                    <td id="cenarioAPTempo"></td>
-                                </tr>
-                                <tr>
                                     <td>Aposentadoria dos Servidores em Geral</td>
                                     <td id="cenarioAPGeral"></td>
                                 </tr>
                                 <tr>
                                     <td>Aposentadoria dos Professores</td>
-                                    <td id="cenarioAPProfessor"></td>
-                                </tr>
-                                <tr>
-                                    <td>[DEFASADO]</td>
-                                    <td id="cenarioEC40"></td>
-                                </tr>
-                                <tr>
-                                    <td>[DEFASADO]</td>
-                                    <td id="cenarioEC40Professor"></td>
+                                    <td id="cenarioProfessor"></td>
                                 </tr>
                                 <tr id="trCenarioSaude">
                                     <td>Aposentadoria dos Servidores Expostos à Agentes Químicos, Físicos e Biológicos</td>
@@ -1101,19 +1099,23 @@
                                 </tr>
                                 <tr>
                                     <td>Regra de Transição (Pontos)</td>
-                                    <td id="cenarioAPPts"></td>
+                                    <td id="cenarioPontos"></td>
                                 </tr>
                                 <tr>
                                     <td>Regra de Transição para Professores (Pontos)</td>
-                                    <td id="cenarioAPPtsProfessores"></td>
+                                    <td id="cenarioPontosProf"></td>
                                 </tr>
                                 <tr>
                                     <td>Regra de Transição (Pedágio)</td>
-                                    <td id="cenarioAPPed"></td>
+                                    <td id="cenarioPedagio"></td>
                                 </tr>
                                 <tr>
                                     <td>Regra de Transição para Professores (Pedágio)</td>
-                                    <td id="cenarioAPPedProfessores"></td>
+                                    <td id="cenarioPedagioProf"></td>
+                                </tr>
+                                <tr>
+                                    <td>Aposentadoria Compulsória</td>
+                                    <td id="cenarioCompulsoria"></td>
                                 </tr>
                             </tbody>
                         </table>
