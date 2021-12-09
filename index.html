@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="style.css">
-    <style>#pagina1, #pagina2, .desabilitado{display: none;}</style>
+    <style>pagina1, pagina2, .desabilitado{display: none;}</style>
 
     <script src="js/tempo_de_servico.js"></script>
     <script src="js/app.js"></script>
@@ -159,6 +159,13 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo no Cargo Atual</td>
+                            <td class="td7B" id="anoCargoAtual">0</td>
+                            <td class="td7C" id="mesCargoAtual">0</td>
+                            <td class="td7D" id="diaCargoAtual">0</td>
+                            <td class="td7E" id="somaCargoAtual">0</td>
+                        </tr>
                         <tr class="trTemposDetalhados">
                             <td class="td7A">Serviço Público</td>
                             <td class="td7B" id="anoPublico">0</td>
@@ -930,10 +937,31 @@
                 </div>
 
                 <div class="field">
-                    <label for="organizacao" class="label">Organização</label>
-                    <div class="control">
-                        <input class="input" id="organizacao" type="text" placeholder="Digite o nome do Órgão ou Empresa" style="width: 800px;" onchange="app.desmarcarOrganizacao()">
-                    </div>
+                    <table>
+                        <tr>
+                            <td>
+                                <label for="organizacao" class="label">Organização</label>
+                                <div class="control">
+                                    <input class="input" id="organizacao" type="text" placeholder="Digite o nome do Órgão ou Empresa" style="width: 650px" onchange="app.desmarcarOrganizacao()">
+                                </div>
+                            </td>
+                            <td>
+                                <br>
+                                <div class="control">
+                                    <label class="label">
+                                        <input type="checkbox" id="checkCarreiraAtual" name="checkCarreiraAtual">
+                                        Carreira atual
+                                    </label>
+                                </div>
+                                <div class="control">
+                                    <label class="label">
+                                        <input type="checkbox" id="checkCargoAtual" name="checkCargoAtual">
+                                        Cargo atual
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
                 <div class="fields">
                     <table>
@@ -1003,7 +1031,7 @@
                                 </div>
                             </td>
                         </tr>
-                    </table>
+                    </table><br><br>
                 </div>
 
                 <div class="buttons" id="painelDeBotoes01">
@@ -1083,7 +1111,7 @@
                             <tbody class="corpoCenarios">
                                 <tr>
                                     <td>Aposentadoria dos Servidores em Geral</td>
-                                    <td id="cenarioAPGeral"></td>
+                                    <td id="cenarioGeral"></td>
                                 </tr>
                                 <tr>
                                     <td>Aposentadoria dos Professores</td>

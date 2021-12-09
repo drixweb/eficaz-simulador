@@ -1,4 +1,5 @@
 let lista = [0];
+let listaCargoAtual = [0];
 let listaRPPS = [0];
 let listaRGPS = [0];
 let listaMilitar = [0];
@@ -76,6 +77,9 @@ class App {
             document.getElementById("tempoCargoAtual").innerHTML = `${calcTotal} dias`
             document.getElementById("tempoAverbacao").innerHTML = `${soma} dias`
             document.getElementById("tempoLiquidoTotal").innerHTML = `${totalGeral} dias`
+
+            //Desabilitar botão "sem averbação"
+            document.getElementById("semAverbar").disabled = true
         }
     }
 
@@ -378,8 +382,8 @@ class App {
             document.getElementById("lotacao").value == "") {
             alert("ATENÇÃO!\nPreencha todos os campos antes de prosseguir.")
         } else {
-            // Desabilita o botão finalizar
-            document.getElementById("finalizar").disabled = true
+            this.desabilitarCampos()
+            this.desabilitarBotoes()
             //botao.innerHTML = '<ion-icon name="reload-outline"></ion-icon>Atualizar'
 
             //DATA DE EMISSÃO
@@ -499,6 +503,22 @@ class App {
                 document.getElementById("somaSaude").innerHTML = somaSaude
             }
 
+            //Verifica e adiciona cargo atual
+            if (document.getElementById("checkCargoAtual").checked){
+                listaCargoAtual.push(tempo)
+                let somaCargoAtual = listaCargoAtual.reduce(function(somaCargoAtual, i){
+                    return somaCargoAtual+i
+                })
+                let anoCargoAtual = Math.trunc(somaCargoAtual/365)
+                let sobraCargoAtual = somaCargoAtual % 365
+                let mesCargoAtual = Math.trunc(sobraCargoAtual/30)
+                let diaCargoAtual = sobraCargoAtual % 30
+                document.getElementById("anoCargoAtual").innerHTML = anoCargoAtual
+                document.getElementById("mesCargoAtual").innerHTML = mesCargoAtual
+                document.getElementById("diaCargoAtual").innerHTML = diaCargoAtual
+                document.getElementById("somaCargoAtual").innerHTML = somaCargoAtual
+            }
+
             listaRPPS.push(totalCargoAtual)  //Tempo atual de RPPS
                 let somaRPPS = listaRPPS.reduce(function(somaRPPS, i){
                     return somaRPPS+i
@@ -573,6 +593,20 @@ class App {
         } else if (numCPF.value.length == 11) {
             numCPF.value += "-"
         }
+    }
+
+    desabilitarCampos(){
+        // Desabilitando botões e campos
+        document.getElementById("nomeDoServidor").disabled = true
+        document.getElementById("dataNasc").disabled = true
+        document.getElementById("CPF").disabled = true
+        document.getElementById("matricula").disabled = true
+        document.getElementById("dataAdm").disabled = true
+        document.getElementById("cargo").disabled = true
+        document.getElementById("lotacao").disabled = true
+    }
+    desabilitarBotoes(){
+        document.getElementById("finalizar").disabled = true
     }
 
     montarCenarios(){
@@ -1260,14 +1294,6 @@ class App {
         } else {
             document.getElementById("apCompulsoriaResultado").innerHTML = "INDISPONÍVEL"
         }
-        
-        
-        
-        
-
-
-        /** rascunho */
-
 
         // Preenchendo o resumo de cenários + Exibindo tabelas de cenário
         if (apGeral){
@@ -1330,15 +1356,6 @@ class App {
         else {
             document.getElementById("cenarioCompulsoria").innerHTML = "INDISPONÍVEL"
         }
-
-
-
-
-
-
-
-
-
     }
     
     calcularTempoLiqCargoAtual(){
@@ -1386,7 +1403,9 @@ class App {
         janela2.document.write(pagina2)
         janela2.document.write('</body></html>')
         janela2.document.close()
-        //janela2.print()
+        setTimeout(function(){
+            janela2.print()
+        },1000)
 
         // PÁGINA 01
         let pagina1 = document.getElementById("pagina1").innerHTML
@@ -1399,6 +1418,8 @@ class App {
         janela1.document.write(pagina1)
         janela1.document.write('</body></html>')
         janela1.document.close()
-        //janela1.print()
+        setTimeout(function(){
+            janela1.print()
+        },1000)
     }
 }
