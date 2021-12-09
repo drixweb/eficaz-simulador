@@ -20,7 +20,7 @@
     <div class="container" id="pagina1" style="border-style: solid; width: 720px; margin-top: 0;">
         <div class="idPaginaImpressao">
             <table class="tbPaginaImpressao">
-                <td style="padding-left: 10px;">Emitido em <span id="dataEmitido"></span></td>
+                <td style="padding-left: 10px;">Emitido em <span id="dataEmitido1"></span></td>
                 <td style="text-align: end; padding-right: 25px;">Página 01</td>
             </table>
         </div>
@@ -240,7 +240,7 @@
     <div class="container" id="pagina2" style="border-style: solid; width: 720px; margin-top: 0;">
         <div class="idPaginaImpressao">
             <table class="tbPaginaImpressao">
-                <td style="padding-left: 10px;">Emitido em <span id="dataEmitido"></span></td>
+                <td style="padding-left: 10px;">Emitido em <span id="dataEmitido2"></span></td>
                 <td style="text-align: end; padding-right: 25px;">Página 02</td>
             </table>
         </div>
@@ -946,17 +946,15 @@
                                 </div>
                             </td>
                             <td>
-                                <br>
                                 <div class="control">
-                                    <label class="label">
-                                        <input type="checkbox" id="checkCarreiraAtual" name="checkCarreiraAtual">
-                                        Carreira atual
-                                    </label>
-                                </div>
-                                <div class="control">
-                                    <label class="label">
-                                        <input type="checkbox" id="checkCargoAtual" name="checkCargoAtual">
-                                        Cargo atual
+                                    <label for="averbacaoCargoAtual" class="label"><abbr title="Esse tempo corresponde ao cargo atual?">Cargo Atual</abbr></label>
+                                    <label class="radio">
+                                        <input type="radio" name="averbacaoCargoAtual" value="Sim" checked>
+                                            Sim
+                                    </label><br>
+                                    <label class="radio">
+                                        <input type="radio" name="averbacaoCargoAtual" value="Não">
+                                            Não
                                     </label>
                                 </div>
                             </td>
@@ -1004,21 +1002,21 @@
                                     </label>
                                 </div>
                             </td>
-                            <td class="tdMagisterio">
-                                <label for="magisterio" class="label">Magistério</label>
-                                <div class="control">
-                                    <label class="radio" id="radio">
+                            <td>
+                                <div class="tdMagisterio">
+                                    <label for="magisterio" class="label">Magistério</label>
+                                    <label class="radio">
                                         <input type="radio" name="magisterio" value="Não" checked>
-                                        Não
-                                      </label><br>
-                                      <label class="radio" id="radio">
-                                      <input type="radio" name="magisterio" value="Sim">
-                                      Sim
+                                            Não
+                                    </label><br>
+                                    <label class="radio">
+                                        <input type="radio" name="magisterio" value="Sim">
+                                            Sim
                                     </label>
                                 </div>
                             </td>
                             <td>
-                                <div class="control">
+                                <div class="tdSaude">
                                     <label for="saude" class="label"><abbr title="Servidor(a) expostos à agantes químicos, físicos e biológicos">Saúde</abbr></label>
                                     <label class="radio">
                                         <input type="radio" name="saude" value="Não" checked>

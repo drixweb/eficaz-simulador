@@ -384,7 +384,6 @@ class App {
         } else {
             this.desabilitarCampos()
             this.desabilitarBotoes()
-            //botao.innerHTML = '<ion-icon name="reload-outline"></ion-icon>Atualizar'
 
             //DATA DE EMISSÃO
             var hoje = new Date()
@@ -392,7 +391,8 @@ class App {
             var mesHoje = String(hoje.getMonth() + 1).padStart(2,'0')
             var anoHoje = hoje.getFullYear()
             var dataAtual = `${diaHoje}/${mesHoje}/${anoHoje}`
-            document.getElementById("dataEmitido").innerHTML = dataAtual
+            document.getElementById("dataEmitido1").innerHTML = dataAtual
+            document.getElementById("dataEmitido2").innerHTML = dataAtual
 
             //DADOS DO SERVIDOR
             let nome = document.getElementById("nomeDoServidor").value
@@ -504,11 +504,12 @@ class App {
             }
 
             //Verifica e adiciona cargo atual
-            if (document.getElementById("checkCargoAtual").checked){
+            if (document.getElementById("averbacaoCargoAtual").checked){
                 listaCargoAtual.push(tempo)
                 let somaCargoAtual = listaCargoAtual.reduce(function(somaCargoAtual, i){
                     return somaCargoAtual+i
                 })
+                somaCargoAtual += totalCargoAtual
                 let anoCargoAtual = Math.trunc(somaCargoAtual/365)
                 let sobraCargoAtual = somaCargoAtual % 365
                 let mesCargoAtual = Math.trunc(sobraCargoAtual/30)
