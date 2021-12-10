@@ -248,6 +248,23 @@ class App {
     }
 
     listaDetalhada(registro){
+        //Separando pelo Cargo Atual
+        if (registro.averbacaoCargoAtual == "Sim") {
+            listaCargoAtual.push(registro.tempo)
+            let somaCargoAtual = listaCargoAtual.reduce(function(somaCargoAtual, i){
+                return somaCargoAtual+i
+            })
+            somaCargoAtual += 10
+            let anoCargoAtual = Math.trunc(somaCargoAtual/365)
+            let sobraCargoAtual = somaCargoAtual % 365
+            let mesCargoAtual = Math.trunc(sobraCargoAtual/30)
+            let diaCargoAtual = sobraCargoAtual % 30
+            document.getElementById("anoCargoAtual").innerHTML = anoCargoAtual
+            document.getElementById("mesCargoAtual").innerHTML = mesCargoAtual
+            document.getElementById("diaCargoAtual").innerHTML = diaCargoAtual
+            document.getElementById("somaCargoAtual").innerHTML = somaCargoAtual
+        }
+
         //Separando por natureza
         if (registro.natureza == "Público") {
             listaPublico.push(registro.tempo)
@@ -458,10 +475,19 @@ class App {
             document.getElementById("prtDiaTempoLiq").innerHTML = prtDiaTempoLiq
 
             //Adicionar tempo atual no "Tempo de Serviço Detalhado"
-            lista.push(totalCargoAtual) //Tempo Atual
-                let soma = lista.reduce(function(soma, i){
-                    return soma+i
+            lista.push(totalCargoAtual)             //Add Tempo Total
+            listaCargoAtual.push(totalCargoAtual)   //Add Tempo no Cargo Atual
+                let somaCargoAtual = listaCargoAtual.reduce(function(somaCargoAtual, i){
+                    return somaCargoAtual+i
                 })
+                let anoCargoAtual = Math.trunc(somaCargoAtual/365)
+                let sobraCargoAtual = somaCargoAtual % 365
+                let mesCargoAtual = Math.trunc(sobraCargoAtual/30)
+                let diaCargoAtual = sobraCargoAtual % 30
+                document.getElementById("anoCargoAtual").innerHTML = anoCargoAtual
+                document.getElementById("mesCargoAtual").innerHTML = mesCargoAtual
+                document.getElementById("diaCargoAtual").innerHTML = diaCargoAtual
+                document.getElementById("somaCargoAtual").innerHTML = somaCargoAtual
 
             listaPublico.push(totalCargoAtual)  //Tempo de Serviço Público
                 let somaPublico = listaPublico.reduce(function(somaPublico, i){
@@ -506,23 +532,6 @@ class App {
                 document.getElementById("mesSaude").innerHTML = mesSaude
                 document.getElementById("diaSaude").innerHTML = diaSaude
                 document.getElementById("somaSaude").innerHTML = somaSaude
-            }
-
-            //Verifica e adiciona cargo atual
-            if (document.getElementById("averbacaoCargoAtual").checked){
-                listaCargoAtual.push(tempo)
-                let somaCargoAtual = listaCargoAtual.reduce(function(somaCargoAtual, i){
-                    return somaCargoAtual+i
-                })
-                somaCargoAtual += totalCargoAtual
-                let anoCargoAtual = Math.trunc(somaCargoAtual/365)
-                let sobraCargoAtual = somaCargoAtual % 365
-                let mesCargoAtual = Math.trunc(sobraCargoAtual/30)
-                let diaCargoAtual = sobraCargoAtual % 30
-                document.getElementById("anoCargoAtual").innerHTML = anoCargoAtual
-                document.getElementById("mesCargoAtual").innerHTML = mesCargoAtual
-                document.getElementById("diaCargoAtual").innerHTML = diaCargoAtual
-                document.getElementById("somaCargoAtual").innerHTML = somaCargoAtual
             }
 
             listaRPPS.push(totalCargoAtual)  //Tempo atual de RPPS
@@ -588,7 +597,7 @@ class App {
     desmarcarCargo(){
         document.getElementById("cargo").classList.remove("is-danger")
     }
-    desmarcarLocacao(){
+    desmarcarLotacao(){
         document.getElementById("lotacao").classList.remove("is-danger")
     }
 
