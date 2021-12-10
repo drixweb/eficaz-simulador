@@ -15,6 +15,7 @@ class App {
         let organizacao = document.getElementById("organizacao").value
         let dataInicio = document.getElementById("dataInicio").value
         let dataFim = document.getElementById("dataFim").value
+        let averbacaoCargoAtual = document.querySelector("input[name='averbacaoCargoAtual']:checked").value
         let natureza = document.querySelector("input[name='natureza']:checked").value
         let regime = document.querySelector("input[name='regime']:checked").value
         let magisterio = document.querySelector("input[name='magisterio']:checked").value
@@ -25,7 +26,7 @@ class App {
         let calc = Math.abs(d2 - d1)
         let tempo = (Math.ceil(calc / (1000 * 60 * 60 * 24)) +1)
         
-        let registro = new Registro(organizacao, dataInicio, dataFim, tempo, natureza, regime, magisterio, saude)
+        let registro = new Registro(organizacao, dataInicio, dataFim, averbacaoCargoAtual, tempo, natureza, regime, magisterio, saude)
 
         //Verifica se todos os campos estão preenchidos corretamente
         this.verificaCadTempoVazio()
@@ -106,7 +107,7 @@ class App {
         document.getElementById("dataFim").classList.remove("is-danger")
     }
 
-    inserirNaLista(registro){
+    inserirNaLista(registro){   //Acionado ao clicar no botão +Adicionar
         let linha = document.createElement("tr")
         linha.id = "adicionarCelulas"
         document.getElementById("adicionarLinhas").appendChild(linha)
@@ -155,6 +156,10 @@ class App {
         let tdSaude = document.createElement("td")
             tdSaude.innerHTML += registro.saude
             linha.appendChild(tdSaude)
+        //Adicionar C. A.
+        let tdAverbacaoCargoAtual = document.createElement("td")
+            tdAverbacaoCargoAtual.innerHTML += registro.averbacaoCargoAtual
+            linha.appendChild(tdAverbacaoCargoAtual)
         //Adicionar botão para excluir registro
         let tdRemover = document.createElement("td")
             linha.appendChild(tdRemover)
