@@ -622,18 +622,15 @@ class App {
     }
     desabilitarBotoes(){
         document.getElementById("finalizar").disabled = true
+        document.getElementById("adicionar").disabled = true
     }
 
     montarCenarios(){
         let sexo = document.querySelector("input[name='sexo']:checked").value
         let feminino = false
         let masculino = false
-        let apIdade = false
-        let apTempo = false
         let apGeral = false
         let apProfessor = false
-        let apEC40 = false
-        let apEC40Professor = false
         let apSaude = false
         let apDeficiencia = false
         let apPontos = false
@@ -651,19 +648,16 @@ class App {
         let calcAdm = new Date(dataAdm)
         let calcHoje = new Date()
         let calcSoma = Math.abs(calcHoje - calcAdm)
-        /*let tc_aux2 = Math.ceil(calcSoma / (1000 * 60 * 60 * 24))
-        let  = tc_aux1 + tc_aux2*/
         
         // Captando o tempo de serviço público
         let tempoServicoPublico = listaPublico.reduce(function(soma, i){
             return soma+i
         })
 
-        // Captando o tempo de carreira
-        let tempoCarreira = Math.ceil(calcSoma / (1000 * 60 * 60 * 24))
-
         // Captando o tempo no último cargo
-        let tempoUltimoCargo = Math.ceil(calcSoma / (1000 * 60 * 60 * 24))
+        let tempoUltimoCargo = listaCargoAtual.reduce(function(soma, i){
+            return soma+i
+        })
 
         // Captando o tempo de magistério
         let tempoMagisterio = listaMagisterio.reduce(function(soma, i){
@@ -940,7 +934,18 @@ class App {
         document.getElementById("apPontosPAtingido").innerHTML = `${pontos} pontos`
         if (masculino) {
             document.getElementById("apPontosPExigido").innerHTML = "98 pontos"
-            document.getElementById("apPontosPElegivel").innerHTML = `${(105 - pontos)/2} anos`
+            document.getElementById("apPontosPElegivel").innerHTML = 
+            
+            
+            
+            
+            
+            
+            
+            
+            /***** CONTINUAR AQUI */
+            
+            `${((105 - pontos)/2)} anos`
             if (pontos >= 98) {
                 document.getElementById("apPontosPSituacao").innerHTML = "OK"
                 document.getElementById("apPontosPElegivel").innerHTML = "Atingido"
@@ -1113,14 +1118,13 @@ class App {
         let diaHoje = new Date()
         let calc = Math.abs(diaHoje - diaEC103)
         let tempoEC_Hoje = (Math.ceil(calc / (1000 * 60 * 60 * 24)))
+        document.getElementById("apPedagioPAtingido").innerHTML = tempoEC_Hoje
         let pedagio = 0
         if (masculino) {
             pedagio = 12775 - (tempoContribuicao - tempoEC_Hoje)
             if (pedagio > 0) {
                 document.getElementById("apPedagioPExigido").innerHTML = `${pedagio} dias`
-                if (tempoContribuicao >= 12775) {
-                    document.getElementById("apPedagioPAtingido").innerHTML = `${tempoContribuicao - 12775} dias`
-                }
+                document.getElementById("apPedagioPAtingido").innerHTML = `${tempoEC_Hoje} dias`
                 document.getElementById("apPedagioPElegivel").innerHTML = `${pedagio - (tempoContribuicao - 12775)} dias`
                 if ((tempoContribuicao - 12775) >= pedagio) {
                     document.getElementById("apPedagioPSituacao").innerHTML = "OK"
@@ -1137,9 +1141,7 @@ class App {
             pedagio = 10950 - (tempoContribuicao - tempoEC_Hoje)
             if (pedagio > 0) {
                 document.getElementById("apPedagioPExigido").innerHTML = `${pedagio} dias`
-                if (tempoContribuicao >= 10950) {
-                    document.getElementById("apPedagioPAtingido").innerHTML = `${tempoContribuicao - 10950} dias`
-                }
+                document.getElementById("apPedagioPAtingido").innerHTML = `${tempoEC_Hoje} dias`
                 document.getElementById("apPedagioPElegivel").innerHTML = `${pedagio - (tempoContribuicao - 10950)} dias`
                 if ((tempoContribuicao - 10950) >= pedagio) {
                     document.getElementById("apPedagioPSituacao").innerHTML = "OK"
