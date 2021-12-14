@@ -72,6 +72,42 @@
                 </div>
             </div>
 
+            <div class="secaoImpressao" id="secao01"><br><br>
+                <p style="font-size: 16px; font-weight: 700; text-align: center;">TEMPO DE SERVIÇO NO CONTRATO ATUAL</p>
+                <br>
+                <table class="tbRelacaoTempo">
+                    <thead>
+                        <tr class="negrito">
+                            <td class="td2A" style="width: 500px;">Órgão</td>
+                            <td class="td2B">Início</td>
+                            <td class="td2C">Fim</td>
+                            <td class="td2D">Natureza</td>
+                            <td class="td2E">Regime</td>
+                            <td class="td2F">Magistério</td>
+                            <td class="td2G">Saúde</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="td2A">Pref. Mun. de São Miguel do Guaporé</td>
+                            <td class="td2B"><span id="prtDataAdm2"></span></td>
+                            <td class="td2C"><span id="prtDataAtual"></span></td>
+                            <td class="td2D">Público</td>
+                            <td class="td2E">RPPS</td>
+                            <td class="td2F"><span id="prtMagisterio"></span></td>
+                            <td class="td2G"><span id="prtSaude"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="tbRelacaoTempo">
+                    <tr>
+                        <td class="td3A" style="border-bottom: 1px solid;">Soma do Tempo líquido no cargo atual (A) =</td>
+                        <td class="td3B" style="border-bottom: 1px solid;"><span id="prtTempoCargoAtual"></span></td>
+                        <td class="td3C" style="border-bottom: 1px solid;"><span id="prtAnoTempoLiq"></span> ANO(S), <span id="prtMesTempoLiq"></span> MÊS(ES) E <span id="prtDiaTempoLiq"></span> DIA(S)</td>
+                    </tr>
+                </table>
+            </div>
+
             <div class="secaoImpressao" id="secao1">
                 <br><br>
                 <p style="font-size: 16px; font-weight: 700; text-align: center;">FREQUÊNCIA \ IPMSMG</p>
@@ -345,8 +381,8 @@
                             <td class="ultimalinha" colspan="5"><p style="text-align: right;">Resultado: <span id="apGeralResultado">VERIFICAR</span></p></td>
                         </tr>
                     </tbody>
-                </table>
-            </div><br>
+                </table><br>
+            </div>
 
             <div class="secaoImpressao" id="secao6">
                 <p style="font-weight: 600;">APOSENTADORIA DOS PROFESSORES</p>
@@ -410,10 +446,10 @@
                             <td class="ultimalinha" colspan="5"><p style="text-align: right;">Resultado: <span id="apProfessorResultado">VERIFICAR</span></p></td>
                         </tr>
                     </tbody>
-                </table>
-            </div><br>
+                </table><br>
+            </div>
 
-            <div class="secaoImpressao" id="secao6">
+            <div class="secaoImpressao" id="secao7">
                 <p style="font-weight: 600;">APOSENTADORIA DOS SERVIDORES EXPOSTOS A AGENTES QUÍMICOS, FÍSICOS E BIOLÓGICOS</p>
                 <table class="tbRelacaoTempo">
                     <thead>
@@ -468,10 +504,10 @@
                             <td class="ultimalinha" colspan="5"><p style="text-align: right;">Resultado: <span id="apSaudeResultado">VERIFICAR</span></p></td>
                         </tr>
                     </tbody>
-                </table>
-            </div><br>
+                </table><br>
+            </div>
 
-            <div class="secaoImpressao" id="secao7">
+            <div class="secaoImpressao" id="secao8">
                 <p style="font-weight: 600;">APOSENTADORIA PARA SERVIDORES COM DEFICIÊNCIA</p>
                 <table class="tbRelacaoTempo">
                     <thead>
@@ -512,10 +548,10 @@
                             <td class="ultimalinha" colspan="5"><p style="text-align: right;">Resultado: <span id="apDeficienciaResultado">NÃO APLICÁVEL</span></p></td>
                         </tr>
                     </tbody>
-                </table>
-            </div><br>
+                </table><br>
+            </div>
 
-            <div class="secaoImpressao" id="secao8">
+            <div class="secaoImpressao" id="secao9">
                 <p style="font-weight: 600;">REGRA DE TRANSIÇÃO (PONTOS)</p>
                 <table class="tbRelacaoTempo">
                     <thead>
@@ -570,10 +606,10 @@
                             <td class="ultimalinha" colspan="5"><p style="text-align: right;">Resultado: <span id="apPontosResultado">VERIFICAR</span></p></td>
                         </tr>
                     </tbody>
-                </table>
-            </div><br>
+                </table><br>
+            </div>
 
-            <div class="secaoImpressao" id="secao9">
+            <div class="secaoImpressao" id="secao10">
                 <p style="font-weight: 600;">REGRA DE TRANSIÇÃO PARA PROFESSORES (PONTOS)</p>
                 <table class="tbRelacaoTempo">
                     <thead>
@@ -635,10 +671,10 @@
                             <td class="ultimalinha" colspan="5"><p style="text-align: right;">Resultado: <span id="apPontosProfResultado"></span></p></td>
                         </tr>
                     </tbody>
-                </table>
-            </div><br>
+                </table><br>
+            </div>
 
-            <div class="secaoImpressao" id="secao10">
+            <div class="secaoImpressao" id="secao11">
                 <p style="font-weight: 600;">REGRA DE TRANSIÇÃO (PEDÁGIO)</p>
                 <table class="tbRelacaoTempo">
                     <thead>
@@ -693,10 +729,10 @@
                             <td class="ultimalinha" colspan="5"><p style="text-align: right;">Resultado: <span id="apPedagioResultado"></span></p></td>
                         </tr>
                     </tbody>
-                </table>
-            </div><br>
+                </table><br>
+            </div>
 
-            <div class="secaoImpressao" id="secao11">
+            <div class="secaoImpressao" id="secao12">
                 <p style="font-weight: 600;">REGRA DE TRANSIÇÃO PARA PROFESSORES (PEDÁGIO)</p>
                 <table class="tbRelacaoTempo">
                     <thead>
@@ -758,10 +794,10 @@
                             <td class="ultimalinha" colspan="5"><p style="text-align: right;">Resultado: <span id="apPedagioProfResultado"></span></p></td>
                         </tr>
                     </tbody>
-                </table>
-            </div><br>
+                </table><br>
+            </div>
 
-            <div class="secaoImpressao" id="secao12">
+            <div class="secaoImpressao" id="secao13">
                 <p style="font-weight: 600;">APOSENTADORIA COMPULSÓRIA</p>
                 <table class="tbRelacaoTempo">
                     <thead>
@@ -788,8 +824,8 @@
                             <td class="ultimalinha" colspan="5"><p style="text-align: right;">Resultado: <span id="apCompulsoriaResultado"></span></p></td>
                         </tr>
                     </tbody>
-                </table>
-            </div><br>
+                </table><br>
+            </div>
 
         </div>
     </div>
@@ -1154,6 +1190,7 @@
             <div class="container" id="containerBotoes02">
                 <div class="botoes" id="painelDeBotoes02">
                     <button class="button is-link" id="visualizar" type="button" onclick="app.visualizarImprimir()"><ion-icon name="document-text-outline"></ion-icon>Visualizar e Imprimir</button>
+                    <button class="button is-info" id="novo" type="button" onclick="app.cancelar()"><ion-icon name="color-wand-outline"></ion-icon>Nova Simulação</button>
                 </div>
             </div>
         </section>

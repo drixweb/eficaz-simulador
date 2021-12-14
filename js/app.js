@@ -386,7 +386,7 @@ class App {
             elemento2.parentNode.removeChild(elemento2)
             let elemento3 = document.getElementById("secaoRegTempoAverbacao")
             elemento3.parentNode.removeChild(elemento3)
-            this.exibirBotoes()
+            document.getElementById("finalizar").disabled = true
             this.finalizar()
         }
 
@@ -456,7 +456,7 @@ class App {
                 document.getElementById("prtCargo").innerHTML = cargo
                 document.getElementById("prtCargo2").innerHTML = cargo
 
-            //FREQUÊNCIA
+            //FREQUÊNCIA - TEMPO DE SERVIÇO ATUAL
             document.getElementById("prtDataAdm2").innerHTML = infoDataAdm
             document.getElementById("prtDataAtual").innerHTML = dataAtual
 
@@ -473,6 +473,9 @@ class App {
             document.getElementById("prtAnoTempoLiq").innerHTML = prtAnoTempoLiq
             document.getElementById("prtMesTempoLiq").innerHTML = prtMesTempoLiq
             document.getElementById("prtDiaTempoLiq").innerHTML = prtDiaTempoLiq
+
+            document.getElementById("prtMagisterio").innerHTML = document.querySelector("input[name='cadMagisterio']:checked").value
+            document.getElementById("prtSaude").innerHTML = document.querySelector("input[name='cadSaude']:checked").value
 
             //Adicionar tempo atual no "Tempo de Serviço Detalhado"
             lista.push(totalCargoAtual)             //Add Tempo Total
@@ -622,7 +625,7 @@ class App {
     }
     desabilitarBotoes(){
         document.getElementById("finalizar").disabled = true
-        document.getElementById("adicionar").disabled = true
+        //document.getElementById("adicionar").disabled = true
     }
 
     montarCenarios(){
@@ -934,18 +937,7 @@ class App {
         document.getElementById("apPontosPAtingido").innerHTML = `${pontos} pontos`
         if (masculino) {
             document.getElementById("apPontosPExigido").innerHTML = "98 pontos"
-            document.getElementById("apPontosPElegivel").innerHTML = 
-            
-            
-            
-            
-            
-            
-            
-            
-            /***** CONTINUAR AQUI */
-            
-            `${((105 - pontos)/2)} anos`
+            document.getElementById("apPontosPElegivel").innerHTML = `${Math.round(((105 - pontos)/2) / 2)} anos`
             if (pontos >= 98) {
                 document.getElementById("apPontosPSituacao").innerHTML = "OK"
                 document.getElementById("apPontosPElegivel").innerHTML = "Atingido"
@@ -953,7 +945,7 @@ class App {
         }
         if (feminino) {
             document.getElementById("apPontosPExigido").innerHTML = "88 pontos"
-            document.getElementById("apPontosPElegivel").innerHTML = `${(100 - pontos)/2} anos`
+            document.getElementById("apPontosPElegivel").innerHTML = `${Math.round(((105 - pontos)/2) / 2)} anos`
             if (pontos >= 88) {
                 document.getElementById("apPontosPSituacao").innerHTML = "OK"
                 document.getElementById("apPontosPElegivel").innerHTML = "Atingido"
@@ -1023,7 +1015,7 @@ class App {
         document.getElementById("apPontosProfPAtingido").innerHTML = `${pontos} pontos`
         if (masculino) {
             document.getElementById("apPontosProfPExigido").innerHTML = "93 pontos"
-            document.getElementById("apPontosProfPElegivel").innerHTML = `${(100 - pontos)/2} anos`
+            document.getElementById("apPontosProfPElegivel").innerHTML = `${Math.round(((105 - pontos)/2) / 2)} anos`
             if (pontos >= 93) {
                 document.getElementById("apPontosProfPSituacao").innerHTML = "OK"
                 document.getElementById("apPontosProfPElegivel").innerHTML = "Atingido"
@@ -1031,7 +1023,7 @@ class App {
         }
         if (feminino) {
             document.getElementById("apPontosPExigido").innerHTML = "83 pontos"
-            document.getElementById("apPontosPElegivel").innerHTML = `${(92 - pontos)/2} anos`
+            document.getElementById("apPontosPElegivel").innerHTML = `${Math.round(((105 - pontos)/2) / 2)} anos`
             if (pontos >= 83) {
                 document.getElementById("apPontosProfPSituacao").innerHTML = "OK"
                 document.getElementById("apPontosProfPElegivel").innerHTML = "Atingido"
@@ -1125,7 +1117,7 @@ class App {
             if (pedagio > 0) {
                 document.getElementById("apPedagioPExigido").innerHTML = `${pedagio} dias`
                 document.getElementById("apPedagioPAtingido").innerHTML = `${tempoEC_Hoje} dias`
-                document.getElementById("apPedagioPElegivel").innerHTML = `${pedagio - (tempoContribuicao - 12775)} dias`
+                document.getElementById("apPedagioPElegivel").innerHTML = `${(pedagio*2) - tempoEC_Hoje} dias`
                 if ((tempoContribuicao - 12775) >= pedagio) {
                     document.getElementById("apPedagioPSituacao").innerHTML = "OK"
                     document.getElementById("apPedagioPElegivel").innerHTML = "Atingido"
@@ -1142,7 +1134,7 @@ class App {
             if (pedagio > 0) {
                 document.getElementById("apPedagioPExigido").innerHTML = `${pedagio} dias`
                 document.getElementById("apPedagioPAtingido").innerHTML = `${tempoEC_Hoje} dias`
-                document.getElementById("apPedagioPElegivel").innerHTML = `${pedagio - (tempoContribuicao - 10950)} dias`
+                document.getElementById("apPedagioPElegivel").innerHTML = `${(pedagio*2) - tempoEC_Hoje} dias`
                 if ((tempoContribuicao - 10950) >= pedagio) {
                     document.getElementById("apPedagioPSituacao").innerHTML = "OK"
                     document.getElementById("apPedagioPElegivel").innerHTML = "Atingido"
@@ -1222,7 +1214,7 @@ class App {
                 if (tempoContribuicao >= 10950) {
                     document.getElementById("apPedagioProfPAtingido").innerHTML = `${tempoContribuicao - 10950} dias`
                 }
-                document.getElementById("apPedagioProfPElegivel").innerHTML = `${pedagio - (tempoContribuicao - 10950)} dias`
+                document.getElementById("apPedagioProfPElegivel").innerHTML = `${(pedagio*2) - tempoEC_Hoje} dias`
                 if ((tempoContribuicao - 10950) >= pedagio) {
                     document.getElementById("apPedagioProfPSituacao").innerHTML = "OK"
                     document.getElementById("apPedagioProfPElegivel").innerHTML = "Atingido"
@@ -1241,7 +1233,7 @@ class App {
                 if (tempoContribuicao >= 9125) {
                     document.getElementById("apPedagioPAtingido").innerHTML = `${tempoContribuicao - 9125} dias`
                 }
-                document.getElementById("apPedagioPElegivel").innerHTML = `${pedagio - (tempoContribuicao - 9125)} dias`
+                document.getElementById("apPedagioPElegivel").innerHTML = `${(pedagio*2) - tempoEC_Hoje} dias`
                 if ((tempoContribuicao - 9125) >= pedagio) {
                     document.getElementById("apPedagioPSituacao").innerHTML = "OK"
                     document.getElementById("apPedagioPElegivel").innerHTML = "Atingido"
@@ -1339,6 +1331,10 @@ class App {
             document.getElementById("cenarioProfessor").innerHTML = "NÃO APLICÁVEL"
             document.getElementById("cenarioPontosProf").innerHTML = "NÃO APLICÁVEL"
             document.getElementById("cenarioPedagioProf").innerHTML = "NÃO APLICÁVEL"
+            //Desabilitar quadros de magistério
+            document.getElementById("secao6").style.display = "none"
+            document.getElementById("secao10").style.display = "none"
+            document.getElementById("secao12").style.display = "none"
         }
         let servSaude = document.querySelector("input[name='cadSaude']:checked").value
         if (servSaude == "Sim") {
@@ -1347,7 +1343,10 @@ class App {
             } else {
                 document.getElementById("cenarioSaude").innerHTML = "INDISPONÍVEL"
             }
-        } else { document.getElementById("cenarioSaude").innerHTML = "NÃO APLICÁVEL"}
+        } else {
+            document.getElementById("cenarioSaude").innerHTML = "NÃO APLICÁVEL"
+            document.getElementById("secao7").style.display = "none"
+        }
         var select = document.getElementById('deficiencia')
         var deficiencia = select.options[select.selectedIndex].value
         if (deficiencia != "Não") {
@@ -1356,7 +1355,10 @@ class App {
             } else {
                 document.getElementById("cenarioDeficiencia").innerHTML = "INDISPONÍVEL"
             }
-        } else { document.getElementById("cenarioDeficiencia").innerHTML = "NÃO APLICÁVEL"}
+        } else {
+            document.getElementById("cenarioDeficiencia").innerHTML = "NÃO APLICÁVEL"
+            document.getElementById("secao8").style.display = "none"
+        }
         if (apPontos) {
             document.getElementById("cenarioPontos").innerHTML = "DISPONÍVEL"
         } else {
@@ -1437,6 +1439,6 @@ class App {
         janela1.document.close()
         setTimeout(function(){
             janela1.print()
-        },1000)
+        },3000)
     }
 }
