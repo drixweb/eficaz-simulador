@@ -72,7 +72,7 @@
                 </div>
             </div>
 
-            <div class="secaoImpressao" id="secao01"><br><br>
+            <div class="secaoImpressao" id="secao1"><br><br>
                 <p style="font-size: 16px; font-weight: 700; text-align: center;">TEMPO DE SERVIÇO NO CONTRATO ATUAL</p>
                 <br>
                 <table class="tbRelacaoTempo">
@@ -102,22 +102,12 @@
                 <table class="tbRelacaoTempo">
                     <tr>
                         <td class="td3A" style="border-bottom: 1px solid;">Soma do Tempo líquido no cargo atual (A) =</td>
-                        <td class="td3B" style="border-bottom: 1px solid;"><span id="prtTempoCargoAtual"></span></td>
+                        <td class="td3B" style="border-bottom: 1px solid;"><span id="prtTempoCargoAtual"></span> dias</td>
                         <td class="td3C" style="border-bottom: 1px solid;"><span id="prtAnoTempoLiq"></span> ANO(S), <span id="prtMesTempoLiq"></span> MÊS(ES) E <span id="prtDiaTempoLiq"></span> DIA(S)</td>
                     </tr>
                 </table>
             </div>
 
-            <div class="secaoImpressao" id="secao1">
-                <br><br>
-                <p style="font-size: 16px; font-weight: 700; text-align: center;">FREQUÊNCIA \ IPMSMG</p>
-                <br>
-                <div class="section">
-                    <p>Período de Contribuição no Cargo Atual: <span id="prtDataAdm2"></span> a <span id="prtDataAtual"></span></p>
-                    <p>Tempo no Cargo Atual (A): <span id="prtTempoCargoAtual"></span> dias</p>
-                    <p>Tempo Líquido (aproximado): <span id="prtAnoTempoLiq"></span> ano(s), <span id="prtMesTempoLiq"></span> mês(es) e <span id="prtDiaTempoLiq"></span> dia(s)</p>
-                </div>
-            </div>
             <div class="secaoImpressao" id="secao2">
                 <p style="font-size: 16px; font-weight: 700; text-align: center;">RELAÇÃO DE TEMPO DE SERVIÇO PARA AVERBAÇÃO</p>
                 <br>
@@ -145,7 +135,7 @@
                 <table class="tbRelacaoTempo">
                     <tr>
                         <td class="td3A">Soma do Tempo líquido total (B) =</td>
-                        <td class="td3B"><span id="prtTempoTotal"></span></td>
+                        <td class="td3B"><span id="prtTempoTotal"></span> dias</td>
                         <td class="td3C"><span id="prtTTAno"></span> ANO(S), <span id="prtTTMes"></span> MÊS(ES) E <span id="prtTTDia"></span> DIA(S)</td>
                     </tr>
                     <tr>
@@ -847,6 +837,15 @@
         </div>
 
         <table class="table" id="dadosServidor01">
+            <thead>
+                <tr>
+                    <td colspan="5" style="border: 0px;">
+                        <div class="cabecalho" id="cabecalhoDeducao">
+                            <h2 style="margin-bottom: 0px; padding-bottom: 0px;">Cadastro do Servidor</h2>
+                        </div>
+                    </td>
+                </tr>
+            </thead>
             <tbody>
                 <tr id="cadstroLinha1">
                     <td>
@@ -965,6 +964,32 @@
                 </tr>
             </tbody>
         </table>
+
+        <div class="fields" style="padding-top: 20px;">
+            <table style="width: 400px;">
+                <thead>
+                    <tr>
+                        <td colspan="2">
+                            <div class="cabecalho" id="cabecalhoDeducao">
+                                <h2 style="margin-bottom: 16px; padding: 16px 0px 0px 16px;">Desconto de Tempo de Serviço</h2>
+                            </div>
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="padding-left: 16px;">
+                            <label for="dataInicioCadDeducao" class="label">Data Início</label>
+                            <input type="date" class="input" id="dataInicioCadDeducao" name="dataInicioCadDeducao" style="width: 180px;">
+                        </td>
+                        <td>
+                            <label for="dataFim" class="label">Data Fim</label>
+                            <input type="date" class="input" id="dataFim" name="dataFim" style="width: 180px;" onfocus="app.desmarcarDataFim()">
+                        </td>
+                    </tr>
+                </tbody>
+            </table><br><br>
+        </div>
         
         <div class="divCadTempo" id="secaoCadTempoAverbacao">
             <div class="quadro">
@@ -1065,7 +1090,33 @@
                                 </div>
                             </td>
                         </tr>
-                    </table><br><br>
+                    </table>
+                </div>
+
+                <div class="fields">
+                    <table style="width: 400px;">
+                        <thead>
+                            <tr>
+                                <td colspan="2">
+                                    <div class="cabecalho" id="cabecalhoDeducao">
+                                        <h2 style="text-align: center; margin-bottom: 0px; padding-bottom: 0px;">Desconto de Tempo de Serviço</h2>
+                                    </div>
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <label for="dataInicioCadDeducao" class="label">Data Início</label>
+                                    <input type="date" class="input" id="dataInicioCadDeducao" name="dataInicioCadDeducao" style="width: 180px;">
+                                </td>
+                                <td>
+                                    <label for="dataFim" class="label">Data Fim</label>
+                                    <input type="date" class="input" id="dataFim" name="dataFim" style="width: 180px;" onfocus="app.desmarcarDataFim()">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table><br><br><br>
                 </div>
 
                 <div class="buttons" id="painelDeBotoes01">
