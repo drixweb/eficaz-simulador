@@ -1097,7 +1097,7 @@
                     <table style="width: 400px;">
                         <thead>
                             <tr>
-                                <td colspan="2">
+                                <td colspan="3">
                                     <div class="cabecalho" id="cabecalhoDeducao">
                                         <h2 style="text-align: center; margin-bottom: 0px; padding-bottom: 0px;">Desconto de Tempo de Serviço</h2>
                                     </div>
@@ -1114,6 +1114,10 @@
                                     <label for="dataFimDesconto" class="label">Data Fim</label>
                                     <input type="date" class="input" id="dataFimDesconto" name="dataFimDesconto" style="width: 180px;">
                                 </td>
+                                <td>
+                                    <br>
+                                    <button class="button is-link" id="limparDesconto"><ion-icon name="trash-outline"></ion-icon></button>
+                                </td>
                             </tr>
                         </tbody>
                     </table><br><br><br>
@@ -1121,7 +1125,7 @@
 
                 <div class="buttons" id="painelDeBotoes01">
                     <button class="button is-primary" id="adicionar" type="button" onclick="app.adicionarTempo()"><ion-icon name="add-outline"></ion-icon>Adicionar</button>
-                    <button class="button is-link" id="limpar" type="button" onclick="app.limparItem()"><ion-icon name="trash-outline"></ion-icon></ion-icon>Limpar</button>
+                    <button class="button is-link" id="limpar" type="button" onclick="app.limparItem()"><ion-icon name="trash-outline"></ion-icon>Limpar</button>
                     <button class="button is-info" id="semAverbar" type="button" onclick="app.semAverbar()"><ion-icon name="play-forward-outline"></ion-icon>Sem Averbação</button>
                 </div>
             </div>
