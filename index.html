@@ -983,8 +983,8 @@
                             <input type="date" class="input" id="dataInicioCadDeducao" name="dataInicioCadDeducao" style="width: 180px;">
                         </td>
                         <td>
-                            <label for="dataFim" class="label">Data Fim</label>
-                            <input type="date" class="input" id="dataFim" name="dataFim" style="width: 180px;" onfocus="app.desmarcarDataFim()">
+                            <label for="dataFimCadDeducao" class="label">Data Fim</label>
+                            <input type="date" class="input" id="dataFimCadDeducao" name="dataFimCadDeducao" style="width: 180px;">
                         </td>
                     </tr>
                 </tbody>
@@ -1107,12 +1107,12 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    <label for="dataInicioCadDeducao" class="label">Data Início</label>
-                                    <input type="date" class="input" id="dataInicioCadDeducao" name="dataInicioCadDeducao" style="width: 180px;">
+                                    <label for="dataInicioDesconto" class="label">Data Início</label>
+                                    <input type="date" class="input" id="dataInicioDesconto" name="dataInicioDesconto" style="width: 180px;">
                                 </td>
                                 <td>
-                                    <label for="dataFim" class="label">Data Fim</label>
-                                    <input type="date" class="input" id="dataFim" name="dataFim" style="width: 180px;" onfocus="app.desmarcarDataFim()">
+                                    <label for="dataFimDesconto" class="label">Data Fim</label>
+                                    <input type="date" class="input" id="dataFimDesconto" name="dataFimDesconto" style="width: 180px;">
                                 </td>
                             </tr>
                         </tbody>
@@ -1241,7 +1241,7 @@
             <div class="container" id="containerBotoes02">
                 <div class="botoes" id="painelDeBotoes02">
                     <button class="button is-link" id="visualizar" type="button" onclick="app.visualizarImprimir()"><ion-icon name="document-text-outline"></ion-icon>Visualizar e Imprimir</button>
-                    <button class="button is-info" id="novo" type="button" onclick="app.cancelar()"><ion-icon name="color-wand-outline"></ion-icon>Nova Simulação</button>
+                    <button class="button is-info" id="novo" type="button" onclick="app.novaSimulacao()"><ion-icon name="color-wand-outline"></ion-icon>Nova Simulação</button>
                 </div>
             </div>
         </section>

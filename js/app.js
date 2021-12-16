@@ -25,62 +25,87 @@ class App {
         let d2 = new Date(dataFim)
         let calc = Math.abs(d2 - d1)
         let tempo = (Math.ceil(calc / (1000 * 60 * 60 * 24)) +1)
+
+        let desconto = 0
+        let dataInicioDesconto = document.getElementById("dataInicioDesconto").value
+        let dataFimDesconto = document.getElementById("dataFimDesconto").value
+        if(dataInicioDesconto < dataInicio){
+            alert("Verifique a data inicial do desconto de tempo de serviço. O desconto é " + desconto)
+        } else if(dataFimDesconto > dataFim){
+            alert("Verifique a data final do desconto de tempo de serviço. O desconto é " + desconto)
+        } else if (dataInicioDesconto != "" && dataFimDesconto == ""){
+            alert("Verifique a data final do desconto de tempo de serviço. O desconto é " + desconto)
+        } else if (dataFimDesconto != "" && dataInicioDesconto == ""){
+            alert("Verifique a data inicial do desconto de tempo de serviço. O desconto é " + desconto)
+        } else if((dataInicioDesconto == "" && dataFimDesconto == "") || (dataInicioDesconto >= dataInicio && dataFimDesconto <= dataFim)){
+
+
+            desconto = 50
+            alert("Parece que está tudo certo! O desconto é " + desconto)
         
-        let registro = new Registro(organizacao, dataInicio, dataFim, averbacaoCargoAtual, tempo, natureza, regime, magisterio, saude)
+            if (dataInicioDesconto == "" && dataFimDesconto == "") {
+                desconto = 0
+                alert("Mas, verificamos que está vazio. Então o desconto é " + desconto)
+            }
 
-        //Verifica se todos os campos estão preenchidos corretamente
-        this.verificaCadTempoVazio()
-        if (organizacao == "" || dataInicio == "" || dataFim == "") {
-            alert("ATENÇÃO!\nPreencha todos os campos antes de prosseguir.")
-        } else if (dataFim < dataInicio) {
-            alert("ATENÇÃO!\nVerifique a data inicial e a data final do tempo de serviço")
-        } else {
-            this.inserirNaLista(registro)       //Lista de registros
-            this.inserirNaImpressao(registro)   //Relatório
-            this.listaDetalhada(registro)       //Relatório e cenários
-            this.limparItem()                   //Limpa os campos
-            this.exibirBotoes()                 //Mostra painel de botões para finalizar
-            
-            lista.push(tempo)
-            //Inserir soma de tempo de serviço (na lista e na impressão)
-            let soma = lista.reduce(function(soma, i){
-                return soma+i
-            })
-            document.getElementById("tdTempoTotal").innerHTML = soma
-            document.getElementById("prtTempoTotal").innerHTML = soma
+            let registro = new Registro(organizacao, dataInicio, dataFim, averbacaoCargoAtual, tempo, desconto, natureza, regime, magisterio, saude)
 
-            //Inserir Anos + Meses + Dias do Tempo Líquido Total (na impressão)
-            let prtTTAno = Math.trunc(soma/365)
-            let prtTTSobra = soma % 365
-            let prtTTMes = Math.trunc(prtTTSobra/30)
-            let prtTTDia = prtTTSobra % 30
-            document.getElementById("prtTTAno").innerHTML = prtTTAno
-            document.getElementById("prtTTMes").innerHTML = prtTTMes
-            document.getElementById("prtTTDia").innerHTML = prtTTDia
+            //Verifica se todos os campos estão preenchidos corretamente
+            this.verificaCadTempoVazio()
+            if (organizacao == "" || dataInicio == "" || dataFim == "") {
+                alert("ATENÇÃO!\nPreencha todos os campos antes de prosseguir.")
+            } else if (dataFim < dataInicio) {
+                alert("ATENÇÃO!\nVerifique a data inicial e a data final do tempo de serviço")
+            } else {
+                this.inserirNaLista(registro)       //Lista de registros
+                this.inserirNaImpressao(registro)   //Relatório
+                this.listaDetalhada(registro)       //Relatório e cenários
+                this.limparItem()                   //Limpa os campos
+                this.exibirBotoes()                 //Mostra painel de botões para finalizar
+                
 
-            //Inserir Total Geral e inserir Anos + Meses + Dias (na impressão)
-            let tempAdm = document.getElementById("dataAdm").value
-            let calcAdm = new Date(tempAdm)
-            let calcHoje = new Date()
-            let calcSoma = Math.abs(calcHoje - calcAdm)
-            let calcTotal = (Math.ceil(calcSoma / (1000 * 60 * 60 * 24)))
-            let totalGeral = calcTotal + soma
-            document.getElementById("prtTGTempo").innerHTML = totalGeral
-            let prtTGAno = Math.trunc(totalGeral/365)
-            let prtTGSobra = totalGeral % 365
-            let prtTGMes = Math.trunc(prtTGSobra/30)
-            let prtTGDia = prtTGSobra % 30
-            document.getElementById("prtTGAno").innerHTML = prtTGAno
-            document.getElementById("prtTGMes").innerHTML = prtTGMes
-            document.getElementById("prtTGDia").innerHTML = prtTGDia
-            
-            //PREENCHENDO O RESUMO (na lista)
-            document.getElementById("tempoCargoAtual").innerHTML = `${calcTotal} dias`
-            document.getElementById("tempoAverbacao").innerHTML = `${soma} dias`
-            document.getElementById("tempoLiquidoTotal").innerHTML = `${totalGeral} dias`
 
-            //Desabilitar botão "sem averbação"
-            document.getElementById("semAverbar").disabled = true
+                lista.push(tempo)
+                //Inserir soma de tempo de serviço (na lista e na impressão)
+                let soma = lista.reduce(function(soma, i){
+                    return soma+i
+                })
+                document.getElementById("tdTempoTotal").innerHTML = soma
+                document.getElementById("prtTempoTotal").innerHTML = soma
+
+                //Inserir Anos + Meses + Dias do Tempo Líquido Total (na impressão)
+                let prtTTAno = Math.trunc(soma/365)
+                let prtTTSobra = soma % 365
+                let prtTTMes = Math.trunc(prtTTSobra/30)
+                let prtTTDia = prtTTSobra % 30
+                document.getElementById("prtTTAno").innerHTML = prtTTAno
+                document.getElementById("prtTTMes").innerHTML = prtTTMes
+                document.getElementById("prtTTDia").innerHTML = prtTTDia
+
+                //Inserir Total Geral e inserir Anos + Meses + Dias (na impressão)
+                let tempAdm = document.getElementById("dataAdm").value
+                let calcAdm = new Date(tempAdm)
+                let calcHoje = new Date()
+                let calcSoma = Math.abs(calcHoje - calcAdm)
+                let calcTotal = (Math.ceil(calcSoma / (1000 * 60 * 60 * 24)))
+                let totalGeral = calcTotal + soma
+                document.getElementById("prtTGTempo").innerHTML = totalGeral
+                let prtTGAno = Math.trunc(totalGeral/365)
+                let prtTGSobra = totalGeral % 365
+                let prtTGMes = Math.trunc(prtTGSobra/30)
+                let prtTGDia = prtTGSobra % 30
+                document.getElementById("prtTGAno").innerHTML = prtTGAno
+                document.getElementById("prtTGMes").innerHTML = prtTGMes
+                document.getElementById("prtTGDia").innerHTML = prtTGDia
+                
+                //PREENCHENDO O RESUMO (na lista)
+                document.getElementById("tempoCargoAtual").innerHTML = `${calcTotal} dias`
+                document.getElementById("tempoAverbacao").innerHTML = `${soma} dias`
+                document.getElementById("tempoLiquidoTotal").innerHTML = `${totalGeral} dias`
+
+                //Desabilitar botão "sem averbação"
+                document.getElementById("semAverbar").disabled = true
+            }
         }
     }
 
@@ -406,6 +431,8 @@ class App {
         } else {
             this.desabilitarCampos()
             this.desabilitarBotoes()
+            document.getElementById("secaoCadTempoAverbacao").style.display = "none"
+
 
             //DATA DE EMISSÃO
             var hoje = new Date()
@@ -1398,6 +1425,14 @@ class App {
 
     cancelar(){
         let verificador = confirm("Tem certeza que deseja cancelar o preenchimento?")
+        if (verificador) {
+            document.location.reload(true)
+            document.getElementById("nomeDoServidor").focus()
+        }
+    }
+
+    novaSimulacao(){
+        let verificador = confirm("Deseja iniciar uma nova simulação?")
         if (verificador) {
             document.location.reload(true)
             document.getElementById("nomeDoServidor").focus()
