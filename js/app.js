@@ -1,4 +1,5 @@
 let lista = [0];
+let listaDesconto = [0];
 let listaCargoAtual = [0];
 let listaRPPS = [0];
 let listaRGPS = [0];
@@ -26,21 +27,30 @@ class App {
         let calc = Math.abs(d2 - d1)
         let tempo = (Math.ceil(calc / (1000 * 60 * 60 * 24)) +1)
 
+        let verificaDesconto = false
         let desconto = 0
         let dataInicioDesconto = document.getElementById("dataInicioDesconto").value
         let dataFimDesconto = document.getElementById("dataFimDesconto").value
-        if(dataInicioDesconto < dataInicio){
-            alert("Verifique a data inicial do desconto de tempo de serviço. O desconto é " + desconto)
+        if((dataInicioDesconto != "") && (dataInicioDesconto < dataInicio)){
+            alert("Verifique a data de início do afastamento (Erro #1)")
         } else if(dataFimDesconto > dataFim){
-            alert("Verifique a data final do desconto de tempo de serviço. O desconto é " + desconto)
+            alert("Verifique a data do final do afastamento (Erro #2)")
         } else if (dataInicioDesconto != "" && dataFimDesconto == ""){
-            alert("Verifique a data final do desconto de tempo de serviço. O desconto é " + desconto)
+            alert("Verifique a data de final do afastamento (Erro #3)")
         } else if (dataFimDesconto != "" && dataInicioDesconto == ""){
-            alert("Verifique a data inicial do desconto de tempo de serviço. O desconto é " + desconto)
+            alert("Verifique a data de início do afastamento (Erro #4)")
+        } else if (dataFimDesconto < dataInicioDesconto) {
+            alert("Verifique as datas do período de afastamento (Erro #5)")
         } else if((dataInicioDesconto == "" && dataFimDesconto == "") || (dataInicioDesconto >= dataInicio && dataFimDesconto <= dataFim)){
+            verificaDesconto = true
+        }
 
 
-            desconto = 50
+        if (verificaDesconto == true){
+            let inicioDesconto = new Date(dataInicioDesconto)
+            let fimDesconto = new Date(dataFimDesconto)
+            let calcDesconto = Math.abs(fimDesconto - inicioDesconto)
+            desconto = (Math.ceil(calcDesconto / (1000 * 60 * 60 * 24)) + 1)
             alert("Parece que está tudo certo! O desconto é " + desconto)
         
             if (dataInicioDesconto == "" && dataFimDesconto == "") {
@@ -63,19 +73,27 @@ class App {
                 this.limparItem()                   //Limpa os campos
                 this.exibirBotoes()                 //Mostra painel de botões para finalizar
                 
-
-
                 lista.push(tempo)
+                listaDesconto.push(desconto)
                 //Inserir soma de tempo de serviço (na lista e na impressão)
                 let soma = lista.reduce(function(soma, i){
                     return soma+i
                 })
-                document.getElementById("tdTempoTotal").innerHTML = soma
-                document.getElementById("prtTempoTotal").innerHTML = soma
+                document.getElementById("tdTempoSubtotal").innerHTML = soma
+
+                //Inserir desconto de tempo de serviço (na lista e na impressão)
+                let somaDesconto = listaDesconto.reduce(function(somaDesconto, i){
+                    return somaDesconto+i
+                })
+                document.getElementById("tdDesconto").innerHTML = somaDesconto
+
+                //Inserir subtotal = soma do tempo de contribuição - descontos
+                document.getElementById("prtTempoSubtotal").innerHTML = soma - somaDesconto
 
                 //Inserir Anos + Meses + Dias do Tempo Líquido Total (na impressão)
-                let prtTTAno = Math.trunc(soma/365)
-                let prtTTSobra = soma % 365
+                let total = soma - somaDesconto
+                let prtTTAno = Math.trunc(total/365)
+                let prtTTSobra = total % 365
                 let prtTTMes = Math.trunc(prtTTSobra/30)
                 let prtTTDia = prtTTSobra % 30
                 document.getElementById("prtTTAno").innerHTML = prtTTAno
@@ -88,7 +106,13 @@ class App {
                 let calcHoje = new Date()
                 let calcSoma = Math.abs(calcHoje - calcAdm)
                 let calcTotal = (Math.ceil(calcSoma / (1000 * 60 * 60 * 24)))
+                
+                let tempCadDesc
+
                 let totalGeral = calcTotal + soma
+                
+
+
                 document.getElementById("prtTGTempo").innerHTML = totalGeral
                 let prtTGAno = Math.trunc(totalGeral/365)
                 let prtTGSobra = totalGeral % 365

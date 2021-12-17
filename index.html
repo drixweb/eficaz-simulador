@@ -106,13 +106,20 @@
                         <td class="td3C" style="border-bottom: 1px solid;"><span id="prtAnoTempoLiq"></span> ANO(S), <span id="prtMesTempoLiq"></span> MÊS(ES) E <span id="prtDiaTempoLiq"></span> DIA(S)</td>
                     </tr>
                 </table>
-            </div>
+            </div><br>
 
             <div class="secaoImpressao" id="secao2">
                 <p style="font-size: 16px; font-weight: 700; text-align: center;">RELAÇÃO DE TEMPO DE SERVIÇO PARA AVERBAÇÃO</p>
                 <br>
                 <table class="tbRelacaoTempo">
                     <thead>
+                        <tr class="negrito" id="anteCabecalhoNegrito">
+                            <td colspan="7" class="td2G" style="border-top: 0px;"></td>
+                            
+                            <td colspan="4" class="td2G">Tempo de Serviço</td>
+                            <!------------------------>
+                            <td colspan="4" class="td2K">Descontos</td>
+                        </tr>
                         <tr class="negrito">
                             <td class="td2A">Organização</td>
                             <td class="td2B">Início</td>
@@ -121,6 +128,11 @@
                             <td class="td2E">Regime</td>
                             <td class="td2F">Magistério</td>
                             <td class="td2G">Saúde</td>
+                            <td class="td2H">Anos</td>
+                            <td class="td2I">Mêses</td>
+                            <td class="td2J">Dias</td>
+                            <td class="td2K">Total</td>
+                            <!------------------------>
                             <td class="td2H">Anos</td>
                             <td class="td2I">Mêses</td>
                             <td class="td2J">Dias</td>
@@ -135,7 +147,7 @@
                 <table class="tbRelacaoTempo">
                     <tr>
                         <td class="td3A">Soma do Tempo líquido total (B) =</td>
-                        <td class="td3B"><span id="prtTempoTotal"></span> dias</td>
+                        <td class="td3B"><span id="prtTempoSubtotal"></span> dias</td>
                         <td class="td3C"><span id="prtTTAno"></span> ANO(S), <span id="prtTTMes"></span> MÊS(ES) E <span id="prtTTDia"></span> DIA(S)</td>
                     </tr>
                     <tr>
@@ -1144,9 +1156,10 @@
                             <td>Início</td>
                             <td>Fim</td>
                             <td>Tempo</td>
+                            <td>Desc.</td>
                             <td>Natureza</td>
                             <td>Regime</td>
-                            <td>Magistério</td>
+                            <td>Magist.</td>
                             <td>Saúde</td>
                             <td>CA</td>
                             <td width="40px"></td>
@@ -1158,16 +1171,26 @@
                         </tr>
                     </tbody>
                     <tfoot class="tfoot">
-                        <td id="tdOrgao"></td>
-                        <td></td>
-                        <td style="text-align: end;">Total:</td>
-                        <td><span id="tdTempoTotal">0</span></td>
-                        <td>dias</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td width="40px"></td>
+                        <tr>
+                            <td id="tdOrgao">Subtotal:</td>
+                            <td></td>
+                            <td></td>
+                            <td><span id="tdTempoSubtotal">0</span></td>
+                            <td><span id="tdDesconto">0</span></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td width="40px"></td>
+                        </tr>
+                        <tr>
+                            <td id="tdOrgao"></td>
+                            <td></td>
+                            <td style="text-align: end; font-weight: bold;">Total:</td>
+                            <td colspan="7" style="font-weight: bold;"><span id="tdTempoTotal">0</span> dias</td>
+                            <td width="40px"></td>
+                        </tr>
                     </tfoot>
                 </table>
                 <hr>

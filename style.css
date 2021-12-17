@@ -198,6 +198,11 @@ table, tbody, tr, td{
     width: 250px;
 }
 
+#tdTempoSubtotal{
+    font-weight: normal;
+    pointer-events: none;
+}
+
 #tdTempoTotal{
     font-weight: bolder;
     pointer-events: none;
@@ -276,11 +281,11 @@ table.tbRelacaoTempo{
 }
 
 .tbPaginaImpressao td{
-    font-size: 10px;
+    font-size: 9px;
 }
 
 table.tbRelacaoTempo thead tr td{
-    font-size: 12px;
+    font-size: 11px;
 }
 table.tbRelacaoTempo tbody tr td{
     font-size: 11px;
@@ -290,7 +295,7 @@ table.tbRelacaoTempo tr td{
 }
 
 .negrito td{
-    font-weight: 800;
+    font-weight: bold;
 }
 
 .negrito .td7A, .negrito .td2A{
