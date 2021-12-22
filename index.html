@@ -991,12 +991,12 @@
                 <tbody>
                     <tr>
                         <td style="padding-left: 16px;">
-                            <label for="dataInicioCadDeducao" class="label">Data Início</label>
-                            <input type="date" class="input" id="dataInicioCadDeducao" name="dataInicioCadDeducao" style="width: 180px;">
+                            <label for="dataInicioCadDesconto" class="label">Data Início</label>
+                            <input type="date" class="input" id="dataInicioCadDesconto" name="dataInicioCadDesconto" style="width: 180px;">
                         </td>
                         <td>
-                            <label for="dataFimCadDeducao" class="label">Data Fim</label>
-                            <input type="date" class="input" id="dataFimCadDeducao" name="dataFimCadDeducao" style="width: 180px;">
+                            <label for="dataFimCadDesconto" class="label">Data Fim</label>
+                            <input type="date" class="input" id="dataFimCadDesconto" name="dataFimCadDesconto" style="width: 180px;">
                         </td>
                     </tr>
                 </tbody>
@@ -1172,11 +1172,9 @@
                     </tbody>
                     <tfoot class="tfoot">
                         <tr>
-                            <td id="tdOrgao">Subtotal:</td>
-                            <td></td>
-                            <td></td>
+                            <td colspan="3" id="tdOrgao" style="text-align: end;">Subtotal:</td>
                             <td><span id="tdTempoSubtotal">0</span></td>
-                            <td><span id="tdDesconto">0</span></td>
+                            <td><span id="tdDescontoSubtotal">0</span></td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -1194,8 +1192,12 @@
                     </tfoot>
                 </table>
                 <hr>
-                <p class="label">Tempo de serviço no registro atual (A): <span id="tempoCargoAtual"></span></p>
+                <p class="label">Tempo de serviço no registro atual: <span id="tempoCargoAtual"></span></p>
+                <p class="label">Tempo sem contribuição no registro atual: <span id="tempoDescCargoAtual"></span></p>
+                <p class="label">Tempo líquido de serviço no registro atual (A): <span id="tempoLiqCargoAtual"></span></p>
+                <hr>
                 <p class="label">Tempo de serviço disponível para averbação (B): <span id="tempoAverbacao"></span></p>
+                <hr>
                 <p class="label">TEMPO LÍQUIDO TOTAL (A + B): <span id="tempoLiquidoTotal"></span></p>
             </div>
         </div>

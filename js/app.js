@@ -45,7 +45,6 @@ class App {
             verificaDesconto = true
         }
 
-
         if (verificaDesconto == true){
             let inicioDesconto = new Date(dataInicioDesconto)
             let fimDesconto = new Date(dataFimDesconto)
@@ -75,6 +74,7 @@ class App {
                 
                 lista.push(tempo)
                 listaDesconto.push(desconto)
+
                 //Inserir soma de tempo de serviço (na lista e na impressão)
                 let soma = lista.reduce(function(soma, i){
                     return soma+i
@@ -85,13 +85,13 @@ class App {
                 let somaDesconto = listaDesconto.reduce(function(somaDesconto, i){
                     return somaDesconto+i
                 })
-                document.getElementById("tdDesconto").innerHTML = somaDesconto
+                document.getElementById("tdDescontoSubtotal").innerHTML = somaDesconto
 
-                //Inserir subtotal = soma do tempo de contribuição - descontos
-                document.getElementById("prtTempoSubtotal").innerHTML = soma - somaDesconto
+                //Inserir total = soma do tempo de contribuição - descontos
+                let total = soma - somaDesconto
+                document.getElementById("tdTempoTotal").innerHTML = total
 
                 //Inserir Anos + Meses + Dias do Tempo Líquido Total (na impressão)
-                let total = soma - somaDesconto
                 let prtTTAno = Math.trunc(total/365)
                 let prtTTSobra = total % 365
                 let prtTTMes = Math.trunc(prtTTSobra/30)
@@ -106,10 +106,37 @@ class App {
                 let calcHoje = new Date()
                 let calcSoma = Math.abs(calcHoje - calcAdm)
                 let calcTotal = (Math.ceil(calcSoma / (1000 * 60 * 60 * 24)))
-                
-                let tempCadDesc
 
-                let totalGeral = calcTotal + soma
+                let verificaCadDesconto = false
+                let cadDesconto = 0
+                let dataInicioCadDesconto = document.getElementById("dataInicioCadDesconto").value
+                let dataFimCadDesconto = document.getElementById("dataFimCadDesconto").value
+                if((dataInicioCadDesconto != "") && (dataInicioCadDesconto < tempAdm)){
+                    alert("Verifique a data de início do afastamento no cadastro (Erro #1)")
+                } else if (dataInicioCadDesconto != "" && dataFimCadDesconto == ""){
+                    alert("Verifique a data de final do afastamento no cadastro (Erro #3)")
+                } else if (dataFimCadDesconto != "" && dataInicioCadDesconto == ""){
+                    alert("Verifique a data de início do afastamento no cadastro (Erro #4)")
+                } else if (dataFimCadDesconto < dataInicioCadDesconto) {
+                    alert("Verifique as datas do período de afastamento no cadastro (Erro #5)")
+                } else if((dataInicioCadDesconto == "" && dataFimCadDesconto == "") || (dataInicioCadDesconto >= tempAdm)){
+                    verificaCadDesconto = true
+                }
+
+                if (verificaDesconto == true){
+                    let inicioCadDesconto = new Date(dataInicioCadDesconto)
+                    let fimCadDesconto = new Date(dataFimCadDesconto)
+                    let calcCadDesconto = Math.abs(fimCadDesconto - inicioCadDesconto)
+                    cadDesconto = (Math.ceil(calcCadDesconto / (1000 * 60 * 60 * 24)) + 1)
+                    alert("Parece que está tudo certo! O desconto no cadastro é " + cadDesconto)
+                
+                    if (dataInicioCadDesconto == "" && dataFimCadDesconto == "") {
+                        cadDesconto = 0
+                        alert("Mas, verificamos que está vazio. Então o desconto no cadastro é " + cadDesconto)
+                    }
+                }
+                let cadTotal = calcTotal - cadDesconto
+                let totalGeral = cadTotal + total
                 
 
 
@@ -124,7 +151,9 @@ class App {
                 
                 //PREENCHENDO O RESUMO (na lista)
                 document.getElementById("tempoCargoAtual").innerHTML = `${calcTotal} dias`
-                document.getElementById("tempoAverbacao").innerHTML = `${soma} dias`
+                document.getElementById("tempoDescCargoAtual").innerHTML = `${cadDesconto} dias`
+                document.getElementById("tempoLiqCargoAtual").innerHTML = `${cadTotal} dias` //hr
+                document.getElementById("tempoAverbacao").innerHTML = `${total} dias` //hr
                 document.getElementById("tempoLiquidoTotal").innerHTML = `${totalGeral} dias`
 
                 //Desabilitar botão "sem averbação"
@@ -303,7 +332,10 @@ class App {
             let somaCargoAtual = listaCargoAtual.reduce(function(somaCargoAtual, i){
                 return somaCargoAtual+i
             })
-            somaCargoAtual += 10
+            
+            // ATENÇÃO!!!!
+            
+            somaCargoAtual += 10    //VERIFICAR AQUI!!!
             let anoCargoAtual = Math.trunc(somaCargoAtual/365)
             let sobraCargoAtual = somaCargoAtual % 365
             let mesCargoAtual = Math.trunc(sobraCargoAtual/30)
