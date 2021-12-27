@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="style.css">
-    <style>#pagina1, #pagina2, .desabilitado{display: none;}</style>
+    <style>pagina1, #pagina2, .desabilitado{display: none;}</style>
 
     <script src="js/tempo_de_servico.js"></script>
     <script src="js/app.js"></script>
@@ -101,7 +101,12 @@
                 </table>
                 <table class="tbRelacaoTempo">
                     <tr>
-                        <td class="td3A" style="border-bottom: 1px solid;">Soma do Tempo líquido no cargo atual (A) =</td>
+                        <td class="td3A" style="border-bottom: 1px solid; text-align: end;">Período sem contribuição =</td>
+                        <td class="td3B" style="border-bottom: 1px solid;"><span id="prtDescTempoCargoAtual"></span> dias</td>
+                        <td class="td3C" style="border-bottom: 1px solid;"><span id="prtDescAnoTempoLiq"></span> ANO(S), <span id="prtDescMesTempoLiq"></span> MÊS(ES) E <span id="prtDescDiaTempoLiq"></span> DIA(S)</td>
+                    </tr>
+                    <tr>
+                        <td class="td3A" style="border-bottom: 1px solid; text-align: end;">Soma do Tempo líquido no contrato atual (A) =</td>
                         <td class="td3B" style="border-bottom: 1px solid;"><span id="prtTempoCargoAtual"></span> dias</td>
                         <td class="td3C" style="border-bottom: 1px solid;"><span id="prtAnoTempoLiq"></span> ANO(S), <span id="prtMesTempoLiq"></span> MÊS(ES) E <span id="prtDiaTempoLiq"></span> DIA(S)</td>
                     </tr>
@@ -146,12 +151,12 @@
                 </table>
                 <table class="tbRelacaoTempo">
                     <tr>
-                        <td class="td3A">Soma do Tempo líquido total (B) =</td>
+                        <td class="td3A" style="text-align: end;">Soma do Tempo líquido total (B) =</td>
                         <td class="td3B"><span id="prtTempoSubtotal"></span> dias</td>
                         <td class="td3C"><span id="prtTTAno"></span> ANO(S), <span id="prtTTMes"></span> MÊS(ES) E <span id="prtTTDia"></span> DIA(S)</td>
                     </tr>
                     <tr>
-                        <td class="td4A">Total geral de Tempo de serviço para aposentadoria (A + B) =</td>
+                        <td class="td4A" style="text-align: end;">Total geral de Tempo de serviço para aposentadoria (A + B) =</td>
                         <td class="td4B"><span id="prtTGTempo"></span></td>
                         <td class="td4C"><span id="prtTGAno"></span> ANO(S), <span id="prtTGMes"></span> MÊS(ES) E <span id="prtTGDia"></span> DIA(S)</td>
                     </tr>

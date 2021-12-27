@@ -137,8 +137,6 @@ class App {
                 }
                 let cadTotal = calcTotal - cadDesconto
                 let totalGeral = cadTotal + total
-                
-
 
                 document.getElementById("prtTGTempo").innerHTML = totalGeral
                 let prtTGAno = Math.trunc(totalGeral/365)
@@ -218,6 +216,10 @@ class App {
         let tdTempo = document.createElement("td")
             tdTempo.innerHTML += registro.tempo
             linha.appendChild(tdTempo)
+        //Adicionar desconto
+        let tdDesconto = document.createElement("td")
+            tdDesconto.innerHTML += registro.desconto
+            linha.appendChild(tdDesconto)
         //Adicionar Natureza
         let tdNatureza = document.createElement("td")
             tdNatureza.innerHTML += registro.natureza
