@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="style.css">
-    <style>pagina1, #pagina2, .desabilitado{display: none;}</style>
+    <style>pagina1, pagina2, .desabilitado{display: none;}</style>
 
     <script src="js/tempo_de_servico.js"></script>
     <script src="js/app.js"></script>
@@ -131,7 +131,7 @@
                             <td class="td2C">Fim</td>
                             <td class="td2D">Natureza</td>
                             <td class="td2E">Regime</td>
-                            <td class="td2F">Magistério</td>
+                            <td class="td2F">Magist.</td>
                             <td class="td2G">Saúde</td>
                             <td class="td2H">Anos</td>
                             <td class="td2I">Mêses</td>
@@ -151,7 +151,17 @@
                 </table>
                 <table class="tbRelacaoTempo">
                     <tr>
-                        <td class="td3A" style="text-align: end;">Soma do Tempo líquido total (B) =</td>
+                        <td class="td3A" style="text-align: end;">Soma do tempo de serviço =</td>
+                        <td class="td3B"><span id="prtTempoSubtotal"></span> dias</td>
+                        <td class="td3C"><span id="prtTTAno"></span> ANO(S), <span id="prtTTMes"></span> MÊS(ES) E <span id="prtTTDia"></span> DIA(S)</td>
+                    </tr>
+                    <tr>
+                        <td class="td3A" style="text-align: end;">Descontos =</td>
+                        <td class="td3B"><span id="prtTempoSubtotal"></span> dias</td>
+                        <td class="td3C"><span id="prtTTAno"></span> ANO(S), <span id="prtTTMes"></span> MÊS(ES) E <span id="prtTTDia"></span> DIA(S)</td>
+                    </tr>
+                    <tr>
+                        <td class="td3A" style="text-align: end;">Tempo líquido total (B) =</td>
                         <td class="td3B"><span id="prtTempoSubtotal"></span> dias</td>
                         <td class="td3C"><span id="prtTTAno"></span> ANO(S), <span id="prtTTMes"></span> MÊS(ES) E <span id="prtTTDia"></span> DIA(S)</td>
                     </tr>

@@ -307,13 +307,13 @@ class App {
             prtSaude.innerHTML += registro.saude
             prtSaude.classList.add("td2G")
             linhaImpressao.appendChild(prtSaude)
-        //Adicionar Anos + Meses + Dias + Tempo
+        //Adicionar Tempo de Contribuição (Anos + Meses + Dias + Total)
         let prtAnos = document.createElement("td")
             prtAnos.innerHTML += Math.trunc(registro.tempo/365)
             prtAnos.classList.add("td2H")
             linhaImpressao.appendChild(prtAnos)
+        let sobra = registro.tempo % 365
         let prtMeses = document.createElement("td")
-            let sobra = registro.tempo % 365
             prtMeses.innerHTML += Math.trunc(sobra/30)
             prtMeses.classList.add("td2I")
             linhaImpressao.appendChild(prtMeses)
@@ -325,7 +325,29 @@ class App {
             prtTempo.innerHTML += registro.tempo
             prtTempo.classList.add("td2K")
             linhaImpressao.appendChild(prtTempo)
+        //Adicionar Descontos (Anos + Meses + Dias + Total)
+        let prtAnosDesc = document.createElement("td")
+            prtAnosDesc.innerHTML += Math.trunc(registro.desconto/365)
+            prtAnosDesc.classList.add("td2H")
+            linhaImpressao.appendChild(prtAnosDesc)
+        let sobraDesc = registro.desconto % 365
+        let prtMesesDesc = document.createElement("td")
+            prtMesesDesc.innerHTML += Math.trunc(sobraDesc/30)
+            prtMesesDesc.classList.add("td2I")
+            linhaImpressao.appendChild(prtMesesDesc)
+        let prtDiasDesc = document.createElement("td")
+            prtDiasDesc.innerHTML += sobraDesc % 30
+            prtDiasDesc.classList.add("td2J")
+            linhaImpressao.appendChild(prtDiasDesc)
+        let prtDesconto = document.createElement("td")
+            prtDesconto.innerHTML += registro.desconto
+            prtDesconto.classList.add("td2K")
+            linhaImpressao.appendChild(prtDesconto)
     }
+
+
+// CONTINUAR AQUI
+
 
     listaDetalhada(registro){
         //Separando pelo Cargo Atual
