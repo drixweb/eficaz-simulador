@@ -1,13 +1,21 @@
 let lista = [0];
 let listaDesconto = [0];
 let listaCargoAtual = [0];
+let listaCargoAtualDesconto = [0];
 let listaRPPS = [0];
+let listaRPPSDesconto = [0];
 let listaRGPS = [0];
+let listaRGPSDesconto = [0];
 let listaMilitar = [0];
+let listaMilitarDesconto = [0]
 let listaPublico = [0];
+let listaPublicoDesconto = [0];
 let listaPrivado = [0];
+let listaPrivadoDesconto = [0];
 let listaMagisterio = [0];
+let listaMagisterioDesconto = [0];
 let listaSaude = [0];
+let listaSaudeDesconto = [0];
 
 class App {
 
@@ -345,21 +353,54 @@ class App {
             linhaImpressao.appendChild(prtDesconto)
     }
 
+    listaDetalhada(registro){
+        //Calculando o tempo de serviço no cadastro
+        let dataAdmissao = document.getElementById("dataAdm").value
+        let calcInicioAdmissao = new Date(dataAdmissao)
+        let calcFinalAdmissao = new Date()
+        let calcTempoAtual = Math.abs(calcFinalAdmissao - calcInicioAdmissao)
+        let tempoAtual = (Math.ceil(calcTempoAtual / (1000 * 60 * 60 * 24)) + 1)
+
+        //Calculando o tempo sem contribuição no cadastro
+        let dataInicioCadDesc = document.getElementById("dataInicioCadDesconto").value
+        let dataFimCadDesc = document.getElementById("dataFimCadDesconto").value
+        let descontoAtual = 0
+        if (dataInicioCadDesc != "" || dataFimCadDesc != "") {
+            let calcInicioCadDesc = new Date(dataInicioCadDesc)
+            let calcFimCadDesc = new Date(dataFimCadDesc)
+            let calcCadDesc = Math.abs(calcFimCadDesc - calcInicioCadDesc)
+            descontoAtual = (Math.ceil(calcCadDesc / (1000 * 60 * 60 * 24)) + 1)
+        } else {
+            descontoAtual = 0
+        }
+
+        let saldoCadAtual = tempoAtual - descontoAtual
+
+        let anoSaldoCadAtual = Math.trunc(saldoCadAtual/365)
+        let sobraSaldoCadAtual = saldoCadAtual % 365
+        let mesSaldoCadAtual = Math.trunc(sobraSaldoCadAtual/30)
+        let diaSaldoCadAtual = sobraSaldoCadAtual % 30
+        document.getElementById("anoCargoAtual").innerHTML = anoSaldoCadAtual
+        document.getElementById("mesCargoAtual").innerHTML = mesSaldoCadAtual
+        document.getElementById("diaCargoAtual").innerHTML = diaSaldoCadAtual
+        document.getElementById("somaCargoAtual").innerHTML = saldoCadAtual
+
 
 // CONTINUAR AQUI
 
 
-    listaDetalhada(registro){
         //Separando pelo Cargo Atual
         if (registro.averbacaoCargoAtual == "Sim") {
             listaCargoAtual.push(registro.tempo)
             let somaCargoAtual = listaCargoAtual.reduce(function(somaCargoAtual, i){
                 return somaCargoAtual+i
             })
+            listaCargoAtualDesconto.push(registro.desconto)
+            let descontoCargoAtual = listaCargoAtualDesconto.reduce(function(descontoCargoAtual, i){
+                return descontoCargoAtual+i
+            })
             
-            // ATENÇÃO!!!!
-            
-            somaCargoAtual += 10    //VERIFICAR AQUI!!!
+            somaCargoAtual += (saldoCadAtual - descontoCargoAtual) - 1
             let anoCargoAtual = Math.trunc(somaCargoAtual/365)
             let sobraCargoAtual = somaCargoAtual % 365
             let mesCargoAtual = Math.trunc(sobraCargoAtual/30)
@@ -376,6 +417,11 @@ class App {
             let somaPublico = listaPublico.reduce(function(somaPublico, i){
                 return somaPublico+i
             })
+            listaPublicoDesconto.push(registro.desconto)
+            let descontoPublico = listaPublicoDesconto.reduce(function(descontoPublico, i){
+                return descontoPublico+i
+            })
+            somaPublico += (saldoCadAtual - descontoPublico) - 1
             let anoPublico = Math.trunc(somaPublico/365)
             let sobraPublico = somaPublico % 365
             let mesPublico = Math.trunc(sobraPublico/30)
@@ -389,6 +435,11 @@ class App {
             let somaPrivado = listaPrivado.reduce(function(somaPrivado, i){
                 return somaPrivado+i
             })
+            listaPrivadoDesconto.push(registro.desconto)
+            let descontoPrivado = listaPrivadoDesconto.reduce(function(descontoPrivado, i){
+                return descontoPrivado+i
+            })
+            somaPrivado += (descontoPrivado - 1)
             let anoPrivado = Math.trunc(somaPrivado/365)
             let sobraPrivado = somaPrivado % 365
             let mesPrivado = Math.trunc(sobraPrivado/30)
