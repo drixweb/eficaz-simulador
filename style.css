@@ -109,6 +109,16 @@ table, tbody, tr, td{
     min-height: 320px;
 }
 
+.divCadTempo #quadroResultadoSemAverbar{
+    position: relative;
+    display: block;
+    background: var(--white);
+    padding: 20px;
+    box-shadow: 0 7px 25px var(--shadow);
+    border-radius: 20px;
+    min-height: 200px;
+}
+
 .cabecalho{
     display: flex;
     justify-content: space-between;

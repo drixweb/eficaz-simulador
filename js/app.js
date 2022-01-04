@@ -58,11 +58,9 @@ class App {
             let fimDesconto = new Date(dataFimDesconto)
             let calcDesconto = Math.abs(fimDesconto - inicioDesconto)
             desconto = (Math.ceil(calcDesconto / (1000 * 60 * 60 * 24)) + 1)
-            alert("Parece que está tudo certo! O desconto é " + desconto)
         
             if (dataInicioDesconto == "" && dataFimDesconto == "") {
                 desconto = 0
-                alert("Mas, verificamos que está vazio. Então o desconto é " + desconto)
             }
 
             let registro = new Registro(organizacao, dataInicio, dataFim, averbacaoCargoAtual, tempo, desconto, natureza, regime, magisterio, saude)
@@ -136,11 +134,9 @@ class App {
                     let fimCadDesconto = new Date(dataFimCadDesconto)
                     let calcCadDesconto = Math.abs(fimCadDesconto - inicioCadDesconto)
                     cadDesconto = (Math.ceil(calcCadDesconto / (1000 * 60 * 60 * 24)) + 1)
-                    alert("Parece que está tudo certo! O desconto no cadastro é " + cadDesconto)
                 
                     if (dataInicioCadDesconto == "" && dataFimCadDesconto == "") {
                         cadDesconto = 0
-                        alert("Mas, verificamos que está vazio. Então o desconto no cadastro é " + cadDesconto)
                     }
                 }
                 let cadTotal = calcTotal - cadDesconto
@@ -374,20 +370,45 @@ class App {
             descontoAtual = 0
         }
 
-        let saldoCadAtual = tempoAtual - descontoAtual
+        let saldoCadAtual = (tempoAtual - descontoAtual) - 1
 
         let anoSaldoCadAtual = Math.trunc(saldoCadAtual/365)
         let sobraSaldoCadAtual = saldoCadAtual % 365
         let mesSaldoCadAtual = Math.trunc(sobraSaldoCadAtual/30)
         let diaSaldoCadAtual = sobraSaldoCadAtual % 30
-        document.getElementById("anoCargoAtual").innerHTML = anoSaldoCadAtual
-        document.getElementById("mesCargoAtual").innerHTML = mesSaldoCadAtual
-        document.getElementById("diaCargoAtual").innerHTML = diaSaldoCadAtual
-        document.getElementById("somaCargoAtual").innerHTML = saldoCadAtual
 
+        if (document.getElementById("somaCargoAtual").innerHTML == "0"){
+            document.getElementById("anoCargoAtual").innerHTML = anoSaldoCadAtual
+            document.getElementById("mesCargoAtual").innerHTML = mesSaldoCadAtual
+            document.getElementById("diaCargoAtual").innerHTML = diaSaldoCadAtual
+            document.getElementById("somaCargoAtual").innerHTML = saldoCadAtual
+        }
 
-// CONTINUAR AQUI
+        document.getElementById("anoPublico").innerHTML = anoSaldoCadAtual
+        document.getElementById("mesPublico").innerHTML = mesSaldoCadAtual
+        document.getElementById("diaPublico").innerHTML = diaSaldoCadAtual
+        document.getElementById("somaPublico").innerHTML = saldoCadAtual
 
+        if (document.querySelector("input[name='cadMagisterio']:checked").value == "Sim" && document.getElementById("somaMagisterio").innerHTML == "0") {
+            document.getElementById("anoMagisterio").innerHTML = anoSaldoCadAtual
+            document.getElementById("mesMagisterio").innerHTML = mesSaldoCadAtual
+            document.getElementById("diaMagisterio").innerHTML = diaSaldoCadAtual
+            document.getElementById("somaMagisterio").innerHTML = saldoCadAtual
+        }
+
+        if (document.querySelector("input[name='cadSaude']:checked").value == "Sim" && document.getElementById("somaSaude").innerHTML == "0") {
+            document.getElementById("anoSaude").innerHTML = anoSaldoCadAtual
+            document.getElementById("mesSaude").innerHTML = mesSaldoCadAtual
+            document.getElementById("diaSaude").innerHTML = diaSaldoCadAtual
+            document.getElementById("somaSaude").innerHTML = saldoCadAtual
+        }
+
+        if (document.getElementById("somaRPPS").innerHTML == "0"){
+            document.getElementById("anoRPPS").innerHTML = anoSaldoCadAtual
+            document.getElementById("mesRPPS").innerHTML = mesSaldoCadAtual
+            document.getElementById("diaRPPS").innerHTML = diaSaldoCadAtual
+            document.getElementById("somaRPPS").innerHTML = saldoCadAtual
+        }
 
         //Separando pelo Cargo Atual
         if (registro.averbacaoCargoAtual == "Sim") {
@@ -400,7 +421,7 @@ class App {
                 return descontoCargoAtual+i
             })
             
-            somaCargoAtual += (saldoCadAtual - descontoCargoAtual) - 1
+            somaCargoAtual += (saldoCadAtual - descontoCargoAtual)
             let anoCargoAtual = Math.trunc(somaCargoAtual/365)
             let sobraCargoAtual = somaCargoAtual % 365
             let mesCargoAtual = Math.trunc(sobraCargoAtual/30)
@@ -421,7 +442,7 @@ class App {
             let descontoPublico = listaPublicoDesconto.reduce(function(descontoPublico, i){
                 return descontoPublico+i
             })
-            somaPublico += (saldoCadAtual - descontoPublico) - 1
+            somaPublico += (saldoCadAtual - descontoPublico)
             let anoPublico = Math.trunc(somaPublico/365)
             let sobraPublico = somaPublico % 365
             let mesPublico = Math.trunc(sobraPublico/30)
@@ -439,7 +460,7 @@ class App {
             let descontoPrivado = listaPrivadoDesconto.reduce(function(descontoPrivado, i){
                 return descontoPrivado+i
             })
-            somaPrivado += (descontoPrivado - 1)
+            somaPrivado -= descontoPrivado
             let anoPrivado = Math.trunc(somaPrivado/365)
             let sobraPrivado = somaPrivado % 365
             let mesPrivado = Math.trunc(sobraPrivado/30)
@@ -456,6 +477,14 @@ class App {
             let somaMagisterio = listaMagisterio.reduce(function(somaMagisterio, i){
                 return somaMagisterio+i
             })
+            listaMagisterioDesconto.push(registro.desconto)
+            let descontoMagisterio = listaMagisterioDesconto.reduce(function(descontoMagisterio, i){
+                return descontoMagisterio+i
+            })
+            somaMagisterio -= descontoMagisterio
+            if (document.querySelector("input[name='cadMagisterio']:checked").value == "Sim") {
+                somaMagisterio += saldoCadAtual
+            }
             let anoMagisterio = Math.trunc(somaMagisterio/365)
             let sobraMagisterio = somaMagisterio % 365
             let mesMagisterio = Math.trunc(sobraMagisterio/30)
@@ -468,11 +497,18 @@ class App {
 
         //Separando por Servidores da Saúde (sim ou não)
         if (registro.saude == "Sim"){
-            alert("Saúde OK")
             listaSaude.push(registro.tempo)
             let somaSaude = listaSaude.reduce(function(somaSaude, i){
                 return somaSaude+i
             })
+            listaSaudeDesconto.push(registro.desconto)
+            let descontoSaude = listaSaudeDesconto.reduce(function(descontoSaude, i){
+                return descontoSaude+i
+            })
+            somaSaude -= descontoSaude
+            if (document.querySelector("input[name='cadSaude']:checked").value == "Sim") {
+                somaSaude += saldoCadAtual
+            }
             let anoSaude = Math.trunc(somaSaude/365)
             let sobraSaude = somaSaude % 365
             let mesSaude = Math.trunc(sobraSaude/30)
@@ -489,6 +525,11 @@ class App {
             let somaRPPS = listaRPPS.reduce(function(somaRPPS, i){
                 return somaRPPS+i
             })
+            listaRPPSDesconto.push(registro.desconto)
+            let descontoRPPS = listaRPPSDesconto.reduce(function(descontoRPPS, i){
+                return descontoRPPS+i
+            })
+            somaRPPS += (saldoCadAtual - descontoRPPS)
             let anoRPPS = Math.trunc(somaRPPS/365)
             let sobraRPPS = somaRPPS % 365
             let mesRPPS = Math.trunc(sobraRPPS/30)
@@ -502,6 +543,11 @@ class App {
             let somaRGPS = listaRGPS.reduce(function(somaRGPS, i){
                 return somaRGPS+i
             })
+            listaRGPSDesconto.push(registro.desconto)
+            let descontoRGPS = listaRGPSDesconto.reduce(function(descontoRGPS, i){
+                return descontoRGPS+i
+            })
+            somaRGPS -= descontoRGPS
             let anoRGPS = Math.trunc(somaRGPS/365)
             let sobraRGPS = somaRGPS % 365
             let mesRGPS = Math.trunc(sobraRGPS/30)
@@ -515,6 +561,11 @@ class App {
             let somaMilitar = listaMilitar.reduce(function(somaMilitar, i){
                 return somaMilitar+i
             })
+            listaMilitarDesconto.push(registro.desconto)
+            let descontoMilitar = listaMilitarDesconto.reduce(function(descontoMilitar, i){
+                return descontoMilitar+i
+            })
+            somaMilitar -= descontoMilitar
             let anoMilitar = Math.trunc(somaMilitar/365)
             let sobraMilitar = somaMilitar % 365
             let mesMilitar = Math.trunc(sobraMilitar/30)
@@ -531,18 +582,60 @@ class App {
         document.getElementById("organizacao").focus()
         document.getElementById("dataInicio").value = ""
         document.getElementById("dataFim").value = ""
+        document.getElementById("dataInicioDesconto").value = ""
+        document.getElementById("dataFimDesconto").value = ""
     }
 
     semAverbar(){   // Botão "Sem Averbação"
         let verifica = confirm("Tem certeza que deseja continuar sem averbar períodos anteriores?")
         if (verifica) {
+            document.getElementById("secaoCadTempoAverbacao").style.display = "none"
             let elemento1 = document.getElementById("secao2")
             elemento1.parentNode.removeChild(elemento1)
-            let elemento2 = document.getElementById("secaoCadTempoAverbacao")
-            elemento2.parentNode.removeChild(elemento2)
             let elemento3 = document.getElementById("secaoRegTempoAverbacao")
             elemento3.parentNode.removeChild(elemento3)
             document.getElementById("finalizar").disabled = true
+
+            let tempAdm2 = document.getElementById("dataAdm").value
+            let calcAdm2 = new Date(tempAdm2)
+            let calcHoje2 = new Date()
+            let calcSoma2 = Math.abs(calcHoje2 - calcAdm2)
+            let calcTotal2 = (Math.ceil(calcSoma2 / (1000 * 60 * 60 * 24)))
+
+            let verificaCadDesconto2 = false
+            let cadDesconto2 = 0
+            let dataInicioCadDesconto2 = document.getElementById("dataInicioCadDesconto").value
+            let dataFimCadDesconto2 = document.getElementById("dataFimCadDesconto").value
+            if((dataInicioCadDesconto2 != "") && (dataInicioCadDesconto2 < tempAdm2)){
+                alert("Verifique a data de início do afastamento no cadastro (Erro #1)")
+            } else if (dataInicioCadDesconto2 != "" && dataFimCadDesconto2 == ""){
+                alert("Verifique a data de final do afastamento no cadastro (Erro #3)")
+            } else if (dataFimCadDesconto2 != "" && dataInicioCadDesconto2 == ""){
+                alert("Verifique a data de início do afastamento no cadastro (Erro #4)")
+            } else if (dataFimCadDesconto2 < dataInicioCadDesconto2) {
+                alert("Verifique as datas do período de afastamento no cadastro (Erro #5)")
+            } else if((dataInicioCadDesconto2 == "" && dataFimCadDesconto2 == "") || (dataInicioCadDesconto2 >= tempAdm2)){
+                verificaCadDesconto2 = true
+            }
+
+            if (verificaCadDesconto2 == true){
+                let inicioCadDesconto2 = new Date(dataInicioCadDesconto2)
+                let fimCadDesconto2 = new Date(dataFimCadDesconto2)
+                let calcCadDesconto2 = Math.abs(fimCadDesconto2 - inicioCadDesconto2)
+                cadDesconto2 = (Math.ceil(calcCadDesconto2 / (1000 * 60 * 60 * 24)) + 1)
+            
+                if (dataInicioCadDesconto2 == "" && dataFimCadDesconto2 == "") {
+                    cadDesconto2 = 0
+                }
+            }
+            
+            //PREENCHENDO O RESUMO (na lista)
+            document.getElementById("tempoCargoAtual2").innerHTML = `${calcTotal2} dias`
+            document.getElementById("tempoDescCargoAtual2").innerHTML = `${cadDesconto2} dias`
+            document.getElementById("tempoLiqCargoAtual2").innerHTML = `${calcTotal2 - cadDesconto2} dias`
+
+            document.getElementById("resultadoSemAverbar").style.display = "block"
+
             this.finalizar()
         }
 
@@ -564,7 +657,6 @@ class App {
             this.desabilitarBotoes()
             document.getElementById("secaoCadTempoAverbacao").style.display = "none"
 
-
             //DATA DE EMISSÃO
             var hoje = new Date()
             var diaHoje = String(hoje.getDate()).padStart(2, '0')
@@ -573,6 +665,8 @@ class App {
             var dataAtual = `${diaHoje}/${mesHoje}/${anoHoje}`
             document.getElementById("dataEmitido1").innerHTML = dataAtual
             document.getElementById("dataEmitido2").innerHTML = dataAtual
+
+// CONTINUAR AQUI
 
             //DADOS DO SERVIDOR
             let nome = document.getElementById("nomeDoServidor").value
@@ -586,10 +680,11 @@ class App {
                 document.getElementById("prtSexo2").innerHTML = sexo
             let dataNasc = document.getElementById("dataNasc").value
                 var prtDataNasc = new Date(dataNasc)
-                var diaDataNasc = String(prtDataNasc.getDate() + 1).padStart(2, '0')
+                var diaDataNasc = String(prtDataNasc.getDate() + 1).padStart(2,'0')
                 var mesDataNasc = String(prtDataNasc.getMonth() + 1).padStart(2,'0')
                 var anoDataNasc = prtDataNasc.getFullYear()
-                document.getElementById("prtDataNasc").innerHTML = `${diaDataNasc}/${mesDataNasc}/${anoDataNasc}`
+                document.getElementById("prtDataNasc").innerHTML = document.getElementById("dataNasc").value
+                //document.getElementById("prtDataNasc").innerHTML = `${diaDataNasc}/${mesDataNasc}/${anoDataNasc}`
                 document.getElementById("prtDataNasc2").innerHTML = `${diaDataNasc}/${mesDataNasc}/${anoDataNasc}`
             let idade = String(anoHoje - anoDataNasc)
                 document.getElementById("prtIdade").innerHTML = idade
@@ -985,7 +1080,7 @@ class App {
         var select = document.getElementById('deficiencia')
         var deficiencia = select.options[select.selectedIndex].value
         let tcDeficiencia = false
-        alert(deficiencia);
+        //alert(deficiencia);
         document.getElementById("apDeficienciaTCAtingido").innerHTML = `${tempoContribuicao} dias`
         if (deficiencia == "Leve") {
             if (masculino){

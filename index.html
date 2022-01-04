@@ -1018,7 +1018,7 @@
             </table><br><br>
         </div>
         
-        <div class="divCadTempo" id="secaoCadTempoAverbacao">
+        <div class="divCadTempo" id="secaoCadTempoAverbacao" style="display: block;">
             <div class="quadro">
                 <div class="cabecalho">
                     <h2>Cadastrar Tempo de Serviço</h2>
@@ -1207,6 +1207,7 @@
                     </tfoot>
                 </table>
                 <hr>
+                <p class="title is-5" style="text-decoration: underline;">RESULTADO</p>
                 <p class="label">Tempo de serviço no registro atual: <span id="tempoCargoAtual"></span></p>
                 <p class="label">Tempo sem contribuição no registro atual: <span id="tempoDescCargoAtual"></span></p>
                 <p class="label">Tempo líquido de serviço no registro atual (A): <span id="tempoLiqCargoAtual"></span></p>
@@ -1222,6 +1223,20 @@
                 <div class="botoes" id="painelDeBotoes02">
                     <button class="button is-primary" id="finalizar" type="button" onclick="app.finalizar()"><ion-icon name="checkmark-outline"></ion-icon>Finalizar</button>
                     <button class="button is-danger" id="cancelar" type="button" onclick="app.cancelar()"><ion-icon name="close-outline"></ion-icon>Cancelar</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="resultadoSemAverbar" style="display: none;">
+            <hr id="hrResultadoSemAverbar" style="display: block;">
+            <div class="container" style="display: block; margin-top: 20px;">
+                <div class="divCadTempo">
+                    <div class="quadro" id="quadroResultadoSemAverbar">
+                        <p class="title is-5" style="text-decoration: underline;">RESULTADO</p>
+                        <p class="label">Tempo de serviço: <span id="tempoCargoAtual2"></span></p>
+                        <p class="label">Tempo sem contribuição: <span id="tempoDescCargoAtual2"></span></p>
+                        <p class="label">Total líquido: <span id="tempoLiqCargoAtual2"></span></p>
+                    </div>
                 </div>
             </div>
         </section>
