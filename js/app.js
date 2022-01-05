@@ -925,6 +925,7 @@ class App {
         document.getElementById("dataInicioCadDesconto").disabled = true
         document.getElementById("dataFimCadDesconto").disabled = true
     }
+
     desabilitarBotoes(){
         document.getElementById("finalizar").disabled = true
         //document.getElementById("adicionar").disabled = true
@@ -932,7 +933,7 @@ class App {
 
 
 // CONTINUAR AQUI
-
+    
 
     montarCenarios(){
         let sexo = document.querySelector("input[name='sexo']:checked").value
@@ -1133,7 +1134,6 @@ class App {
         var select = document.getElementById('deficiencia')
         var deficiencia = select.options[select.selectedIndex].value
         let tcDeficiencia = false
-        //alert(deficiencia);
         document.getElementById("apDeficienciaTCAtingido").innerHTML = `${tempoContribuicao} dias`
         if (deficiencia == "Leve") {
             if (masculino){
