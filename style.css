@@ -379,11 +379,12 @@ td.td1C{
     padding-left: 5px;
 }
 .td3B{
-    width: 50px;
+    width: 65px;
     border-top: solid 1px;
     border-right: solid 1px;
     border-left: solid 1px;
     padding-left: 5px;
+    padding-right: 3px;
 }
 .td3C{
     width: 200px;

@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="style.css">
-    <style>pagina1, #pagina2, .desabilitado{display: none;}</style>
+    <style>#pagina1, #pagina2, .desabilitado{display: none;}</style>
 
     <script src="js/tempo_de_servico.js"></script>
     <script src="js/app.js"></script>
@@ -101,14 +101,19 @@
                 </table>
                 <table class="tbRelacaoTempo">
                     <tr>
-                        <td class="td3A" style="border-bottom: 1px solid; text-align: end;">Período sem contribuição =</td>
-                        <td class="td3B" style="border-bottom: 1px solid;"><span id="prtDescTempoCargoAtual"></span> dias</td>
-                        <td class="td3C" style="border-bottom: 1px solid;"><span id="prtDescAnoTempoLiq"></span> ANO(S), <span id="prtDescMesTempoLiq"></span> MÊS(ES) E <span id="prtDescDiaTempoLiq"></span> DIA(S)</td>
+                        <td class="td3A" style="border-bottom: 1px solid; text-align: end;">Tempo de serviço no cargo contrato atual =</td>
+                        <td class="td3B" style="border-bottom: 1px solid;"><span id="prtTempoCargoAtualTotal">0</span> dias</td>
+                        <td class="td3C" style="border-bottom: 1px solid;"><span id="prtAnoTempoTotal">0</span> ANO(S), <span id="prtMesTempoTotal">0</span> MÊS(ES) E <span id="prtDiaTempoTotal">0</span> DIA(S)</td>
                     </tr>
                     <tr>
-                        <td class="td3A" style="border-bottom: 1px solid; text-align: end;">Soma do Tempo líquido no contrato atual (A) =</td>
-                        <td class="td3B" style="border-bottom: 1px solid;"><span id="prtTempoCargoAtual"></span> dias</td>
-                        <td class="td3C" style="border-bottom: 1px solid;"><span id="prtAnoTempoLiq"></span> ANO(S), <span id="prtMesTempoLiq"></span> MÊS(ES) E <span id="prtDiaTempoLiq"></span> DIA(S)</td>
+                        <td class="td3A" style="border-bottom: 1px solid; text-align: end;">Período sem contribuição =</td>
+                        <td class="td3B" style="border-bottom: 1px solid;"><span id="prtDescTempoCargoAtual">0</span> dias</td>
+                        <td class="td3C" style="border-bottom: 1px solid;"><span id="prtDescAnoTempoLiq">0</span> ANO(S), <span id="prtDescMesTempoLiq">0</span> MÊS(ES) E <span id="prtDescDiaTempoLiq">0</span> DIA(S)</td>
+                    </tr>
+                    <tr>
+                        <td class="td3A" style="border-bottom: 1px solid; text-align: end;">Tempo líquido no contrato atual (A) =</td>
+                        <td class="td3B" style="border-bottom: 1px solid;"><span id="prtTempoCargoAtual">0</span> dias</td>
+                        <td class="td3C" style="border-bottom: 1px solid;"><span id="prtAnoTempoLiq">0</span> ANO(S), <span id="prtMesTempoLiq">0</span> MÊS(ES) E <span id="prtDiaTempoLiq">0</span> DIA(S)</td>
                     </tr>
                 </table>
             </div><br>
@@ -447,7 +452,7 @@
                         </tr>
                         <tr class="trTemposDetalhados">
                             <td class="td7A">Pontos</td>
-                            <td class="td7B" id="apProfessorPExigido">9125 dias</td>
+                            <td class="td7B" id="apProfessorPExigido">(excluir)</td>
                             <td class="td7C" id="apProfessorPAtingido"></td>
                             <td class="td7D" id="apProfessorPSituacao">PENDENTE</td>
                             <td class="td7E" id="apProfessorPElegivel">-</td>
@@ -623,7 +628,9 @@
                             <td class="ultimalinha" colspan="5"><p style="text-align: right;">Resultado: <span id="apPontosResultado">VERIFICAR</span></p></td>
                         </tr>
                     </tbody>
-                </table><br>
+                </table>
+                <p>Obs.: A pontuação poderá variar a partir de 2023, sendo acrescida de 1 ponto a cada novo ano.</p>
+                <br>
             </div>
 
             <div class="secaoImpressao" id="secao10">
@@ -688,7 +695,9 @@
                             <td class="ultimalinha" colspan="5"><p style="text-align: right;">Resultado: <span id="apPontosProfResultado"></span></p></td>
                         </tr>
                     </tbody>
-                </table><br>
+                </table>
+                <p>Obs.: A pontuação poderá variar a partir de 2023, sendo acrescida de 1 ponto a cada novo ano.</p>
+                <br>
             </div>
 
             <div class="secaoImpressao" id="secao11">
@@ -998,7 +1007,7 @@
                     <tr>
                         <td colspan="2">
                             <div class="cabecalho" id="cabecalhoDeducao">
-                                <h2 style="margin-bottom: 16px; padding: 16px 0px 0px 16px;">Desconto de Tempo de Serviço</h2>
+                                <h2 style="margin-bottom: 16px; padding: 16px 0px 0px 16px;">Período sem Contribuição</h2>
                             </div>
                         </td>
                     </tr>
