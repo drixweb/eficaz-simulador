@@ -86,18 +86,33 @@ class App {
                     return soma+i
                 })
                 document.getElementById("tdTempoSubtotal").innerHTML = soma
+                document.getElementById("prtTempoSubtotal").innerHTML = soma
+                let prtTSAno = Math.trunc(soma/365)
+                let prtTSSobra = soma % 365
+                let prtTSMes = Math.trunc(prtTSSobra/30)
+                let prtTSDia = prtTSSobra % 30
+                document.getElementById("prtTSAno").innerHTML = prtTSAno
+                document.getElementById("prtTSMes").innerHTML = prtTSMes
+                document.getElementById("prtTSDia").innerHTML = prtTSDia
 
                 //Inserir desconto de tempo de serviço (na lista e na impressão)
                 let somaDesconto = listaDesconto.reduce(function(somaDesconto, i){
                     return somaDesconto+i
                 })
                 document.getElementById("tdDescontoSubtotal").innerHTML = somaDesconto
+                document.getElementById("prtDescontoSubtotal").innerHTML = somaDesconto
+                let prtDSAno = Math.trunc(somaDesconto/365)
+                let prtDSSobra = somaDesconto % 365
+                let prtDSMes = Math.trunc(prtDSSobra/30)
+                let prtDSDia = prtDSSobra % 30
+                document.getElementById("prtDSAno").innerHTML = prtDSAno
+                document.getElementById("prtDSMes").innerHTML = prtDSMes
+                document.getElementById("prtDSDia").innerHTML = prtDSDia
 
                 //Inserir total = soma do tempo de contribuição - descontos
                 let total = soma - somaDesconto
                 document.getElementById("tdTempoTotal").innerHTML = total
-
-                //Inserir Anos + Meses + Dias do Tempo Líquido Total (na impressão)
+                document.getElementById("prtTempoTotal").innerHTML = total
                 let prtTTAno = Math.trunc(total/365)
                 let prtTTSobra = total % 365
                 let prtTTMes = Math.trunc(prtTTSobra/30)
@@ -105,6 +120,7 @@ class App {
                 document.getElementById("prtTTAno").innerHTML = prtTTAno
                 document.getElementById("prtTTMes").innerHTML = prtTTMes
                 document.getElementById("prtTTDia").innerHTML = prtTTDia
+                
 
                 //Inserir Total Geral e inserir Anos + Meses + Dias (na impressão)
                 let tempAdm = document.getElementById("dataAdm").value
@@ -732,7 +748,7 @@ class App {
             document.getElementById("prtMagisterio").innerHTML = document.querySelector("input[name='cadMagisterio']:checked").value
             document.getElementById("prtSaude").innerHTML = document.querySelector("input[name='cadSaude']:checked").value
 
-            // Soma do tempo líquido no contrato atual (A) =
+            // Tempo de serviço no contrato atual
             let dataAdm1 = new Date(dataAdm)
             let dataAtual1 = new Date()
             let calc = Math.abs(dataAtual1 - dataAdm1)
@@ -765,13 +781,13 @@ class App {
                 document.getElementById("prtDescDiaTempoLiq").innerHTML = prtDiaDesc
             }
 
-            // Soma do tempo líquido no contrato atual (A) =
+            // Tempo líquido atual (A) =
             let tempoCargoAtualLiq = totalCargoAtual - totalDesc
             document.getElementById("prtTempoCargoAtual").innerHTML = tempoCargoAtualLiq
             let prtAnoTempoLiq = Math.trunc(tempoCargoAtualLiq/365)
             let sobraLiq = tempoCargoAtualLiq % 365
             let prtMesTempoLiq = Math.trunc(sobraLiq/30)
-            let prtDiaTempoLiq = sobra % 30
+            let prtDiaTempoLiq = sobraLiq % 30
             document.getElementById("prtAnoTempoLiq").innerHTML = prtAnoTempoLiq
             document.getElementById("prtMesTempoLiq").innerHTML = prtMesTempoLiq
             document.getElementById("prtDiaTempoLiq").innerHTML = prtDiaTempoLiq
@@ -853,7 +869,7 @@ class App {
             this.montarCenarios()
             
             //Exibir Resumo de Cenários
-            this.exibirResumoCenarios()
+            //this.exibirResumoCenarios()
         }
     }
 
