@@ -617,6 +617,7 @@ class App {
             let verifica = confirm("Tem certeza que deseja continuar sem averbar períodos anteriores?")
             if (verifica) {
                 document.getElementById("secaoCadTempoAverbacao").style.display = "none"
+                document.getElementById
                 let elemento1 = document.getElementById("secao2")
                 elemento1.parentNode.removeChild(elemento1)
                 let elemento3 = document.getElementById("secaoRegTempoAverbacao")
@@ -662,6 +663,8 @@ class App {
                 document.getElementById("tempoLiqCargoAtual2").innerHTML = `${calcTotal2 - cadDesconto2} dias`
 
                 document.getElementById("resultadoSemAverbar").style.display = "block"
+
+                this.exibirVisualizarImprimir()
 
                 this.finalizar()
             }
@@ -868,6 +871,9 @@ class App {
             //Montar Cenários de Aposentadoria
             this.montarCenarios()
             
+            //Mostrar Botões para Imprimir ou Visualizar os relatórios
+            //this.exibirVisualizarImprimir()
+
             //Exibir Resumo de Cenários
             //this.exibirResumoCenarios()
         }
@@ -1716,6 +1722,11 @@ class App {
     exibirResumoCenarios(){
         document.getElementById("resumoCenarios").style.display = "block"
         document.getElementById("hrResumoCenarios").focus()
+    }
+
+    exibirVisualizarImprimir(){
+        document.getElementById("botaoVisualizarImprimir").style.display = "block"
+        document.getElementById("visualizar").focus()
     }
 
     cancelar(){
