@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="style.css">
-    <style>pagina1, pagina2, .desabilitado{display: none;}</style>
+    <style>#pagina1, pagina2, .desabilitado{display: none;}</style>
 
     <script src="js/tempo_de_servico.js"></script>
     <script src="js/app.js"></script>
@@ -27,8 +27,8 @@
         <div class="section">
             <div class="cabecalhoImpressao">
                 <p class="topoImpressao" style="text-align: center;">ESTADO DE RONDÔNIA</p>
-                <p class="topoImpressao" style="text-align: center;">PREFEITURA MUNICIPAL DE SÃO MIGUEL DO GUAPORÉ</p>
-                <p class="topoImpressao" style="font-size: 13px; text-align: center;">INSTITUTO DE PREVIDENCIA MUNICIPAL DE SÃO MIGUEL DO GUAPORÉ</p>
+                <p class="topoImpressao" style="text-align: center;">PREFEITURA MUNICIPAL DE OURO PRETO DO OESTE</p>
+                <p class="topoImpressao" style="font-size: 13px; text-align: center;">INSTITUTO DE PREVIDENCIA DOS SERVIDORES MUNICIPAIS - IPSM</p>
                 <br>
                 <p class="topoImpressao" style="font-size: 26px; text-align: center;">SIMULAÇÃO DE APOSENTADORIA</p>
                 <br>
@@ -89,7 +89,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="td2A">Pref. Mun. de São Miguel do Guaporé</td>
+                            <td class="td2A">Pref. Mun. de Ouro Preto do Oeste</td>
                             <td class="td2B"><span id="prtDataAdm2"></span></td>
                             <td class="td2C"><span id="prtDataAtual"></span></td>
                             <td class="td2D">Público</td>
@@ -176,30 +176,6 @@
                         <td class="td4C"><span id="prtTGAno"></span> ANO(S), <span id="prtTGMes"></span> MÊS(ES) E <span id="prtTGDia"></span> DIA(S)</td>
                     </tr>
                 </table>
-                <!-- <table class="tbRelacaoTempo">
-                    <tr>
-                        <td class="td5A" style="text-align: start; padding-left: 5px;">
-                            Lavrei a Certidão que não contém emendas e nem rasuras.
-                            <br>
-                            29/09/2021
-                            <br><br><br><br><br>
-                        </td>
-                        <td class="td5B" style="text-align: start; padding-left: 5px;">
-                            Visto do dirigente do Órgão.
-                            <br>
-                            29/09/2021
-                            <br><br><br><br><br>
-                        </td>
-                    </tr>
-                </table>
-                <table class="tbRelacaoTempo">
-                    <tr>
-                        <td class="td6A" style="text-align: start; padding-left: 5px; font-weight: bolder;">
-                            Observações:
-                            <br><br><br>
-                        </td>
-                    </tr>
-                </table> -->
             </div>
             
             <div class="secaoImpressao" id="secao3">
@@ -305,8 +281,8 @@
         <div class="section">
             <div class="cabecalhoImpressao">
                 <p class="topoImpressao" style="text-align: center;">ESTADO DE RONDÔNIA</p>
-                <p class="topoImpressao" style="text-align: center;">PREFEITURA MUNICIPAL DE SÃO MIGUEL DO GUAPORÉ</p>
-                <p class="topoImpressao" style="font-size: 13px; text-align: center;">INSTITUTO DE PREVIDENCIA MUNICIPAL DE SÃO MIGUEL DO GUAPORÉ</p>
+                <p class="topoImpressao" style="text-align: center;">PREFEITURA MUNICIPAL DE OURO PRETO DO OESTE</p>
+                <p class="topoImpressao" style="font-size: 13px; text-align: center;">INSTITUTO DE PREVIDENCIA DOS SERVIDORES MUNICIPAIS - IPSM</p>
                 <br>
                 <p class="topoImpressao" style="font-size: 26px; text-align: center;">SIMULAÇÃO DE APOSENTADORIA</p>
                 <br>
@@ -908,6 +884,7 @@
                 <div class="fields">
                     <td style="text-align: right;"><label class="label" id="labelMunicipio" for="municipio">Município: </label></td>
                     <td><select class="select" name="municipio" id="municipio">
+                        <option class="option" value="OPO">Ouro Preto do Oeste</option>
                         <option class="option" value="SMG">São Miguel do Guaporé</option>
                     </select></td>
                 </div>
@@ -930,14 +907,14 @@
                         <div class="field">
                             <label for="nomeDoServidor" class="label">Nome do Servidor(a)</label>
                             <div class="control">
-                                <input type="text" name="nomeDoServidor" id="nomeDoServidor" class="input" placeholder="Digite o mome completo" onchange="app.desmarcarNomeDoServidor()" value="Teste">
+                                <input type="text" name="nomeDoServidor" id="nomeDoServidor" class="input" placeholder="Digite o mome completo" onchange="app.desmarcarNomeDoServidor()" value="Nome de Teste">
                             </div>
                         </div>
                     </td>
                     <td>
                         <label for="dataNasc" class="label">Data de Nascimento</label>
                         <div class="control">
-                            <input type="date" name="dataNasc" id="dataNasc" class="input" style="width: 160px;" onfocus="app.desmarcarDataNasc()" value="1962-01-01">
+                            <input type="date" name="dataNasc" id="dataNasc" class="input" style="width: 160px;" onfocus="app.desmarcarDataNasc()" value="1962-01-02">
                         </div>
                     </td>
                     <td>
@@ -1027,13 +1004,13 @@
                             <label for="cadSaude" class="label"><abbr title="Servidor(a) expostos à agantes químicos, físicos e biológicos">Saúde</abbr></label>
                             <label class="radio">
                                 <span class="spanSaude">
-                                    <input type="radio" name="cadSaude" value="Não" checked>
+                                    <input type="radio" name="cadSaude" value="Não">
                                     Não
                                 </span>
                             </label><br>
                             <label class="radio">
                                 <span class="spanSaude">
-                                    <input type="radio" name="cadSaude" value="Sim">
+                                    <input type="radio" name="cadSaude" value="Sim" checked>
                                     Sim
                                 </span>
                             </label>
@@ -1062,7 +1039,7 @@
                         </td>
                         <td>
                             <label for="dataFimCadDesconto" class="label">Data Fim</label>
-                            <input type="date" class="input" id="dataFimCadDesconto" name="dataFimCadDesconto" style="width: 180px;" value="2010-03-16">
+                            <input type="date" class="input" id="dataFimCadDesconto" name="dataFimCadDesconto" style="width: 180px;" value="2010-03-20">
                         </td>
                     </tr>
                 </tbody>
@@ -1081,7 +1058,7 @@
                             <td>
                                 <label for="organizacao" class="label">Organização</label>
                                 <div class="control">
-                                    <input class="input" id="organizacao" type="text" placeholder="Digite o nome do Órgão ou Empresa" style="width: 650px" onchange="app.desmarcarOrganizacao()">
+                                    <input class="input" id="organizacao" type="text" placeholder="Digite o nome do Órgão ou Empresa" style="width: 650px" onchange="app.desmarcarOrganizacao()" value="Organização Teste 01">
                                 </div>
                             </td>
                             <td>
@@ -1105,11 +1082,11 @@
                         <tr>
                             <td>
                                 <label for="dataInicio" class="label">Data Início</label>
-                                <input type="date" class="input" id="dataInicio" name="dataInicio" style="width: 200px;" onfocus="app.desmarcarDataInicio()">
+                                <input type="date" class="input" id="dataInicio" name="dataInicio" style="width: 200px;" onfocus="app.desmarcarDataInicio()" value="1989-01-01">
                             </td>
                             <td>
                                 <label for="dataFim" class="label">Data Fim</label>
-                                <input type="date" class="input" id="dataFim" name="dataFim" style="width: 200px;" onfocus="app.desmarcarDataFim()">
+                                <input type="date" class="input" id="dataFim" name="dataFim" style="width: 200px;" onfocus="app.desmarcarDataFim()" value="1999-12-31">
                             </td>
                             <td class="tdRegime">
                                 <label for="regime" class="label">Regime</label>
@@ -1186,11 +1163,11 @@
                             <tr>
                                 <td>
                                     <label for="dataInicioDesconto" class="label">Data Início</label>
-                                    <input type="date" class="input" id="dataInicioDesconto" name="dataInicioDesconto" style="width: 180px;">
+                                    <input type="date" class="input" id="dataInicioDesconto" name="dataInicioDesconto" style="width: 180px;" value="1990-01-01">
                                 </td>
                                 <td>
                                     <label for="dataFimDesconto" class="label">Data Fim</label>
-                                    <input type="date" class="input" id="dataFimDesconto" name="dataFimDesconto" style="width: 180px;">
+                                    <input type="date" class="input" id="dataFimDesconto" name="dataFimDesconto" style="width: 180px;" value="1990-01-17">
                                 </td>
                             </tr>
                         </tbody>

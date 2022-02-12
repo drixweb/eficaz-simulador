@@ -385,9 +385,9 @@ class App {
         } else {
             descontoAtual = 0
         }
-
+        
         let saldoCadAtual = (tempoAtual - descontoAtual) - 1
-
+        
         let anoSaldoCadAtual = Math.trunc(saldoCadAtual/365)
         let sobraSaldoCadAtual = saldoCadAtual % 365
         let mesSaldoCadAtual = Math.trunc(sobraSaldoCadAtual/30)
@@ -436,7 +436,7 @@ class App {
             let descontoCargoAtual = listaCargoAtualDesconto.reduce(function(descontoCargoAtual, i){
                 return descontoCargoAtual+i
             })
-            
+
             somaCargoAtual += (saldoCadAtual - descontoCargoAtual)
             let anoCargoAtual = Math.trunc(somaCargoAtual/365)
             let sobraCargoAtual = somaCargoAtual % 365
@@ -446,6 +446,7 @@ class App {
             document.getElementById("mesCargoAtual").innerHTML = mesCargoAtual
             document.getElementById("diaCargoAtual").innerHTML = diaCargoAtual
             document.getElementById("somaCargoAtual").innerHTML = somaCargoAtual
+            
         }
 
         //Separando por natureza
@@ -664,8 +665,6 @@ class App {
 
                 document.getElementById("resultadoSemAverbar").style.display = "block"
 
-                this.exibirVisualizarImprimir()
-
                 this.finalizar()
             }
         }
@@ -801,6 +800,12 @@ class App {
                 let somaCargoAtual = listaCargoAtual.reduce(function(somaCargoAtual, i){
                     return somaCargoAtual+i
                 })
+                
+                let descontoDeTempoAverbadoNoCargoAtual = listaCargoAtualDesconto.reduce(function(descontoDeTempoAverbadoNoCargoAtual, i){
+                    return descontoDeTempoAverbadoNoCargoAtual + i
+                })
+
+                somaCargoAtual -= descontoDeTempoAverbadoNoCargoAtual
                 let anoCargoAtual = Math.trunc(somaCargoAtual/365)
                 let sobraCargoAtual = somaCargoAtual % 365
                 let mesCargoAtual = Math.trunc(sobraCargoAtual/30)
@@ -814,6 +819,12 @@ class App {
                 let somaPublico = listaPublico.reduce(function(somaPublico, i){
                     return somaPublico+i
                 })
+
+                let descontoTempoAverbadoServicoPublico = listaPublicoDesconto.reduce(function(descontoTempoAverbadoServicoPublico, i){
+                    return descontoTempoAverbadoServicoPublico + i
+                })
+
+                somaPublico -= descontoTempoAverbadoServicoPublico
                 let anoPublico = Math.trunc(somaPublico/365)
                 let sobraPublico = somaPublico % 365
                 let mesPublico = Math.trunc(sobraPublico/30)
@@ -872,7 +883,7 @@ class App {
             this.montarCenarios()
             
             //Mostrar Botões para Imprimir ou Visualizar os relatórios
-            //this.exibirVisualizarImprimir()
+            this.exibirVisualizarImprimir()
 
             //Exibir Resumo de Cenários
             //this.exibirResumoCenarios()
@@ -953,10 +964,6 @@ class App {
         //document.getElementById("adicionar").disabled = true
     }
 
-
-// CONTINUAR AQUI
-    
-
     montarCenarios(){
         let sexo = document.querySelector("input[name='sexo']:checked").value
         let feminino = false
@@ -975,34 +982,62 @@ class App {
         let tempoContribuicao = lista.reduce(function(soma, i){
             return soma+i
         })
+        let descontoContribuicao = listaDesconto.reduce(function(desconto, i){
+            return desconto+i
+        })
+        tempoContribuicao -= descontoContribuicao
         
+        /*
         let dataAdm = document.getElementById("dataAdm").value
         let calcAdm = new Date(dataAdm)
         let calcHoje = new Date()
         let calcSoma = Math.abs(calcHoje - calcAdm)
+        */
         
         // Captando o tempo de serviço público
         let tempoServicoPublico = listaPublico.reduce(function(soma, i){
             return soma+i
         })
+        let descontoServicoPublico = listaPublicoDesconto.reduce(function(desconto,i){
+            return desconto+i
+        })
+        tempoServicoPublico -= descontoServicoPublico
 
         // Captando o tempo no último cargo
         let tempoUltimoCargo = listaCargoAtual.reduce(function(soma, i){
             return soma+i
         })
+        let descontoUltimoCargo = listaCargoAtualDesconto.reduce(function(desconto, i){
+            return desconto+i
+        })
+        tempoUltimoCargo -= descontoUltimoCargo
 
         // Captando o tempo de magistério
         let tempoMagisterio = listaMagisterio.reduce(function(soma, i){
             return soma+i
         })
+        let descontoMagisterio = listaMagisterioDesconto.reduce(function(desconto, i){
+            return desconto+i
+        })
+        tempoMagisterio -= descontoMagisterio
 
         // Captando o tempo de exposição na saúde
         let tempoSaude = listaSaude.reduce(function(soma, i){
             return soma+i
         })
+        let descontoSaude = listaSaudeDesconto.reduce(function(desconto, i){
+            return desconto+i
+        })
+        tempoSaude -= descontoSaude
 
         // Captando a idade
         let idade = Number(document.getElementById("prtIdade").innerHTML)
+        let dataNasc = document.getElementById("dataNasc").value
+            var prtDataNasc_aux = new Date(dataNasc)
+            var prtDataNasc = new Date(prtDataNasc_aux.getTime())
+            prtDataNasc.setDate(prtDataNasc_aux.getDate() + 1)
+            var diaDataNasc = (prtDataNasc.getDate())
+            var mesDataNasc = (prtDataNasc.getMonth() + 1)
 
         if (sexo == "Masculino") {
             masculino = true
@@ -1010,25 +1045,46 @@ class App {
             feminino = true
         }
 
-        // Verificando Aposentadoria Geral
+        // APOSENTADORIA DOS SERVIDORES EM GERAL
         document.getElementById("apGeralTCAtingido").innerHTML = `${tempoContribuicao} dias`
         document.getElementById("apGeralTCElegivel").innerHTML = `${9125 - tempoContribuicao} dias`
         if (tempoContribuicao >= 9125){
             document.getElementById("apGeralTCSituacao").innerHTML = "OK"
             document.getElementById("apGeralTCElegivel").innerHTML = "Atingido"
+            document.getElementById("apGeralTCPrevisto").innerHTML = "Atingido"
+        } else {
+            let dataAux = new Date()
+            let apGeralTCPrevisto = new Date()
+            apGeralTCPrevisto.setDate(dataAux.getDate()+(9125 - tempoContribuicao))
+            document.getElementById("apGeralTCPrevisto").innerHTML = `${apGeralTCPrevisto.getDate()}/${apGeralTCPrevisto.getMonth()+1}/${apGeralTCPrevisto.getFullYear()}`
         }
+        
         document.getElementById("apGeralTSPAtingido").innerHTML = `${tempoServicoPublico} dias`
         document.getElementById("apGeralTSPElegivel").innerHTML = `${3650 - tempoServicoPublico} dias`
         if (tempoServicoPublico >= 3650) {
             document.getElementById("apGeralTSPSituacao").innerHTML = "OK"
             document.getElementById("apGeralTSPElegivel").innerHTML = "Atingido"
+            document.getElementById("apGeralTSPPrevisto").innerHTML = "Atingido"
+        } else {
+            let dataAux = new Date()
+            let apGeralTSPPrevisto = new Date()
+            apGeralTSPPrevisto.setDate(dataAux.getDate()+(3650 - tempoServicoPublico))
+            document.getElementById("apGeralTCPrevisto").innerHTML = `${apGeralTSPPrevisto.getDate()}/${apGeralTSPPrevisto.getMonth()+1}/${apGeralTSPPrevisto.getFullYear()}`
         }
+
         document.getElementById("apGeralTUCAtingido").innerHTML = `${tempoUltimoCargo} dias`
         document.getElementById("apGeralTUCElegivel").innerHTML = `${1825 - tempoUltimoCargo} dias`
         if (tempoUltimoCargo >= 1825) {
             document.getElementById("apGeralTUCSituacao").innerHTML = "OK"
             document.getElementById("apGeralTUCElegivel").innerHTML = "Atingido"
+            document.getElementById("apGeralTUCPrevisto").innerHTML = "Atingido"
+        } else {
+            let dataAux = new Date()
+            let apGeralTUCPrevisto = new Date()
+            apGeralTUCPrevisto.setDate(dataAux.getDate()+(1825 - tempoUltimoCargo))
+            document.getElementById("apGeralTUCPrevisto").innerHTML = `${apGeralTUCPrevisto.getDate()}/${apGeralTUCPrevisto.getMonth()+1}/${apGeralTUCPrevisto.getFullYear()}`
         }
+
         document.getElementById("apGeralIAtingido").innerHTML = `${idade} anos`
         if (masculino) {
             document.getElementById("apGeralIExigido").innerHTML = "65 anos"
@@ -1036,6 +1092,12 @@ class App {
             if (idade >= 65){
                 document.getElementById("apGeralISituacao").innerHTML = "OK"
                 document.getElementById("apGeralIElegivel").innerHTML = "Atingido"
+                document.getElementById("apGeralIPrevisto").innerHTML = "Atingido"
+            } else {
+                let dataAux = new Date(dataNasc)
+                let apGeralIPrevisto = new Date()
+                apGeralIPrevisto.setFullYear(dataAux.getFullYear()+65)
+                document.getElementById("apGeralIPrevisto").innerHTML = `${diaDataNasc}/${mesDataNasc}/${apGeralIPrevisto.getFullYear()}`
             }
             if (tempoContribuicao >= 9125 && tempoServicoPublico >= 3650 && tempoUltimoCargo >= 1825 && idade >= 65){
                 document.getElementById("apGeralResultado").innerHTML = "DISPONÍVEL"
@@ -1050,6 +1112,11 @@ class App {
             if (idade >= 62){
                 document.getElementById("apGeralISituacao").innerHTML = "OK"
                 document.getElementById("apGeralIElegivel").innerHTML = "Atingido"
+            } else {
+                let dataAux = new Date(dataNasc)
+                let apGeralIPrevisto = new Date()
+                apGeralIPrevisto.setFullYear(dataAux.getFullYear()+62)
+                document.getElementById("apGeralIPrevisto").innerHTML = `${diaDataNasc}/${mesDataNasc}/${apGeralIPrevisto.getFullYear()}`
             }
             if (tempoContribuicao >= 9125 && tempoServicoPublico >= 3650 && tempoUltimoCargo >= 1825 && idade >= 62){
                 document.getElementById("apGeralResultado").innerHTML = "DISPONÍVEL"
@@ -1059,31 +1126,59 @@ class App {
             }
         }
 
-        // Verificando Aposentadoria de Professor
+        // APOSENTADORIA DOS PROFESSORES
         document.getElementById("apProfessorTCAtingido").innerHTML = `${tempoContribuicao} dias`
         document.getElementById("apProfessorTCElegivel").innerHTML = `${9125 - tempoContribuicao} dias`
         if (tempoContribuicao >= 9125){
             document.getElementById("apProfessorTCSituacao").innerHTML = "OK"
             document.getElementById("apProfessorTCElegivel").innerHTML = "Atingido"
+            document.getElementById("apProfessorTCPrevisto").innerHTML = "Atingido"
+        } else {
+            let dataAux = new Date()
+            let apProfessorTCPrevisto = new Date()
+            apProfessorTCPrevisto.setDate(dataAux.getDate()+(9125 - tempoContribuicao))
+            document.getElementById("apProfessorTCPrevisto").innerHTML = `${apProfessorTCPrevisto.getDate()}/${apProfessorTCPrevisto.getMonth()+1}/${apProfessorTCPrevisto.getFullYear()}`
         }
+
         document.getElementById("apProfessorTSPAtingido").innerHTML = `${tempoServicoPublico} dias`
         document.getElementById("apProfessorTSPElegivel").innerHTML = `${3650 - tempoServicoPublico} dias`
         if (tempoServicoPublico >= 3650) {
             document.getElementById("apProfessorTSPSituacao").innerHTML = "OK"
             document.getElementById("apProfessorTSPElegivel").innerHTML = "Atingido"
+            document.getElementById("apProfessorTSPPrevisto").innerHTML = "Atingido"
+        } else {
+            let dataAux = new Date()
+            let apProfessorTSPPrevisto = new Date()
+            apProfessorTSPPrevisto.setDate(dataAux.getDate()+(3650 - tempoServicoPublico))
+            document.getElementById("apProfessorTSPPrevisto").innerHTML = `${apProfessorTSPPrevisto.getDate()}/${apProfessorTSPPrevisto.getMonth()+1}/${apProfessorTSPPrevisto.getFullYear()}`
         }
+
         document.getElementById("apProfessorTUCAtingido").innerHTML = `${tempoUltimoCargo} dias`
         document.getElementById("apProfessorTUCElegivel").innerHTML = `${1825 - tempoUltimoCargo} dias`
         if (tempoUltimoCargo >= 1825) {
             document.getElementById("apProfessorTUCSituacao").innerHTML = "OK"
             document.getElementById("apProfessorTUCElegivel").innerHTML = "Atingido"
+            document.getElementById("apProfessorTUCPrevisto").innerHTML = "Atingido"
+        } else {
+            let dataAux = new Date()
+            let apProfessorTUCPrevisto = new Date()
+            apProfessorTUCPrevisto.setDate(dataAux.getDate()+(9125 - tempoContribuicao))
+            document.getElementById("apProfessorTUCPrevisto").innerHTML = `${apProfessorTUCPrevisto.getDate()}/${apProfessorTUCPrevisto.getMonth()+1}/${apProfessorTUCPrevisto.getFullYear()}`
         }
+
         document.getElementById("apProfessorMagAtingido").innerHTML = `${tempoMagisterio} dias`
         document.getElementById("apProfessorMagElegivel").innerHTML = `${9125 - tempoMagisterio} dias`
         if (tempoMagisterio >= 9125){
             document.getElementById("apProfessorMagSituacao").innerHTML = "OK"
             document.getElementById("apProfessorMagElegivel").innerHTML = "Atingido"
+            document.getElementById("apProfessorMagPrevisto").innerHTML = "Atingido"
+        } else {
+            let dataAux = new Date()
+            let apProfessorMagPrevisto = new Date()
+            apProfessorMagPrevisto.setDate(dataAux.getDate()+(9125 - tempoMagisterio))
+            document.getElementById("apProfessorMagPrevisto").innerHTML = `${apProfessorMagPrevisto.getDate()}/${apProfessorMagPrevisto.getMonth()+1}/${apProfessorMagPrevisto.getFullYear()}`
         }
+
         document.getElementById("apProfessorIAtingido").innerHTML = `${idade} anos`
         if (masculino) {
             document.getElementById("apProfessorIExigido").innerHTML = "60 anos"
@@ -1091,6 +1186,12 @@ class App {
             if (idade >= 60){
                 document.getElementById("apProfessorISituacao").innerHTML = "OK"
                 document.getElementById("apProfessorIElegivel").innerHTML = "Atingido"
+                document.getElementById("apProfessorIPrevisto").innerHTML = "Atingido"
+            } else {
+                let dataAux = new Date(dataNasc)
+                let apProfessorIPrevisto = new Date()
+                apProfessorIPrevisto.setFullYear(dataAux.getFullYear()+60)
+                document.getElementById("apProfessorIPrevisto").innerHTML = `${diaDataNasc}/${mesDataNasc}/${apProfessorIPrevisto.getFullYear()}`
             }
             if (tempoContribuicao >= 9125 && tempoServicoPublico >= 3650 && tempoUltimoCargo >= 1825 && tempoMagisterio >= 9125 && idade >= 60){
                 document.getElementById("apProfessorResultado").innerHTML = "DISPONÍVEL"
@@ -1105,6 +1206,12 @@ class App {
             if (idade >= 57){
                 document.getElementById("apProfessorISituacao").innerHTML = "OK"
                 document.getElementById("apProfessorIElegivel").innerHTML = "Atingido"
+                document.getElementById("apProfessorIPrevisto").innerHTML = "Atingido"
+            } else {
+                let dataAux = new Date(dataNasc)
+                let apProfessorIPrevisto = new Date()
+                apProfessorIPrevisto.setFullYear(dataAux.getFullYear()+57)
+                document.getElementById("apProfessorIPrevisto").innerHTML = `${diaDataNasc}/${mesDataNasc}/${apProfessorIPrevisto.getFullYear()}`
             }
             if (tempoContribuicao >= 9125 && tempoServicoPublico >= 3650 && tempoUltimoCargo >= 1825 && tempoMagisterio >= 9125 && idade >= 57){
                 document.getElementById("apProfessorResultado").innerHTML = "DISPONÍVEL"
@@ -1114,37 +1221,72 @@ class App {
             }
         }
 
-        // Verificando Aposentadoria de servidor da Saúde
+        // APOSENTADORIA DOS SERVIDORES EXPOSTOS A AGENTES QUÍMICOS, FÍSICOS E BIOLÓGICOS
         document.getElementById("apSaudeTCAtingido").innerHTML = `${tempoContribuicao} dias`
         document.getElementById("apSaudeTCElegivel").innerHTML = `${9125 - tempoContribuicao} dias`
         if (tempoContribuicao >= 9125){
             document.getElementById("apSaudeTCSituacao").innerHTML = "OK"
             document.getElementById("apSaudeTCElegivel").innerHTML = "Atingido"
+            document.getElementById("apSaudeTCPrevisto").innerHTML = "Atingido"
+        } else {
+            let dataAux = new Date()
+            let apSaudeTCPrevisto = new Date()
+            apSaudeTCPrevisto.setDate(dataAux.getDate()+(9125 - tempoContribuicao))
+            document.getElementById("apSaudeTCPrevisto").innerHTML = `${apSaudeTCPrevisto.getDate()}/${apSaudeTCPrevisto.getMonth()+1}/${apSaudeTCPrevisto.getFullYear()}`
         }
+
         document.getElementById("apSaudeTSPAtingido").innerHTML = `${tempoServicoPublico} dias`
         document.getElementById("apSaudeTSPElegivel").innerHTML = `${3650 - tempoServicoPublico} dias`
         if (tempoServicoPublico >= 3650) {
             document.getElementById("apSaudeTSPSituacao").innerHTML = "OK"
             document.getElementById("apSaudeTSPElegivel").innerHTML = "Atingido"
+            document.getElementById("apSaudeTSPPrevisto").innerHTML = "Atingido"
+        } else {
+            let dataAux = new Date()
+            let apSaudeTSPPrevisto = new Date()
+            apSaudeTSPPrevisto.setDate(dataAux.getDate()+(3650 - tempoServicoPublico))
+            document.getElementById("apSaudeTSPPrevisto").innerHTML = `${apSaudeTSPPrevisto.getDate()}/${apSaudeTSPPrevisto.getMonth()+1}/${apSaudeTSPPrevisto.getFullYear()}`
         }
+
         document.getElementById("apSaudeTUCAtingido").innerHTML = `${tempoUltimoCargo} dias`
         document.getElementById("apSaudeTUCElegivel").innerHTML = `${1825 - tempoUltimoCargo} dias`
         if (tempoUltimoCargo >= 1825) {
             document.getElementById("apSaudeTUCSituacao").innerHTML = "OK"
             document.getElementById("apSaudeTUCElegivel").innerHTML = "Atingido"
+            document.getElementById("apSaudeTUCPrevisto").innerHTML = "Atingido"
+        } else {
+            let dataAux = new Date()
+            let apSaudeTUCPrevisto = new Date()
+            apSaudeTUCPrevisto.setDate(dataAux.getDate()+(1825 - tempoUltimoCargo))
+            document.getElementById("apSaudeTUCPrevisto").innerHTML = `${apSaudeTUCPrevisto.getDate()}/${apSaudeTUCPrevisto.getMonth()+1}/${apSaudeTUCPrevisto.getFullYear()}`
         }
+
         document.getElementById("apSaudeTEAtingido").innerHTML = `${tempoSaude} dias`
         document.getElementById("apSaudeTEElegivel").innerHTML = `${9125 - tempoSaude} dias`
         if (tempoSaude >= 9125) {
             document.getElementById("apSaudeTESituacao").innerHTML = "OK"
             document.getElementById("apSaudeTEElegivel").innerHTML = "Atingido"
+            document.getElementById("apSaudeTEPrevisto").innerHTML = "Atingido"
+        } else {
+            let dataAux = new Date()
+            let apSaudeTEPrevisto = new Date()
+            apSaudeTEPrevisto.setDate(dataAux.getDate()+(9125 - tempoSaude))
+            document.getElementById("apSaudeTEPrevisto").innerHTML = `${apSaudeTEPrevisto.getDate()}/${apSaudeTEPrevisto.getMonth()+1}/${apSaudeTEPrevisto.getFullYear()}`
         }
+
         document.getElementById("apSaudeIAtingido").innerHTML = `${idade} anos`
         document.getElementById("apSaudeIElegivel").innerHTML = `${60 - idade} anos`
         if (idade >= 60){
             document.getElementById("apSaudeISituacao").innerHTML = "OK"
             document.getElementById("apSaudeIElegivel").innerHTML = "Atingido"
+            document.getElementById("apSaudeIPrevisto").innerHTML = "Atingido"
+        } else {
+            let dataAux = new Date(dataNasc)
+            let apSaudeIPrevisto = new Date()
+            apSaudeIPrevisto.setFullYear(dataAux.getFullYear()+60)
+            document.getElementById("apSaudeIPrevisto").innerHTML = `${diaDataNasc}/${mesDataNasc}/${apSaudeIPrevisto.getFullYear()}`
         }
+
         if (tempoContribuicao >= 9125 && tempoServicoPublico >= 3650 && tempoUltimoCargo >= 1825 && tempoSaude >= 9125 && idade >= 60){
             document.getElementById("apSaudeResultado").innerHTML = "DISPONÍVEL"
             apSaude = true
@@ -1152,6 +1294,8 @@ class App {
             document.getElementById("apSaudeResultado").innerHTML = "INDISPONÍVEL"
         }
         
+// CONTINUAR AQUI
+
         // Verificando Aposentadoria de servidor com deficiência
         var select = document.getElementById('deficiencia')
         var deficiencia = select.options[select.selectedIndex].value
@@ -1726,6 +1870,7 @@ class App {
 
     exibirVisualizarImprimir(){
         document.getElementById("botaoVisualizarImprimir").style.display = "block"
+        document.getElementById("FinalizarCancelar").style.display = "none"
         document.getElementById("visualizar").focus()
     }
 

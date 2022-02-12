@@ -423,15 +423,16 @@ td.td1C{
 }
 
 .td7A{
-    width: 350px;
+    width: 330px;
     border-top: solid 1px;
     border-left: solid 1px;
 }
 .td7B{
     border-top: solid 1px;
-    min-width: 50px;
+    min-width: 70px;
 }
 .td7C{
+    width: 70px;
     border-top: solid 1px;
 }
 .td7D{
