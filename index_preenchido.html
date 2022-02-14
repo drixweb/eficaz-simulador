@@ -917,20 +917,20 @@
                         <div class="field">
                             <label for="nomeDoServidor" class="label">Nome do Servidor(a)</label>
                             <div class="control">
-                                <input type="text" name="nomeDoServidor" id="nomeDoServidor" class="input" placeholder="Digite o mome completo" onchange="app.desmarcarNomeDoServidor()">
+                                <input type="text" name="nomeDoServidor" id="nomeDoServidor" class="input" placeholder="Digite o mome completo" onchange="app.desmarcarNomeDoServidor()" value="Nome de Teste">
                             </div>
                         </div>
                     </td>
                     <td>
                         <label for="dataNasc" class="label">Data de Nascimento</label>
                         <div class="control">
-                            <input type="date" name="dataNasc" id="dataNasc" class="input" style="width: 160px;" onfocus="app.desmarcarDataNasc()">
+                            <input type="date" name="dataNasc" id="dataNasc" class="input" style="width: 160px;" onfocus="app.desmarcarDataNasc()" value="1962-01-02">
                         </div>
                     </td>
                     <td>
                         <label for="CPF" class="label">CPF</label>
                         <div class="control">
-                            <input type="text" class="input" name="CPF" placeholder="Digite o CPF" id="CPF" autocomplete="off" maxlength="14" onkeyup="app.mascaraCPF()" onfocus="app.desmarcarCPF()">
+                            <input type="text" class="input" name="CPF" placeholder="Digite o CPF" id="CPF" autocomplete="off" maxlength="14" onkeyup="app.mascaraCPF()" onfocus="app.desmarcarCPF()" value="123.456.789-00">
                         </div>
                     </td>
                     <td>
@@ -970,26 +970,26 @@
                         <div class="field">
                             <label for="matricula" class="label">Matrícula</label>
                             <div class="control">
-                                <input type="number" class="input" name="matricula" id="matricula" onfocus="app.desmarcarMatricula()">
+                                <input type="number" class="input" name="matricula" id="matricula" onfocus="app.desmarcarMatricula()" value="10">
                             </div>
                         </div>
                     </td>
                     <td>
                         <label for="dataAdmissao" class="label">Data de Admissão</label>
                         <div class="control">
-                            <input type="date" name="dataAdm" id="dataAdm" class="input" style="width: 160px;" onfocus="app.desmarcarDataAdm()">
+                            <input type="date" name="dataAdm" id="dataAdm" class="input" style="width: 160px;" onfocus="app.desmarcarDataAdm()" value="2000-01-01">
                         </div>
                     </td>
                     <td>
                         <label for="cargo" class="label">Cargo</label>
                         <div class="control">
-                            <input type="text" name="cargo" placeholder="Digite o cargo" id="cargo" class="input" style="width: 200px;" onfocus="app.desmarcarCargo()">
+                            <input type="text" name="cargo" placeholder="Digite o cargo" id="cargo" class="input" style="width: 200px;" onfocus="app.desmarcarCargo()" value="CargoTeste">
                         </div>
                     </td>
                     <td>
                         <label for="lotacao" class="label">Lotação</label>
                         <div class="control">
-                            <input type="text" name="lotacao" placeholder="Digite a Lotação" id="lotacao" class="input" style="width: 200px;" onfocus="app.desmarcarLotacao()">
+                            <input type="text" name="lotacao" placeholder="Digite a Lotação" id="lotacao" class="input" style="width: 200px;" onfocus="app.desmarcarLotacao()" value="LotaçãoTeste">
                         </div>
                     </td>
                     <td>
@@ -1045,11 +1045,11 @@
                     <tr>
                         <td style="padding-left: 16px;">
                             <label for="dataInicioCadDesconto" class="label">Data Início</label>
-                            <input type="date" class="input" id="dataInicioCadDesconto" name="dataInicioCadDesconto" style="width: 180px;">
+                            <input type="date" class="input" id="dataInicioCadDesconto" name="dataInicioCadDesconto" style="width: 180px;" value="2010-01-01">
                         </td>
                         <td>
                             <label for="dataFimCadDesconto" class="label">Data Fim</label>
-                            <input type="date" class="input" id="dataFimCadDesconto" name="dataFimCadDesconto" style="width: 180px;">
+                            <input type="date" class="input" id="dataFimCadDesconto" name="dataFimCadDesconto" style="width: 180px;" value="2010-03-22">
                         </td>
                     </tr>
                 </tbody>
@@ -1068,7 +1068,7 @@
                             <td>
                                 <label for="organizacao" class="label">Organização</label>
                                 <div class="control">
-                                    <input class="input" id="organizacao" type="text" placeholder="Digite o nome do Órgão ou Empresa" style="width: 650px" onchange="app.desmarcarOrganizacao()">
+                                    <input class="input" id="organizacao" type="text" placeholder="Digite o nome do Órgão ou Empresa" style="width: 650px" onchange="app.desmarcarOrganizacao()" value="Organização Teste 01">
                                 </div>
                             </td>
                             <td>
@@ -1092,11 +1092,11 @@
                         <tr>
                             <td>
                                 <label for="dataInicio" class="label">Data Início</label>
-                                <input type="date" class="input" id="dataInicio" name="dataInicio" style="width: 200px;" onfocus="app.desmarcarDataInicio()">
+                                <input type="date" class="input" id="dataInicio" name="dataInicio" style="width: 200px;" onfocus="app.desmarcarDataInicio()" value="1989-01-01">
                             </td>
                             <td>
                                 <label for="dataFim" class="label">Data Fim</label>
-                                <input type="date" class="input" id="dataFim" name="dataFim" style="width: 200px;" onfocus="app.desmarcarDataFim()">
+                                <input type="date" class="input" id="dataFim" name="dataFim" style="width: 200px;" onfocus="app.desmarcarDataFim()" value="1999-12-31">
                             </td>
                             <td class="tdRegime">
                                 <label for="regime" class="label">Regime</label>
