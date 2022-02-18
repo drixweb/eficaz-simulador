@@ -893,9 +893,16 @@ class App {
             let mesSomaTotal = Math.trunc(sobraSomaTotal/30)
             let diaSomaTotal = sobraSomaTotal % 30
             document.getElementById("anoTempoDeContribuicao").innerHTML = anoSomaTotal
+            document.getElementById("anoTempoDeContribuicao2").innerHTML = anoSomaTotal
             document.getElementById("mesTempoDeContribuicao").innerHTML = mesSomaTotal
+            document.getElementById("mesTempoDeContribuicao2").innerHTML = mesSomaTotal
             document.getElementById("diaTempoDeContribuicao").innerHTML = diaSomaTotal
+            document.getElementById("diaTempoDeContribuicao2").innerHTML = diaSomaTotal
             document.getElementById("somaTempoDeContribuicao").innerHTML = somaTotal
+            document.getElementById("somaTempoDeContribuicao2").innerHTML = somaTotal
+            document.getElementById("pontuacaoIdade").innerHTML = idade
+            document.getElementById("pontuacaoAnos").innerHTML = anoSomaTotal
+            document.getElementById("pontuacaoTotal").innerHTML = Number(anoSomaTotal) + Number(idade)
 
             //Montar Cenários de Aposentadoria
             this.montarCenarios()
@@ -1969,10 +1976,10 @@ class App {
         if (masculino) {
             pedagioProf = 10950 - (tempoContribuicao - tempoEC_Hoje)
             if (pedagioProf > 0) {
-                document.getElementById("apPedagioProfPExigido").innerHTML = `${pedagio} dias`
-                document.getElementById("apPedagioProfPExigido").innerHTML = `${tempoEC_Hoje} dias`
-                document.getElementById("apPedagioProfPElegivel").innerHTML = `${(pedagio*2) - tempoEC_Hoje} dias`
-                if ((tempoContribuicao - 10950) >= pedagio) {
+                document.getElementById("apPedagioProfPExigido").innerHTML = `${pedagioProf*2} dias`
+                document.getElementById("apPedagioProfPAtingido").innerHTML = `${tempoEC_Hoje} dias`
+                document.getElementById("apPedagioProfPElegivel").innerHTML = `${(pedagioProf*2) - tempoEC_Hoje} dias`
+                if ((tempoContribuicao - 10950) >= pedagioProf) {
                     document.getElementById("apPedagioProfPSituacao").innerHTML = "OK"
                     document.getElementById("apPedagioProfPElegivel").innerHTML = "Atingido"
                     document.getElementById("apPedagioProfPPrevisto").innerHTML = "Atingido"
@@ -1980,7 +1987,7 @@ class App {
                 } else {
                     let dataAux = new Date()
                     let apPedagioProfPPrevisto = new Date()
-                    apPedagioProfPPrevisto.setDate(dataAux.getDate()+((pedagio*2) - tempoEC_Hoje))
+                    apPedagioProfPPrevisto.setDate(dataAux.getDate()+((pedagioProf*2) - tempoEC_Hoje))
                     document.getElementById("apPedagioProfPPrevisto").innerHTML = `${apPedagioProfPPrevisto.getDate()}/${apPedagioProfPPrevisto.getMonth()+1}/${apPedagioProfPPrevisto.getFullYear()}`
                 }
             } else {
@@ -1995,10 +2002,10 @@ class App {
         if (feminino) {
             pedagioProf = 9125 - (tempoContribuicao - tempoEC_Hoje)
             if (pedagioProf > 0) {
-                document.getElementById("apPedagioProfPExigido").innerHTML = `${pedagio} dias`
+                document.getElementById("apPedagioProfPExigido").innerHTML = `${pedagioProf} dias`
                 document.getElementById("apPedagioProfPAtingido").innerHTML = `${tempoEC_Hoje} dias`
-                document.getElementById("apPedagioProfPElegivel").innerHTML = `${(pedagio*2) - tempoEC_Hoje} dias`
-                if ((tempoContribuicao - 9125) >= pedagio) {
+                document.getElementById("apPedagioProfPElegivel").innerHTML = `${(pedagioProf*2) - tempoEC_Hoje} dias`
+                if ((tempoContribuicao - 9125) >= pedagioProf) {
                     document.getElementById("apPedagioProfPSituacao").innerHTML = "OK"
                     document.getElementById("apPedagioProfPElegivel").innerHTML = "Atingido"
                     document.getElementById("apPedagioProfPPrevisto").innerHTML = "Atingido"
@@ -2006,7 +2013,7 @@ class App {
                 } else {
                     let dataAux = new Date()
                     let apPedagioProfPPrevisto = new Date()
-                    apPedagioProfPPrevisto.setDate(dataAux.getDate()+((pedagio*2) - tempoEC_Hoje))
+                    apPedagioProfPPrevisto.setDate(dataAux.getDate()+((pedagioProf*2) - tempoEC_Hoje))
                     document.getElementById("apPedagioProfPPrevisto").innerHTML = `${apPedagioProfPPrevisto.getDate()}/${apPedagioProfPPrevisto.getMonth()+1}/${apPedagioProfPPrevisto.getFullYear()}`
                 }
             } else {
@@ -2064,7 +2071,7 @@ class App {
                 apPedagioProfIPrevisto.setFullYear(dataAux.getFullYear()+55)
                 document.getElementById("apPedagioProfIPrevisto").innerHTML = `${diaDataNasc}/${mesDataNasc}/${apPedagioProfIPrevisto.getFullYear()}`
             }
-            if (tempoContribuicao >= 10950 && tempoServicoPublico >= 7300 && tempoUltimoCargo >= 1825 && tempoMagisterio <= 10950 && pedagio <= 0 && idade >= 55){
+            if (tempoContribuicao >= 10950 && tempoServicoPublico >= 7300 && tempoUltimoCargo >= 1825 && tempoMagisterio >= 10950 && pedagioPass && idade >= 55){
                 document.getElementById("apPedagioProfResultado").innerHTML = "DISPONÍVEL"
                 apPedagioProf = true
             } else {

@@ -8,7 +8,9 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="style.css">
-    <style>#pagina1, #pagina2, .desabilitado{display: none;}</style>
+    <style>
+        #pagina1, #pagina2, .desabilitado{display: none;}
+    </style>
 
     <script src="js/tempo_de_servico.js"></script>
     <script src="js/app.js"></script>
@@ -291,9 +293,7 @@
                 <p class="topoImpressao" style="text-align: center;">ESTADO DE RONDÔNIA</p>
                 <p class="topoImpressao" style="text-align: center;">PREFEITURA MUNICIPAL DE OURO PRETO DO OESTE</p>
                 <p class="topoImpressao" style="font-size: 13px; text-align: center;">INSTITUTO DE PREVIDENCIA DOS SERVIDORES MUNICIPAIS - IPSM</p>
-                <br>
-                <p class="topoImpressao" style="font-size: 26px; text-align: center;">SIMULAÇÃO DE APOSENTADORIA</p>
-                <br>
+                <p class="topoImpressao" style="font-size: 26px; text-align: center; padding: 5px 0px;">SIMULAÇÃO DE APOSENTADORIA</p>
                 <p style="font-weight: 800;">DADOS DO SERVIDOR</p>
                 <div class="dadosImpressao" style="border-top: solid 1px; border-bottom: solid 1px">
                     <table>
@@ -333,6 +333,24 @@
                     </table>
                 </div>
             </div>
+
+            <div class="secaoImpressao" id="secao3_pag2">
+                
+                <p style="font-weight: 800; padding-top: 5px;">TEMPO DE SERVIÇO CERTIFICADO</p>
+                <table class="tbRelacaoTempo">
+                    
+                    <tbody>
+                        <tr class="trTemposDetalhados">
+                            
+                            <td class="td7A" style="border-left: 0px; border-bottom: solid 1px;">
+                                <p class="td1A">Tempo de Contribuição: <span id="somaTempoDeContribuicao2">XXXX</span> dias (Equivalendo a aproximadamente <span id="anoTempoDeContribuicao2">XX</span> ano(s), <span id="mesTempoDeContribuicao2">XX</span> mês(es) e <span id="diaTempoDeContribuicao2">XXX</span> dias)</p>
+                                <p class="td1A">Pontuação: <span id="pontuacaoIdade"></span> (idade) + <span id="pontuacaoAnos"></span> (anos contribuição) = <span id="pontuacaoTotal"></span> pontos</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
             <div class="secaoImpressao" id="secao4">
                 <br>
                 <p style="font-size: 16px; font-weight: 700; text-align: center;">CENÁRIOS DE CONCESSÃO</p>
@@ -346,55 +364,55 @@
                             <td class="primeiralinha" colspan="6"><p style="text-align: center;">Fundamentação:</p></td>
                         </tr>
                         <tr class="negrito">
-                            <td class="td7A">Requisito</td>
-                            <td class="td7B">Exigido</td>
-                            <td class="td7C">Atingido</td>
-                            <td class="td7D">Situação</td>
-                            <td class="td7E">Elegível em</td>
-                            <td class="td7F">Data prevista</td>
+                            <td class="td8A">Requisito</td>
+                            <td class="td8B">Exigido</td>
+                            <td class="td8C">Atingido</td>
+                            <td class="td8D">Situação</td>
+                            <td class="td8E">Elegível em</td>
+                            <td class="td8F">Data prevista</td>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class="trTemposDetalhados">
                             <td class="td7A">Tempo de contribuição</td>
-                            <td class="td7B">9125 dias</td>
-                            <td class="td7C" id="apGeralTCAtingido"></td>
-                            <td class="td7D" id="apGeralTCSituacao">PENDENTE</td>
-                            <td class="td7E" id="apGeralTCElegivel">-</td>
-                            <td class="td7F" id="apGeralTCPrevisto">-</td>
+                            <td class="td8B">9125 dias</td>
+                            <td class="td8C" id="apGeralTCAtingido"></td>
+                            <td class="td8D" id="apGeralTCSituacao">PENDENTE</td>
+                            <td class="td8E" id="apGeralTCElegivel">-</td>
+                            <td class="td8F" id="apGeralTCPrevisto">-</td>
                         </tr>
                         <tr class="trTemposDetalhados">
                             <td class="td7A">Tempo de serviço público</td>
-                            <td class="td7B">3650 dias</td>
-                            <td class="td7C" id="apGeralTSPAtingido"></td>
-                            <td class="td7D" id="apGeralTSPSituacao">PENDENTE</td>
-                            <td class="td7E" id="apGeralTSPElegivel">-</td>
-                            <td class="td7F" id="apGeralTSPPrevisto">-</td>
+                            <td class="td8B">3650 dias</td>
+                            <td class="td8C" id="apGeralTSPAtingido"></td>
+                            <td class="td8D" id="apGeralTSPSituacao">PENDENTE</td>
+                            <td class="td8E" id="apGeralTSPElegivel">-</td>
+                            <td class="td8F" id="apGeralTSPPrevisto">-</td>
                         </tr>
                         <tr class="trTemposDetalhados">
                             <td class="td7A">Tempo no cargo efetivo</td>
-                            <td class="td7B">1825 dias</td>
-                            <td class="td7C" id="apGeralTUCAtingido"></td>
-                            <td class="td7D" id="apGeralTUCSituacao">PENDENTE</td>
-                            <td class="td7E" id="apGeralTUCElegivel">-</td>
-                            <td class="td7F" id="apGeralTUCPrevisto">-</td>
+                            <td class="td8B">1825 dias</td>
+                            <td class="td8C" id="apGeralTUCAtingido"></td>
+                            <td class="td8D" id="apGeralTUCSituacao">PENDENTE</td>
+                            <td class="td8E" id="apGeralTUCElegivel">-</td>
+                            <td class="td8F" id="apGeralTUCPrevisto">-</td>
                         </tr>
                         <tr class="trTemposDetalhados">
                             <td class="td7A" style="border-bottom: solid 1px;">Idade exigida</td>
-                            <td class="td7B" id="apGeralIExigido" style="border-bottom: solid 1px;">0 anos</td>
-                            <td class="td7C" id="apGeralIAtingido" style="border-bottom: solid 1px;">-</td>
-                            <td class="td7D" id="apGeralISituacao" style="border-bottom: solid 1px;">PENDENTE</td>
-                            <td class="td7E" id="apGeralIElegivel" style="border-bottom: solid 1px;">-</td>
-                            <td class="td7F" id="apGeralIPrevisto" style="border-bottom: solid 1px;">-</td>
+                            <td class="td8B" id="apGeralIExigido" style="border-bottom: solid 1px;">0 anos</td>
+                            <td class="td8C" id="apGeralIAtingido" style="border-bottom: solid 1px;">-</td>
+                            <td class="td8D" id="apGeralISituacao" style="border-bottom: solid 1px;">PENDENTE</td>
+                            <td class="td8E" id="apGeralIElegivel" style="border-bottom: solid 1px;">-</td>
+                            <td class="td8F" id="apGeralIPrevisto" style="border-bottom: solid 1px;">-</td>
                         </tr>
                         <tr>
                             <td class="ultimalinha" colspan="6"><p style="text-align: right;">Resultado: <span id="apGeralResultado">VERIFICAR</span></p></td>
                         </tr>
                     </tbody>
-                </table><br>
+                </table>
             </div>
 
-            <div class="secaoImpressao" id="secao6">
+            <div class="secaoImpressao" id="secao6" style="padding-top: 10px;">
                 <p style="font-weight: 600;">APOSENTADORIA DOS PROFESSORES</p>
                 <table class="tbRelacaoTempo">
                     <thead>
@@ -403,62 +421,62 @@
                         </tr>
                         <tr class="negrito">
                             <td class="td7A">Requisito</td>
-                            <td class="td7B">Exigido</td>
-                            <td class="td7C">Atingido</td>
-                            <td class="td7D">Situação</td>
-                            <td class="td7E">Elegível em</td>
-                            <td class="td7F">Data prevista</td>
+                            <td class="td8B">Exigido</td>
+                            <td class="td8C">Atingido</td>
+                            <td class="td8D">Situação</td>
+                            <td class="td8E">Elegível em</td>
+                            <td class="td8F">Data prevista</td>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class="trTemposDetalhados">
                             <td class="td7A">Tempo de contribuição</td>
-                            <td class="td7B" id="apProfessorTCExigido">9125 dias</td>
-                            <td class="td7C" id="apProfessorTCAtingido"></td>
-                            <td class="td7D" id="apProfessorTCSituacao">PENDENTE</td>
-                            <td class="td7E" id="apProfessorTCElegivel">-</td>
-                            <td class="td7F" id="apProfessorTCPrevisto">-</td>
+                            <td class="td8B" id="apProfessorTCExigido">9125 dias</td>
+                            <td class="td8C" id="apProfessorTCAtingido"></td>
+                            <td class="td8D" id="apProfessorTCSituacao">PENDENTE</td>
+                            <td class="td8E" id="apProfessorTCElegivel">-</td>
+                            <td class="td8F" id="apProfessorTCPrevisto">-</td>
                         </tr>
                         <tr class="trTemposDetalhados">
                             <td class="td7A">Tempo de serviço público</td>
-                            <td class="td7B">3650 dias</td>
-                            <td class="td7C" id="apProfessorTSPAtingido"></td>
-                            <td class="td7D" id="apProfessorTSPSituacao">PENDENTE</td>
-                            <td class="td7E" id="apProfessorTSPElegivel">-</td>
-                            <td class="td7F" id="apProfessorTSPPrevisto">-</td>
+                            <td class="td8B">3650 dias</td>
+                            <td class="td8C" id="apProfessorTSPAtingido"></td>
+                            <td class="td8D" id="apProfessorTSPSituacao">PENDENTE</td>
+                            <td class="td8E" id="apProfessorTSPElegivel">-</td>
+                            <td class="td8F" id="apProfessorTSPPrevisto">-</td>
                         </tr>
                         <tr class="trTemposDetalhados">
                             <td class="td7A">Tempo no último cargo</td>
-                            <td class="td7B">1825 dias</td>
-                            <td class="td7C" id="apProfessorTUCAtingido"></td>
-                            <td class="td7D" id="apProfessorTUCSituacao">PENDENTE</td>
-                            <td class="td7E" id="apProfessorTUCElegivel">-</td>
-                            <td class="td7F" id="apProfessorTUCPrevisto">-</td>
+                            <td class="td8B">1825 dias</td>
+                            <td class="td8C" id="apProfessorTUCAtingido"></td>
+                            <td class="td8D" id="apProfessorTUCSituacao">PENDENTE</td>
+                            <td class="td8E" id="apProfessorTUCElegivel">-</td>
+                            <td class="td8F" id="apProfessorTUCPrevisto">-</td>
                         </tr>
                         <tr class="trTemposDetalhados">
                             <td class="td7A">Tempo de serviço exclusivo como professor (educação infantil, ensino fundamental e médio)</td>
-                            <td class="td7B" id="apProfessorMagExigido">9125 dias</td>
-                            <td class="td7C" id="apProfessorMagAtingido"></td>
-                            <td class="td7D" id="apProfessorMagSituacao">PENDENTE</td>
-                            <td class="td7E" id="apProfessorMagElegivel">-</td>
-                            <td class="td7F" id="apProfessorMagPrevisto">-</td>
+                            <td class="td8B" id="apProfessorMagExigido">9125 dias</td>
+                            <td class="td8C" id="apProfessorMagAtingido"></td>
+                            <td class="td8D" id="apProfessorMagSituacao">PENDENTE</td>
+                            <td class="td8E" id="apProfessorMagElegivel">-</td>
+                            <td class="td8F" id="apProfessorMagPrevisto">-</td>
                         </tr>
                         <tr class="trTemposDetalhados">
                             <td class="td7A" style="border-bottom: solid 1px;">Idade exigida</td>
-                            <td class="td7B" id="apProfessorIExigido" style="border-bottom: solid 1px;">0</td>
-                            <td class="td7C" id="apProfessorIAtingido" style="border-bottom: solid 1px;">-</td>
-                            <td class="td7D" id="apProfessorISituacao" style="border-bottom: solid 1px;">PENDENTE</td>
-                            <td class="td7E" id="apProfessorIElegivel" style="border-bottom: solid 1px;">-</td>
-                            <td class="td7F" id="apProfessorIPrevisto" style="border-bottom: solid 1px;">-</td>
+                            <td class="td8B" id="apProfessorIExigido" style="border-bottom: solid 1px;">0</td>
+                            <td class="td8C" id="apProfessorIAtingido" style="border-bottom: solid 1px;">-</td>
+                            <td class="td8D" id="apProfessorISituacao" style="border-bottom: solid 1px;">PENDENTE</td>
+                            <td class="td8E" id="apProfessorIElegivel" style="border-bottom: solid 1px;">-</td>
+                            <td class="td8F" id="apProfessorIPrevisto" style="border-bottom: solid 1px;">-</td>
                         </tr>
                         <tr>
                             <td class="ultimalinha" colspan="6"><p style="text-align: right;">Resultado: <span id="apProfessorResultado">VERIFICAR</span></p></td>
                         </tr>
                     </tbody>
-                </table><br>
+                </table>
             </div>
 
-            <div class="secaoImpressao" id="secao7">
+            <div class="secaoImpressao" id="secao7" style="padding-top: 10px;">
                 <p style="font-weight: 600;">APOSENTADORIA DOS SERVIDORES EXPOSTOS A AGENTES QUÍMICOS, FÍSICOS E BIOLÓGICOS</p>
                 <table class="tbRelacaoTempo">
                     <thead>
@@ -467,62 +485,62 @@
                         </tr>
                         <tr class="negrito">
                             <td class="td7A">Requisito</td>
-                            <td class="td7B">Exigido</td>
-                            <td class="td7C">Atingido</td>
-                            <td class="td7D">Situação</td>
-                            <td class="td7E">Elegível em</td>
-                            <td class="td7F">Data prevista</td>
+                            <td class="td8B">Exigido</td>
+                            <td class="td8C">Atingido</td>
+                            <td class="td8D">Situação</td>
+                            <td class="td8E">Elegível em</td>
+                            <td class="td8F">Data prevista</td>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class="trTemposDetalhados">
                             <td class="td7A">Tempo de contribuição</td>
-                            <td class="td7B" id="apSaudeTCExigido">9125 dias</td>
-                            <td class="td7C" id="apSaudeTCAtingido"></td>
-                            <td class="td7D" id="apSaudeTCSituacao">PENDENTE</td>
-                            <td class="td7E" id="apSaudeTCElegivel">-</td>
-                            <td class="td7F" id="apSaudeTCPrevisto">-</td>
+                            <td class="td8B" id="apSaudeTCExigido">9125 dias</td>
+                            <td class="td8C" id="apSaudeTCAtingido"></td>
+                            <td class="td8D" id="apSaudeTCSituacao">PENDENTE</td>
+                            <td class="td8E" id="apSaudeTCElegivel">-</td>
+                            <td class="td8F" id="apSaudeTCPrevisto">-</td>
                         </tr>
                         <tr class="trTemposDetalhados">
                             <td class="td7A">Tempo de serviço público</td>
-                            <td class="td7B">3650 dias</td>
-                            <td class="td7C" id="apSaudeTSPAtingido"></td>
-                            <td class="td7D" id="apSaudeTSPSituacao">PENDENTE</td>
-                            <td class="td7E" id="apSaudeTSPElegivel">-</td>
-                            <td class="td7F" id="apSaudeTSPPrevisto">-</td>
+                            <td class="td8B">3650 dias</td>
+                            <td class="td8C" id="apSaudeTSPAtingido"></td>
+                            <td class="td8D" id="apSaudeTSPSituacao">PENDENTE</td>
+                            <td class="td8E" id="apSaudeTSPElegivel">-</td>
+                            <td class="td8F" id="apSaudeTSPPrevisto">-</td>
                         </tr>
                         <tr class="trTemposDetalhados">
                             <td class="td7A">Tempo no último cargo</td>
-                            <td class="td7B">1825 dias</td>
-                            <td class="td7C" id="apSaudeTUCAtingido"></td>
-                            <td class="td7D" id="apSaudeTUCSituacao">PENDENTE</td>
-                            <td class="td7E" id="apSaudeTUCElegivel">-</td>
-                            <td class="td7F" id="apSaudeTUCPrevisto">-</td>
+                            <td class="td8B">1825 dias</td>
+                            <td class="td8C" id="apSaudeTUCAtingido"></td>
+                            <td class="td8D" id="apSaudeTUCSituacao">PENDENTE</td>
+                            <td class="td8E" id="apSaudeTUCElegivel">-</td>
+                            <td class="td8F" id="apSaudeTUCPrevisto">-</td>
                         </tr>
                         <tr class="trTemposDetalhados">
                             <td class="td7A">Tempo de serviço exclusivo de exposição a agentes químicos, físicos e biológicos</td>
-                            <td class="td7B">9125 dias</td>
-                            <td class="td7C" id="apSaudeTEAtingido"></td>
-                            <td class="td7D" id="apSaudeTESituacao">PENDENTE</td>
-                            <td class="td7E" id="apSaudeTEElegivel">-</td>
-                            <td class="td7F" id="apSaudeTEPrevisto">-</td>
+                            <td class="td8B">9125 dias</td>
+                            <td class="td8C" id="apSaudeTEAtingido"></td>
+                            <td class="td8D" id="apSaudeTESituacao">PENDENTE</td>
+                            <td class="td8E" id="apSaudeTEElegivel">-</td>
+                            <td class="td8F" id="apSaudeTEPrevisto">-</td>
                         </tr>
                         <tr class="trTemposDetalhados">
                             <td class="td7A" style="border-bottom: solid 1px;">Idade exigida</td>
-                            <td class="td7B" id="apSaudeIExigido" style="border-bottom: solid 1px;">60 anos</td>
-                            <td class="td7C" id="apSaudeIAtingido" style="border-bottom: solid 1px;">-</td>
-                            <td class="td7D" id="apSaudeISituacao" style="border-bottom: solid 1px;">PENDENTE</td>
-                            <td class="td7E" id="apSaudeIElegivel" style="border-bottom: solid 1px;">-</td>
-                            <td class="td7F" id="apSaudeIPrevisto" style="border-bottom: solid 1px;">-</td>
+                            <td class="td8B" id="apSaudeIExigido" style="border-bottom: solid 1px;">60 anos</td>
+                            <td class="td8C" id="apSaudeIAtingido" style="border-bottom: solid 1px;">-</td>
+                            <td class="td8D" id="apSaudeISituacao" style="border-bottom: solid 1px;">PENDENTE</td>
+                            <td class="td8E" id="apSaudeIElegivel" style="border-bottom: solid 1px;">-</td>
+                            <td class="td8F" id="apSaudeIPrevisto" style="border-bottom: solid 1px;">-</td>
                         </tr>
                         <tr>
                             <td class="ultimalinha" colspan="6"><p style="text-align: right;">Resultado: <span id="apSaudeResultado">VERIFICAR</span></p></td>
                         </tr>
                     </tbody>
-                </table><br>
+                </table>
             </div>
 
-            <div class="secaoImpressao" id="secao8">
+            <div class="secaoImpressao" id="secao8" style="padding-top: 10px;">
                 <p style="font-weight: 600;">APOSENTADORIA PARA SERVIDORES COM DEFICIÊNCIA</p>
                 <table class="tbRelacaoTempo">
                     <thead>
@@ -531,46 +549,46 @@
                         </tr>
                         <tr class="negrito">
                             <td class="td7A">Requisito</td>
-                            <td class="td7B">Exigido</td>
-                            <td class="td7C">Atingido</td>
-                            <td class="td7D">Situação</td>
-                            <td class="td7E">Elegível em</td>
-                            <td class="td7F">Data prevista</td>
+                            <td class="td8B">Exigido</td>
+                            <td class="td8C">Atingido</td>
+                            <td class="td8D">Situação</td>
+                            <td class="td8E">Elegível em</td>
+                            <td class="td8F">Data prevista</td>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class="trTemposDetalhados">
                             <td class="td7A">Tempo de contribuição</td>
-                            <td class="td7B" id="apDeficienciaTCExigido">-</td>
-                            <td class="td7C" id="apDeficienciaTCAtingido">-</td>
-                            <td class="td7D" id="apDeficienciaTCSituacao">PENDENTE</td>
-                            <td class="td7E" id="apDeficienciaTCElegivel">-</td>
-                            <td class="td7F" id="apDeficienciaTCPrevisto">-</td>
+                            <td class="td8B" id="apDeficienciaTCExigido">-</td>
+                            <td class="td8C" id="apDeficienciaTCAtingido">-</td>
+                            <td class="td8D" id="apDeficienciaTCSituacao">PENDENTE</td>
+                            <td class="td8E" id="apDeficienciaTCElegivel">-</td>
+                            <td class="td8F" id="apDeficienciaTCPrevisto">-</td>
                         </tr>
                         <tr class="trTemposDetalhados">
                             <td class="td7A">Tempo de serviço público</td>
-                            <td class="td7B">3650 dias</td>
-                            <td class="td7C" id="apDeficienciaTSPAtingido">-</td>
-                            <td class="td7D" id="apDeficienciaTSPSituacao">PENDENTE</td>
-                            <td class="td7E" id="apDeficienciaTSPElegivel">-</td>
-                            <td class="td7F" id="apDeficienciaTSPPrevisto">-</td>
+                            <td class="td8B">3650 dias</td>
+                            <td class="td8C" id="apDeficienciaTSPAtingido">-</td>
+                            <td class="td8D" id="apDeficienciaTSPSituacao">PENDENTE</td>
+                            <td class="td8E" id="apDeficienciaTSPElegivel">-</td>
+                            <td class="td8F" id="apDeficienciaTSPPrevisto">-</td>
                         </tr>
                         <tr class="trTemposDetalhados">
                             <td class="td7A" style="border-bottom: solid 1px;">Tempo no Cargo Efetivo</td>
-                            <td class="td7B" style="border-bottom: solid 1px;">1825 dias</td>
-                            <td class="td7C" id="apDeficienciaTUCAtingido" style="border-bottom: solid 1px;"></td>
-                            <td class="td7D" id="apDeficienciaTUCSituacao" style="border-bottom: solid 1px;">PENDENTE</td>
-                            <td class="td7E" id="apDeficienciaTUCElegivel" style="border-bottom: solid 1px;">-</td>
-                            <td class="td7F" id="apDeficienciaTUCPrevisto" style="border-bottom: solid 1px;">-</td>
+                            <td class="td8B" style="border-bottom: solid 1px;">1825 dias</td>
+                            <td class="td8C" id="apDeficienciaTUCAtingido" style="border-bottom: solid 1px;"></td>
+                            <td class="td8D" id="apDeficienciaTUCSituacao" style="border-bottom: solid 1px;">PENDENTE</td>
+                            <td class="td8E" id="apDeficienciaTUCElegivel" style="border-bottom: solid 1px;">-</td>
+                            <td class="td8F" id="apDeficienciaTUCPrevisto" style="border-bottom: solid 1px;">-</td>
                         </tr>
                         <tr>
                             <td class="ultimalinha" colspan="6"><p style="text-align: right;">Resultado: <span id="apDeficienciaResultado">NÃO APLICÁVEL</span></p></td>
                         </tr>
                     </tbody>
-                </table><br>
+                </table>
             </div>
 
-            <div class="secaoImpressao" id="secao9">
+            <div class="secaoImpressao" id="secao9" style="padding-top: 10px;">
                 <p style="font-weight: 600;">REGRA DE TRANSIÇÃO (PONTOS)</p>
                 <table class="tbRelacaoTempo">
                     <thead>
@@ -579,64 +597,63 @@
                         </tr>
                         <tr class="negrito">
                             <td class="td7A">Requisito</td>
-                            <td class="td7B">Exigido</td>
-                            <td class="td7C">Atingido</td>
-                            <td class="td7D">Situação</td>
-                            <td class="td7E">Elegível em</td>
-                            <td class="td7F">Data prevista</td>
+                            <td class="td8B">Exigido</td>
+                            <td class="td8C">Atingido</td>
+                            <td class="td8D">Situação</td>
+                            <td class="td8E">Elegível em</td>
+                            <td class="td8F">Data prevista</td>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class="trTemposDetalhados">
                             <td class="td7A">Tempo de contribuição</td>
-                            <td class="td7B" id="apPontosTCExigido"></td>
-                            <td class="td7C" id="apPontosTCAtingido"></td>
-                            <td class="td7D" id="apPontosTCSituacao">PENDENTE</td>
-                            <td class="td7E" id="apPontosTCElegivel">-</td>
-                            <td class="td7F" id="apPontosTCPrevisto">-</td>
+                            <td class="td8B" id="apPontosTCExigido"></td>
+                            <td class="td8C" id="apPontosTCAtingido"></td>
+                            <td class="td8D" id="apPontosTCSituacao">PENDENTE</td>
+                            <td class="td8E" id="apPontosTCElegivel">-</td>
+                            <td class="td8F" id="apPontosTCPrevisto">-</td>
                         </tr>
                         <tr class="trTemposDetalhados">
                             <td class="td7A">Tempo de serviço público</td>
-                            <td class="td7B">7300 dias</td>
-                            <td class="td7C" id="apPontosTSPAtingido"></td>
-                            <td class="td7D" id="apPontosTSPSituacao">PENDENTE</td>
-                            <td class="td7E" id="apPontosTSPElegivel">-</td>
-                            <td class="td7F" id="apPontosTSPPrevisto">-</td>
+                            <td class="td8B">7300 dias</td>
+                            <td class="td8C" id="apPontosTSPAtingido"></td>
+                            <td class="td8D" id="apPontosTSPSituacao">PENDENTE</td>
+                            <td class="td8E" id="apPontosTSPElegivel">-</td>
+                            <td class="td8F" id="apPontosTSPPrevisto">-</td>
                         </tr>
                         <tr class="trTemposDetalhados">
                             <td class="td7A">Tempo no cargo Efetivo</td>
-                            <td class="td7B">1825 dias</td>
-                            <td class="td7C" id="apPontosTUCAtingido"></td>
-                            <td class="td7D" id="apPontosTUCSituacao">PENDENTE</td>
-                            <td class="td7E" id="apPontosTUCElegivel">-</td>
-                            <td class="td7F" id="apPontosTUCPrevisto">-</td>
+                            <td class="td8B">1825 dias</td>
+                            <td class="td8C" id="apPontosTUCAtingido"></td>
+                            <td class="td8D" id="apPontosTUCSituacao">PENDENTE</td>
+                            <td class="td8E" id="apPontosTUCElegivel">-</td>
+                            <td class="td8F" id="apPontosTUCPrevisto">-</td>
                         </tr>
                         <tr class="trTemposDetalhados">
                             <td class="td7A">Pontos</td>
-                            <td class="td7B" id="apPontosPExigido"></td>
-                            <td class="td7C" id="apPontosPAtingido"></td>
-                            <td class="td7D" id="apPontosPSituacao">PENDENTE</td>
-                            <td class="td7E" id="apPontosPElegivel">-</td>
-                            <td class="td7F" id="apPontosPPrevisto">-</td>
+                            <td class="td8B" id="apPontosPExigido"></td>
+                            <td class="td8C" id="apPontosPAtingido"></td>
+                            <td class="td8D" id="apPontosPSituacao">PENDENTE</td>
+                            <td class="td8E" id="apPontosPElegivel">-</td>
+                            <td class="td8F" id="apPontosPPrevisto">-</td>
                         </tr>
                         <tr class="trTemposDetalhados">
                             <td class="td7A" style="border-bottom: solid 1px;">Idade exigida</td>
-                            <td class="td7B" id="apPontosIExigido" style="border-bottom: solid 1px;">0</td>
-                            <td class="td7C" id="apPontosIAtingido" style="border-bottom: solid 1px;">-</td>
-                            <td class="td7D" id="apPontosISituacao" style="border-bottom: solid 1px;">PENDENTE</td>
-                            <td class="td7E" id="apPontosIElegivel" style="border-bottom: solid 1px;">-</td>
-                            <td class="td7F" id="apPontosIPrevisto" style="border-bottom: solid 1px;">-</td>
+                            <td class="td8B" id="apPontosIExigido" style="border-bottom: solid 1px;">0</td>
+                            <td class="td8C" id="apPontosIAtingido" style="border-bottom: solid 1px;">-</td>
+                            <td class="td8D" id="apPontosISituacao" style="border-bottom: solid 1px;">PENDENTE</td>
+                            <td class="td8E" id="apPontosIElegivel" style="border-bottom: solid 1px;">-</td>
+                            <td class="td8F" id="apPontosIPrevisto" style="border-bottom: solid 1px;">-</td>
                         </tr>
                         <tr>
                             <td class="ultimalinha" colspan="6"><p style="text-align: right;">Resultado: <span id="apPontosResultado">VERIFICAR</span></p></td>
                         </tr>
                     </tbody>
                 </table>
-                <p style="font-weight: 500; text-align: justify;">Obs.: Pontuação exigida na data atual, sendo acrescida a exigência de mais 1 ponto a cada novo ano.</p>
-                <br>
+                <p style="font-weight: 400; text-align: justify;">Obs.: Pontuação exigida na data atual, sendo acrescida a exigência de mais 1 ponto a cada novo ano.</p>
             </div>
 
-            <div class="secaoImpressao" id="secao10">
+            <div class="secaoImpressao" id="secao10" style="padding-top: 10px;">
                 <p style="font-weight: 600;">REGRA DE TRANSIÇÃO PARA PROFESSORES (PONTOS)</p>
                 <table class="tbRelacaoTempo">
                     <thead>
@@ -645,72 +662,71 @@
                         </tr>
                         <tr class="negrito">
                             <td class="td7A">Requisito</td>
-                            <td class="td7B">Exigido</td>
-                            <td class="td7C">Atingido</td>
-                            <td class="td7D">Situação</td>
-                            <td class="td7E">Elegível em</td>
-                            <td class="td7F">Data prevista</td>
+                            <td class="td8B">Exigido</td>
+                            <td class="td8C">Atingido</td>
+                            <td class="td8D">Situação</td>
+                            <td class="td8E">Elegível em</td>
+                            <td class="td8F">Data prevista</td>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class="trTemposDetalhados">
                             <td class="td7A">Tempo de contribuição</td>
-                            <td class="td7B" id="apPontosProfTCExigido"></td>
-                            <td class="td7C" id="apPontosProfTCAtingido"></td>
-                            <td class="td7D" id="apPontosProfTCSituacao">PENDENTE</td>
-                            <td class="td7E" id="apPontosProfTCElegivel">-</td>
-                            <td class="td7F" id="apPontosProfTCPrevisto">-</td>
+                            <td class="td8B" id="apPontosProfTCExigido"></td>
+                            <td class="td8C" id="apPontosProfTCAtingido"></td>
+                            <td class="td8D" id="apPontosProfTCSituacao">PENDENTE</td>
+                            <td class="td8E" id="apPontosProfTCElegivel">-</td>
+                            <td class="td8F" id="apPontosProfTCPrevisto">-</td>
                         </tr>
                         <tr class="trTemposDetalhados">
                             <td class="td7A">Tempo de serviço público</td>
-                            <td class="td7B">7300 dias</td>
-                            <td class="td7C" id="apPontosProfTSPAtingido"></td>
-                            <td class="td7D" id="apPontosProfTSPSituacao">PENDENTE</td>
-                            <td class="td7E" id="apPontosProfTSPElegivel">-</td>
-                            <td class="td7F" id="apPontosProfTSPPrevisto">-</td>
+                            <td class="td8B">7300 dias</td>
+                            <td class="td8C" id="apPontosProfTSPAtingido"></td>
+                            <td class="td8D" id="apPontosProfTSPSituacao">PENDENTE</td>
+                            <td class="td8E" id="apPontosProfTSPElegivel">-</td>
+                            <td class="td8F" id="apPontosProfTSPPrevisto">-</td>
                         </tr>
                         <tr class="trTemposDetalhados">
                             <td class="td7A">Tempo no último cargo</td>
-                            <td class="td7B">1825 dias</td>
-                            <td class="td7C" id="apPontosProfTUCAtingido"></td>
-                            <td class="td7D" id="apPontosProfTUCSituacao">PENDENTE</td>
-                            <td class="td7E" id="apPontosProfTUCElegivel">-</td>
-                            <td class="td7F" id="apPontosProfTUCPrevisto">-</td>
+                            <td class="td8B">1825 dias</td>
+                            <td class="td8C" id="apPontosProfTUCAtingido"></td>
+                            <td class="td8D" id="apPontosProfTUCSituacao">PENDENTE</td>
+                            <td class="td8E" id="apPontosProfTUCElegivel">-</td>
+                            <td class="td8F" id="apPontosProfTUCPrevisto">-</td>
                         </tr>
                         <tr class="trTemposDetalhados">
                             <td class="td7A">Tempo de efetivo exercício em função de magistério</td>
-                            <td class="td7B" id="apPontosProfMagExigido"></td>
-                            <td class="td7C" id="apPontosProfMagAtingido"></td>
-                            <td class="td7D" id="apPontosProfMagSituacao">PENDENTE</td>
-                            <td class="td7E" id="apPontosProfMagElegivel">-</td>
-                            <td class="td7F" id="apPontosProfMagPrevisto">-</td>
+                            <td class="td8B" id="apPontosProfMagExigido"></td>
+                            <td class="td8C" id="apPontosProfMagAtingido"></td>
+                            <td class="td8D" id="apPontosProfMagSituacao">PENDENTE</td>
+                            <td class="td8E" id="apPontosProfMagElegivel">-</td>
+                            <td class="td8F" id="apPontosProfMagPrevisto">-</td>
                         </tr>
                         <tr class="trTemposDetalhados">
                             <td class="td7A">Pontos</td>
-                            <td class="td7B" id="apPontosProfPExigido"></td>
-                            <td class="td7C" id="apPontosProfPAtingido"></td>
-                            <td class="td7D" id="apPontosProfPSituacao">PENDENTE</td>
-                            <td class="td7E" id="apPontosProfPElegivel">-</td>
-                            <td class="td7F" id="apPontosProfPPrevisto">-</td>
+                            <td class="td8B" id="apPontosProfPExigido"></td>
+                            <td class="td8C" id="apPontosProfPAtingido"></td>
+                            <td class="td8D" id="apPontosProfPSituacao">PENDENTE</td>
+                            <td class="td8E" id="apPontosProfPElegivel">-</td>
+                            <td class="td8F" id="apPontosProfPPrevisto">-</td>
                         </tr>
                         <tr class="trTemposDetalhados">
                             <td class="td7A" style="border-bottom: solid 1px;">Idade exigida</td>
-                            <td class="td7B" id="apPontosProfIExigido" style="border-bottom: solid 1px;">0</td>
-                            <td class="td7C" id="apPontosProfIAtingido" style="border-bottom: solid 1px;">-</td>
-                            <td class="td7D" id="apPontosProfISituacao" style="border-bottom: solid 1px;">PENDENTE</td>
-                            <td class="td7E" id="apPontosProfIElegivel" style="border-bottom: solid 1px;">-</td>
-                            <td class="td7F" id="apPontosProfIPrevisto" style="border-bottom: solid 1px;">-</td>
+                            <td class="td8B" id="apPontosProfIExigido" style="border-bottom: solid 1px;">0</td>
+                            <td class="td8C" id="apPontosProfIAtingido" style="border-bottom: solid 1px;">-</td>
+                            <td class="td8D" id="apPontosProfISituacao" style="border-bottom: solid 1px;">PENDENTE</td>
+                            <td class="td8E" id="apPontosProfIElegivel" style="border-bottom: solid 1px;">-</td>
+                            <td class="td8F" id="apPontosProfIPrevisto" style="border-bottom: solid 1px;">-</td>
                         </tr>
                         <tr>
                             <td class="ultimalinha" colspan="6"><p style="text-align: right;">Resultado: <span id="apPontosProfResultado"></span></p></td>
                         </tr>
                     </tbody>
                 </table>
-                <p style="font-weight: 500; text-align: justify;">Obs.: Pontuação exigida na data atual, sendo acrescida a exigência de mais 1 ponto a cada novo ano.</p>
-                <br>
+                <p style="font-weight: 400; text-align: justify;">Obs.: Pontuação exigida na data atual, sendo acrescida a exigência de mais 1 ponto a cada novo ano.</p>
             </div>
 
-            <div class="secaoImpressao" id="secao11">
+            <div class="secaoImpressao" id="secao11" style="padding-top: 10px;">
                 <p style="font-weight: 600;">REGRA DE TRANSIÇÃO (PEDÁGIO)</p>
                 <table class="tbRelacaoTempo">
                     <thead>
@@ -719,64 +735,63 @@
                         </tr>
                         <tr class="negrito">
                             <td class="td7A">Requisito</td>
-                            <td class="td7B">Exigido</td>
-                            <td class="td7C">Atingido</td>
-                            <td class="td7D">Situação</td>
-                            <td class="td7E">Elegível em</td>
-                            <td class="td7F">Data prevista</td>
+                            <td class="td8B">Exigido</td>
+                            <td class="td8C">Atingido</td>
+                            <td class="td8D">Situação</td>
+                            <td class="td8E">Elegível em</td>
+                            <td class="td8F">Data prevista</td>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class="trTemposDetalhados">
                             <td class="td7A">Tempo de contribuição</td>
-                            <td class="td7B" id="apPedagioTCExigido"></td>
-                            <td class="td7C" id="apPedagioTCAtingido"></td>
-                            <td class="td7D" id="apPedagioTCSituacao">PENDENTE</td>
-                            <td class="td7E" id="apPedagioTCElegivel">-</td>
-                            <td class="td7F" id="apPedagioTCPrevisto">-</td>
+                            <td class="td8B" id="apPedagioTCExigido"></td>
+                            <td class="td8C" id="apPedagioTCAtingido"></td>
+                            <td class="td8D" id="apPedagioTCSituacao">PENDENTE</td>
+                            <td class="td8E" id="apPedagioTCElegivel">-</td>
+                            <td class="td8F" id="apPedagioTCPrevisto">-</td>
                         </tr>
                         <tr class="trTemposDetalhados">
                             <td class="td7A">Tempo de serviço público</td>
-                            <td class="td7B">7300 dias</td>
-                            <td class="td7C" id="apPedagioTSPAtingido"></td>
-                            <td class="td7D" id="apPedagioTSPSituacao">PENDENTE</td>
-                            <td class="td7E" id="apPedagioTSPElegivel">-</td>
-                            <td class="td7F" id="apPedagioTSPPrevisto">-</td>
+                            <td class="td8B">7300 dias</td>
+                            <td class="td8C" id="apPedagioTSPAtingido"></td>
+                            <td class="td8D" id="apPedagioTSPSituacao">PENDENTE</td>
+                            <td class="td8E" id="apPedagioTSPElegivel">-</td>
+                            <td class="td8F" id="apPedagioTSPPrevisto">-</td>
                         </tr>
                         <tr class="trTemposDetalhados">
                             <td class="td7A">Tempo no último cargo</td>
-                            <td class="td7B">1825 dias</td>
-                            <td class="td7C" id="apPedagioTUCAtingido"></td>
-                            <td class="td7D" id="apPedagioTUCSituacao">PENDENTE</td>
-                            <td class="td7E" id="apPedagioTUCElegivel">-</td>
-                            <td class="td7F" id="apPedagioTUCPrevisto">-</td>
+                            <td class="td8B">1825 dias</td>
+                            <td class="td8C" id="apPedagioTUCAtingido"></td>
+                            <td class="td8D" id="apPedagioTUCSituacao">PENDENTE</td>
+                            <td class="td8E" id="apPedagioTUCElegivel">-</td>
+                            <td class="td8F" id="apPedagioTUCPrevisto">-</td>
                         </tr>
                         <tr class="trTemposDetalhados">
                             <td class="td7A">Tempo de Pedágio</td>
-                            <td class="td7B" id="apPedagioPExigido"></td>
-                            <td class="td7C" id="apPedagioPAtingido"></td>
-                            <td class="td7D" id="apPedagioPSituacao">PENDENTE</td>
-                            <td class="td7E" id="apPedagioPElegivel">-</td>
-                            <td class="td7F" id="apPedagioPPrevisto">-</td>
+                            <td class="td8B" id="apPedagioPExigido"></td>
+                            <td class="td8C" id="apPedagioPAtingido"></td>
+                            <td class="td8D" id="apPedagioPSituacao">PENDENTE</td>
+                            <td class="td8E" id="apPedagioPElegivel">-</td>
+                            <td class="td8F" id="apPedagioPPrevisto">-</td>
                         </tr>
                         <tr class="trTemposDetalhados">
                             <td class="td7A" style="border-bottom: solid 1px;">Idade exigida</td>
-                            <td class="td7B" id="apPedagioIExigido" style="border-bottom: solid 1px;">0</td>
-                            <td class="td7C" id="apPedagioIAtingido" style="border-bottom: solid 1px;">-</td>
-                            <td class="td7D" id="apPedagioISituacao" style="border-bottom: solid 1px;">PENDENTE</td>
-                            <td class="td7E" id="apPedagioIElegivel" style="border-bottom: solid 1px;">-</td>
-                            <td class="td7F" id="apPedagioIPrevisto" style="border-bottom: solid 1px;">-</td>
+                            <td class="td8B" id="apPedagioIExigido" style="border-bottom: solid 1px;">0</td>
+                            <td class="td8C" id="apPedagioIAtingido" style="border-bottom: solid 1px;">-</td>
+                            <td class="td8D" id="apPedagioISituacao" style="border-bottom: solid 1px;">PENDENTE</td>
+                            <td class="td8E" id="apPedagioIElegivel" style="border-bottom: solid 1px;">-</td>
+                            <td class="td8F" id="apPedagioIPrevisto" style="border-bottom: solid 1px;">-</td>
                         </tr>
                         <tr>
                             <td class="ultimalinha" colspan="6"><p style="text-align: right;">Resultado: <span id="apPedagioResultado"></span></p></td>
                         </tr>
                     </tbody>
                 </table>
-                <p style="font-weight: 500; text-align: justify;">Obs.: O pedágio será contado considerando o tempo que faltava para completar o tempo de contribuição exigido na data da publicação da Lei Orgânica, em 22/11/2021.</p>
-                <br>
+                <p style="font-weight: 400; text-align: justify;">Obs.: O pedágio exigido para esta regra é o dobro do tempo de contribuição que faltava atingir para a aposentadoria, contando até a data da publicação da Lei Orgânica nº XXXX/2021, de 22/11/2021.</p>
             </div>
 
-            <div class="secaoImpressao" id="secao12">
+            <div class="secaoImpressao" id="secao12" style="padding-top: 10px;">
                 <p style="font-weight: 600;">REGRA DE TRANSIÇÃO PARA PROFESSORES (PEDÁGIO)</p>
                 <table class="tbRelacaoTempo">
                     <thead>
@@ -785,72 +800,71 @@
                         </tr>
                         <tr class="negrito">
                             <td class="td7A">Requisito</td>
-                            <td class="td7B">Exigido</td>
-                            <td class="td7C">Atingido</td>
-                            <td class="td7D">Situação</td>
-                            <td class="td7E">Elegível em</td>
-                            <td class="td7F">Data prevista</td>
+                            <td class="td8B">Exigido</td>
+                            <td class="td8C">Atingido</td>
+                            <td class="td8D">Situação</td>
+                            <td class="td8E">Elegível em</td>
+                            <td class="td8F">Data prevista</td>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class="trTemposDetalhados">
                             <td class="td7A">Tempo de contribuição</td>
-                            <td class="td7B" id="apPedagioProfTCExigido"></td>
-                            <td class="td7C" id="apPedagioProfTCAtingido"></td>
-                            <td class="td7D" id="apPedagioProfTCSituacao">PENDENTE</td>
-                            <td class="td7E" id="apPedagioProfTCElegivel">-</td>
-                            <td class="td7F" id="apPedagioProfTCPrevisto">-</td>
+                            <td class="td8B" id="apPedagioProfTCExigido"></td>
+                            <td class="td8C" id="apPedagioProfTCAtingido"></td>
+                            <td class="td8D" id="apPedagioProfTCSituacao">PENDENTE</td>
+                            <td class="td8E" id="apPedagioProfTCElegivel">-</td>
+                            <td class="td8F" id="apPedagioProfTCPrevisto">-</td>
                         </tr>
                         <tr class="trTemposDetalhados">
                             <td class="td7A">Tempo de serviço público</td>
-                            <td class="td7B">7300 dias</td>
-                            <td class="td7C" id="apPedagioProfTSPAtingido"></td>
-                            <td class="td7D" id="apPedagioProfTSPSituacao">PENDENTE</td>
-                            <td class="td7E" id="apPedagioProfTSPElegivel">-</td>
-                            <td class="td7F" id="apPedagioProfTSPPrevisto">-</td>
+                            <td class="td8B">7300 dias</td>
+                            <td class="td8C" id="apPedagioProfTSPAtingido"></td>
+                            <td class="td8D" id="apPedagioProfTSPSituacao">PENDENTE</td>
+                            <td class="td8E" id="apPedagioProfTSPElegivel">-</td>
+                            <td class="td8F" id="apPedagioProfTSPPrevisto">-</td>
                         </tr>
                         <tr class="trTemposDetalhados">
                             <td class="td7A">Tempo no último cargo</td>
-                            <td class="td7B">1825 dias</td>
-                            <td class="td7C" id="apPedagioProfTUCAtingido"></td>
-                            <td class="td7D" id="apPedagioProfTUCSituacao">PENDENTE</td>
-                            <td class="td7E" id="apPedagioProfTUCElegivel">-</td>
-                            <td class="td7F" id="apPedagioProfTUCPrevisto">-</td>
+                            <td class="td8B">1825 dias</td>
+                            <td class="td8C" id="apPedagioProfTUCAtingido"></td>
+                            <td class="td8D" id="apPedagioProfTUCSituacao">PENDENTE</td>
+                            <td class="td8E" id="apPedagioProfTUCElegivel">-</td>
+                            <td class="td8F" id="apPedagioProfTUCPrevisto">-</td>
                         </tr>
                         <tr class="trTemposDetalhados">
                             <td class="td7A">Tempo de Pedágio</td>
-                            <td class="td7B" id="apPedagioProfPExigido"></td>
-                            <td class="td7C" id="apPedagioProfPAtingido"></td>
-                            <td class="td7D" id="apPedagioProfPSituacao">PENDENTE</td>
-                            <td class="td7E" id="apPedagioProfPElegivel">-</td>
-                            <td class="td7F" id="apPedagioProfPPrevisto">-</td>
+                            <td class="td8B" id="apPedagioProfPExigido"></td>
+                            <td class="td8C" id="apPedagioProfPAtingido"></td>
+                            <td class="td8D" id="apPedagioProfPSituacao">PENDENTE</td>
+                            <td class="td8E" id="apPedagioProfPElegivel">-</td>
+                            <td class="td8F" id="apPedagioProfPPrevisto">-</td>
                         </tr>
                         <tr class="trTemposDetalhados">
                             <td class="td7A">Tempo de efetivo exercício em função de magistério</td>
-                            <td class="td7B" id="apPedagioProfMagExigido"></td>
-                            <td class="td7C" id="apPedagioProfMagAtingido"></td>
-                            <td class="td7D" id="apPedagioProfMagSituacao">PENDENTE</td>
-                            <td class="td7E" id="apPedagioProfMagElegivel">-</td>
-                            <td class="td7F" id="apPedagioProfMagPrevisto">-</td>
+                            <td class="td8B" id="apPedagioProfMagExigido"></td>
+                            <td class="td8C" id="apPedagioProfMagAtingido"></td>
+                            <td class="td8D" id="apPedagioProfMagSituacao">PENDENTE</td>
+                            <td class="td8E" id="apPedagioProfMagElegivel">-</td>
+                            <td class="td8F" id="apPedagioProfMagPrevisto">-</td>
                         </tr>
                         <tr class="trTemposDetalhados">
                             <td class="td7A" style="border-bottom: solid 1px;">Idade exigida</td>
-                            <td class="td7B" id="apPedagioProfIExigido" style="border-bottom: solid 1px;">0</td>
-                            <td class="td7C" id="apPedagioProfIAtingido" style="border-bottom: solid 1px;">-</td>
-                            <td class="td7D" id="apPedagioProfISituacao" style="border-bottom: solid 1px;">PENDENTE</td>
-                            <td class="td7E" id="apPedagioProfIElegivel" style="border-bottom: solid 1px;">-</td>
-                            <td class="td7F" id="apPedagioProfIPrevisto" style="border-bottom: solid 1px;">-</td>
+                            <td class="td8B" id="apPedagioProfIExigido" style="border-bottom: solid 1px;">0</td>
+                            <td class="td8C" id="apPedagioProfIAtingido" style="border-bottom: solid 1px;">-</td>
+                            <td class="td8D" id="apPedagioProfISituacao" style="border-bottom: solid 1px;">PENDENTE</td>
+                            <td class="td8E" id="apPedagioProfIElegivel" style="border-bottom: solid 1px;">-</td>
+                            <td class="td8F" id="apPedagioProfIPrevisto" style="border-bottom: solid 1px;">-</td>
                         </tr>
                         <tr>
                             <td class="ultimalinha" colspan="6"><p style="text-align: right;">Resultado: <span id="apPedagioProfResultado"></span></p></td>
                         </tr>
                     </tbody>
                 </table>
-                <p style="font-weight: 500; text-align: justify;">Obs.: O pedágio será contado considerando o tempo que faltava para completar o tempo de contribuição exigido na data da publicação da Lei Orgânica, em 22/11/2021.</p>
-                <br>
+                <p style="font-weight: 400; text-align: justify;">Obs.: O pedágio exigido para esta regra é o dobro do tempo de contribuição que faltava atingir para a aposentadoria, contando até a data da publicação da Lei Orgânica nº XXXX/2021, de 22/11/2021.</p>
             </div>
 
-            <div class="secaoImpressao" id="secao13">
+            <div class="secaoImpressao" id="secao13" style="padding-top: 10px;">
                 <p style="font-weight: 600;">APOSENTADORIA COMPULSÓRIA</p>
                 <table class="tbRelacaoTempo">
                     <thead>
@@ -859,21 +873,21 @@
                         </tr>
                         <tr class="negrito">
                             <td class="td7A">Requisito</td>
-                            <td class="td7B">Exigido</td>
-                            <td class="td7C">Atingido</td>
-                            <td class="td7D">Situação</td>
-                            <td class="td7E">Elegível em</td>
-                            <td class="td7F">Data prevista</td>
+                            <td class="td8B">Exigido</td>
+                            <td class="td8C">Atingido</td>
+                            <td class="td8D">Situação</td>
+                            <td class="td8E">Elegível em</td>
+                            <td class="td8F">Data prevista</td>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class="trTemposDetalhados">
                             <td class="td7A" style="border-bottom: solid 1px;">Idade exigida</td>
-                            <td class="td7B" id="apCompulsoriaIExigido" style="border-bottom: solid 1px;">75</td>
-                            <td class="td7C" id="apCompulsoriaIAtingido" style="border-bottom: solid 1px;">-</td>
-                            <td class="td7D" id="apCompulsoriaISituacao" style="border-bottom: solid 1px;">PENDENTE</td>
-                            <td class="td7E" id="apCompulsoriaIElegivel" style="border-bottom: solid 1px;">-</td>
-                            <td class="td7F" id="apCompulsoriaIPrevisto" style="border-bottom: solid 1px;">-</td>
+                            <td class="td8B" id="apCompulsoriaIExigido" style="border-bottom: solid 1px;">75</td>
+                            <td class="td8C" id="apCompulsoriaIAtingido" style="border-bottom: solid 1px;">-</td>
+                            <td class="td8D" id="apCompulsoriaISituacao" style="border-bottom: solid 1px;">PENDENTE</td>
+                            <td class="td8E" id="apCompulsoriaIElegivel" style="border-bottom: solid 1px;">-</td>
+                            <td class="td8F" id="apCompulsoriaIPrevisto" style="border-bottom: solid 1px;">-</td>
                         </tr>
                         <tr>
                             <td class="ultimalinha" colspan="6"><p style="text-align: right;">Resultado: <span id="apCompulsoriaResultado"></span></p></td>
@@ -970,7 +984,7 @@
                         <div class="field">
                             <label for="matricula" class="label">Matrícula</label>
                             <div class="control">
-                                <input type="number" class="input" name="matricula" id="matricula" onfocus="app.desmarcarMatricula()" value="10">
+                                <input type="number" class="input" name="matricula" id="matricula" onfocus="app.desmarcarMatricula()" value="31">
                             </div>
                         </div>
                     </td>
@@ -983,13 +997,13 @@
                     <td>
                         <label for="cargo" class="label">Cargo</label>
                         <div class="control">
-                            <input type="text" name="cargo" placeholder="Digite o cargo" id="cargo" class="input" style="width: 200px;" onfocus="app.desmarcarCargo()" value="CargoTeste">
+                            <input type="text" name="cargo" placeholder="Digite o cargo" id="cargo" class="input" style="width: 200px;" onfocus="app.desmarcarCargo()" value="Cargo Teste">
                         </div>
                     </td>
                     <td>
                         <label for="lotacao" class="label">Lotação</label>
                         <div class="control">
-                            <input type="text" name="lotacao" placeholder="Digite a Lotação" id="lotacao" class="input" style="width: 200px;" onfocus="app.desmarcarLotacao()" value="LotaçãoTeste">
+                            <input type="text" name="lotacao" placeholder="Digite a Lotação" id="lotacao" class="input" style="width: 200px;" onfocus="app.desmarcarLotacao()" value="Lotação Teste">
                         </div>
                     </td>
                     <td>
@@ -1049,7 +1063,7 @@
                         </td>
                         <td>
                             <label for="dataFimCadDesconto" class="label">Data Fim</label>
-                            <input type="date" class="input" id="dataFimCadDesconto" name="dataFimCadDesconto" style="width: 180px;" value="2010-03-22">
+                            <input type="date" class="input" id="dataFimCadDesconto" name="dataFimCadDesconto" style="width: 180px;" value="2010-03-26">
                         </td>
                     </tr>
                 </tbody>
@@ -1068,7 +1082,7 @@
                             <td>
                                 <label for="organizacao" class="label">Organização</label>
                                 <div class="control">
-                                    <input class="input" id="organizacao" type="text" placeholder="Digite o nome do Órgão ou Empresa" style="width: 650px" onchange="app.desmarcarOrganizacao()" value="Organização Teste 01">
+                                    <input class="input" id="organizacao" type="text" placeholder="Digite o nome do Órgão ou Empresa" style="width: 650px" onchange="app.desmarcarOrganizacao()" value="Organização Teste">
                                 </div>
                             </td>
                             <td>

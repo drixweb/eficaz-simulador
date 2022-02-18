@@ -449,6 +449,35 @@ td.td1C{
     border-right: solid 1px;
 }
 
+/* CENÁRIOS DE CONCESSÃO - PÁG 02*/
+
+.td8A{
+    width: 330px;
+    border-top: solid 1px;
+    border-left: solid 1px;
+}
+.td8B{
+    border-top: solid 1px;
+    min-width: 90px;
+}
+.td8C{
+    width: 90px;
+    border-top: solid 1px;
+}
+.td8D{
+    width: 90px;
+    border-top: solid 1px;
+}
+.td8E{
+    width: 90px;
+    border-top: solid 1px;
+}
+.td8F{
+    width: 90px;
+    border-top: solid 1px;
+    border-right: solid 1px;
+}
+
 .tbRelacaoTempo tbody tr td.td7A{
     padding-left: 5px;
     text-align: left;
