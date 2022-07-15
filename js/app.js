@@ -2257,6 +2257,14 @@ class App {
     }
 
     visualizarImprimir(){
+        // Seleciona o município
+        let municipio = document.getElementById("municipio").value
+        if (municipio = "PBR") {
+            alert("deu pato")
+            getElementById("topoEstado").innerHTML = "ESTADO DO PARANÁ"
+            getElementById("topoMunicipio").innerHTML = "PREFEITURA MUNICIPAL DE PATO BRANCO"
+        }
+
         // PÁGINA 02
         let pagina2 = document.getElementById("pagina2").innerHTML
         let janela2 = window.open()
