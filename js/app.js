@@ -2260,7 +2260,7 @@ class App {
         // Seleciona o município
         let municipio = document.getElementById("municipio").value
         if (municipio = "PBR") {
-            alert("deu pato")
+            alert("teste pato branco")
             getElementById("topoEstado").innerHTML = "ESTADO DO PARANÁ"
             getElementById("topoMunicipio").innerHTML = "PREFEITURA MUNICIPAL DE PATO BRANCO"
         }
