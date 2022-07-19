@@ -29,8 +29,8 @@
         <div class="section">
             <div class="cabecalhoImpressao">
                 <p class="topoImpressao" style="text-align: center;"><span id="topoEstado">ESTADO DE RONDÔNIA</span></p>
-                <p class="topoImpressao" style="text-align: center;"><span id="topoMunicipio">PREFEITURA MUNICIPAL DE OURO PRETO DO OESTE</span></p>
-                <p class="topoImpressao" style="font-size: 13px; text-align: center;">INSTITUTO DE PREVIDENCIA DOS SERVIDORES MUNICIPAIS - IPSM</p>
+                <p class="topoImpressao" style="text-align: center;"><span id="topoMunicipio">PREFEITURA MUNICIPAL DE OURO PRETO</span></p>
+                <p class="topoImpressao" style="font-size: 13px; text-align: center;"><span id="topoOrgao">INSTITUTO DE PREVIDENCIA DOS SERVIDORES MUNICIPAIS - IPSM</span></p>
                 <br>
                 <p class="topoImpressao" style="font-size: 26px; text-align: center;">SIMULAÇÃO DE APOSENTADORIA</p>
                 <br>
@@ -189,7 +189,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="td2A" style="padding-left: 5px;"> Pref. Mun. de Ouro Preto do Oeste</td>
+                            <td class="td2A" style="padding-left: 5px;"> Pref. Mun. de <span id="prefeitura">Ouro Preto do Oeste</span></td>
                             <td class="td2B"><span id="prtDataAdm2"></span></td>
                             <td class="td2C"><span id="prtDataAtual"></span></td>
                             <td class="td2D">Público</td>
@@ -290,9 +290,9 @@
         </div>
         <div class="section">
             <div class="cabecalhoImpressao">
-                <p class="topoImpressao" style="text-align: center;">ESTADO DE RONDÔNIA</p>
-                <p class="topoImpressao" style="text-align: center;">PREFEITURA MUNICIPAL DE OURO PRETO DO OESTE</p>
-                <p class="topoImpressao" style="font-size: 13px; text-align: center;">INSTITUTO DE PREVIDENCIA DOS SERVIDORES MUNICIPAIS - IPSM</p>
+                <p class="topoImpressao" style="text-align: center;"><span id="topoEstado2">ESTADO DE RONDÔNIA</span></p>
+                <p class="topoImpressao" style="text-align: center;"><span id="topoMunicipio2">PREFEITURA MUNICIPAL DE OURO PRETO</span></p>
+                <p class="topoImpressao" style="font-size: 13px; text-align: center;"><span id="topoOrgao2">INSTITUTO DE PREVIDENCIA DOS SERVIDORES MUNICIPAIS - IPSM</span></p>
                 <p class="topoImpressao" style="font-size: 26px; text-align: center; padding: 5px 0px;">SIMULAÇÃO DE APOSENTADORIA</p>
                 <p style="font-weight: 800;">DADOS DO SERVIDOR</p>
                 <div class="dadosImpressao" style="border-top: solid 1px; border-bottom: solid 1px">
@@ -539,6 +539,72 @@
                     </tbody>
                 </table>
             </div>
+
+            <!--
+            <div class="secaoImpressao" id="secao7B" style="padding-top: 10px;">
+                <p style="font-weight: 600;">APOSENTADORIA DOS SERVIDORES EXPOSTOS A AGENTES QUÍMICOS, FÍSICOS E BIOLÓGICOS (PONTOS)</p>
+                <table class="tbRelacaoTempo">
+                    <thead>
+                        <tr>
+                            <td class="primeiralinha" colspan="6"><p style="text-align: center;">Fundamentação:</p></td>
+                        </tr>
+                        <tr class="negrito">
+                            <td class="td7A">Requisito</td>
+                            <td class="td8B">Exigido</td>
+                            <td class="td8C">Atingido</td>
+                            <td class="td8D">Situação</td>
+                            <td class="td8E">Elegível em</td>
+                            <td class="td8F">Data prevista</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo de contribuição</td>
+                            <td class="td8B" id="apSaudeTCExigido">9125 dias</td>
+                            <td class="td8C" id="apSaudeTCAtingido"></td>
+                            <td class="td8D" id="apSaudeTCSituacao">PENDENTE</td>
+                            <td class="td8E" id="apSaudeTCElegivel">-</td>
+                            <td class="td8F" id="apSaudeTCPrevisto">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo de serviço público</td>
+                            <td class="td8B">3650 dias</td>
+                            <td class="td8C" id="apSaudeTSPAtingido"></td>
+                            <td class="td8D" id="apSaudeTSPSituacao">PENDENTE</td>
+                            <td class="td8E" id="apSaudeTSPElegivel">-</td>
+                            <td class="td8F" id="apSaudeTSPPrevisto">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo no último cargo</td>
+                            <td class="td8B">1825 dias</td>
+                            <td class="td8C" id="apSaudeTUCAtingido"></td>
+                            <td class="td8D" id="apSaudeTUCSituacao">PENDENTE</td>
+                            <td class="td8E" id="apSaudeTUCElegivel">-</td>
+                            <td class="td8F" id="apSaudeTUCPrevisto">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A">Tempo de serviço exclusivo de exposição a agentes químicos, físicos e biológicos</td>
+                            <td class="td8B">9125 dias</td>
+                            <td class="td8C" id="apSaudeTEAtingido"></td>
+                            <td class="td8D" id="apSaudeTESituacao">PENDENTE</td>
+                            <td class="td8E" id="apSaudeTEElegivel">-</td>
+                            <td class="td8F" id="apSaudeTEPrevisto">-</td>
+                        </tr>
+                        <tr class="trTemposDetalhados">
+                            <td class="td7A" style="border-bottom: solid 1px;">Idade exigida</td>
+                            <td class="td8B" id="apSaudeIExigido" style="border-bottom: solid 1px;">60 anos</td>
+                            <td class="td8C" id="apSaudeIAtingido" style="border-bottom: solid 1px;">-</td>
+                            <td class="td8D" id="apSaudeISituacao" style="border-bottom: solid 1px;">PENDENTE</td>
+                            <td class="td8E" id="apSaudeIElegivel" style="border-bottom: solid 1px;">-</td>
+                            <td class="td8F" id="apSaudeIPrevisto" style="border-bottom: solid 1px;">-</td>
+                        </tr>
+                        <tr>
+                            <td class="ultimalinha" colspan="6"><p style="text-align: right;">Resultado: <span id="apSaudeResultado">VERIFICAR</span></p></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            -->
 
             <div class="secaoImpressao" id="secao8" style="padding-top: 10px;">
                 <p style="font-weight: 600;">APOSENTADORIA PARA SERVIDORES COM DEFICIÊNCIA</p>

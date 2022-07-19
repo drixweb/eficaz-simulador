@@ -1319,11 +1319,22 @@ class App {
             document.getElementById("apSaudeIPrevisto").innerHTML = `${diaDataNasc}/${mesDataNasc}/${apSaudeIPrevisto.getFullYear()}`
         }
 
-        if (tempoContribuicao >= 9125 && tempoServicoPublico >= 3650 && tempoUltimoCargo >= 1825 && tempoSaude >= 9125 && idade >= 60){
-            document.getElementById("apSaudeResultado").innerHTML = "DISPONÍVEL"
-            apSaude = true
-        } else {
-            document.getElementById("apSaudeResultado").innerHTML = "INDISPONÍVEL"
+        if (masculino){
+            if (tempoContribuicao >= 9125 && tempoServicoPublico >= 3650 && tempoUltimoCargo >= 1825 && tempoSaude >= 9125 && idade >= 60){
+                document.getElementById("apSaudeResultado").innerHTML = "DISPONÍVEL"
+                apSaude = true
+            } else {
+                document.getElementById("apSaudeResultado").innerHTML = "INDISPONÍVEL"
+            }
+        }
+
+        if (feminino){
+            if (tempoContribuicao >= 9125 && tempoServicoPublico >= 3650 && tempoUltimoCargo >= 1825 && tempoSaude >= 9125 && idade >= 57){
+                document.getElementById("apSaudeResultado").innerHTML = "DISPONÍVEL"
+                apSaude = true
+            } else {
+                document.getElementById("apSaudeResultado").innerHTML = "INDISPONÍVEL"
+            }
         }
         
         // APOSENTADORIA PARA SERVIDORES COM DEFICIÊNCIA
@@ -2122,6 +2133,7 @@ class App {
         } else {
             document.getElementById("cenarioGeral").innerHTML = "INDISPONÍVEL"
         }
+        
         let servProfessor = document.querySelector("input[name='cadMagisterio']:checked").value
         if (servProfessor == "Sim") {
             //Esconder as outras regras quando não for professor
@@ -2154,6 +2166,7 @@ class App {
             document.getElementById("secao10").style.display = "none"
             document.getElementById("secao12").style.display = "none"
         }
+
         let servSaude = document.querySelector("input[name='cadSaude']:checked").value
         if (servSaude == "Sim") {
             if (apSaude){
@@ -2165,6 +2178,7 @@ class App {
             document.getElementById("cenarioSaude").innerHTML = "NÃO APLICÁVEL"
             document.getElementById("secao7").style.display = "none"
         }
+
         var select = document.getElementById('deficiencia')
         var deficiencia = select.options[select.selectedIndex].value
         if (deficiencia != "Não") {
@@ -2177,16 +2191,19 @@ class App {
             document.getElementById("cenarioDeficiencia").innerHTML = "NÃO APLICÁVEL"
             document.getElementById("secao8").style.display = "none"
         }
+
         if (apPontos) {
             document.getElementById("cenarioPontos").innerHTML = "DISPONÍVEL"
         } else {
             document.getElementById("cenarioPontos").innerHTML = "INDISPONÍVEL"
         }
+
         if (apPedagio) {
             document.getElementById("cenarioPedagio").innerHTML = "DISPONÍVEL"
         } else {
             document.getElementById("cenarioPedagio").innerHTML = "INDISPONÍVEL"
         }
+        
         if (apCompulsoria) {
             document.getElementById("cenarioCompulsoria").innerHTML = "DISPONÍVEL"
         }
@@ -2259,10 +2276,23 @@ class App {
     visualizarImprimir(){
         // Seleciona o município
         let municipio = document.getElementById("municipio").value
-        if (municipio = "PBR") {
-            alert("teste pato branco")
-            getElementById("topoEstado").innerHTML = "ESTADO DO PARANÁ"
-            getElementById("topoMunicipio").innerHTML = "PREFEITURA MUNICIPAL DE PATO BRANCO"
+        if (municipio == "PBR") {
+            document.getElementById("topoEstado").innerHTML = "ESTADO DO PARANÁ"
+            document.getElementById("topoMunicipio").innerHTML = "PREFEITURA MUNICIPAL DE PATO BRANCO"
+            document.getElementById("topoOrgao").innerHTML = "INSTITUTO DE PREVIDENCIA DOS SERVIDORES PÚBLICOS MUNICIPAIS DE PATO BRANCO - PATOPREV"
+            document.getElementById("topoEstado2").innerHTML = "ESTADO DO PARANÁ"
+            document.getElementById("topoMunicipio2").innerHTML = "PREFEITURA MUNICIPAL DE PATO BRANCO"
+            document.getElementById("topoOrgao2").innerHTML = "INSTITUTO DE PREVIDENCIA DOS SERVIDORES PÚBLICOS MUNICIPAIS DE PATO BRANCO - PATOPREV"
+            document.getElementById("prefeitura").innerHTML = "Pato Branco"
+        } else if (municipio == "SMG") {
+            alert("teste sao miguel")
+            document.getElementById("topoEstado").innerHTML = "ESTADO DE RONDÔNIA"
+            document.getElementById("topoMunicipio").innerHTML = "PREFEITURA MUNICIPAL DE SÃO MIGUEL DO GUAPORÉ"
+            document.getElementById("topoOrgao").innerHTML = "INSTITUTO DE PREVIDENCIA MUNICIPAL DE SÃO MIGUEL DO GUAPORÉ - IPMSMG"
+            document.getElementById("topoEstado2").innerHTML = "ESTADO DE RONDÔNIA"
+            document.getElementById("topoMunicipio2").innerHTML = "PREFEITURA MUNICIPAL DE SÃO MIGUEL DO GUAPORÉ"
+            document.getElementById("topoOrgao2").innerHTML = "INSTITUTO DE PREVIDENCIA MUNICIPAL DE SÃO MIGUEL DO GUAPORÉ - IPMSMG"
+            document.getElementById("prefeitura").innerHTML = "São Miguel do Guaporé"
         }
 
         // PÁGINA 02
