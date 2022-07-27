@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-size: 9px;
 }
 
 :root{
@@ -458,7 +459,8 @@ td.td1C{
 }
 .td8B{
     border-top: solid 1px;
-    min-width: 90px;
+    min-width: 120px;
+    text-align: left;
 }
 .td8C{
     width: 90px;
