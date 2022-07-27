@@ -1344,7 +1344,7 @@ class App {
         document.getElementById("apDeficienciaTCAtingido").innerHTML = `${tempoContribuicao} dias`
         if (deficiencia == "Leve") {
             if (masculino){
-                document.getElementById("apDeficienciaTCExigido").innerHTML = "12045 dias"
+                document.getElementById("apDeficienciaTCExigido").innerHTML = "12045 dias (35 anos)"
                 document.getElementById("apDeficienciaTCElegivel").innerHTML = `${12045 - tempoContribuicao} dias`
                 if (tempoContribuicao >= 12045) {
                     document.getElementById("apDeficienciaTCSituacao").innerHTML = "OK"
@@ -1358,7 +1358,7 @@ class App {
                     document.getElementById("apDeficienciaTCPrevisto").innerHTML = `${apDeficienciaTCPrevisto.getDate()}/${apDeficienciaTCPrevisto.getMonth()+1}/${apDeficienciaTCPrevisto.getFullYear()}`
                 }
             } else if (feminino) {
-                document.getElementById("apDeficienciaTCExigido").innerHTML = "10220 dias"
+                document.getElementById("apDeficienciaTCExigido").innerHTML = "10220 dias (28 anos)"
                 document.getElementById("apDeficienciaTCElegivel").innerHTML = `${10220 - tempoContribuicao} dias`
                 if (tempoContribuicao >= 10220) {
                     document.getElementById("apDeficienciaTCSituacao").innerHTML = "OK"
@@ -1374,7 +1374,7 @@ class App {
             }
         } else if (deficiencia == "Moderada") {
             if (masculino){
-                document.getElementById("apDeficienciaTCExigido").innerHTML = "10585 dias"
+                document.getElementById("apDeficienciaTCExigido").innerHTML = "10585 dias (29 anos)"
                 document.getElementById("apDeficienciaTCElegivel").innerHTML = `${10585 - tempoContribuicao} dias`
                 if (tempoContribuicao >= 10585) {
                     document.getElementById("apDeficienciaTCSituacao").innerHTML = "OK"
@@ -1388,7 +1388,7 @@ class App {
                     document.getElementById("apDeficienciaTCPrevisto").innerHTML = `${apDeficienciaTCPrevisto.getDate()}/${apDeficienciaTCPrevisto.getMonth()+1}/${apDeficienciaTCPrevisto.getFullYear()}`
                 }
             } else if (feminino) {
-                document.getElementById("apDeficienciaTCExigido").innerHTML = "8760 dias"
+                document.getElementById("apDeficienciaTCExigido").innerHTML = "8760 dias (24 anos)"
                 document.getElementById("apDeficienciaTCElegivel").innerHTML = `${8760 - tempoContribuicao} dias`
                 if (tempoContribuicao >= 8760) {
                     document.getElementById("apDeficienciaTCSituacao").innerHTML = "OK"
@@ -1404,7 +1404,7 @@ class App {
             }
         } else if (deficiencia == "Grave") {
             if (masculino){
-                document.getElementById("apDeficienciaTCExigido").innerHTML = "9125 dias"
+                document.getElementById("apDeficienciaTCExigido").innerHTML = "9125 dias (25 anos)"
                 document.getElementById("apDeficienciaTCElegivel").innerHTML = `${9125 - tempoContribuicao} dias`
                 if (tempoContribuicao >= 9125) {
                     document.getElementById("apDeficienciaTCSituacao").innerHTML = "OK"
@@ -1418,7 +1418,7 @@ class App {
                     document.getElementById("apDeficienciaTCPrevisto").innerHTML = `${apDeficienciaTCPrevisto.getDate()}/${apDeficienciaTCPrevisto.getMonth()+1}/${apDeficienciaTCPrevisto.getFullYear()}`
                 }
             } else if (feminino) {
-                document.getElementById("apDeficienciaTCExigido").innerHTML = "7300 dias"
+                document.getElementById("apDeficienciaTCExigido").innerHTML = "7300 dias (20 anos)"
                 document.getElementById("apDeficienciaTCElegivel").innerHTML = `${7300 - tempoContribuicao} dias`
                 if (tempoContribuicao >= 7300) {
                     document.getElementById("apDeficienciaTCSituacao").innerHTML = "OK"
@@ -1470,7 +1470,7 @@ class App {
         // REGRA DE TRANSIÇÃO (PONTOS)
         document.getElementById("apPontosTCAtingido").innerHTML = `${tempoContribuicao} dias`
         if (masculino) {
-            document.getElementById("apPontosTCExigido").innerHTML = "12775 dias"
+            document.getElementById("apPontosTCExigido").innerHTML = "12775 dias (35 anos)"
             document.getElementById("apPontosTCElegivel").innerHTML = `${12775 - tempoContribuicao} dias`
             if (tempoContribuicao >= 12775){
                 document.getElementById("apPontosTCSituacao").innerHTML = "OK"
@@ -1485,7 +1485,7 @@ class App {
         }
 
         if (feminino) {
-            document.getElementById("apPontosTCExigido").innerHTML = "10950 dias"
+            document.getElementById("apPontosTCExigido").innerHTML = "10950 dias (30 anos)"
             document.getElementById("apPontosTCElegivel").innerHTML = `${10950 - tempoContribuicao} dias`
             if (tempoContribuicao >= 10950){
                 document.getElementById("apPontosTCSituacao").innerHTML = "OK"
@@ -1606,7 +1606,7 @@ class App {
         // REGRA DE TRANSIÇÃO PARA PROFESSORES (PONTOS)
         document.getElementById("apPontosProfTCAtingido").innerHTML = `${tempoContribuicao} dias`
         if (masculino) {
-            document.getElementById("apPontosProfTCExigido").innerHTML = "10950 dias"
+            document.getElementById("apPontosProfTCExigido").innerHTML = "10950 dias (30 anos)"
             document.getElementById("apPontosProfTCElegivel").innerHTML = `${10950 - tempoContribuicao} dias`
             if (tempoContribuicao >= 10950){
                 document.getElementById("apPontosProfTCSituacao").innerHTML = "OK"
@@ -1621,7 +1621,7 @@ class App {
         }
 
         if (feminino) {
-            document.getElementById("apPontosProfTCExigido").innerHTML = "9125 dias"
+            document.getElementById("apPontosProfTCExigido").innerHTML = "9125 dias (25 anos)"
             document.getElementById("apPontosProfTCElegivel").innerHTML = `${9125 - tempoContribuicao} dias`
             if (tempoContribuicao >= 9125){
                 document.getElementById("apPontosProfTCSituacao").innerHTML = "OK"
@@ -1697,7 +1697,7 @@ class App {
 
         document.getElementById("apPontosProfMagAtingido").innerHTML = `${tempoMagisterio} dias`
         if (masculino) {
-            document.getElementById("apPontosProfMagExigido").innerHTML = "10950 dias"
+            document.getElementById("apPontosProfMagExigido").innerHTML = "10950 dias (30 anos)"
             document.getElementById("apPontosProfMagElegivel").innerHTML = `${10950 - tempoMagisterio} dias`
             if (tempoMagisterio >= 10950) {
                 document.getElementById("apPontosProfMagSituacao").innerHTML = "OK"
@@ -1712,7 +1712,7 @@ class App {
         }
 
         if (feminino) {
-            document.getElementById("apPontosProfMagExigido").innerHTML = "9125 dias"
+            document.getElementById("apPontosProfMagExigido").innerHTML = "9125 dias (25 anos)"
             document.getElementById("apPontosProfMagElegivel").innerHTML = `${9125 - tempoMagisterio} dias`
             if (tempoMagisterio >= 9125) {
                 document.getElementById("apPontosProfMagSituacao").innerHTML = "OK"
@@ -1772,7 +1772,7 @@ class App {
         // REGRA DE TRANSIÇÃO (PEDÁGIO)
         document.getElementById("apPedagioTCAtingido").innerHTML = `${tempoContribuicao} dias`
         if (masculino) {
-            document.getElementById("apPedagioTCExigido").innerHTML = "12775 dias"
+            document.getElementById("apPedagioTCExigido").innerHTML = "12775 dias (35 anos)"
             document.getElementById("apPedagioTCElegivel").innerHTML = `${12775 - tempoContribuicao} dias`
             if (tempoContribuicao >= 12775){
                 document.getElementById("apPedagioTCSituacao").innerHTML = "OK"
@@ -1787,7 +1787,7 @@ class App {
         }
 
         if (feminino) {
-            document.getElementById("apPedagioTCExigido").innerHTML = "10950 dias"
+            document.getElementById("apPedagioTCExigido").innerHTML = "10950 dias (30 anos)"
             document.getElementById("apPedagioTCElegivel").innerHTML = `${10950 - tempoContribuicao} dias`
             if (tempoContribuicao >= 10950){
                 document.getElementById("apPedagioTCSituacao").innerHTML = "OK"
@@ -1927,7 +1927,7 @@ class App {
         // REGRA DE TRANSIÇÃO PARA PROFESSORES (PEDÁGIO)
         document.getElementById("apPedagioProfTCAtingido").innerHTML = `${tempoContribuicao} dias`
         if (masculino) {
-            document.getElementById("apPedagioProfTCExigido").innerHTML = "10950 dias"
+            document.getElementById("apPedagioProfTCExigido").innerHTML = "10950 dias (30 anos)"
             document.getElementById("apPedagioProfTCElegivel").innerHTML = `${10950 - tempoContribuicao} dias`
             if (tempoContribuicao >= 10950){
                 document.getElementById("apPedagioProfTCSituacao").innerHTML = "OK"
@@ -1942,7 +1942,7 @@ class App {
         }
 
         if (feminino) {
-            document.getElementById("apPedagioProfTCExigido").innerHTML = "9125 dias"
+            document.getElementById("apPedagioProfTCExigido").innerHTML = "9125 dias (25 anos)"
             document.getElementById("apPedagioProfTCElegivel").innerHTML = `${9125 - tempoContribuicao} dias`
             if (tempoContribuicao >= 9125){
                 document.getElementById("apPedagioProfTCSituacao").innerHTML = "OK"
@@ -2039,7 +2039,7 @@ class App {
 
         document.getElementById("apPedagioProfMagAtingido").innerHTML = `${tempoMagisterio} dias`
         if (masculino) {
-            document.getElementById("apPedagioProfMagExigido").innerHTML = "10950 dias"
+            document.getElementById("apPedagioProfMagExigido").innerHTML = "10950 dias (30 anos)"
             document.getElementById("apPedagioProfMagElegivel").innerHTML = `${10950 - tempoMagisterio} dias`
             if (tempoMagisterio >= 10950) {
                 document.getElementById("apPedagioProfMagSituacao").innerHTML = "OK"
@@ -2054,7 +2054,7 @@ class App {
         }
 
         if (feminino) {
-            document.getElementById("apPedagioProfMagExigido").innerHTML = "9125 dias"
+            document.getElementById("apPedagioProfMagExigido").innerHTML = "9125 dias (25 anos)"
             document.getElementById("apPedagioProfMagElegivel").innerHTML = `${9125 - tempoMagisterio} dias`
             if (tempoMagisterio >= 9125) {
                 document.getElementById("apPedagioProfMagSituacao").innerHTML = "OK"
