@@ -8,13 +8,6 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="style.css">
-    <style>
-        pagina1, pagina2 .desabilitado{display: none;}
-    </style>
-
-    <script src="js/tempo_de_servico.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/main.js"></script>
 </head>
 
 <body>
@@ -29,7 +22,6 @@
                 <div class="fields">
                     <td style="text-align: right;"><label class="label" id="labelMunicipio" for="municipio">Município: </label></td>
                     <td><select class="select" name="municipio" id="municipio">
-                        <option class="option" value="OPO">Ouro Preto do Oeste - RO</option>
                         <option class="option" value="PBR">Pato Branco - PR</option>
                         <option class="option" value="SMG">São Miguel do Guaporé - RO</option>
                     </select></td>
@@ -40,17 +32,12 @@
         <section id="botaoSelecionaMunicipio">
             <div class="container" id="containerBotoes02">
                 <div class="botoes" id="painelDeBotoes02">
-                    <button class="button is-success is-medium" id="entrar" type="button" onclick="app.botaoEntrar()"><ion-icon class="icon is-large" name="home-sharp"></ion-icon>&nbsp;Entrar</button>
+                    <a href="pato_branco-PR.html"><button class="button is-success is-medium" id="entrar" type="button" onclick="app.botaoEntrar()"><ion-icon class="icon is-large" name="home-sharp"></ion-icon>&nbsp;Entrar</button></a>
                     <button class="button is-warning is-medium" id="cancelar" type="button" onclick="app.configuracoes()"><ion-icon class="icon is-large" name="build-sharp"></ion-icon>&nbsp;Configurações</button>
                     <button class="button is-danger is-medium" id="cancelar" type="button" onclick="app.botaoCancelar()"><ion-icon class="icon is-large" name="close-sharp"></ion-icon>&nbsp;Cancelar</button>
                 </div>
             </div>
         </section>
-
-        <div class="fields">
-            <br><br>
-            <h3 class="subtitle" style="text-align: center;">Em manutenção</h3>
-        </div>
 
         <br><br><hr>
         <!--<p class="text" style="text-align: center;">(Rodapé do Site)</p>-->

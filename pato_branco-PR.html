@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="style.css">
     <style>
-        pagina1, pagina2 .desabilitado{display: none;}
+        #pagina1, pagina2, .desabilitado{display: none;}
     </style>
 
     <script src="js/tempo_de_servico.js"></script>
@@ -22,15 +22,15 @@
     <div class="container" id="pagina1" style="border-style: solid; width: 720px; margin-top: 0;">
         <div class="idPaginaImpressao">
             <table class="tbPaginaImpressao">
-                <td style="padding-left: 10px;">Emitido em <span id="dataEmitido1"></span></td>
+                <td style="padding-left: 10px;">Emitido em <span id="dataEmitido1" style="font-size: 10px;"></span></td>
                 <td style="text-align: end; padding-right: 25px;">Página 01</td>
             </table>
         </div>
         <div class="section">
             <div class="cabecalhoImpressao">
-                <p class="topoImpressao" style="text-align: center;"><span id="topoEstado">ESTADO DE RONDÔNIA</span></p>
-                <p class="topoImpressao" style="text-align: center;"><span id="topoMunicipio">PREFEITURA MUNICIPAL DE OURO PRETO</span></p>
-                <p class="topoImpressao" style="font-size: 13px; text-align: center;"><span id="topoOrgao">INSTITUTO DE PREVIDENCIA DOS SERVIDORES MUNICIPAIS - IPSM</span></p>
+                <p class="topoImpressao" style="text-align: center;"><span id="topoEstado">ESTADO DO PARANÁ</span></p>
+                <p class="topoImpressao" style="text-align: center;"><span id="topoMunicipio">PREFEITURA MUNICIPAL DE PATO BRANCO</span></p>
+                <p class="topoImpressao" style="font-size: 13px; text-align: center;"><span id="topoOrgao">INSTITUTO DE PREVIDENCIA DOS SERVIDORES MUNICIPAIS DE PATO BRANCO - PATOPREV</span></p>
                 <br>
                 <p class="topoImpressao" style="font-size: 26px; text-align: center;">SIMULAÇÃO DE APOSENTADORIA</p>
                 <br>
@@ -39,35 +39,35 @@
                     <table>
                         <tr>
                             <td class="td1A">
-                                <p>Nome: <span id="prtNome"></span></p>
+                                <p>Nome: <span id="prtNome" style="font-size: 14px;"></span></p>
                             </td>
                             <td class="td1B">
-                                <p>CPF: <span id="prtCPF"></span></p>
+                                <p>CPF: <span id="prtCPF" style="font-size: 14px;"></span></p>
                             </td>
                             <td class="td1C">
-                                <p>Sexo: <span id="prtSexo"></span></p>
+                                <p>Sexo: <span id="prtSexo" style="font-size: 14px;"></span></p>
                             </td>
                         </tr>
                         <tr>
                             <td class="td1A">
-                                <p>Data de Nascimento: <span id="prtDataNasc"></span></p>
+                                <p>Data de Nascimento: <span id="prtDataNasc" style="font-size: 14px;"></span></p>
                             </td>
                             <td class="td1B">
-                                <p>Idade Atual: <span id="prtIdade"></span></p>
+                                <p>Idade Atual: <span id="prtIdade" style="font-size: 14px;"></span></p>
                             </td>
                             <td class="td1C">
-                                <p>Lotação: <span id="prtLotacao"></span></p>
+                                <p>Lotação: <span id="prtLotacao" style="font-size: 14px;"></span></p>
                             </td>
                         </tr>
                         <tr>
                             <td class="td1A">
-                                <p>Matrícula: <span id="prtMatricula"></span></p>
+                                <p>Matrícula: <span id="prtMatricula" style="font-size: 14px;"></span></p>
                             </td>
                             <td class="td1B">
-                                <p>Data de Admissão: <span id="prtDataAdm"></span></p>
+                                <p>Data de Admissão: <span id="prtDataAdm" style="font-size: 14px;"></span></p>
                             </td>
                             <td class="td1C">
-                                <p>Cargo: <span id="prtCargo"></span></p>
+                                <p>Cargo: <span id="prtCargo" style="font-size: 14px;"></span></p>
                             </td>
                         </tr>
                     </table>
@@ -189,7 +189,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="td2A" style="padding-left: 5px;"> Pref. Mun. de <span id="prefeitura">Ouro Preto do Oeste</span></td>
+                            <td class="td2A" style="padding-left: 5px;"> Prefeitura Municipal de Pato Branco - PR</td>
                             <td class="td2B"><span id="prtDataAdm2"></span></td>
                             <td class="td2C"><span id="prtDataAtual"></span></td>
                             <td class="td2D">Público</td>
@@ -290,44 +290,44 @@
         </div>
         <div class="section">
             <div class="cabecalhoImpressao">
-                <p class="topoImpressao" style="text-align: center;"><span id="topoEstado2">ESTADO DE RONDÔNIA</span></p>
-                <p class="topoImpressao" style="text-align: center;"><span id="topoMunicipio2">PREFEITURA MUNICIPAL DE OURO PRETO</span></p>
-                <p class="topoImpressao" style="font-size: 13px; text-align: center;"><span id="topoOrgao2">INSTITUTO DE PREVIDENCIA DOS SERVIDORES MUNICIPAIS - IPSM</span></p>
+                <p class="topoImpressao" style="text-align: center;"><span id="topoEstado">ESTADO DO PARANÁ</span></p>
+                <p class="topoImpressao" style="text-align: center;"><span id="topoMunicipio">PREFEITURA MUNICIPAL DE PATO BRANCO</span></p>
+                <p class="topoImpressao" style="font-size: 13px; text-align: center;"><span id="topoOrgao">INSTITUTO DE PREVIDENCIA DOS SERVIDORES MUNICIPAIS DE PATO BRANCO - PATOPREV</span></p>
                 <p class="topoImpressao" style="font-size: 26px; text-align: center; padding: 5px 0px;">SIMULAÇÃO DE APOSENTADORIA</p>
                 <p style="font-weight: 800;">DADOS DO SERVIDOR</p>
                 <div class="dadosImpressao" style="border-top: solid 1px; border-bottom: solid 1px">
                     <table>
                         <tr>
                             <td class="td1A">
-                                <p>Nome: <span id="prtNome2"></span></p>
+                                <p>Nome: <span id="prtNome2" style="font-size: 14;"></span></p>
                             </td>
                             <td class="td1B">
-                                <p>CPF: <span id="prtCPF2"></span></p>
+                                <p>CPF: <span id="prtCPF2" style="font-size: 14;"></span></p>
                             </td>
                             <td class="td1C">
-                                <p>Sexo: <span id="prtSexo2"></span></p>
+                                <p>Sexo: <span id="prtSexo2" style="font-size: 14;"></span></p>
                             </td>
                         </tr>
                         <tr>
                             <td class="td1A">
-                                <p>Data de Nascimento: <span id="prtDataNasc2"></span></p>
+                                <p>Data de Nascimento: <span id="prtDataNasc2" style="font-size: 14;"></span></p>
                             </td>
                             <td class="td1B">
-                                <p>Idade Atual: <span id="prtIdade2"></span></p>
+                                <p>Idade Atual: <span id="prtIdade2" style="font-size: 14;"></span></p>
                             </td>
                             <td class="td1C">
-                                <p>Lotação: <span id="prtLotacao2"></span></p>
+                                <p>Lotação: <span id="prtLotacao2" style="font-size: 14;"></span></p>
                             </td>
                         </tr>
                         <tr>
                             <td class="td1A">
-                                <p>Matrícula: <span id="prtMatricula2"></span></p>
+                                <p>Matrícula: <span id="prtMatricula2" style="font-size: 14;"></span></p>
                             </td>
                             <td class="td1B">
-                                <p>Data de Admissão: <span id="prtDataAdm3"></span></p>
+                                <p>Data de Admissão: <span id="prtDataAdm3" style="font-size: 14;"></span></p>
                             </td>
                             <td class="td1C">
-                                <p>Cargo: <span id="prtCargo2"></span></p>
+                                <p>Cargo: <span id="prtCargo2" style="font-size: 14;"></span></p>
                             </td>
                         </tr>
                     </table>
@@ -901,19 +901,8 @@
 <!---------------------------------------  INTERFACE DO SISTEMA  --------------------------------------->
     <div class="container">
         <div class="section">
-            <p class="text" style="text-align: center;">(Cabeçalho do Site)</p><hr>
             <h1 class="title is-2">Simulação de Aposentadoria</h1>
-
-            <table class="table" style="width: 500px; margin: auto;">
-                <div class="fields">
-                    <td style="text-align: right;"><label class="label" id="labelMunicipio" for="municipio">Município: </label></td>
-                    <td><select class="select" name="municipio" id="municipio">
-                        <option class="option" value="OPO">Ouro Preto do Oeste - RO</option>
-                        <option class="option" value="PBR">Pato Branco - PR</option>
-                        <option class="option" value="SMG">São Miguel do Guaporé - RO</option>
-                    </select></td>
-                </div>
-            </table>
+            <hr>
         </div>
 
         <table class="table" id="dadosServidor01">
@@ -921,7 +910,7 @@
                 <tr>
                     <td colspan="5" style="border: 0px;">
                         <div class="cabecalho" id="cabecalhoDeducao">
-                            <h2 style="margin-bottom: 0px; padding-bottom: 0px;">Cadastro do Servidor</h2>
+                            <h2 class="title is-5" style="margin-bottom: 0px; padding-bottom: 0px;">Cadastro do Servidor</h2>
                         </div>
                     </td>
                 </tr>
@@ -1051,7 +1040,7 @@
                     <tr>
                         <td colspan="2">
                             <div class="cabecalho" id="cabecalhoDeducao">
-                                <h2 id="semContribuicao1" style="margin-bottom: 16px; padding: 16px 0px 0px 16px;">Período sem Contribuição</h2>
+                                <h2 class="title is-5" id="semContribuicao1" style="margin-bottom: 16px; padding: 16px 0px 0px 16px;">Período sem Contribuição</h2>
                             </div>
                         </td>
                     </tr>
@@ -1074,7 +1063,7 @@
         <div class="divCadTempo" id="secaoCadTempoAverbacao" style="display: block;">
             <div class="quadro">
                 <div class="cabecalho">
-                    <h2>Cadastrar Tempo de Serviço</h2>
+                    <h2 class="title is-5">Cadastrar Tempo de Serviço</h2>
                 </div>
 
                 <div class="field">
@@ -1102,6 +1091,7 @@
                         </tr>
                     </table>
                 </div>
+                
                 <div class="fields">
                     <table>
                         <tr>
@@ -1179,7 +1169,7 @@
                             <tr>
                                 <td colspan="3">
                                     <div class="cabecalho" id="cabecalhoDeducao">
-                                        <h2 id="semContribuicao2" style="text-align: center; margin-bottom: 0px; padding-bottom: 0px;">Período sem Contribuição</h2>
+                                        <h2 class="title is-5" id="semContribuicao2" style="text-align: center; margin-bottom: 0px; padding-bottom: 0px;">Período sem Contribuição</h2>
                                     </div>
                                 </td>
                             </tr>
@@ -1207,7 +1197,7 @@
             </div>
         </div>
 
-        <div class="divCadTempo" id="secaoRegTempoAverbacao">
+        <div class="divCadTempo" id="secaoRegTempoAverbacao" style="display: none;">
             <div class="quadro">
                 <div class="cabecalho">
                     <h2>Registros de Tempo de Serviço Anterior (Averbação)</h2>
@@ -1258,12 +1248,16 @@
                 <hr>
                 <p class="title is-5" style="text-decoration: underline;">RESULTADO</p>
                 <p class="label">Tempo de serviço no registro atual: <span id="tempoCargoAtual"></span></p>
+                
                 <p class="label">Tempo sem contribuição no registro atual: <span id="tempoDescCargoAtual"></span></p>
-                <p class="label">Tempo líquido de serviço no registro atual (A): <span id="tempoLiqCargoAtual"></span></p>
+                
+                <p class="label">Tempo líquido de serviço no registro atual (A): <span id="tempoLiqCargoAtual"></span> (aprox. <span id="resTempoLiqCargoAtual_anos"></span> anos, <span id="resTempoLiqCargoAtual_meses"></span> meses e <span id="resTempoLiqCargoAtual_dias"></span> dias)</p>
                 <hr>
-                <p class="label">Tempo de serviço disponível para averbação (B): <span id="tempoAverbacao"></span></p>
+
+                <p class="label">Tempo de serviço disponível para averbação (B): <span id="tempoAverbacao"></span> (aprox. <span id="resTempoAverbacao_anos"></span> anos, <span id="resTempoAverbacao_meses"></span> meses e <span id="resTempoAverbacao_dias"></span> dias)</p>
                 <hr>
-                <p class="label">TEMPO LÍQUIDO TOTAL (A + B): <span id="tempoLiquidoTotal"></span></p>
+
+                <p class="label">TEMPO LÍQUIDO TOTAL (A + B): <span id="tempoLiquidoTotal"></span> (aprox. <span id="resTempoLiquidoTotal_anos"></span> anos, <span id="resTempoLiquidoTotal_meses"></span> meses e <span id="resTempoLiquidoTotal_dias"></span> dias)</p>
             </div>
         </div>
         
@@ -1359,7 +1353,6 @@
         </section>
 
         <br><br><hr>
-        <p class="text" style="text-align: center;">(Rodapé do Site)</p>
     </div>
     
     

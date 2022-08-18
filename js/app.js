@@ -169,13 +169,33 @@ class App {
                 
                 //PREENCHENDO O RESUMO (na lista)
                 document.getElementById("tempoCargoAtual").innerHTML = `${calcTotal} dias`
+
                 document.getElementById("tempoDescCargoAtual").innerHTML = `${cadDesconto} dias`
                 document.getElementById("tempoLiqCargoAtual").innerHTML = `${cadTotal} dias` //hr
+                document.getElementById("resTempoLiqCargoAtual_anos").innerHTML = Math.trunc(cadTotal/365)
+                document.getElementById("resTempoLiqCargoAtual_meses").innerHTML = Math.trunc((cadTotal % 365)/30)
+                document.getElementById("resTempoLiqCargoAtual_dias").innerHTML = Math.trunc((cadTotal % 365) % 30)
+
                 document.getElementById("tempoAverbacao").innerHTML = `${total} dias` //hr
+                document.getElementById("resTempoAverbacao_anos").innerHTML = Math.trunc(total/365)
+                document.getElementById("resTempoAverbacao_meses").innerHTML = Math.trunc((total % 365)/30)
+                document.getElementById("resTempoAverbacao_dias").innerHTML = Math.trunc((total % 365) % 30)
+
                 document.getElementById("tempoLiquidoTotal").innerHTML = `${totalGeral} dias`
+                document.getElementById("resTempoLiquidoTotal_anos").innerHTML = Math.trunc(totalGeral/365)
+                document.getElementById("resTempoLiquidoTotal_meses").innerHTML = Math.trunc((totalGeral % 365)/30)
+                document.getElementById("resTempoLiquidoTotal_dias").innerHTML = Math.trunc((totalGeral % 365) % 30)
+
+
+                //Continuar aqui
+
+
 
                 //Desabilitar botão "sem averbação"
                 document.getElementById("semAverbar").disabled = true
+
+                //Apresentar registros e resumo de tempo (averbado)
+                document.getElementById("secaoRegTempoAverbacao").style.display = "block"
             }
         }
     }
@@ -1077,9 +1097,9 @@ class App {
             feminino = true
         }
 
-        // APOSENTADORIA DOS SERVIDORES EM GERAL
-        document.getElementById("apGeralTCAtingido").innerHTML = `${tempoContribuicao} dias`
-        document.getElementById("apGeralTCElegivel").innerHTML = `${9125 - tempoContribuicao} dias`
+        // APOSENTADORIA DOS SERVIDORES EM GERAL  //DISCRIMINADO AQUI
+        document.getElementById("apGeralTCAtingido").innerHTML = `${tempoContribuicao} dias (${Math.trunc(tempoContribuicao/365)}a, ${Math.trunc((tempoContribuicao % 365)/30)}m, ${((tempoContribuicao % 365) % 30)}d)`
+        document.getElementById("apGeralTCElegivel").innerHTML = `${9125 - tempoContribuicao} dias (${Math.trunc((9125-tempoContribuicao)/365)}a, ${Math.trunc(((9125-tempoContribuicao) % 365)/30)}m, ${(((9125-tempoContribuicao) % 365) % 30)}d)`
         if (tempoContribuicao >= 9125){
             document.getElementById("apGeralTCSituacao").innerHTML = "OK"
             document.getElementById("apGeralTCElegivel").innerHTML = "Atingido"
@@ -1091,8 +1111,8 @@ class App {
             document.getElementById("apGeralTCPrevisto").innerHTML = `${apGeralTCPrevisto.getDate()}/${apGeralTCPrevisto.getMonth()+1}/${apGeralTCPrevisto.getFullYear()}`
         }
         
-        document.getElementById("apGeralTSPAtingido").innerHTML = `${tempoServicoPublico} dias`
-        document.getElementById("apGeralTSPElegivel").innerHTML = `${3650 - tempoServicoPublico} dias`
+        document.getElementById("apGeralTSPAtingido").innerHTML = `${tempoServicoPublico} dias (${Math.trunc(tempoServicoPublico/365)}a, ${Math.trunc((tempoServicoPublico % 365)/30)}m, ${((tempoServicoPublico % 365) % 30)}d)`
+        document.getElementById("apGeralTSPElegivel").innerHTML = `${3650 - tempoServicoPublico} dias (${Math.trunc((3650-tempoServicoPublico)/365)}a, ${Math.trunc(((3650-tempoServicoPublico) % 365)/30)}m, ${(((3650-tempoServicoPublico) % 365) % 30)}d)`
         if (tempoServicoPublico >= 3650) {
             document.getElementById("apGeralTSPSituacao").innerHTML = "OK"
             document.getElementById("apGeralTSPElegivel").innerHTML = "Atingido"
@@ -1104,8 +1124,8 @@ class App {
             document.getElementById("apGeralTCPrevisto").innerHTML = `${apGeralTSPPrevisto.getDate()}/${apGeralTSPPrevisto.getMonth()+1}/${apGeralTSPPrevisto.getFullYear()}`
         }
 
-        document.getElementById("apGeralTUCAtingido").innerHTML = `${tempoUltimoCargo} dias`
-        document.getElementById("apGeralTUCElegivel").innerHTML = `${1825 - tempoUltimoCargo} dias`
+        document.getElementById("apGeralTUCAtingido").innerHTML = `${tempoUltimoCargo} dias (${Math.trunc(tempoUltimoCargo/365)}a, ${Math.trunc((tempoUltimoCargo % 365)/30)}m, ${((tempoUltimoCargo % 365) % 30)}d)`
+        document.getElementById("apGeralTUCElegivel").innerHTML = `${1825 - tempoUltimoCargo} dias (${Math.trunc((1825-tempoUltimoCargo)/365)}a, ${Math.trunc(((1825-tempoUltimoCargo) % 365)/30)}m, ${(((1825-tempoUltimoCargo) % 365) % 30)}d)`
         if (tempoUltimoCargo >= 1825) {
             document.getElementById("apGeralTUCSituacao").innerHTML = "OK"
             document.getElementById("apGeralTUCElegivel").innerHTML = "Atingido"
@@ -2274,26 +2294,6 @@ class App {
     }
 
     visualizarImprimir(){
-        // Seleciona o município
-        let municipio = document.getElementById("municipio").value
-        if (municipio == "PBR") {
-            document.getElementById("topoEstado").innerHTML = "ESTADO DO PARANÁ"
-            document.getElementById("topoMunicipio").innerHTML = "PREFEITURA MUNICIPAL DE PATO BRANCO"
-            document.getElementById("topoOrgao").innerHTML = "INSTITUTO DE PREVIDENCIA DOS SERVIDORES PÚBLICOS MUNICIPAIS DE PATO BRANCO - PATOPREV"
-            document.getElementById("topoEstado2").innerHTML = "ESTADO DO PARANÁ"
-            document.getElementById("topoMunicipio2").innerHTML = "PREFEITURA MUNICIPAL DE PATO BRANCO"
-            document.getElementById("topoOrgao2").innerHTML = "INSTITUTO DE PREVIDENCIA DOS SERVIDORES PÚBLICOS MUNICIPAIS DE PATO BRANCO - PATOPREV"
-            document.getElementById("prefeitura").innerHTML = "Pato Branco"
-        } else if (municipio == "SMG") {
-            alert("teste sao miguel")
-            document.getElementById("topoEstado").innerHTML = "ESTADO DE RONDÔNIA"
-            document.getElementById("topoMunicipio").innerHTML = "PREFEITURA MUNICIPAL DE SÃO MIGUEL DO GUAPORÉ"
-            document.getElementById("topoOrgao").innerHTML = "INSTITUTO DE PREVIDENCIA MUNICIPAL DE SÃO MIGUEL DO GUAPORÉ - IPMSMG"
-            document.getElementById("topoEstado2").innerHTML = "ESTADO DE RONDÔNIA"
-            document.getElementById("topoMunicipio2").innerHTML = "PREFEITURA MUNICIPAL DE SÃO MIGUEL DO GUAPORÉ"
-            document.getElementById("topoOrgao2").innerHTML = "INSTITUTO DE PREVIDENCIA MUNICIPAL DE SÃO MIGUEL DO GUAPORÉ - IPMSMG"
-            document.getElementById("prefeitura").innerHTML = "São Miguel do Guaporé"
-        }
 
         // PÁGINA 02
         let pagina2 = document.getElementById("pagina2").innerHTML

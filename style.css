@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-size: 9px;
+    font-size: 16px;
 }
 
 :root{
@@ -17,6 +17,10 @@
 body{
     min-height: 100vh;
     overflow-x: hidden;
+}
+
+td span{
+    font-size: 11px;
 }
 
 .container{
@@ -203,6 +207,10 @@ table, tbody, tr, td{
 
 #painelDeBotoes02 button ion-icon, #painelDeBotoes01 button ion-icon{
     padding-right: 5px;
+}
+
+#painelDeBotoes01{
+    padding-top: 30px;
 }
 
 #tdOrgao{
@@ -424,28 +432,28 @@ td.td1C{
 }
 
 .td7A{
-    width: 330px;
+    width: 300px;
     border-top: solid 1px;
     border-left: solid 1px;
 }
 .td7B{
     border-top: solid 1px;
-    min-width: 70px;
+    min-width: 80px;
 }
 .td7C{
-    width: 70px;
+    width: 150px;
     border-top: solid 1px;
 }
 .td7D{
     border-top: solid 1px;
 }
 .td7E{
-    width: 100px;
+    width: 80px;
     border-top: solid 1px;
     border-right: solid 1px;
 }
 .td7F{
-    width: 100px;
+    width: 80px;
     border-top: solid 1px;
     border-right: solid 1px;
 }
@@ -453,29 +461,29 @@ td.td1C{
 /* CENÁRIOS DE CONCESSÃO - PÁG 02*/
 
 .td8A{
-    width: 330px;
+    width: 300px;
     border-top: solid 1px;
     border-left: solid 1px;
 }
 .td8B{
     border-top: solid 1px;
-    min-width: 120px;
+    min-width: 105px;
     text-align: left;
 }
 .td8C{
-    width: 90px;
+    width: 150px;
     border-top: solid 1px;
 }
 .td8D{
-    width: 90px;
+    width: 80px;
     border-top: solid 1px;
 }
 .td8E{
-    width: 90px;
+    width: 80px;
     border-top: solid 1px;
 }
 .td8F{
-    width: 90px;
+    width: 80px;
     border-top: solid 1px;
     border-right: solid 1px;
 }
