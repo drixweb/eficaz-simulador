@@ -1098,8 +1098,8 @@ class App {
         }
 
         // APOSENTADORIA DOS SERVIDORES EM GERAL  //DISCRIMINADO AQUI
-        document.getElementById("apGeralTCAtingido").innerHTML = `${tempoContribuicao} dias (${Math.trunc(tempoContribuicao/365)}a, ${Math.trunc((tempoContribuicao % 365)/30)}m, ${((tempoContribuicao % 365) % 30)}d)`
-        document.getElementById("apGeralTCElegivel").innerHTML = `${9125 - tempoContribuicao} dias (${Math.trunc((9125-tempoContribuicao)/365)}a, ${Math.trunc(((9125-tempoContribuicao) % 365)/30)}m, ${(((9125-tempoContribuicao) % 365) % 30)}d)`
+        document.getElementById("apGeralTCAtingido").innerHTML = `${tempoContribuicao} dias (${Math.trunc(tempoContribuicao/365)}a ${Math.trunc((tempoContribuicao % 365)/30)}m ${((tempoContribuicao % 365) % 30)}d)`
+        document.getElementById("apGeralTCElegivel").innerHTML = `${9125 - tempoContribuicao} dias`
         if (tempoContribuicao >= 9125){
             document.getElementById("apGeralTCSituacao").innerHTML = "OK"
             document.getElementById("apGeralTCElegivel").innerHTML = "Atingido"
@@ -1111,8 +1111,8 @@ class App {
             document.getElementById("apGeralTCPrevisto").innerHTML = `${apGeralTCPrevisto.getDate()}/${apGeralTCPrevisto.getMonth()+1}/${apGeralTCPrevisto.getFullYear()}`
         }
         
-        document.getElementById("apGeralTSPAtingido").innerHTML = `${tempoServicoPublico} dias (${Math.trunc(tempoServicoPublico/365)}a, ${Math.trunc((tempoServicoPublico % 365)/30)}m, ${((tempoServicoPublico % 365) % 30)}d)`
-        document.getElementById("apGeralTSPElegivel").innerHTML = `${3650 - tempoServicoPublico} dias (${Math.trunc((3650-tempoServicoPublico)/365)}a, ${Math.trunc(((3650-tempoServicoPublico) % 365)/30)}m, ${(((3650-tempoServicoPublico) % 365) % 30)}d)`
+        document.getElementById("apGeralTSPAtingido").innerHTML = `${tempoServicoPublico} dias (${Math.trunc(tempoServicoPublico/365)}a ${Math.trunc((tempoServicoPublico % 365)/30)}m ${((tempoServicoPublico % 365) % 30)}d)`
+        document.getElementById("apGeralTSPElegivel").innerHTML = `${3650 - tempoServicoPublico} dias`
         if (tempoServicoPublico >= 3650) {
             document.getElementById("apGeralTSPSituacao").innerHTML = "OK"
             document.getElementById("apGeralTSPElegivel").innerHTML = "Atingido"
@@ -1124,8 +1124,8 @@ class App {
             document.getElementById("apGeralTCPrevisto").innerHTML = `${apGeralTSPPrevisto.getDate()}/${apGeralTSPPrevisto.getMonth()+1}/${apGeralTSPPrevisto.getFullYear()}`
         }
 
-        document.getElementById("apGeralTUCAtingido").innerHTML = `${tempoUltimoCargo} dias (${Math.trunc(tempoUltimoCargo/365)}a, ${Math.trunc((tempoUltimoCargo % 365)/30)}m, ${((tempoUltimoCargo % 365) % 30)}d)`
-        document.getElementById("apGeralTUCElegivel").innerHTML = `${1825 - tempoUltimoCargo} dias (${Math.trunc((1825-tempoUltimoCargo)/365)}a, ${Math.trunc(((1825-tempoUltimoCargo) % 365)/30)}m, ${(((1825-tempoUltimoCargo) % 365) % 30)}d)`
+        document.getElementById("apGeralTUCAtingido").innerHTML = `${tempoUltimoCargo} dias (${Math.trunc(tempoUltimoCargo/365)}a ${Math.trunc((tempoUltimoCargo % 365)/30)}m ${((tempoUltimoCargo % 365) % 30)}d)`
+        document.getElementById("apGeralTUCElegivel").innerHTML = `${1825 - tempoUltimoCargo} dias`
         if (tempoUltimoCargo >= 1825) {
             document.getElementById("apGeralTUCSituacao").innerHTML = "OK"
             document.getElementById("apGeralTUCElegivel").innerHTML = "Atingido"
@@ -1179,7 +1179,7 @@ class App {
         }
 
         // APOSENTADORIA DOS PROFESSORES
-        document.getElementById("apProfessorTCAtingido").innerHTML = `${tempoContribuicao} dias`
+        document.getElementById("apProfessorTCAtingido").innerHTML = `${tempoContribuicao} dias (${Math.trunc(tempoContribuicao/365)}a ${Math.trunc((tempoContribuicao % 365)/30)}m ${((tempoContribuicao % 365) % 30)}d)`
         document.getElementById("apProfessorTCElegivel").innerHTML = `${9125 - tempoContribuicao} dias`
         if (tempoContribuicao >= 9125){
             document.getElementById("apProfessorTCSituacao").innerHTML = "OK"
@@ -1192,7 +1192,7 @@ class App {
             document.getElementById("apProfessorTCPrevisto").innerHTML = `${apProfessorTCPrevisto.getDate()}/${apProfessorTCPrevisto.getMonth()+1}/${apProfessorTCPrevisto.getFullYear()}`
         }
 
-        document.getElementById("apProfessorTSPAtingido").innerHTML = `${tempoServicoPublico} dias`
+        document.getElementById("apProfessorTSPAtingido").innerHTML = `${tempoServicoPublico} dias (${Math.trunc(tempoServicoPublico/365)}a ${Math.trunc((tempoServicoPublico % 365)/30)}m ${((tempoServicoPublico % 365) % 30)}d)`
         document.getElementById("apProfessorTSPElegivel").innerHTML = `${3650 - tempoServicoPublico} dias`
         if (tempoServicoPublico >= 3650) {
             document.getElementById("apProfessorTSPSituacao").innerHTML = "OK"
@@ -1205,7 +1205,7 @@ class App {
             document.getElementById("apProfessorTSPPrevisto").innerHTML = `${apProfessorTSPPrevisto.getDate()}/${apProfessorTSPPrevisto.getMonth()+1}/${apProfessorTSPPrevisto.getFullYear()}`
         }
 
-        document.getElementById("apProfessorTUCAtingido").innerHTML = `${tempoUltimoCargo} dias`
+        document.getElementById("apProfessorTUCAtingido").innerHTML = `${tempoUltimoCargo} dias (${Math.trunc(tempoUltimoCargo/365)}a ${Math.trunc((tempoUltimoCargo % 365)/30)}m ${((tempoUltimoCargo % 365) % 30)}d)`
         document.getElementById("apProfessorTUCElegivel").innerHTML = `${1825 - tempoUltimoCargo} dias`
         if (tempoUltimoCargo >= 1825) {
             document.getElementById("apProfessorTUCSituacao").innerHTML = "OK"
@@ -1218,7 +1218,7 @@ class App {
             document.getElementById("apProfessorTUCPrevisto").innerHTML = `${apProfessorTUCPrevisto.getDate()}/${apProfessorTUCPrevisto.getMonth()+1}/${apProfessorTUCPrevisto.getFullYear()}`
         }
 
-        document.getElementById("apProfessorMagAtingido").innerHTML = `${tempoMagisterio} dias`
+        document.getElementById("apProfessorMagAtingido").innerHTML = `${tempoMagisterio} dias (${Math.trunc(tempoMagisterio/365)}a ${Math.trunc((tempoMagisterio % 365)/30)}m ${((tempoMagisterio % 365) % 30)}d)`
         document.getElementById("apProfessorMagElegivel").innerHTML = `${9125 - tempoMagisterio} dias`
         if (tempoMagisterio >= 9125){
             document.getElementById("apProfessorMagSituacao").innerHTML = "OK"
@@ -1274,7 +1274,7 @@ class App {
         }
 
         // APOSENTADORIA DOS SERVIDORES EXPOSTOS A AGENTES QUÍMICOS, FÍSICOS E BIOLÓGICOS
-        document.getElementById("apSaudeTCAtingido").innerHTML = `${tempoContribuicao} dias`
+        document.getElementById("apSaudeTCAtingido").innerHTML = `${tempoContribuicao} dias (${Math.trunc(tempoContribuicao/365)}a ${Math.trunc((tempoContribuicao % 365)/30)}m ${((tempoContribuicao % 365) % 30)}d)`
         document.getElementById("apSaudeTCElegivel").innerHTML = `${9125 - tempoContribuicao} dias`
         if (tempoContribuicao >= 9125){
             document.getElementById("apSaudeTCSituacao").innerHTML = "OK"
@@ -1287,7 +1287,7 @@ class App {
             document.getElementById("apSaudeTCPrevisto").innerHTML = `${apSaudeTCPrevisto.getDate()}/${apSaudeTCPrevisto.getMonth()+1}/${apSaudeTCPrevisto.getFullYear()}`
         }
 
-        document.getElementById("apSaudeTSPAtingido").innerHTML = `${tempoServicoPublico} dias`
+        document.getElementById("apSaudeTSPAtingido").innerHTML = `${tempoServicoPublico} dias (${Math.trunc(tempoServicoPublico/365)}a ${Math.trunc((tempoServicoPublico % 365)/30)}m ${((tempoServicoPublico % 365) % 30)}d)`
         document.getElementById("apSaudeTSPElegivel").innerHTML = `${3650 - tempoServicoPublico} dias`
         if (tempoServicoPublico >= 3650) {
             document.getElementById("apSaudeTSPSituacao").innerHTML = "OK"
@@ -1300,7 +1300,7 @@ class App {
             document.getElementById("apSaudeTSPPrevisto").innerHTML = `${apSaudeTSPPrevisto.getDate()}/${apSaudeTSPPrevisto.getMonth()+1}/${apSaudeTSPPrevisto.getFullYear()}`
         }
 
-        document.getElementById("apSaudeTUCAtingido").innerHTML = `${tempoUltimoCargo} dias`
+        document.getElementById("apSaudeTUCAtingido").innerHTML = `${tempoUltimoCargo} dias (${Math.trunc(tempoUltimoCargo/365)}a ${Math.trunc((tempoUltimoCargo % 365)/30)}m ${((tempoUltimoCargo % 365) % 30)}d)`
         document.getElementById("apSaudeTUCElegivel").innerHTML = `${1825 - tempoUltimoCargo} dias`
         if (tempoUltimoCargo >= 1825) {
             document.getElementById("apSaudeTUCSituacao").innerHTML = "OK"
@@ -1313,7 +1313,7 @@ class App {
             document.getElementById("apSaudeTUCPrevisto").innerHTML = `${apSaudeTUCPrevisto.getDate()}/${apSaudeTUCPrevisto.getMonth()+1}/${apSaudeTUCPrevisto.getFullYear()}`
         }
 
-        document.getElementById("apSaudeTEAtingido").innerHTML = `${tempoSaude} dias`
+        document.getElementById("apSaudeTEAtingido").innerHTML = `${tempoSaude} dias (${Math.trunc(tempoSaude/365)}a ${Math.trunc((tempoSaude % 365)/30)}m ${((tempoSaude % 365) % 30)}d)`
         document.getElementById("apSaudeTEElegivel").innerHTML = `${9125 - tempoSaude} dias`
         if (tempoSaude >= 9125) {
             document.getElementById("apSaudeTESituacao").innerHTML = "OK"
@@ -1361,8 +1361,9 @@ class App {
         var select = document.getElementById('deficiencia')
         var deficiencia = select.options[select.selectedIndex].value
         let tcDeficiencia = false
-        document.getElementById("apDeficienciaTCAtingido").innerHTML = `${tempoContribuicao} dias`
+        document.getElementById("apDeficienciaTCAtingido").innerHTML = `${tempoContribuicao} dias (${Math.trunc(tempoContribuicao/365)}a ${Math.trunc((tempoContribuicao % 365)/30)}m ${((tempoContribuicao % 365) % 30)}d)`
         if (deficiencia == "Leve") {
+            document.getElementById("spanDeficiencia").innerHTML = "LEVE"
             if (masculino){
                 document.getElementById("apDeficienciaTCExigido").innerHTML = "12045 dias (35 anos)"
                 document.getElementById("apDeficienciaTCElegivel").innerHTML = `${12045 - tempoContribuicao} dias`
@@ -1393,6 +1394,7 @@ class App {
                 }
             }
         } else if (deficiencia == "Moderada") {
+            document.getElementById("spanDeficiencia").innerHTML = "MODERADA"
             if (masculino){
                 document.getElementById("apDeficienciaTCExigido").innerHTML = "10585 dias (29 anos)"
                 document.getElementById("apDeficienciaTCElegivel").innerHTML = `${10585 - tempoContribuicao} dias`
@@ -1423,6 +1425,7 @@ class App {
                 }
             }
         } else if (deficiencia == "Grave") {
+            document.getElementById("spanDeficiencia").innerHTML = "GRAVE"
             if (masculino){
                 document.getElementById("apDeficienciaTCExigido").innerHTML = "9125 dias (25 anos)"
                 document.getElementById("apDeficienciaTCElegivel").innerHTML = `${9125 - tempoContribuicao} dias`
@@ -1454,7 +1457,7 @@ class App {
             }
         }
 
-        document.getElementById("apDeficienciaTSPAtingido").innerHTML = `${tempoServicoPublico} dias`
+        document.getElementById("apDeficienciaTSPAtingido").innerHTML = `${tempoServicoPublico} dias (${Math.trunc(tempoServicoPublico/365)}a ${Math.trunc((tempoServicoPublico % 365)/30)}m ${((tempoServicoPublico % 365) % 30)}d)`
         document.getElementById("apDeficienciaTSPElegivel").innerHTML = `${3650 - tempoServicoPublico} dias`
         if (tempoServicoPublico >= 3650) {
             document.getElementById("apDeficienciaTSPSituacao").innerHTML = "OK"
@@ -1467,7 +1470,7 @@ class App {
             document.getElementById("apDeficienciaTSPPrevisto").innerHTML = `${apDeficienciaTSPPrevisto.getDate()}/${apDeficienciaTSPPrevisto.getMonth()+1}/${apDeficienciaTSPPrevisto.getFullYear()}`
         }
 
-        document.getElementById("apDeficienciaTUCAtingido").innerHTML = `${tempoUltimoCargo} dias`
+        document.getElementById("apDeficienciaTUCAtingido").innerHTML = `${tempoUltimoCargo} dias (${Math.trunc(tempoUltimoCargo/365)}a ${Math.trunc((tempoUltimoCargo % 365)/30)}m ${((tempoUltimoCargo % 365) % 30)}d)`
         document.getElementById("apDeficienciaTUCElegivel").innerHTML = `${1825 - tempoUltimoCargo} dias`
         if (tempoUltimoCargo >= 1825) {
             document.getElementById("apDeficienciaTUCSituacao").innerHTML = "OK"
@@ -1488,7 +1491,7 @@ class App {
         }
 
         // REGRA DE TRANSIÇÃO (PONTOS)
-        document.getElementById("apPontosTCAtingido").innerHTML = `${tempoContribuicao} dias`
+        document.getElementById("apPontosTCAtingido").innerHTML = `${tempoContribuicao} dias (${Math.trunc(tempoContribuicao/365)}a ${Math.trunc((tempoContribuicao % 365)/30)}m ${((tempoContribuicao % 365) % 30)}d)`
         if (masculino) {
             document.getElementById("apPontosTCExigido").innerHTML = "12775 dias (35 anos)"
             document.getElementById("apPontosTCElegivel").innerHTML = `${12775 - tempoContribuicao} dias`
@@ -1519,7 +1522,7 @@ class App {
             }
         }
 
-        document.getElementById("apPontosTSPAtingido").innerHTML = `${tempoServicoPublico} dias`
+        document.getElementById("apPontosTSPAtingido").innerHTML = `${tempoServicoPublico} dias (${Math.trunc(tempoServicoPublico/365)}a ${Math.trunc((tempoServicoPublico % 365)/30)}m ${((tempoServicoPublico % 365) % 30)}d)`
         document.getElementById("apPontosTSPElegivel").innerHTML = `${7300 - tempoServicoPublico} dias`
         if (tempoServicoPublico >= 7300) {
             document.getElementById("apPontosTSPSituacao").innerHTML = "OK"
@@ -1532,7 +1535,7 @@ class App {
             document.getElementById("apPontosTSPPrevisto").innerHTML = `${apPontosTSPPrevisto.getDate()}/${apPontosTSPPrevisto.getMonth()+1}/${apPontosTSPPrevisto.getFullYear()}`
         }
 
-        document.getElementById("apPontosTUCAtingido").innerHTML = `${tempoUltimoCargo} dias`
+        document.getElementById("apPontosTUCAtingido").innerHTML = `${tempoUltimoCargo} dias (${Math.trunc(tempoUltimoCargo/365)}a ${Math.trunc((tempoUltimoCargo % 365)/30)}m ${((tempoUltimoCargo % 365) % 30)}d)`
         document.getElementById("apPontosTUCElegivel").innerHTML = `${1825 - tempoUltimoCargo} dias`
         if (tempoUltimoCargo >= 1825) {
             document.getElementById("apPontosTUCSituacao").innerHTML = "OK"
@@ -1624,7 +1627,7 @@ class App {
         }
         
         // REGRA DE TRANSIÇÃO PARA PROFESSORES (PONTOS)
-        document.getElementById("apPontosProfTCAtingido").innerHTML = `${tempoContribuicao} dias`
+        document.getElementById("apPontosProfTCAtingido").innerHTML = `${tempoContribuicao} dias (${Math.trunc(tempoContribuicao/365)}a ${Math.trunc((tempoContribuicao % 365)/30)}m ${((tempoContribuicao % 365) % 30)}d)`
         if (masculino) {
             document.getElementById("apPontosProfTCExigido").innerHTML = "10950 dias (30 anos)"
             document.getElementById("apPontosProfTCElegivel").innerHTML = `${10950 - tempoContribuicao} dias`
@@ -1655,7 +1658,7 @@ class App {
             }
         }
         
-        document.getElementById("apPontosProfTSPAtingido").innerHTML = `${tempoServicoPublico} dias`
+        document.getElementById("apPontosProfTSPAtingido").innerHTML = `${tempoServicoPublico} dias (${Math.trunc(tempoServicoPublico/365)}a ${Math.trunc((tempoServicoPublico % 365)/30)}m ${((tempoServicoPublico % 365) % 30)}d)`
         document.getElementById("apPontosProfTSPElegivel").innerHTML = `${7300 - tempoServicoPublico} dias`
         if (tempoServicoPublico >= 7300) {
             document.getElementById("apPontosProfTSPSituacao").innerHTML = "OK"
@@ -1668,7 +1671,7 @@ class App {
             document.getElementById("apPontosProfTSPPrevisto").innerHTML = `${apPontosProfTSPPrevisto.getDate()}/${apPontosProfTSPPrevisto.getMonth()+1}/${apPontosProfTSPPrevisto.getFullYear()}`
         }
 
-        document.getElementById("apPontosProfTUCAtingido").innerHTML = `${tempoUltimoCargo} dias`
+        document.getElementById("apPontosProfTUCAtingido").innerHTML = `${tempoUltimoCargo} dias (${Math.trunc(tempoUltimoCargo/365)}a ${Math.trunc((tempoUltimoCargo % 365)/30)}m ${((tempoUltimoCargo % 365) % 30)}d)`
         document.getElementById("apPontosProfTUCElegivel").innerHTML = `${1825 - tempoUltimoCargo} dias`
         if (tempoUltimoCargo >= 1825) {
             document.getElementById("apPontosProfTUCSituacao").innerHTML = "OK"
@@ -1790,7 +1793,7 @@ class App {
         }
         
         // REGRA DE TRANSIÇÃO (PEDÁGIO)
-        document.getElementById("apPedagioTCAtingido").innerHTML = `${tempoContribuicao} dias`
+        document.getElementById("apPedagioTCAtingido").innerHTML = `${tempoContribuicao} dias (${Math.trunc(tempoContribuicao/365)}a ${Math.trunc((tempoContribuicao % 365)/30)}m ${((tempoContribuicao % 365) % 30)}d)`
         if (masculino) {
             document.getElementById("apPedagioTCExigido").innerHTML = "12775 dias (35 anos)"
             document.getElementById("apPedagioTCElegivel").innerHTML = `${12775 - tempoContribuicao} dias`
@@ -1821,7 +1824,7 @@ class App {
             }
         }
 
-        document.getElementById("apPedagioTSPAtingido").innerHTML = `${tempoServicoPublico} dias`
+        document.getElementById("apPedagioTSPAtingido").innerHTML = `${tempoServicoPublico} dias (${Math.trunc(tempoServicoPublico/365)}a ${Math.trunc((tempoServicoPublico % 365)/30)}m ${((tempoServicoPublico % 365) % 30)}d)`
         document.getElementById("apPedagioTSPElegivel").innerHTML = `${7300 - tempoServicoPublico} dias`
         if (tempoServicoPublico >= 7300) {
             document.getElementById("apPedagioTSPSituacao").innerHTML = "OK"
@@ -1834,7 +1837,7 @@ class App {
             document.getElementById("apPedagioTSPPrevisto").innerHTML = `${apPedagioTSPPrevisto.getDate()}/${apPedagioTSPPrevisto.getMonth()+1}/${apPedagioTSPPrevisto.getFullYear()}`
         }
 
-        document.getElementById("apPedagioTUCAtingido").innerHTML = `${tempoUltimoCargo} dias`
+        document.getElementById("apPedagioTUCAtingido").innerHTML = `${tempoUltimoCargo} dias (${Math.trunc(tempoUltimoCargo/365)}a ${Math.trunc((tempoUltimoCargo % 365)/30)}m ${((tempoUltimoCargo % 365) % 30)}d)`
         document.getElementById("apPedagioTUCElegivel").innerHTML = `${1825 - tempoUltimoCargo} dias`
         if (tempoUltimoCargo >= 1825) {
             document.getElementById("apPedagioTUCSituacao").innerHTML = "OK"
@@ -1856,8 +1859,8 @@ class App {
         if (masculino) {
             pedagio = 12775 - (tempoContribuicao - tempoEC_Hoje)
             if (pedagio > 0) {
-                document.getElementById("apPedagioPExigido").innerHTML = `${pedagio} dias`
-                document.getElementById("apPedagioPAtingido").innerHTML = `${tempoEC_Hoje} dias`
+                document.getElementById("apPedagioPExigido").innerHTML = `${pedagio} dias (${Math.trunc(pedagio/365)}a ${Math.trunc((pedagio % 365)/30)}m ${((pedagio % 365) % 30)}d)`
+                document.getElementById("apPedagioPAtingido").innerHTML = `${tempoEC_Hoje} dias (${Math.trunc(tempoEC_Hoje/365)}a ${Math.trunc((tempoEC_Hoje % 365)/30)}m ${((tempoEC_Hoje % 365) % 30)}d)`
                 document.getElementById("apPedagioPElegivel").innerHTML = `${(pedagio*2) - tempoEC_Hoje} dias`
                 if ((tempoContribuicao - 12775) >= pedagio) {
                     document.getElementById("apPedagioPSituacao").innerHTML = "OK"
@@ -1880,8 +1883,8 @@ class App {
         if (feminino) {
             pedagio = 10950 - (tempoContribuicao - tempoEC_Hoje)
             if (pedagio > 0) {
-                document.getElementById("apPedagioPExigido").innerHTML = `${pedagio} dias`
-                document.getElementById("apPedagioPAtingido").innerHTML = `${tempoEC_Hoje} dias`
+                document.getElementById("apPedagioPExigido").innerHTML = `${pedagio} dias (${Math.trunc(pedagio/365)}a ${Math.trunc((pedagio % 365)/30)}m ${((pedagio % 365) % 30)}d)`
+                document.getElementById("apPedagioPAtingido").innerHTML = `${tempoEC_Hoje} dias (${Math.trunc(tempoEC_Hoje/365)}a ${Math.trunc((tempoEC_Hoje % 365)/30)}m ${((tempoEC_Hoje % 365) % 30)}d)`
                 document.getElementById("apPedagioPElegivel").innerHTML = `${(pedagio*2) - tempoEC_Hoje} dias`
                 if ((tempoContribuicao - 10950) >= pedagio) {
                     document.getElementById("apPedagioPSituacao").innerHTML = "OK"
@@ -1945,7 +1948,7 @@ class App {
         }
         
         // REGRA DE TRANSIÇÃO PARA PROFESSORES (PEDÁGIO)
-        document.getElementById("apPedagioProfTCAtingido").innerHTML = `${tempoContribuicao} dias`
+        document.getElementById("apPedagioProfTCAtingido").innerHTML = `${tempoContribuicao} dias (${Math.trunc(tempoContribuicao/365)}a ${Math.trunc((tempoContribuicao % 365)/30)}m ${((tempoContribuicao % 365) % 30)}d)`
         if (masculino) {
             document.getElementById("apPedagioProfTCExigido").innerHTML = "10950 dias (30 anos)"
             document.getElementById("apPedagioProfTCElegivel").innerHTML = `${10950 - tempoContribuicao} dias`
@@ -1976,7 +1979,7 @@ class App {
             }
         }
 
-        document.getElementById("apPedagioProfTSPAtingido").innerHTML = `${tempoServicoPublico} dias`
+        document.getElementById("apPedagioProfTSPAtingido").innerHTML = `${tempoServicoPublico} dias (${Math.trunc(tempoServicoPublico/365)}a ${Math.trunc((tempoServicoPublico % 365)/30)}m ${((tempoServicoPublico % 365) % 30)}d)`
         document.getElementById("apPedagioProfTSPElegivel").innerHTML = `${7300 - tempoServicoPublico} dias`
         if (tempoServicoPublico >= 7300) {
             document.getElementById("apPedagioProfTSPSituacao").innerHTML = "OK"
@@ -1989,7 +1992,7 @@ class App {
             document.getElementById("apPedagioProfTSPPrevisto").innerHTML = `${apPedagioProfTSPPrevisto.getDate()}/${apPedagioProfTSPPrevisto.getMonth()+1}/${apPedagioProfTSPPrevisto.getFullYear()}`
         }
 
-        document.getElementById("apPedagioProfTUCAtingido").innerHTML = `${tempoUltimoCargo} dias`
+        document.getElementById("apPedagioProfTUCAtingido").innerHTML = `${tempoUltimoCargo} dias (${Math.trunc(tempoUltimoCargo/365)}a ${Math.trunc((tempoUltimoCargo % 365)/30)}m ${((tempoUltimoCargo % 365) % 30)}d)`
         document.getElementById("apPedagioProfTUCElegivel").innerHTML = `${1825 - tempoUltimoCargo} dias`
         if (tempoUltimoCargo >= 1825) {
             document.getElementById("apPedagioProfTUCSituacao").innerHTML = "OK"
@@ -2007,8 +2010,8 @@ class App {
         if (masculino) {
             pedagioProf = 10950 - (tempoContribuicao - tempoEC_Hoje)
             if (pedagioProf > 0) {
-                document.getElementById("apPedagioProfPExigido").innerHTML = `${pedagioProf*2} dias`
-                document.getElementById("apPedagioProfPAtingido").innerHTML = `${tempoEC_Hoje} dias`
+                document.getElementById("apPedagioProfPExigido").innerHTML = `${pedagioProf*2} dias (${Math.trunc((pedagioProf*2)/365)}a ${Math.trunc(((pedagioProf*2) % 365)/30)}m ${(((pedagioProf*2) % 365) % 30)}d)`
+                document.getElementById("apPedagioProfPAtingido").innerHTML = `${tempoEC_Hoje} dias (${Math.trunc(tempoEC_Hoje/365)}a ${Math.trunc((tempoEC_Hoje % 365)/30)}m ${((tempoEC_Hoje % 365) % 30)}d)`
                 document.getElementById("apPedagioProfPElegivel").innerHTML = `${(pedagioProf*2) - tempoEC_Hoje} dias`
                 if ((tempoContribuicao - 10950) >= pedagioProf) {
                     document.getElementById("apPedagioProfPSituacao").innerHTML = "OK"
@@ -2033,8 +2036,8 @@ class App {
         if (feminino) {
             pedagioProf = 9125 - (tempoContribuicao - tempoEC_Hoje)
             if (pedagioProf > 0) {
-                document.getElementById("apPedagioProfPExigido").innerHTML = `${pedagioProf} dias`
-                document.getElementById("apPedagioProfPAtingido").innerHTML = `${tempoEC_Hoje} dias`
+                document.getElementById("apPedagioProfPExigido").innerHTML = `${pedagioProf*2} dias (${Math.trunc((pedagioProf*2)/365)}a ${Math.trunc(((pedagioProf*2) % 365)/30)}m ${(((pedagioProf*2) % 365) % 30)}d)`
+                document.getElementById("apPedagioProfPAtingido").innerHTML = `${tempoEC_Hoje} dias (${Math.trunc(tempoEC_Hoje/365)}a ${Math.trunc((tempoEC_Hoje % 365)/30)}m ${((tempoEC_Hoje % 365) % 30)}d)`
                 document.getElementById("apPedagioProfPElegivel").innerHTML = `${(pedagioProf*2) - tempoEC_Hoje} dias`
                 if ((tempoContribuicao - 9125) >= pedagioProf) {
                     document.getElementById("apPedagioProfPSituacao").innerHTML = "OK"
@@ -2057,7 +2060,7 @@ class App {
             }
         }
 
-        document.getElementById("apPedagioProfMagAtingido").innerHTML = `${tempoMagisterio} dias`
+        document.getElementById("apPedagioProfMagAtingido").innerHTML = `${tempoMagisterio} dias (${Math.trunc(tempoMagisterio/365)}a ${Math.trunc((tempoMagisterio % 365)/30)}m ${((tempoMagisterio % 365) % 30)}d)`
         if (masculino) {
             document.getElementById("apPedagioProfMagExigido").innerHTML = "10950 dias (30 anos)"
             document.getElementById("apPedagioProfMagElegivel").innerHTML = `${10950 - tempoMagisterio} dias`
