@@ -2048,7 +2048,7 @@ class App {
         if (masculino) {
             pedagioProf = 10950 - (tempoContribuicao - tempoEC_Hoje)
             if (pedagioProf > 0) {
-                document.getElementById("apPedagioProfPExigido").innerHTML = `(${Math.trunc((pedagioProf*2)/365)}a ${Math.trunc(((pedagioProf*2) % 365)/30)}m ${(((pedagioProf*2) % 365) % 30)}d`
+                document.getElementById("apPedagioProfPExigido").innerHTML = `${Math.trunc((pedagioProf*2)/365)}a ${Math.trunc(((pedagioProf*2) % 365)/30)}m ${(((pedagioProf*2) % 365) % 30)}d`
                 document.getElementById("apPedagioProfPAtingido").innerHTML = `${Math.trunc(tempoEC_Hoje/365)}a ${Math.trunc((tempoEC_Hoje % 365)/30)}m ${((tempoEC_Hoje % 365) % 30)}d`
                 let apPedagioProfPElegivel = (pedagioProf*2) - tempoEC_Hoje
                 document.getElementById("apPedagioProfPElegivel").innerHTML = `${Math.trunc(apPedagioProfPElegivel/365)}a ${Math.trunc((apPedagioProfPElegivel % 365)/30)}m ${((apPedagioProfPElegivel % 365) % 30)}d`
