@@ -1575,7 +1575,7 @@ class App {
         if (masculino) {
             document.getElementById("apPontosPExigido").innerHTML = "99 pontos"
             let sobra = (99 - pontos)/2
-            document.getElementById("apPontosPElegivel").innerHTML = `${sobra} anos`
+            document.getElementById("apPontosPElegivel").innerHTML = `${sobra*1.5} anos`
             if (pontos >= 99) {
                 document.getElementById("apPontosPSituacao").innerHTML = "OK"
                 document.getElementById("apPontosPElegivel").innerHTML = "Atingido"
@@ -1584,14 +1584,15 @@ class App {
                 let dataAux = new Date()
                 let apPontosPPrevisto = new Date()
                 apPontosPPrevisto.setDate(dataAux.getDate()+Math.round(365 * sobra))
-                document.getElementById("apPontosPPrevisto").innerHTML = `${apPontosPPrevisto.getDate()}/${apPontosPPrevisto.getMonth()+1}/${apPontosPPrevisto.getFullYear()}`
+                document.getElementById("apPontosPPrevisto").innerHTML = "-"
+                //`${apPontosPPrevisto.getDate()}/${apPontosPPrevisto.getMonth()+1}/${apPontosPPrevisto.getFullYear()}`
             }
         }
         
         if (feminino) {
             document.getElementById("apPontosPExigido").innerHTML = "89 pontos"
             let sobra = (89 - pontos)/2
-            document.getElementById("apPontosPElegivel").innerHTML = `${sobra} anos`
+            document.getElementById("apPontosPElegivel").innerHTML = `${sobra*1.5} anos`
             if (pontos >= 89) {
                 document.getElementById("apPontosPSituacao").innerHTML = "OK"
                 document.getElementById("apPontosPElegivel").innerHTML = "Atingido"
@@ -1600,7 +1601,8 @@ class App {
                 let dataAux = new Date()
                 let apPontosPPrevisto = new Date()
                 apPontosPPrevisto.setDate(dataAux.getDate()+Math.round(365 * sobra))
-                document.getElementById("apPontosPPrevisto").innerHTML = `${apPontosPPrevisto.getDate()}/${apPontosPPrevisto.getMonth()+1}/${apPontosPPrevisto.getFullYear()}`
+                document.getElementById("apPontosPPrevisto").innerHTML = "-"
+                //`${apPontosPPrevisto.getDate()}/${apPontosPPrevisto.getMonth()+1}/${apPontosPPrevisto.getFullYear()}`
             }
         }
         
