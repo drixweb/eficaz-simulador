@@ -1884,7 +1884,7 @@ class App {
             document.getElementById("apPedagioTUCPrevisto").innerHTML = `${apPedagioTUCPrevisto.getDate()}/${apPedagioTUCPrevisto.getMonth()+1}/${apPedagioTUCPrevisto.getFullYear()}`
         }
 
-        let diaEC103 = new Date("2021-11-22 00:00:01")
+        let diaEC103 = new Date("2019-11-13 00:00:01")
         let diaHoje = new Date()
         let calc = Math.abs(diaHoje - diaEC103)
         let tempoEC_Hoje = (Math.ceil(calc / (1000 * 60 * 60 * 24)))
